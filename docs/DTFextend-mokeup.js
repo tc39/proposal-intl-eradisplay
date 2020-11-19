@@ -7,7 +7,8 @@ Contents: general structure:
 Required:
 	DateExtended
 */
-/*Versions:	M2020-11-27 first version (cloned from a custom calendar test page)
+/*Versions:	M2020-11-29 bug seen from a better control in ExtDate
+	M2020-11-27 first version (cloned from a custom calendar test page)
 */
 /* Copyright Miletus 2017-2020 - Louis A. de Fouquières
 Permission is hereby granted, free of charge, to any person obtaining
@@ -39,7 +40,7 @@ const Chronos =
 	SECOND_UNIT : 1000}
 
 var 
-	targetDate = new ExtDate("8601"),
+	targetDate = new ExtDate(),
 	shiftDate = new ExtDate (undefined,targetDate.getTime() - targetDate.getRealTZmsOffset()),
 	TZSettings = {mode : "TZ", msoffset : 0},	// initialisation to be superseded
 	TZDisplay = ""; 

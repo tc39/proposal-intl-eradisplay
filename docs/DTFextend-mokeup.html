@@ -14,6 +14,7 @@
 <!-- General packages -->
 	<link href="dialsandpanels.css" rel="stylesheet"/>
 	<script type="text/javascript" src="DateExtended.js"></script>
+
 	<script type="text/javascript" src="DTFextend-mokeup.js"></script>
 
 </head>
@@ -118,7 +119,7 @@ function calcTime() { // Here the hours are deemed local hours
 	var hours = Math.round (document.time.hours.value), mins = Math.round (document.time.mins.value), 
 		secs = Math.round (document.time.secs.value), ms = Math.round (document.time.ms.value);
 	if (isNaN(hours) || isNaN (mins) || isNaN (secs) || isNaN (ms)) 
-		alert ("invalid date " + '"' + document.time.hours.value + '" "' + document.time.mins.value + '" "' 
+		alert ("Invalid date " + '"' + document.time.hours.value + '" "' + document.time.mins.value + '" "' 
 		+ document.time.secs.value + '.' + document.time.ms.value + '"')
 	 else {
 	  let testDate = new ExtDate (undefined,targetDate.valueOf());
@@ -369,14 +370,27 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 	</table>
 </section>
 </section>
-<section class="panel centered autoscroll"><h2 class="panelhead">Field options</h3>
+<section class="panel centered autoscroll"><h2 class="panelhead">Date field options</h3>
 	<table class="centered"> 
 	<tr>
 		<td><button class="textline" type="reset">No option</button></td>
 		<td><button class="textline" >Ok</button></td> <td></td>
 	</tr>
-   </table>
-<section class="centered"><h3 class="panelhead">Standard</h3>
+	</table>
+<section class="centered attention"><h3 class="panelhead">Experimental options</h3>
+	<table class="centered">
+		<tr>
+			<th>Era display</th>
+			<td><select name="eraDisplay" class="centered" size="1">
+				<option value="" selected>default</option>
+				<option value="never">never</option>
+				<option value="always">always</option>
+				<option value="auto">auto</option>
+			</select></td>
+		</tr>
+	</table>
+</section>
+<section class="centered"><h3 class="panelhead">Standard date options</h3>
 	 <table class="centered">
 	  <tr>
 		<th></th><th>Day</th><th>Month</th><th>Year</th>
@@ -403,7 +417,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 			</select></td>
 	   </tr>
 	  <tr>
-		<th>Intl</th>
+		<th>Standard</th>
 		<td><input class="centered char8" name="Eday" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Emonth" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Eyear" type="text" disabled="disabled"></td>
@@ -435,7 +449,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 			</select></td>
 	  </tr>
 	  <tr>
-		<th>Intl</th>
+		<th>Standard</th>
 		<td><input class="centered char8" name="Eweekday" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Eera" type="text" disabled="disabled"></td>
 	  </tr>	
@@ -444,6 +458,15 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 		<td><input class="centered char8" name="Xweekday" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Xera" type="text" disabled="disabled"></td>
 	  </tr>	
+	</table>
+</section>
+</section>
+<section class="panel centered autoscroll"><h2 class="panelhead">Time field options</h3>
+	<table class="centered"> 
+	<tr>
+		<td><button class="textline" type="reset">No option</button></td>
+		<td><button class="textline" >Ok</button></td> <td></td>
+	</tr>
 	</table>
 	<table class="centered">
 	  <tr>
@@ -468,7 +491,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 			</select></td>
 	  </tr>
 	  <tr>
-		<th>Intl</th>
+		<th>Standard</th>
 		<td><input class="centered char8" name="Ehour" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Eminute" type="text" disabled="disabled"></td>
 		<td><input class="centered char8" name="Esecond" type="text" disabled="disabled"></td>
@@ -499,7 +522,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 				</select></td>
 		</tr>
 		<tr>
-			<th>Intl</th>
+			<th>Standard</th>
 			<td><input class="centered char8" name="EtimeZoneName" type="text" disabled="disabled"></td>
 			<td><input class="centered char8" name="EAmPm" type="text" disabled="disabled"></td>
 		</tr>
@@ -529,7 +552,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 			</select></td>
 	  </tr>
 	  <tr>
-		<th>Intl</th>
+		<th>Standard</th>
 		<td>12 h</td>
 		<td><input class="centered" name="Ehour12" type="checkbox" disabled="disabled"></td>
 		<td><input class="centered char8" name="EhourCycle" type="text" disabled="disabled"></td>
@@ -542,31 +565,19 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 	  </tr>
 	</table>
 </section>
-<section class="centered attention"><h3 class="panelhead">Experimental options</h3>
-	<table class="centered">
-		<tr>
-			<th>Era display</th>
-			<td><select name="eraDisplay" class="centered" size="1">
-				<option value="" selected>default</option>
-				<option value="never">never</option>
-				<option value="always">always</option>
-				<option value="auto">auto</option>
-			</select></td>
-		</tr>
-	</table>
-</section>
-  </form>
-</section>
+</form>
 
-<section class="panel centered autoscroll"><h2 class="panelhead">Unicode strings</h2>
-<h3 class="panelhead">Standard</h3>
+<section class="panel centered autoscroll"><h2 class="panelhead">DateTimeFormat strings</h2>
+<section class="centered"><h3 class="panelhead">Standard</h3>
 	<table class="centered">
 		<tr><td id="Ustring"></td></tr>
 	</table>
-<h3 class="panelhead">Extended</h3>
+</section>
+<section class="centered attention"><h3 class="panelhead">Extended</h3>
 	<table class="centered attention">
 		<tr><td id="Xstring"></td></tr>
 	</table>
+</section>
 </section>
 
 <footer class="centered">
