@@ -9,7 +9,8 @@ Contents
 	One new method for Date for generalised time zone offset management
 	Extension of Intl.DateTimeFormat
 */
-/* Version	M2020-11-27 Modify literals of time part only, not of date part, solve a few bugs
+/* Version	M2020-11-29 control calendar parameter to ExtDate and ExtDateTimeFormat constructors
+	M2020-11-27 Modify literals of time part only, not of date part, solve a few bugs
 		only replace ":" literals in time part of string with " h ", " min " or " s " indication if corresponding option is "numeric"
 		add getISOFields method
 		toCalString displays ISOString for built-in calendars
@@ -127,8 +128,8 @@ class ExtDate extends Date {
 	/** Construct a date to be deployed in a custom calendar. Date elements shall be integer.
 	 * @param (Object) calendar : 
 			the calendar object that describes the custom calendar,
-			a string that refers to a built-in calendar; however computations are not implemented in this version, except for "iso8601" (default) and "gregory".
-			undefined : deemed to be "iso8601"
+			or a string that refers to a built-in calendar; however computations are not implemented in this version, except for "iso8601" (default) and "gregory".
+			or undefined : deemed to be "iso8601"
 	 * @param (parameter list): the arguments as passed to the Date object.
 		empty -> now
 		one numerical argument: Posix counter in milliseconds
@@ -139,13 +140,22 @@ class ExtDate extends Date {
 	 * @return Date value. The date is deemed local in system time zone.
 	*/
 	constructor (calendar, ...dateArguments) {
+		let myCalendar = (calendar == undefined) ? "iso8601" : calendar;
+		switch (typeof myCalendar) {
+			case "string" : switch (myCalendar) {
+				case "iso8601" : case "gregory" : break;
+				default : throw ExtDate.unimplementedOption;
+			} break;
+			case "object": ; break; // ExtDate constructed although calendar object may be incomplete
+			default : throw ExtDate.invalidOption;
+		}
 		if (dateArguments.length > 1) {	// more than 1 argument passed to Date: a date description, not a time stamp.
-			if (calendar == undefined) { // First arguments are a year and a month. Year is alwasy full, month is always based 1.
+			if (myCalendar == "iso8601" || myCalendar == "gregory") { // First arguments are a year and a month. Year is alwasy full, month is always based 1.
 				dateArguments[1]--;		// month argument decremented for the legacy Date
 				super (...dateArguments);
 				if (dateArguments[0] < 100 && dateArguments[0] >= 0) this.setFullYear(dateArguments[0]); 
 				} 
-			else {	// analyse fields in terms of the specified calendar
+			else {	// analyse fields in terms of the specified custom calendar
 				let fields = new Object;
 				for (let i = 0; i < dateArguments.length; i++) {
 					if (!Number.isInteger(dateArguments[i])) throw ExtDate.invalidDateFields;
@@ -157,8 +167,7 @@ class ExtDate extends Date {
 		}
 		else	// O or 1 argument for legacy Date, i.e. Now (0 argument), a string or a timestamp. Nothing calendar-dependant
 			super (...dateArguments);
-		this.calendar = calendar;
-		if (calendar == "undefined") this.calendar = "iso8601";
+		this.calendar = myCalendar;		// because this may only appear after super.
 	}
 	/** Errors and basic data
 	*/
@@ -373,13 +382,14 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 	 * @param (string) locale : as for Intl.DateTimeFormat
 	 * @param (Object) options : as for Intl.DateTimeFormat + this field
 		eraDisplay : ("never"/"always"/"auto"), default to "auto": should era be displayed ?
-	 * @param (Object) a custom calendar. By default, the built-in calendar will be used. If specified, and if a Private Locale Data Register is given,
-		this will be used for calendar's entity names (month names to begin with). If not, the calendar.id field refers to the built-in calendar to use.
+	 * @param (Object) a custom calendar. By default, the calendar resolved with locale and options will be used. If specified, and if a Private Locale Data Register is given,
+		this will be used for calendar's entity names. If not, the calendar.canvas field refers to the built-in calendar to use.
 	*/
 	constructor (locale, options, calendar) { // options should not be set to null, not accepted by Unicode
 		super (locale, options);
-		// Resolve own options
+		// Resolve othis.calendarwn options
 		this.calendar = calendar;
+		if (this.calendar != undefined && typeof this.calendar != "object") throw new TypeError ("invalid calendar parameter, defined calendar must be an object");
 		this.options = {...options};	// copy originally asked options.
 		this.locale = locale;
 		// Resolve case where no field is asked for display : if none of weekday, year, month, day, hour, minute, second is asked, set a standard suite
@@ -395,15 +405,16 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 			&& this.options.timeStyle == undefined) this.options.year = this.options.month = this.options.day = "numeric";
 		this.DTFOptions = super.resolvedOptions();	// should hold all locale resolved information in DTFOptions.locale
 		this.options.locale = this.DTFOptions.locale;
-		this.options.calendar = this.calendar == undefined ? this.DTFOptions.calendar : this.calendar.canvas;
+		this.options.calendar = (this.calendar != undefined && this.calendar.canvas != undefined) ? this.calendar.canvas : this.DTFOptions.calendar; 
+		// set calendar option for standard DTF after calendar.canvas if specified, and re-compute DTF resolved options
+		if (this.options.calendar != this.DTFOptions.calendar) { 
+			this.DTFOptions.calendar = this.options.calendar 
+			this.DTFOptions = new Intl.DateTimeFormat(this.DTFOptions.locale, this.DTFOptions).resolvedOptions();
+		}
 		this.options.numberingSystem = this.DTFOptions.numberingSystem;
 		this.options.timeZone = this.DTFOptions.timeZone;
 		this.options.timeZoneName = this.DTFOptions.timeZoneName;
 		// Control and resolve specific options
-		if (this.calendar != undefined && this.calendar.canvas != undefined) { 
-			this.DTFOptions.calendar = this.calendar.canvas 
-			this.DTFOptions = new Intl.DateTimeFormat(this.DTFOptions.locale, this.DTFOptions).resolvedOptions();
-		}
 		if (this.options.eraDisplay == undefined) this.options.eraDisplay = "auto";
 		switch (this.options.eraDisplay) {
 			case "always": case "never": case "auto": break;
@@ -525,10 +536,6 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 						todaysParts = eraFormat.formatToParts(today);
 						let eraIndex = dateParts.findIndex(item => item.type == "era");
 						if (eraIndex >= 0) return !(dateParts[eraIndex].value == todaysParts[eraIndex].value);
-						
-//						for (let i = 0; i < dateParts.length; i++) 
-//							if (dateParts[i].type == "era") return !(dateParts[i].value == todaysParts[i].value);
-
 						return false; // no era part was found... answer no because no era part // throw ExtDateTimeFormat.invalidEra	// if we arrive here, there is something inconsistent in the data. 
 				}
 				else 	// a custom calendar with era, simplier to use
