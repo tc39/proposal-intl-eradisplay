@@ -1,60 +1,58 @@
-# template-for-proposals
-
+# eraDisplay option for Intl.DateTimeFormat
 A repository template for ECMAScript proposals.
 
-## Before creating a proposal
+## Status
 
-Please ensure the following:
-  1. You have read the [process document](https://tc39.github.io/process-document/)
-  1. You have reviewed the [existing proposals](https://github.com/tc39/proposals/)
-  1. You are aware that your proposal requires being a member of TC39, or locating a TC39 delegate to "champion" your proposal
+Champion(s): Shane Carr (@sffc)
+Author(s): Louis-Aimé de Fouquières (@Louis-Aime), Miletus, France
+Stage: -1
 
-## Create your proposal repo
+## Overview/Motivation
 
-Follow these steps:
-  1.  Click the green ["use this template"](https://github.com/tc39/template-for-proposals/generate) button in the repo header. (Note: Do not fork this repo in GitHub's web interface, as that will later prevent transfer into the TC39 organization)
-  1.  Go to your repo settings “Options” page, under “GitHub Pages”, and set the source to the **main branch** under the root (and click Save, if it does not autosave this setting)
-      1. check "Enforce HTTPS"
-      1. On "Options", under "Features", Ensure "Issues" is checked, and disable "Wiki", and "Projects" (unless you intend to use Projects)
-      1. Under "Merge button", check "automatically delete head branches"
-<!--
-  1.  Avoid merge conflicts with build process output files by running:
-      ```sh
-      git config --local --add merge.output.driver true
-      git config --local --add merge.output.driver true
-      ```
-  1.  Add a post-rewrite git hook to auto-rebuild the output on every commit:
-      ```sh
-      cp hooks/post-rewrite .git/hooks/post-rewrite
-      chmod +x .git/hooks/post-rewrite
-      ```
--->
-  3.  ["How to write a good explainer"][explainer] explains how to make a good first impression.
+With the present (Nov. 2020) implementation of ICUs and CLDR in navigators, an author using `Intl.DateTimeFormat` is unable to control whether the `era` part of a date should be displayed or not.
 
-      > Each TC39 proposal should have a `README.md` file which explains the purpose
-      > of the proposal and its shape at a high level.
-      >
-      > ...
-      >
-      > The rest of this page can be used as a template ...
+On the other hand, when displaying a simple `gregory` date prior to 0000-01-01 with no option or with dateStyle, the era field is not displayed and the date is ambiguous.
 
-      Your explainer can point readers to the `index.html` generated from `spec.emu`
-      via markdown like
+The new `eraDisplay` option may take 3 values: "never", always", "auto". If undefined, "auto" is assumed. 
+ * "never": whatever the `era` option may be, the era part is not displayed.
+ * "always": whatever the other options may be, the era part is displayed, according to the value of the `era`. If `era` is undefined, it is resolved to "short".
+ * "auto", the default value: the era part is displayed if the year part is displayed, and the date's era is different from today's date, in the resolved calendar.
+ 
+ Details are given here : [eraDIsplay presentation](https://docs.google.com/presentation/d/1CABEQP_U-vCUxGKXbJmaZKvJZHEdFZZtAHGAOnRbrCY/edit?usp=sharing)
 
-      ```markdown
-      You can browse the [ecmarkup output](https://ACCOUNT.github.io/PROJECT/)
-      or browse the [source](https://github.com/ACCOUNT/PROJECT/blob/HEAD/spec.emu).
-      ```
+## Use cases
 
-      where *ACCOUNT* and *PROJECT* are the first two path elements in your project's Github URL.
-      For example, for github.com/**tc39**/**template-for-proposals**, *ACCOUNT* is "tc39"
-      and *PROJECT* is "template-for-proposals".
+You may use a moke-up on [the proposal's web page](https://louis-aime.github.io/proposal-intl-eradisplay/)
+
+Most users will get a better result while not changing anything to the options they pass to Intl.DateTimeFormat.
+	`new Intl.DateTimeFormat().format(new Date(-752,3,13)) //> "13/3/753" as of Nov. 2020; with this option "13/3/753 BC", that is 1500 years earlier`
+	`new Intl.DateTimeFormat("en-US",{calendar : "ethiopic"}).format(new Date()) //> "3/15/2013 ERA1". Author did not ask for era name, which is missing in CLDR. "3/15/2013" with the option set to default.
+
+Demanding users, who want to have the era displayed even if it is today's, or who do not want because the reader will understand from the context, will use the non-default values.
+
+## Description
+
+Author may add option eraDisplay in the list of options when invoking new Intl.DateTimeFormat(). If he doesn't, option is deemed "auto".
+era resolved option may be changed  
+
+## Comparison
+
+To our  knowledge, there is no such function. Languages generaly only give day/month/year without era. 
+
+## Implementations
+
+### Moke-up
+
+[Access to moke-up](https://louis-aime.github.io/proposal-intl-eradisplay/)
 
 
-## Maintain your proposal repo
+### Native implementations
 
-  1. Make your changes to `spec.emu` (ecmarkup uses HTML syntax, but is not HTML, so I strongly suggest not naming it ".html")
-  1. Any commit that makes meaningful changes to the spec, should run `npm run build` and commit the resulting output.
-  1. Whenever you update `ecmarkup`, run `npm run build` and commit any changes that come from that dependency.
+TBC at later stages
 
-  [explainer]: https://github.com/tc39/how-we-work/blob/HEAD/explainer.md
+## Q&A
+
+**Q**: Why ?
+
+**A**: Because reasons!
+
