@@ -1,5 +1,5 @@
 # eraDisplay option for Intl.DateTimeFormat
-A repository template for ECMAScript proposals.
+This repository was built from the repository template for ECMAScript proposals.
 
 ## Status
 
@@ -25,26 +25,27 @@ The new `eraDisplay` option may take 3 values: "never", always", "auto". If unde
 You may use a moke-up on [the proposal's web page](https://louis-aime.github.io/proposal-intl-eradisplay/)
 
 Most users will get a better result while not changing anything to the options they pass to Intl.DateTimeFormat.
-	`new Intl.DateTimeFormat().format(new Date(-752,3,13)) //> "13/3/753" as of Nov. 2020; with this option "13/3/753 BC", that is 1500 years earlier`
-	`new Intl.DateTimeFormat("en-US",{calendar : "ethiopic"}).format(new Date()) //> "3/15/2013 ERA1". Author did not ask for era name, which is missing in CLDR. "3/15/2013" with the option set to default.
+* `new Intl.DateTimeFormat().format(new Date(-752,3,13)) //> "13/4/753"` as of present (Nov. 2020) implementation; 
+with this proposal:`//>"13/4/753 BC"`, that is 1500 years earlier
+* `new Intl.DateTimeFormat("en-US",{calendar : "ethiopic"}).format(new Date()) //> "3/15/2013 ERA1"`. 
+Author did not ask for era name, which is missing in CLDR. `//> "3/15/2013"` with`the proposed feature and the option set to default.  
 
 Demanding users, who want to have the era displayed even if it is today's, or who do not want because the reader will understand from the context, will use the non-default values.
 
 ## Description
 
 Author may add option eraDisplay in the list of options when invoking new Intl.DateTimeFormat(). If he doesn't, option is deemed "auto".
-era resolved option may be changed  
+Effective `era` resolved option may temporarily be changed by the .format or .FormatToParts methods. 
 
 ## Comparison
 
-To our  knowledge, there is no such function. Languages generaly only give day/month/year without era. 
+To our knowledge, there is no such function. Languages generaly only give day/month/year without era. 
 
 ## Implementations
 
 ### Moke-up
 
 [Access to moke-up](https://louis-aime.github.io/proposal-intl-eradisplay/)
-
 
 ### Native implementations
 
@@ -55,4 +56,3 @@ TBC at later stages
 **Q**: Why ?
 
 **A**: Because reasons!
-
