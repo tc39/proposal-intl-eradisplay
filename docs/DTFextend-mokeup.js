@@ -234,5 +234,116 @@ function setDisplay () { // Considering that targetDate time has been set to the
 
 	// Write custom and Unicode strings following currently visible options
 	putStringOnOptions();
-
 }
+function calcGregorian() {
+	var 
+	 day =  Math.round (document.gregorian.day.value),
+	 month = Math.round (document.gregorian.monthname.value),
+	 year =  Math.round (document.gregorian.year.value);
+	 // HTML controls that day, month and year are numbers
+	let testDate = new Date (targetDate.valueOf());
+	switch (TZSettings.mode) {
+		case "TZ": 
+			testDate.setFullYear(year, month-1, day); 	// Set date object from calendar date indication, without changing time-in-the-day.
+			break;
+		case "UTC" : testDate.setUTCFullYear(year, month-1, day);
+			break;
+		} 
+	if (isNaN(testDate.valueOf())) alert ("Out of range")
+	else {
+		// Here, no control of date validity, leave JS recompute the date if day of month is out of bounds
+		targetDate = new ExtDate (undefined,testDate.valueOf());
+		setDisplay();
+	}
+}
+
+var 
+	dayOffset = 1; // Days (decimal) to add or substract
+// no setDateToToday
+function changeDayOffset () { 
+	let days = +document.control.shift.value;
+	if (isNaN(days) || days < 0) {
+		alert ("Invalid input");
+		}
+	else 
+	{ 
+		dayOffset = days; // Global variable updated
+		document.control.shift.value = days; // Confirm changed value
+	}
+}
+function setDayOffset (sign=1) {
+	changeDayOffset();	// Force a valid value in field
+	let testDate = new Date(targetDate.valueOf());
+	testDate.setTime (testDate.getTime()+sign*dayOffset*Chronos.DAY_UNIT);
+	if (isNaN(testDate.valueOf())) { 
+		alert ("Out of range");
+		// clockRun(0);
+		}
+	else {
+		targetDate = new ExtDate (undefined,testDate.valueOf());
+		setDisplay();
+	}
+}
+
+function calcTime() { // Here the hours are deemed local hours
+	var hours = Math.round (document.time.hours.value), mins = Math.round (document.time.mins.value), 
+		secs = Math.round (document.time.secs.value), ms = Math.round (document.time.ms.value);
+	if (isNaN(hours) || isNaN (mins) || isNaN (secs) || isNaN (ms)) 
+		alert ("Invalid date " + '"' + document.time.hours.value + '" "' + document.time.mins.value + '" "' 
+		+ document.time.secs.value + '.' + document.time.ms.value + '"')
+	 else {
+	  let testDate = new ExtDate (undefined,targetDate.valueOf());
+	  switch (TZSettings.mode) {
+		case "TZ" : testDate.setHours(hours, mins, secs, ms); break;
+		case "UTC" : testDate.setUTCHours(hours, mins, secs, ms); break;
+/*		case "Fixed" : 
+			testDate = new Date(ExtDate.fullUTC (document.gregorian.year.value, document.gregorian.monthname.value, document.gregorian.day.value));
+			testDate.setUTCHours(hours, mins, secs, ms); 
+			testDate.setTime(testDate.getTime() + TZSettings.msoffset);
+*/		}
+		if (isNaN(testDate.valueOf())) alert ("Out of range")
+		else {
+			targetDate = new ExtDate (undefined,testDate.valueOf());
+			setDisplay();
+		}
+	}
+}
+
+var addedTime = 60000; //Global variable, time to add or substract, in milliseconds.
+function changeAddTime() {
+	let msecs = +document.timeShift.shift.value; 
+	if (isNaN(msecs) || msecs <= 0) 
+		alert ("Invalid input")
+	else
+		{ 
+		addedTime = msecs; // Global variable updated
+		document.timeShift.shift.value = msecs; // Confirm changed value
+		}
+	}
+
+function addTime (sign = 1) { // addedTime ms is added or subtracted to or from the Timestamp.
+	changeAddTime();	// Force a valid value in field
+	let testDate = new Date(targetDate.valueOf());
+	testDate.setTime (testDate.getTime()+sign*addedTime); 
+	if (isNaN(testDate.valueOf())) alert ("Out of range")
+	else {
+		targetDate = new ExtDate (undefined,testDate.valueOf());
+		setDisplay();
+	}
+}
+
+function setDateToNow(){ // Self explanatory
+    targetDate = new ExtDate(); // set new Date object.
+	setDisplay ();
+}
+function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
+	if (typeof UTChours == undefined)  UTChours = document.UTCset.Compute.value;
+	let testDate = new Date (targetDate.valueOf());
+	testDate.setUTCHours(UTChours, 0, 0, 0);
+	if (isNaN(testDate.valueOf())) alert ("Out of range")
+	else {
+		targetDate = new ExtDate (undefined,testDate.valueOf());
+		setDisplay();
+	}
+}
+

@@ -3,21 +3,13 @@ Main characteristics:
 - items grouped in panels, arrange the size in order to hold on a smartphone
 - most items centered
 - use standard style of a CMS etc.  */
-/* Version	M2020-11-21 Created after milesian clocks
+/* Version	M2020-12-15 Set panel for command and outdisplay for results
+	M2020-11-21 Created after milesian clocks
 	2020-1m-11 - flexible layout of basic panels 
 */
 /* Layout of general elements */
 /* .panel is a comprehensive item; panels are applied in line or next line
 The .panel section may be suppressed for panels inserted via a CMS */
-.panel {
-	/* next comments are the bad ideas
-	 overflow : auto;
-	 justify-content: center; */
-	display : inline-table; 
-	outline:  double;
-	margin: 3px;
-	text-align: center;
-	}
 .centered {
 	text-align: center;
 }	
@@ -26,9 +18,30 @@ table.centered {
 	margin-right: auto;
 	text-align: center;
 }
-.panelhead {	/* was milesianhead - no line spacing, to be used with  h1 to h6, set as class to avoid interactions */
+.panel {
+	width: 360px;
+	height: 470px;
+	/* these commands to be avoided:  overflow : auto; justify-content: center; */
+	display: inline-table; /* ou inline-table ou table-cell; */  
+		/* inline-block aligne à la même hauteur le DERNIER titre de tous les blocs, et non le PREMIER.
+		table-cell : cellule d'une table <td> ou <th>. 
+		inline-table aligne en haut. En fixant les tailles, on obtient de vrais panneaux */ 
+	outline:  double;
+	/* pas sûr que fixer les marges ait un sens. margin: auto; ou 3px */
+	text-align: center;
+	}
+.panelhead {	/*  no line spacing, to be used with  h1 to h6, set as class to avoid interactions */
+	text-align: center;
 	line-height: 1;
 	margin: 0.3em auto;
+}
+.outdisplay {
+	width: 360px;
+	height: 200px;
+	display: inline-table;
+	outline: double;
+	text-align: center;
+	/* width: 10pc; */
 }
 /*.autoscroll {	overflow: auto; }  to be deprecated */
 /* Display a simple date as a line on a letter */
@@ -105,3 +118,10 @@ button.symbol {
 .lit {
 	fill 	: blanchedalmond
 }
+/* Responsive design 
+@media only screen and (max-width: 800px) {
+	.mtych {
+		display: flex;
+		flex-direction: column;
+	}
+}*/
