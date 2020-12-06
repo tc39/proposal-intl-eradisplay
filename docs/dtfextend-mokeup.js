@@ -7,7 +7,8 @@ Contents: general structure:
 Required:
 	DateExtended
 */
-/*Versions:	M2020-11-29 bug seen from a better control in ExtDate
+/* Version:	M2020-12-16 Enhance layout, separate general/date/time options
+	M2020-11-29 bug seen from a better control in ExtDate
 	M2020-11-27 first version (cloned from a custom calendar test page)
 */
 /* Copyright Miletus 2017-2020 - Louis A. de Fouquières
@@ -46,8 +47,8 @@ var
 	TZDisplay = ""; 
 
 function putStringOnOptions() { // get Locale, calendar indication and Options given on page, print String. Called by setDisplay
-	let Locale = document.LocaleOptions.Locale.value;
-	let unicodeAskedExtension = document.LocaleOptions.UnicodeExt.value;
+	let Locale = document.Locale.Locale.value;
+	let unicodeAskedExtension = document.Locale.UnicodeExt.value;
 	var askedOptions, usedOptions, extAskedOptions, extUsedOptions, cusAskedOptions; 
 
 	// Test specified Locale
@@ -71,25 +72,26 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	
 	// Add presentation options
 	let Options = {}; 
-	if	(document.LocaleOptions.LocaleMatcher.value != "")	Options.localeMatcher = document.LocaleOptions.LocaleMatcher.value;
-	if	(document.LocaleOptions.FormatMatcher.value != "")	Options.formatMatcher = document.LocaleOptions.FormatMatcher.value;
-	if	(document.LocaleOptions.TimeZone.value != "")	Options.timeZone = document.LocaleOptions.TimeZone.value;
-	if	(document.LocaleOptions.Calendar.value != "")	Options.calendar = document.LocaleOptions.Calendar.value;
-	if	(document.LocaleOptions.DateStyle.value != "") 	Options.dateStyle = document.LocaleOptions.DateStyle.value;
-	if	(document.LocaleOptions.TimeStyle.value != "") 	Options.timeStyle = document.LocaleOptions.TimeStyle.value;
-	if	(document.LocaleOptions.Weekday.value != "")	Options.weekday = document.LocaleOptions.Weekday.value;
-	if	(document.LocaleOptions.Day.value != "") 	Options.day = document.LocaleOptions.Day.value;
-	if	(document.LocaleOptions.Month.value != "") 	Options.month = document.LocaleOptions.Month.value;
-	if 	(document.LocaleOptions.Year.value != "")	Options.year = document.LocaleOptions.Year.value;
-	if	(document.LocaleOptions.Era.value != "")	Options.era	= document.LocaleOptions.Era.value;
-	if	(document.LocaleOptions.Hour.value != "")	Options.hour = document.LocaleOptions.Hour.value;
-	if	(document.LocaleOptions.Minute.value != "")	Options.minute = document.LocaleOptions.Minute.value;
-	if	(document.LocaleOptions.Second.value != "")	Options.second	= document.LocaleOptions.Second.value;
-	if	(document.LocaleOptions.TimeZoneName.value != "")	Options.timeZoneName	= document.LocaleOptions.TimeZoneName.value;
-	if	(document.LocaleOptions.Hour12.value != "")	Options.hour12	= (document.LocaleOptions.Hour12.value == "true");
-	if	(document.LocaleOptions.HourCycle.value != "")	Options.hourCycle	= document.LocaleOptions.HourCycle.value;
-	if	(document.LocaleOptions.AmPm.value != "")	Options.dayPeriod	= document.LocaleOptions.AmPm.value;
-	if	(document.LocaleOptions.eraDisplay.value != "")	Options.eraDisplay	= document.LocaleOptions.eraDisplay.value;
+	if	(document.Locale.LocaleMatcher.value != "")	Options.localeMatcher = document.Locale.LocaleMatcher.value;
+	if	(document.Locale.FormatMatcher.value != "")	Options.formatMatcher = document.Locale.FormatMatcher.value;
+	if	(document.Locale.TimeZone.value != "")	Options.timeZone = document.Locale.TimeZone.value;
+	if	(document.Locale.Calendar.value != "")	Options.calendar = document.Locale.Calendar.value;
+	if	(document.Locale.DateStyle.value != "") 	Options.dateStyle = document.Locale.DateStyle.value;
+	if	(document.Locale.TimeStyle.value != "") 	Options.timeStyle = document.Locale.TimeStyle.value;
+	if	(document.dateOptions.Weekday.value != "")	Options.weekday = document.dateOptions.Weekday.value;
+	if	(document.dateOptions.Day.value != "") 	Options.day = document.dateOptions.Day.value;
+	if	(document.dateOptions.Month.value != "") 	Options.month = document.dateOptions.Month.value;
+	if 	(document.dateOptions.Year.value != "")	Options.year = document.dateOptions.Year.value;
+	if	(document.dateOptions.Era.value != "")	Options.era	= document.dateOptions.Era.value;
+	if	(document.timeOptions.Hour.value != "")	Options.hour = document.timeOptions.Hour.value;
+	if	(document.timeOptions.Minute.value != "")	Options.minute = document.timeOptions.Minute.value;
+	if	(document.timeOptions.Second.value != "")	Options.second	= document.timeOptions.Second.value;
+	if	(document.timeOptions.TimeZoneName.value != "")	Options.timeZoneName	= document.timeOptions.TimeZoneName.value;
+	if	(document.timeOptions.Hour12.value != "")	Options.hour12	= (document.timeOptions.Hour12.value == "true");
+	if	(document.timeOptions.HourCycle.value != "")	Options.hourCycle	= document.timeOptions.HourCycle.value;
+	if	(document.timeOptions.AmPm.value != "")	Options.dayPeriod	= document.timeOptions.AmPm.value;
+
+	if	(document.dateOptions.eraDisplay.value != "")	Options.eraDisplay	= document.dateOptions.eraDisplay.value;
 	
 	// Test that Options set is acceptable. If not, display with empty options object
 	try {
@@ -113,44 +115,38 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 
 	
 	// Display all effective options
-	document.LocaleOptions.Elocale.value = usedOptions.locale;
-	document.LocaleOptions.Ecalend.value = usedOptions.calendar;
-	document.LocaleOptions.Enum.value = usedOptions.numberingSystem;
-	document.LocaleOptions.EtimeZoneName.value = usedOptions.timeZoneName;
-	document.LocaleOptions.EdateStyle.value = usedOptions.dateStyle;
-	document.LocaleOptions.EtimeStyle.value = usedOptions.timeStyle ;
-	document.LocaleOptions.ETimeZone.value = usedOptions.timeZone;
-	document.LocaleOptions.Eweekday.value = usedOptions.weekday;
-	document.LocaleOptions.Eera.value = usedOptions.era;
-	document.LocaleOptions.Eyear.value = usedOptions.year;
-	document.LocaleOptions.Emonth.value = usedOptions.month;
-	document.LocaleOptions.Eday.value = usedOptions.day;
-	document.LocaleOptions.Ehour.value = usedOptions.hour;
-	document.LocaleOptions.Eminute.value = usedOptions.minute;
-	document.LocaleOptions.Esecond.value = usedOptions.second;
-	document.LocaleOptions.Ehour12.checked = usedOptions.hour12;
-	document.LocaleOptions.EhourCycle.value = usedOptions.hourCycle;
-	document.LocaleOptions.EAmPm.value = usedOptions.dayPeriod;
+	document.Locale.Elocale.value = usedOptions.locale;
+	document.Locale.Ecalend.value = usedOptions.calendar;
+	document.Locale.Enum.value = usedOptions.numberingSystem;
+	document.Locale.ETimeZone.value = usedOptions.timeZone;
+	document.Locale.EdateStyle.value = usedOptions.dateStyle;
+	document.Locale.EtimeStyle.value = usedOptions.timeStyle ;
+	document.dateOptions.Eweekday.value = usedOptions.weekday;
+	document.dateOptions.Eera.value = usedOptions.era;
+	document.dateOptions.Eyear.value = usedOptions.year;
+	document.dateOptions.Emonth.value = usedOptions.month;
+	document.dateOptions.Eday.value = usedOptions.day;
+	document.timeOptions.Ehour.value = usedOptions.hour;
+	document.timeOptions.Eminute.value = usedOptions.minute;
+	document.timeOptions.Esecond.value = usedOptions.second;
+	document.timeOptions.EtimeZoneName.value = usedOptions.timeZoneName;
+	document.timeOptions.Ehour12.checked = usedOptions.hour12;
+	document.timeOptions.EhourCycle.value = usedOptions.hourCycle;
+	document.timeOptions.EAmPm.value = usedOptions.dayPeriod;
 	
 	// Display all effective options for extended formatter
-	//document.LocaleOptions.Xlocale.value = extUsedOptions.locale;
-	//document.LocaleOptions.Xcalend.value = extUsedOptions.calendar;
-	//document.LocaleOptions.Xnum.value = extUsedOptions.numberingSystem;
-	//document.LocaleOptions.XdateStyle.value = extUsedOptions.dateStyle;
-	//document.LocaleOptions.XtimeStyle.value = extUsedOptions.timeStyle ;
-	//document.LocaleOptions.XTimeZone.value = extUsedOptions.timeZone;
-	document.LocaleOptions.XtimeZoneName.value = extUsedOptions.timeZoneName;
-	document.LocaleOptions.Xweekday.value = extUsedOptions.weekday;
-	document.LocaleOptions.Xera.value = extUsedOptions.Xra;
-	document.LocaleOptions.Xyear.value = extUsedOptions.year;
-	document.LocaleOptions.Xmonth.value = extUsedOptions.month;
-	document.LocaleOptions.Xday.value = extUsedOptions.day;
-	document.LocaleOptions.Xhour.value = extUsedOptions.hour;
-	document.LocaleOptions.Xminute.value = extUsedOptions.minute;
-	document.LocaleOptions.Xsecond.value = extUsedOptions.second;
-	document.LocaleOptions.Xhour12.checked = extUsedOptions.hour12;
-	document.LocaleOptions.XhourCycle.value = extUsedOptions.hourCycle;
-	document.LocaleOptions.XAmPm.value = extUsedOptions.dayPeriod;
+	document.dateOptions.Xweekday.value = extUsedOptions.weekday;
+	document.dateOptions.Xera.value = extUsedOptions.Xra;
+	document.dateOptions.Xyear.value = extUsedOptions.year;
+	document.dateOptions.Xmonth.value = extUsedOptions.month;
+	document.dateOptions.Xday.value = extUsedOptions.day;
+	document.timeOptions.Xhour.value = extUsedOptions.hour;
+	document.timeOptions.Xminute.value = extUsedOptions.minute;
+	document.timeOptions.Xsecond.value = extUsedOptions.second;
+	document.timeOptions.XtimeZoneName.value = extUsedOptions.timeZoneName;
+	document.timeOptions.Xhour12.checked = extUsedOptions.hour12;
+	document.timeOptions.XhourCycle.value = extUsedOptions.hourCycle;
+	document.timeOptions.XAmPm.value = extUsedOptions.dayPeriod;
 	
 	/*
 	// Build "reference" format object with asked options and ISO8601 calendar, and display non-Unicode calendar string

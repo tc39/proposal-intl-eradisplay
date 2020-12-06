@@ -148,7 +148,7 @@
 	</section>
 </section>
 	<section class="panel"><h2 class="panelhead">General presentation options</h2>
-<form name="LocaleOptions" method="post" action="javascript:putStringOnOptions()">
+		<form name="Locale" method="post" action="javascript:putStringOnOptions()">
 		<table class="centered"> 
 			<tr>
 				<td><button class="textline" type="reset">No option</button></td>
@@ -252,8 +252,10 @@
 		  </tr>
 		</table>
 	</section>
+	</form>
 	</section>
 	<section class="panel"><h2 class="panelhead">Date field options</h3>
+		<form name="dateOptions" method="post" action="javascript:putStringOnOptions()">
 		<table class="centered"> 
 		<tr>
 			<td><button class="textline" type="reset">No option</button></td>
@@ -343,8 +345,10 @@
 		  </tr>	
 		</table>
 	</section>
+	</form>
 	</section>
 	<section class="panel"><h2 class="panelhead">Time field options</h3>
+		<form name="timeOptions" method="post" action="javascript:putStringOnOptions()">
 		<table class="centered"> 
 		<tr>
 			<td><button class="textline" type="reset">No option</button></td>
@@ -447,8 +451,8 @@
 			<td><input class="centered char8" name="XhourCycle" type="text" disabled="disabled"></td>
 		  </tr>
 		</table>
+	</form>
 	</section>
-</form>
 
 <section class="outdisplay centered autoscroll"><h2 class="panelhead">DateTimeFormat strings</h2>
 	<section class="centered"><h3 class="panelhead">Standard</h3>
