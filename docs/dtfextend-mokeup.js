@@ -86,6 +86,7 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	if	(document.timeOptions.Hour.value != "")	Options.hour = document.timeOptions.Hour.value;
 	if	(document.timeOptions.Minute.value != "")	Options.minute = document.timeOptions.Minute.value;
 	if	(document.timeOptions.Second.value != "")	Options.second	= document.timeOptions.Second.value;
+	if	(document.timeOptions.Msdigits.value != "")	Options.fractionalSecondDigits	= document.timeOptions.Msdigits.value;
 	if	(document.timeOptions.TimeZoneName.value != "")	Options.timeZoneName	= document.timeOptions.TimeZoneName.value;
 	if	(document.timeOptions.Hour12.value != "")	Options.hour12	= (document.timeOptions.Hour12.value == "true");
 	if	(document.timeOptions.HourCycle.value != "")	Options.hourCycle	= document.timeOptions.HourCycle.value;
@@ -129,6 +130,7 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	document.timeOptions.Ehour.value = usedOptions.hour;
 	document.timeOptions.Eminute.value = usedOptions.minute;
 	document.timeOptions.Esecond.value = usedOptions.second;
+	document.timeOptions.Emsdigits.value = usedOptions.fractionalSecondDigits;
 	document.timeOptions.EtimeZoneName.value = usedOptions.timeZoneName;
 	document.timeOptions.Ehour12.checked = usedOptions.hour12;
 	document.timeOptions.EhourCycle.value = usedOptions.hourCycle;
@@ -143,6 +145,7 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	document.timeOptions.Xhour.value = extUsedOptions.hour;
 	document.timeOptions.Xminute.value = extUsedOptions.minute;
 	document.timeOptions.Xsecond.value = extUsedOptions.second;
+	document.timeOptions.Xmsdigits.value = extUsedOptions.fractionalSecondDigits;
 	document.timeOptions.XtimeZoneName.value = extUsedOptions.timeZoneName;
 	document.timeOptions.Xhour12.checked = extUsedOptions.hour12;
 	document.timeOptions.XhourCycle.value = extUsedOptions.hourCycle;
