@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./spec.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
-<title>Proposal Title Goes Here</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"sec-demo-clause","aoid":null,"title":"This is an emu-clause","titleHTML":"This is an emu-clause","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"This is an emu-clause"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
+<title>Option eraDisplay in Intl.DateTimeFormat</title><script type="application/json" id="menu-search-biblio">[{"type":"clause","id":"eraDisplay-clauses","aoid":null,"title":"Control display of era with Intl.DateTimeFormat","titleHTML":"Control display of era with Intl.DateTimeFormat","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"Control display of era with Intl.DateTimeFormat"},{"type":"clause","id":"sec-copyright-and-software-license","aoid":null,"title":"Copyright & Software License","titleHTML":"Copyright &amp; Software License","number":"A","namespace":"<no location>","location":"","referencingIds":[],"key":"Copyright & Software License"}]</script><script>"use strict";
 
 function Search(menu) {
   this.menu = menu;
@@ -1851,17 +1851,31 @@ li.menu-search-result-term:before {
     display: none; 
   }
 }
-</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-demo-clause" title="This is an emu-clause"><span class="secnum">1</span> This is an emu-clause</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage -1 Draft / December 6, 2020</h1><h1 class="title">Proposal Title Goes Here</h1>
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#eraDisplay-clauses" title="Control display of era with Intl.DateTimeFormat"><span class="secnum">1</span> Control display of era with Intl.DateTimeFormat</a></li><li><span class="item-toggle-none"></span><a href="#sec-copyright-and-software-license" title="Copyright &amp; Software License"><span class="secnum">A</span> Copyright &amp; Software License</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage -1 Draft / December 8, 2020</h1><h1 class="title">Option eraDisplay in Intl.DateTimeFormat</h1>
 
-<emu-clause id="sec-demo-clause">
-  <h1><span class="secnum">1</span> This is an emu-clause</h1>
-  <p>This is an algorithm:</p>
-  <emu-alg><ol><li>Let <var>proposal</var> be <emu-val>undefined</emu-val>.</li><li>If IsAccepted(<var>proposal</var>),<ol><li>Let <var>stage</var> be <emu-val>0</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>stage</var> be <emu-val>-1</emu-val>.</li></ol></li><li>Return ?&nbsp;<emu-xref aoid="ToString" id="_ref_0"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>proposal</var>).</li></ol></emu-alg>
-</emu-clause><emu-annex id="sec-copyright-and-software-license">
+<emu-clause id="eraDisplay-clauses">
+  <h1><span class="secnum">1</span> Control display of era with Intl.DateTimeFormat</h1>
+  <h2>Option values</h2>
+  <p>Among the <var>options</var> passed to <var>Intl.DateTimeFormat</var>, the following values are recognised for <var>eraDisplay</var>:
+  </p><ol>
+	<li><emu-val>"never"</emu-val></li>
+	<li><emu-val>"always"</emu-val>&gt;/li&gt;
+	</li><li><emu-val>"auto"</emu-val></li>
+  </ol>
+  <p>If <var>eraDisplay</var> is <emu-val>undefined</emu-val>, <emu-val>"auto"</emu-val> is assumed.</p>
+  <h2>Option resolution on construction</h2>
+  <p>When constructing a new <var>Intl.DateTimeFormat</var> object, the <var>eraDisplay</var> option field is resolved in the following way:</p>
+  <emu-alg><ol><li>Let <var>resolEraDisplay</var> be <emu-val>undefined</emu-val>.</li><li>If eval(<var>eraDisplay</var>) is <emu-val>"never"</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"never"</emu-val>.</li></ol></li><li>Else<ol><li>If eval (<var>era</var>) is <emu-val>undefined</emu-val>,<ol><li>Let (<var>resolEra</var>) be <emu-val>"short"</emu-val>.</li></ol></li><li>If eval (<var>eraDisplay</var>) is <emu-val>"always"</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"always"</emu-val>,</li></ol></li><li>Else Let <var>resolEraDisplay</var> be <emu-val>"auto"</emu-val>.</li></ol></li><li>If <var>resolEraDisplay</var> is <emu-val>"auto"</emu-val> And <var>year</var> is <emu-val>undefined</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"never"</emu-val>.</li></ol></li></ol></emu-alg>
+  <h2>Effect of eraDisplay on Parts</h2>
+  <p>When constructing the Parts to be displayed for the <var>date</var> parameter, the decision to display the [[era]] part and the neighbouring literal is evaluated as follows:</p>
+  <emu-alg><ol><li>Let <var>today</var> be the current instant.</li><li>Let <var>willDisplayEra</var> be <emu-val>undefined</emu-val>.</li><li>If <var>resolEraDisplay</var> is <emu-val>"always"</emu-val>,<ol><li>Let <var>willDisplayEra</var> be <emu-val>true</emu-val>.</li></ol></li><li>If <var>resolEraDisplay</var> is <emu-val>"never"</emu-val>,<ol><li>Let <var>willDisplayEra</var> be <emu-val>false</emu-val>.</li></ol></li><li>If <var>resolEraDisplay</var> is <emu-val>auto</emu-val>,<ol><li>Let <var>willDisplayEra</var> be Not ( <var>date</var>[[era]] is eval(<var>today</var>[[era]]) ).</li></ol></li></ol></emu-alg>
+  <p><var>date</var>[[era]] and the neighbouring literal Part are displayed if and only if <var>willDisplayEra</var> is <emu-val>true</emu-val>.
+
+</p></emu-clause><emu-annex id="sec-copyright-and-software-license">
       <h1><span class="secnum">A</span> Copyright &amp; Software License</h1>
       
       <h2>Copyright Notice</h2>
-      <p>© 2020 Your Name(s) Here</p>
+      <p>© 2020 Louis-Aimé de Fouquières (Miletus)</p>
 
       <h2>Software License</h2>
       <p>All Software contained in this document ("Software") is protected by copyright and is being made available under the "BSD License", included below. This Software may be subject to third party rights (rights from parties other than Ecma International), including patent rights, and no licenses under such third party rights are granted under this license even if the third party concerned is a member of Ecma International. SEE THE ECMA CODE OF CONDUCT IN PATENT MATTERS AVAILABLE AT https://ecma-international.org/memento/codeofconduct.htm FOR INFORMATION REGARDING THE LICENSING OF PATENT CLAIMS THAT ARE REQUIRED TO IMPLEMENT ECMA INTERNATIONAL STANDARDS.</p>
@@ -1876,5 +1890,4 @@ li.menu-search-result-term:before {
 
 <p>THIS SOFTWARE IS PROVIDED BY THE ECMA INTERNATIONAL "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL ECMA INTERNATIONAL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
 
-    </emu-annex>
-</div></body>
+    </emu-annex></div></body>
