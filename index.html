@@ -1856,13 +1856,10 @@ li.menu-search-result-term:before {
 <emu-clause id="eraDisplay-clauses">
   <h1><span class="secnum">1</span> Control display of era with Intl.DateTimeFormat</h1>
   <h2>Option values</h2>
-  <p>Among the <var>options</var> passed to <var>Intl.DateTimeFormat</var>, the following values are recognised for <var>eraDisplay</var>:
-  </p><ol>
-	<li><emu-val>"never"</emu-val></li>
-	<li><emu-val>"always"</emu-val>&gt;/li&gt;
-	</li><li><emu-val>"auto"</emu-val></li>
-  </ol>
-  <p>If <var>eraDisplay</var> is <emu-val>undefined</emu-val>, <emu-val>"auto"</emu-val> is assumed.</p>
+  <p>Among the <var>options</var> passed to <var>Intl.DateTimeFormat</var>, the following values are recognised for <var>eraDisplay</var>:</p>
+	1. <emu-val>"never"</emu-val>
+	1. <emu-val>"always"</emu-val>
+	1. <emu-val>"auto"</emu-val>
   <h2>Option resolution on construction</h2>
   <p>When constructing a new <var>Intl.DateTimeFormat</var> object, the <var>eraDisplay</var> option field is resolved in the following way:</p>
   <emu-alg><ol><li>Let <var>resolEraDisplay</var> be <emu-val>undefined</emu-val>.</li><li>If eval(<var>eraDisplay</var>) is <emu-val>"never"</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"never"</emu-val>.</li></ol></li><li>Else<ol><li>If eval (<var>era</var>) is <emu-val>undefined</emu-val>,<ol><li>Let (<var>resolEra</var>) be <emu-val>"short"</emu-val>.</li></ol></li><li>If eval (<var>eraDisplay</var>) is <emu-val>"always"</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"always"</emu-val>,</li></ol></li><li>Else Let <var>resolEraDisplay</var> be <emu-val>"auto"</emu-val>.</li></ol></li><li>If <var>resolEraDisplay</var> is <emu-val>"auto"</emu-val> And <var>year</var> is <emu-val>undefined</emu-val>,<ol><li>Let <var>resolEraDisplay</var> be <emu-val>"never"</emu-val>.</li></ol></li></ol></emu-alg>
