@@ -4,20 +4,47 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
 <pre class="metadata">
-title: Proposal Title Goes Here
+title: Option eraDisplay in Intl.DateTimeFormat
 stage: -1
-contributors: Your Name(s) Here
+contributors: Louis-Aimé de Fouquières (Miletus)
 </pre>
 
-<emu-clause id="sec-demo-clause">
-  <h1>This is an emu-clause</h1>
-  <p>This is an algorithm:</p>
+<emu-clause id="eraDisplay-clauses">
+  <h1>Control display of era with Intl.DateTimeFormat</h1>
+  <h2>Option values</h2>
+  <p>Among the _options_ passed to _Intl.DateTimeFormat_, the following values are recognised for _eraDisplay_:
+  <ol>
+	<li>*"never"*</li>
+	<li>*"always"*>/li>
+	<li>*"auto"*</li>
+  </ol>
+  <p>If _eraDisplay_ is *undefined*, *"auto"* is assumed.</p>
+  <h2>Option resolution on construction</h2>
+  <p>When constructing a new _Intl.DateTimeFormat_ object, the _eraDisplay_ option field is resolved in the following way:</p>
   <emu-alg>
-    1. Let _proposal_ be *undefined*.
-    1. If IsAccepted(_proposal_),
-      1. Let _stage_ be *0*.
-    1. Else,
-      1. Let _stage_ be *-1*.
-    1. Return ? ToString(_proposal_).
+	1. Let _resolEraDisplay_ be *undefined*.
+	1. If eval(_eraDisplay_) is *"never"*,
+		1. Let _resolEraDisplay_ be *"never"*.
+	1. Else 
+		1. If eval (_era_) is *undefined*,
+			1. Let (_resolEra_) be *"short"*.
+		1. If eval (_eraDisplay_) is *"always"*,
+			1. Let _resolEraDisplay_ be *"always"*,
+		1. Else Let _resolEraDisplay_ be *"auto"*.
+	1. If _resolEraDisplay_ is *"auto"* And _year_ is *undefined*,
+		1. Let _resolEraDisplay_ be *"never"*.
   </emu-alg>
+  <h2>Effect of eraDisplay on Parts</h2>
+  <p>When constructing the Parts to be displayed for the _date_ parameter, the decision to display the [[era]] part and the neighbouring literal is evaluated as follows:</p>
+  <emu-alg>
+	1. Let _today_ be the current instant.
+	1. Let _willDisplayEra_ be *undefined*.
+	1. If _resolEraDisplay_ is *"always"*,
+		1. Let _willDisplayEra_ be *true*.
+	1. If _resolEraDisplay_ is *"never"*,
+		1. Let _willDisplayEra_ be *false*.
+	1. If _resolEraDisplay_ is *auto*,
+		1. Let _willDisplayEra_ be Not ( _date_[[era]] is eval(_today_[[era]]) ).
+  </emu-alg>
+  <p>_date_[[era]] and the neighbouring literal Part are displayed if and only if _willDisplayEra_ is *true*.
 </emu-clause>
