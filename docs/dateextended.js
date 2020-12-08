@@ -9,7 +9,8 @@ Contents
 	One new method for Date for generalised time zone offset management
 	ExtDateTimeFormat: extension of Intl.DateTimeFormat
 */
-/* Version	M2020-12-08 Use import and export - here tailored with no export.
+/* Version	M2020-12-18 resolving partly eraDisplay at construction
+	M2020-12-08 Use import and export
 	M2020-12-07	Do not change time part if language is among right-to-left.
 	M2020-11-29 control calendar parameter to ExtDate and ExtDateTimeFormat constructors
 	M2020-11-27 Modify literals of time part only, not of date part, solve a few bugs
@@ -413,9 +414,12 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		// Control and resolve specific options
 		if (this.options.eraDisplay == undefined) this.options.eraDisplay = "auto";
 		switch (this.options.eraDisplay) {
-			case "always": case "never": case "auto": break;
+			case "always":	if (options.era == undefined) options.era = "short";
+			case "auto": 	// we should insert here the preceding statement, however this can have impact if era is asked from the user.
+			case "never": break;
 			default: throw ExtDateTimeFormat.invalidOption;
 		}
+		if (this.options.eraDisplay == "auto" && this.DTFOptions.year == undefined) this.options.eraDisplay = "never";
 		if (this.calendar != undefined) {
 			if (this.calendar.stringFormat == undefined) this.calendar.stringFormat = "auto";
 			switch (this.calendar.stringFormat) {
@@ -531,7 +535,7 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 						todaysParts = eraFormat.formatToParts(today);
 						let eraIndex = dateParts.findIndex(item => item.type == "era");
 						if (eraIndex >= 0) return !(dateParts[eraIndex].value == todaysParts[eraIndex].value);
-						return false; // no era part was found... answer no because no era part // throw ExtDateTimeFormat.invalidEra	// if we arrive here, there is something inconsistent in the data. 
+						return false; // no era part was found... answer no because no era part 
 				}
 				else 	// a custom calendar with era, simplier to use
 					return this.calendar.fieldsFromCounter(date.toResolvedLocalDate(this.options.timeZone).valueOf()).era 
@@ -610,7 +614,7 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		let	date = new ExtDate (this.calendar, aDate),
 			options = {...this.options},
 			displayEraOfDate = this.displayEra(date); // should Era for this date be displayed
-			//DTFoptions = {...this.DTFOptions}, // a copy, with era option set to some value if eraDisplay != "never"
+			//DTFOptions = {...this.DTFOptions}, // a copy, with era option set to some value if eraDisplay != "never"
 
 		if (!displayEraOfDate) delete options.era // Alas, this is not enough
 		else if (options.era == null) options.era = "short";
@@ -736,10 +740,11 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		}
 		// suppress era part if required
 		if (!displayEraOfDate) {
-			let n = myParts.findIndex((item) => (item.type == "era"));
-			if (n >= 0) { //(n < myParts.length) // there is an undesired era section
-				if (n > 0) n--;		// era is not the 1st section, suppress also the blank before; if first, suppress the blank after.
-				myParts.splice (n, 2)
+			let n = myParts.findIndex((item) => (item.type == "era")), nn = n;
+			if (n >= 0) { // there is an undesired era section, check whether there is an unwanted literal connected to it
+				nn = nn > 0 ? nn-- : nn++ // nn is index of era part neighbour.
+				if (myParts[nn].type == "literal") myParts.splice (Math.min(n,nn),2) // Suppress era part and its neighbour
+				else myParts.splice (n,1); 
 			}
 		}
 	return myParts
