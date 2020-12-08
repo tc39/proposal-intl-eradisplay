@@ -13,9 +13,11 @@ contributors: Louis-Aimé de Fouquières (Miletus)
   <h1>Control display of era with Intl.DateTimeFormat</h1>
   <h2>Option values</h2>
   <p>Among the _options_ passed to _Intl.DateTimeFormat_, the following values are recognised for _eraDisplay_:</p>
+  <emu-alg>
 	1. *"never"*
 	1. *"always"*
 	1. *"auto"*
+  </emu-alg>
   <h2>Option resolution on construction</h2>
   <p>When constructing a new _Intl.DateTimeFormat_ object, the _eraDisplay_ option field is resolved in the following way:</p>
   <emu-alg>
