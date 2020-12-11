@@ -9,41 +9,97 @@ stage: -1
 contributors: Louis-Aimé de Fouquières (Miletus)
 </pre>
 
-<emu-clause id="eraDisplay-clauses">
-  <h1>Control display of era with Intl.DateTimeFormat</h1>
-  <h2>Option values</h2>
-  <p>Among the _options_ passed to _Intl.DateTimeFormat_, the following values are recognised for _eraDisplay_:</p>
-  <emu-alg>
-	1. *"never"*
-	1. *"always"*
-	1. *"auto"*
-  </emu-alg>
-  <h2>Option resolution on construction</h2>
-  <p>When constructing a new _Intl.DateTimeFormat_ object, the _eraDisplay_ option field is resolved in the following way:</p>
-  <emu-alg>
-	1. Let _resolEraDisplay_ be *undefined*.
-	1. If eval(_eraDisplay_) is *"never"*,
-		1. Let _resolEraDisplay_ be *"never"*.
-	1. Else 
-		1. If eval (_era_) is *undefined*,
-			1. Let (_resolEra_) be *"short"*.
-		1. If eval (_eraDisplay_) is *"always"*,
-			1. Let _resolEraDisplay_ be *"always"*,
-		1. Else Let _resolEraDisplay_ be *"auto"*.
-	1. If _resolEraDisplay_ is *"auto"* And _year_ is *undefined*,
-		1. Let _resolEraDisplay_ be *"never"*.
-  </emu-alg>
-  <h2>Effect of eraDisplay on Parts</h2>
-  <p>When constructing the Parts to be displayed for the _date_ parameter, the decision to display the [[era]] part and the neighbouring literal is evaluated as follows:</p>
-  <emu-alg>
-	1. Let _today_ be the current instant.
-	1. Let _willDisplayEra_ be *undefined*.
-	1. If _resolEraDisplay_ is *"always"*,
-		1. Let _willDisplayEra_ be *true*.
-	1. If _resolEraDisplay_ is *"never"*,
-		1. Let _willDisplayEra_ be *false*.
-	1. If _resolEraDisplay_ is *auto*,
-		1. Let _willDisplayEra_ be Not ( _date_[[era]] is eval(_today_[[era]]) ).
-  </emu-alg>
-  <p>_date_[[era]] and the neighbouring literal Part are displayed if and only if _willDisplayEra_ is *true*.
-</emu-clause>
+<emu-clause id="datetimeformat-objects-eraDisplay-additions">
+
+  <h1>DateTimeFormat Objects</h1>
+  <emu-note>
+	This file is an abstract of proposed changes to the current standard for this section
+  </emu-note>
+    <p>
+      Several DateTimeFormat algorithms use values from the following table, which provides internal slots, property names and allowable values for the components of date and time formats<ins> and for instructions on whether or not certain components should be displayed for certain dates</ins>:
+    </p>
+
+    <emu-table id="table-datetimeformat-components">
+      <emu-caption>Components of date and time formats</emu-caption>
+      <table class="real-table">
+        <thead>
+          <tr>
+            <th>Internal Slot</th>
+            <th>Property</th>
+            <th>Values</th>
+          </tr>
+        </thead>
+        <ins>
+		<tr>
+			<td>[[EraDisplay]]</td>
+			<td>*"eraDisplay"*</td>
+			<td>*"auto"*,*"always"*,*"never"*</td>
+		</tr>
+		</ins>
+      </table>
+    </emu-table>
+
+    <emu-clause id="sec-todatetimeoptions" aoid="ToDateTimeOptions">
+      <h1>ToDateTimeOptions ( _options_, _required_, _defaults_ )</h1>
+
+      <p>
+        When the ToDateTimeOptions abstract operation is called with arguments _options_, _required_, and _defaults_, the following steps are taken:
+      </p>
+
+      <emu-alg>
+		...
+        <ins>
+        1. If _dateTimeFormat_.[[eraDisplay]] is *undefined*, then
+          1. Set _dateTimeFormat_.[[eraDisplay]] to *"auto"*.
+        1. If _dateTimeFormat_.[[eraDisplay]] is *"auto"*, then
+		  1. If _dateTimeFormat_.[[year]] is *undefined*, then
+			1. Set _dateTimeFormat_.[[eraDisplay]] to "never"
+		1. If _dateTimeFormat_.[[eraDisplay]] is not *"never"*, then
+		  1. If _dateTimeFormat_.[[era]] is *undefined*, then
+			1. Set _dateTimeFormat_.[[era]] to *"short"*.
+		</ins>
+        1. Return _options_.
+      </emu-alg>
+    </emu-clause>
+
+
+    <emu-clause id="sec-partitiondatetimepattern" aoid="PartitionDateTimePattern">
+      <h1>PartitionDateTimePattern ( _dateTimeFormat_, _x_ )</h1>
+	  
+	  <p>
+        The PartitionDateTimePattern abstract operation is called with arguments _dateTimeFormat_ (which must be an object initialized as a DateTimeFormat) and _x_ (which must be a Number value), interprets _x_ as a time value as specified in ES2021, <emu-xref href="#sec-time-values-and-time-range"></emu-xref>, and creates the corresponding parts according to the effective locale and the formatting options of _dateTimeFormat_. The following steps are taken:
+      </p>
+
+      <emu-alg>
+		...
+        1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
+		<ins>
+		1. Let _wde_ be *undefined*.
+		1. If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then
+			1. Let _wde_ be *false*.
+		1. If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then
+			1. Let _wde_ be *true*.
+		1. If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then
+			1. Let _F_ be a DateTime format function of _dateTimeFormat_. 
+			1. Let _wde_ be _F_().[[Era]] ≠ _F_(_x_).[[Era]].
+		</ins>
+        1. Let _result_ be a new empty List.
+        1. Let _patternParts_ be PartitionPattern(_dateTimeFormat_.[[Pattern]]).
+        1. For each element _patternPart_ of _patternParts_, in List order, do
+          1. Let _p_ be _patternPart_.[[Type]].
+          1. If _p_ is *"literal"*, then
+            1. Append a new Record { [[Type]]: *"literal"*, [[Value]]: _patternPart_.[[Value]] } as the last element of the list _result_.
+          1. Else if _p_ matches a Property column of the row in <emu-xref href="#table-datetimeformat-components"></emu-xref>, then
+            1. Let _f_ be the value of _dateTimeFormat_'s internal slot whose name is the Internal Slot column of the matching row.
+            1. Let _v_ be the value of _tm_'s field whose name is the Internal Slot column of the matching row.
+			<ins>
+			1. If _p_ is *"era"* and _wde_ is *false*, then
+				1. skip current patternPart: it which should not be appended to list _result_.
+			</ins>
+            1. If _p_ is *"year"* and _v_ ≤ 0, let _v_ be 1 - _v_.
+        1. Let _result_ be a new empty List.
+		...
+  
+	  </emu-alg>
+	</emu-clause>
+ </emu-clause>
