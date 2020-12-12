@@ -53,7 +53,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
           1. Set _dateTimeFormat_.[[eraDisplay]] to *"auto"*.
         1. If _dateTimeFormat_.[[eraDisplay]] is *"auto"*, then
 		  1. If _dateTimeFormat_.[[year]] is *undefined*, then
-			1. Set _dateTimeFormat_.[[eraDisplay]] to "never"
+			1. Set _dateTimeFormat_.[[eraDisplay]] to "never".
 		1. If _dateTimeFormat_.[[eraDisplay]] is not *"never"*, then
 		  1. If _dateTimeFormat_.[[era]] is *undefined*, then
 			1. Set _dateTimeFormat_.[[era]] to *"short"*.
@@ -61,7 +61,6 @@ contributors: Louis-Aimé de Fouquières (Miletus)
         1. Return _options_.
       </emu-alg>
     </emu-clause>
-
 
     <emu-clause id="sec-partitiondatetimepattern" aoid="PartitionDateTimePattern">
       <h1>PartitionDateTimePattern ( _dateTimeFormat_, _x_ )</h1>
@@ -71,7 +70,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       </p>
 
       <emu-alg>
-		...
+		
         1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
 		<ins>
 		1. Let _wde_ be *undefined*.
@@ -98,7 +97,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
 			</ins>
             1. If _p_ is *"year"* and _v_ ≤ 0, let _v_ be 1 - _v_.
         1. Let _result_ be a new empty List.
-		...
+		
   
 	  </emu-alg>
 	</emu-clause>
