@@ -47,7 +47,6 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       </p>
 
       <emu-alg>
-		...
         <ins>
         1. If _dateTimeFormat_.[[eraDisplay]] is *undefined*, then
           1. Set _dateTimeFormat_.[[eraDisplay]] to *"auto"*.
@@ -70,7 +69,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       </p>
 
       <emu-alg>
-		
+
         1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
 		<ins>
 		1. Let _wde_ be *undefined*.
@@ -97,8 +96,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
 			</ins>
             1. If _p_ is *"year"* and _v_ ≤ 0, let _v_ be 1 - _v_.
         1. Let _result_ be a new empty List.
-		
-  
+
 	  </emu-alg>
 	</emu-clause>
  </emu-clause>
