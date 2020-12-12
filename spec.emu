@@ -47,7 +47,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       </p>
 
       <emu-alg>
-        <ins>
+<ins>
         1. If _dateTimeFormat_.[[eraDisplay]] is *undefined*, then
           1. Set _dateTimeFormat_.[[eraDisplay]] to *"auto"*.
         1. If _dateTimeFormat_.[[eraDisplay]] is *"auto"*, then
@@ -56,7 +56,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
 		1. If _dateTimeFormat_.[[eraDisplay]] is not *"never"*, then
 		  1. If _dateTimeFormat_.[[era]] is *undefined*, then
 			1. Set _dateTimeFormat_.[[era]] to *"short"*.
-		</ins>
+</ins>
         1. Return _options_.
       </emu-alg>
     </emu-clause>
@@ -69,9 +69,8 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       </p>
 
       <emu-alg>
-
         1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
-		<ins>
+<ins>
 		1. Let _wde_ be *undefined*.
 		1. If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then
 			1. Let _wde_ be *false*.
@@ -80,7 +79,7 @@ contributors: Louis-Aimé de Fouquières (Miletus)
 		1. If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then
 			1. Let _F_ be a DateTime format function of _dateTimeFormat_. 
 			1. Let _wde_ be _F_().[[Era]] ≠ _F_(_x_).[[Era]].
-		</ins>
+</ins>
         1. Let _result_ be a new empty List.
         1. Let _patternParts_ be PartitionPattern(_dateTimeFormat_.[[Pattern]]).
         1. For each element _patternPart_ of _patternParts_, in List order, do
@@ -90,10 +89,10 @@ contributors: Louis-Aimé de Fouquières (Miletus)
           1. Else if _p_ matches a Property column of the row in <emu-xref href="#table-datetimeformat-components"></emu-xref>, then
             1. Let _f_ be the value of _dateTimeFormat_'s internal slot whose name is the Internal Slot column of the matching row.
             1. Let _v_ be the value of _tm_'s field whose name is the Internal Slot column of the matching row.
-			<ins>
+<ins>
 			1. If _p_ is *"era"* and _wde_ is *false*, then
 				1. skip current patternPart: it which should not be appended to list _result_.
-			</ins>
+</ins>
             1. If _p_ is *"year"* and _v_ ≤ 0, let _v_ be 1 - _v_.
         1. Let _result_ be a new empty List.
 
