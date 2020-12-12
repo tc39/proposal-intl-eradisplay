@@ -59,12 +59,10 @@ contributors: Louis-Aimé de Fouquières (Miletus)
       <emu-alg>
         1. If _dateTimeFormat_.[[eraDisplay]] is *undefined*, then
           1. Set _dateTimeFormat_.[[eraDisplay]] to *"auto"*.
-        1. If _dateTimeFormat_.[[eraDisplay]] is *"auto"*, then
-		  1. If _dateTimeFormat_.[[year]] is *undefined*, then
-			1. Set _dateTimeFormat_.[[eraDisplay]] to "never".
-		1. If _dateTimeFormat_.[[eraDisplay]] is not *"never"*, then
-		  1. If _dateTimeFormat_.[[era]] is *undefined*, then
-			1. Set _dateTimeFormat_.[[era]] to *"short"*.
+        1. If _dateTimeFormat_.[[eraDisplay]] is *"auto"* and _dateTimeFormat_.[[year]] is *undefined*, then
+		  1. Set _dateTimeFormat_.[[eraDisplay]] to "never".
+		1. If _dateTimeFormat_.[[eraDisplay]] is not *"never"* and _dateTimeFormat_.[[era]] is *undefined*, then
+		  1. Set _dateTimeFormat_.[[era]] to *"short"*.
       </emu-alg>
 </ins>
 
