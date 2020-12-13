@@ -21,7 +21,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
     <h1>Abstract Operations For DateTimeFormat Objects</h1>
 
     <p>
-      Several DateTimeFormat algorithms use values from the following table, which provides internal slots, property names and allowable values for the components of date and time formats<ins> and for instructions on whether or not certain components should be displayed for certain dates</ins>:
+      Several DateTimeFormat algorithms use values from the following table, which provides internal slots, property names and allowable values for the components of date and time formats:
     </p>
 
     <emu-table id="table-datetimeformat-components">
@@ -34,11 +34,6 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
             <th>Values</th>
           </tr>
         </thead>
-        <tr>
-            <td><ins>[[EraDisplay]]</ins></td>
-            <td><ins>*"eraDisplay"*</td>
-            <td><ins>*"auto"*, *"always"*, *"never"*</ins></td>
-        </tr>
         <tr>
           <td>[[Weekday]]</td>
           <td>*"weekday"*</td>
@@ -116,6 +111,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
         1. Let _hourCycle_ be ? GetOption(_options_, *"hourCycle"*, *"string"*, &laquo; *"h11"*, *"h12"*, *"h23"*, *"h24"* &raquo;, *undefined*).
         1. If _hour12_ is not *undefined*, then
           1. Let _hourCycle_ be *null*.
+        1. <ins>Let _eraDisplay_ be ? GetOption (_options_, *"eraDisplay"*, *"string"*, &laquo; *"never"*, *"always"*, *"auto"* &raquo;, *"auto"*).</ins> 
         1. Set _opt_.[[hc]] to _hourCycle_.
         1. Let _localeData_ be %DateTimeFormat%.[[LocaleData]].
         1. Let _r_ be ResolveLocale( %DateTimeFormat%.[[AvailableLocales]], _requestedLocales_, _opt_, %DateTimeFormat%.[[RelevantExtensionKeys]], _localeData_).
@@ -151,6 +147,12 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
           1. Let _p_ be _bestFormat_.[[&lt;_prop_&gt;]].
           1. If _p_ not *undefined*, then
             1. Set _dateTimeFormat_'s internal slot whose name is the Internal Slot column of the row to _p_.
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Year]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Era]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[Era]] to *"short"*.</ins>
         1. If _dateTimeFormat_.[[Hour]] is *undefined*, then
           1. Set _dateTimeFormat_.[[HourCycle]] to *undefined*.
           1. Let _pattern_ be _bestFormat_.[[pattern]].
@@ -208,14 +210,6 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
         1. If _needDefaults_ is *true* and _defaults_ is either *"time"* or *"all"*, then
           1. For each of the property names *"hour"*, *"minute"*, *"second"*, do
             1. Perform ? CreateDataPropertyOrThrow(_options_, _prop_, *"numeric"*).
-        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *undefined*, then</ins>
-          1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to *"auto"*.</ins>
-        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
-          1. <ins>If _dateTimeFormat_.[[Year]] is *undefined*, then</ins>
-            1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to "never".</ins>
-        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
-          1. <ins>If _dateTimeFormat_.[[Era]] is *undefined*, then</ins>
-            1. <ins>Set _dateTimeFormat_.[[Era]] to *"short"*.</ins>
         1. Return _options_.
       </emu-alg>
     </emu-clause>
@@ -515,7 +509,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
     <h1>The Intl.DateTimeFormat Constructor</h1>
 
     <p>
-      The Intl.DateTimeFormat constructor is the <dfn>%DateTimeFormat%</dfn> intrinsic object and a standard built-in property of the Intl object. Behaviour common to all service constructor properties of the Intl object is specified in <ins>"#sec-internal-slots"></ins>.
+      The Intl.DateTimeFormat constructor is the <dfn>%DateTimeFormat%</dfn> intrinsic object and a standard built-in property of the Intl object. Behaviour common to all service constructor properties of the Intl object is specified in <ins>"#sec-internal-slots"</ins>.
     </p>
 
     <emu-clause id="sec-intl.datetimeformat">
@@ -587,7 +581,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
       <h1>Internal slots</h1>
 
       <p>
-        The value of the [[AvailableLocales]] internal slot is implementation defined within the constraints described in <ins>"#sec-internal-slots"></ins>.
+        The value of the [[AvailableLocales]] internal slot is implementation defined within the constraints described in <ins>"#sec-internal-slots"</ins>.
       </p>
 
       <p>
@@ -599,7 +593,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
       </emu-note>
 
       <p>
-        The value of the [[LocaleData]] internal slot is implementation defined within the constraints described in <ins>"#sec-internal-slots"></ins> and the following additional constraints, for all locale values _locale_:
+        The value of the [[LocaleData]] internal slot is implementation defined within the constraints described in <ins>"#sec-internal-slots"</ins> and the following additional constraints, for all locale values _locale_:
       </p>
 
       <ul>
