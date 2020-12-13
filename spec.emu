@@ -848,6 +848,7 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
       <li>[[TimeZone]] is a String value with the IANA time zone name of the time zone used for formatting.</li>
       <li>[[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[Hour]], [[Minute]], [[Second]], [[TimeZoneName]] are each either *undefined*, indicating that the component is not used for formatting, or one of the String values given in <emu-xref href="#table-datetimeformat-components"></emu-xref>, indicating how the component should be presented in the formatted output.</li>
       <li>[[HourCycle]] is a String value indicating whether the 12-hour format (*"h11"*, *"h12"*) or the 24-hour format (*"h23"*, *"h24"*) should be used. *"h11"* and *"h23"* start with hour 0 and go up to 11 and 23 respectively. *"h12"* and *"h24"* start with hour 1 and go up to 12 and 24. [[HourCycle]] is only used when [[Hour]] is not *undefined*.</li>
+      <li><ins>[[EraDisplay]] is a String value indicating if a test on the _x_ Number passed to the PartitionDateTimePattern abstract operation should be done in order to possibly skip the [[Era]] component.</ins></li>
       <li>[[Pattern]] is a String value as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots"></emu-xref>.</li>
     </ul>
 
