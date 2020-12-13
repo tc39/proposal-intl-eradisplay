@@ -11,11 +11,11 @@ stage: -1
 contributors: Louis-Aimé de Fouquières (Miletus)
 </pre>
 
+<p><ins>In order to make changes more visible in this proposed spec, &lt;ins&gt and &lt;del&gt tags are inserted around the changed texts, not around the embedding structures. 
+Moreover, the &lt;emu-xref&gt; tags to references outside this file have been replaced with &lt;ins&gt tags.</ins></p>
+
 <emu-clause id="datetimeformat-objects">
   <h1>DateTimeFormat Objects</h1>
-  <ins>
-  <emu-note>In this spec file the &lt;emu-xref&gt; tags to references outside this file have been removed. The reference themselves are embedded in &lt;ins&gt tags.</emu-note>
-  </ins>
 
   <emu-clause id="sec-datetimeformat-abstracts">
     <h1>Abstract Operations For DateTimeFormat Objects</h1>
@@ -35,11 +35,9 @@ contributors: Louis-Aimé de Fouquières (Miletus)
           </tr>
         </thead>
         <tr>
-        <ins>
-            <td>[[EraDisplay]]</td>
-            <td>*"eraDisplay"*</td>
-            <td>*"auto"*,*"always"*,*"never"*</td>
-        </ins>
+            <td><ins>[[EraDisplay]]</ins></td>
+            <td><ins>*"eraDisplay"*</td>
+            <td><ins>*"auto"*, *"always"*, *"never"*</ins></td>
         </tr>
         <tr>
           <td>[[Weekday]]</td>
@@ -210,16 +208,14 @@ contributors: Louis-Aimé de Fouquières (Miletus)
         1. If _needDefaults_ is *true* and _defaults_ is either *"time"* or *"all"*, then
           1. For each of the property names *"hour"*, *"minute"*, *"second"*, do
             1. Perform ? CreateDataPropertyOrThrow(_options_, _prop_, *"numeric"*).
-        <ins>
-        1. If _dateTimeFormat_.[[EraDisplay]] is *undefined*, then
-          1. Set _dateTimeFormat_.[[EraDisplay]] to *"auto"*.
-        1. If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then
-          1. If _dateTimeFormat_.[[Year]] is *undefined*, then
-            1. Set _dateTimeFormat_.[[EraDisplay]] to "never".
-        1. If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then
-          1. If _dateTimeFormat_.[[Era]] is *undefined*, then
-            1. Set _dateTimeFormat_.[[Era]] to *"short"*.
-        </ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *undefined*, then</ins>
+          1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to *"auto"*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Year]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to "never".</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Era]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[Era]] to *"short"*.</ins>
         1. Return _options_.
       </emu-alg>
     </emu-clause>
@@ -312,16 +308,16 @@ contributors: Louis-Aimé de Fouquières (Miletus)
         1. Perform ! CreateDataPropertyOrThrow(_nf2Options_, *"useGrouping"*, *false*).
         1. Let _nf2_ be ? Construct(%NumberFormat%, &laquo; _locale_, _nf2Options_ &raquo;).
         1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
-        <ins>
-        1. Let _wde_ be *undefined*.
-        1. If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then
-            1. Let _wde_ be *false*.
-        1. If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then
-            1. Let _wde_ be *true*.
-        1. If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then
-            1. Let _F_ be a DateTime format function of _dateTimeFormat_. 
-            1. Let _wde_ be _F_().[[Era]] ≠ _F_(_x_).[[Era]].
-        </ins>
+
+        1. <ins>Let _wde_ be *undefined*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then</ins>
+            1. <ins>Let _wde_ be *false*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
+            1. <ins>Let _wde_ be *true*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+            1. <ins>Let _F_ be a DateTime format function of _dateTimeFormat_.</ins>
+            1. <ins>Let _wde_ be _F_().[[Era]] ≠ _F_(_x_).[[Era]].</ins>
+
         1. Let _result_ be a new empty List.
         1. Let _patternParts_ be PartitionPattern(_dateTimeFormat_.[[Pattern]]).
         1. For each element _patternPart_ of _patternParts_, in List order, do
@@ -331,10 +327,10 @@ contributors: Louis-Aimé de Fouquières (Miletus)
           1. Else if _p_ matches a Property column of the row in <emu-xref href="#table-datetimeformat-components"></emu-xref>, then
             1. Let _f_ be the value of _dateTimeFormat_'s internal slot whose name is the Internal Slot column of the matching row.
             1. Let _v_ be the value of _tm_'s field whose name is the Internal Slot column of the matching row.
-            <ins>
-            1. If _p_ is *"era"* and _wde_ is *false*, then
-                1. skip current patternPart, it should not be appended to list _result_.
-            </ins>
+
+            1. <ins>If _p_ is *"era"* and _wde_ is *false*, then</ins>
+                1. <ins>skip current patternPart, it should not be appended to list _result_.</ins>
+
             1. If _p_ is *"year"* and _v_ ≤ 0, let _v_ be 1 - _v_.
             1. If _p_ is *"month"*, increase _v_ by 1.
             1. If _p_ is *"hour"* and _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then
@@ -778,10 +774,10 @@ contributors: Louis-Aimé de Fouquières (Miletus)
             <td>*"weekday"*</td>
           </tr>
            <tr>
-            <ins>
-			<td>[[EraDisplay]]</td>
-            <td>*"eraDisplay"*</td>
-			</ins>
+            
+            <td><ins>[[EraDisplay]]</ins></td>
+            <td><ins>*"eraDisplay"*</ins></td>
+            
           </tr>
          <tr>
             <td>[[Era]]</td>
@@ -830,11 +826,13 @@ contributors: Louis-Aimé de Fouquières (Miletus)
         For compatibility with versions prior to the fifth edition, the *"hour12"* property is set in addition to the *"hourCycle"* property.
       </emu-note>
 
-      <ins>
-	  <emu-note>
-        In this version of the ECMAScript 2021 Internationalization API, the *"eraDisplay"* property is added. Its value should be *"auto"* if not otherwise specified.
+      
+      <emu-note>
+        <ins>
+          In this version of the ECMAScript 2021 Internationalization API, the *"eraDisplay"* property is added. Its value should be *"auto"* if not otherwise specified.
+        </ins>
       </emu-note>
-	  </ins>
+      
 
 
     </emu-clause>
