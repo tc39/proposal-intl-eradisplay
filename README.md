@@ -65,11 +65,17 @@ TBC at later stages
 
 **Q**: Should'nt the date pattern be different depending on whether [[Era]] is displayed or not ?
 
-**A**: With the present (Nov. 2020) version of ICU and CLDR, the separators ("/" or ".") between numeric elements of a date are omitted if `era` is not undefined, 
+**A**: With the present (Nov. 2020) version of ICU and CLDR, the separators ("/" or ".") between numeric components of a date are omitted if `era` is not undefined, 
 for the `gregory` and `iso8601` calendars. With non-numeric months, there is no difference.
 On the other hand, for most calendars (except chinese, dangi, gregory and iso8601), `era` is displayed if `year` is asked, whatever the `era` option may be; 
 and for those calendars, the numeric date components are separated with "/" or "." depending on the locale, even though the era is displayed. 
-There seems to be no reason for suppressing the separators between numeric date compoenent when adding the era. 
-Having the same rule for all calendar reduces the size of calendar-related informations for locale, and facilitates the author's choices. 
-We could change the proposal in setting a new pattern, "patternwoe" (without era) in a samilar way as "pattern12" for hour cycle. 
-The Intl.DateTimeFormat formatting methods would have to recompute the pattern for each date displayed, whereas here we propose to use the same pattern, but just to drop a component.
+There seems to be no reason for suppressing the separators between numeric date components when adding the era. 
+I do not remember having seen any date string with numeric day, month, year and an era indication written without any separator.
+
+Having the same rules for all calendar reduces the size of calendar-related informations for locale, and facilitates the author's choices. 
+This is why I suggest to have patterns that always associate an era component when the year should be displayed. 
+The default `eraDisplay` option shall skip this era component when it is not required.
+
+We could change the proposal in setting a new pattern, "patternwoe" (pattern without era) in a samilar way as "pattern12". 
+The Intl.DateTimeFormat formatting methods would have to recompute the pattern for each date displayed, 
+whereas here we propose to use the same pattern, just dropping a component in certain cases.
