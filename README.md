@@ -76,6 +76,6 @@ Having the same rules for all calendar reduces the size of calendar-related info
 This is why I suggest to have patterns that always associate an era component when the year should be displayed. 
 The default `eraDisplay` option shall skip this era component when it is not required.
 
-We could change the proposal in setting a new pattern, "patternwoe" (pattern without era) in a samilar way as "pattern12". 
+We could change the proposal in setting a new pattern, "patternwoe" (pattern without era) in a similar way as "pattern12". 
 The Intl.DateTimeFormat formatting methods would have to recompute the pattern for each date displayed, 
 whereas here we propose to use the same pattern, just dropping a component in certain cases.
