@@ -1,6 +1,6 @@
-# Moke-up for the proposal Intl.DateTimeFormat eraDisplay
-This moke-up shows the effect of the proposed eraDisplay option on any date projected to the built-in calendars.
+# Mock-up for the eraDisplay proposal for Intl.DateTimeFormat 
+This mock-up shows the effect of the proposed eraDisplay option on any date projected to the built-in calendars.
 
-This moke-up is also efficient in order to demonstrate weaknesses or bug with CLDR and ICU elements used in javascript Intl.DateTimeFormat object.
+This mock-up can also demonstrate weaknesses or bugs with CLDR and ICU elements used in javascript Intl.DateTimeFormat object.
 
-Please [hit here](https://Louis-Aime.github.io/proposal-intl-eradisplay/dtfextend-mokeup) to lauch moke-up.
+Please [hit here](https://TC39.github.io/proposal-intl-eradisplay/dtfextend-mock-up) to lauch mock-up.

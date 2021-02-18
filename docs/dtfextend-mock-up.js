@@ -1,5 +1,5 @@
 /* DateExtendTest: test custom calendars formatting capabilities. 
-To be used with DTFextend-mokeup-en.html
+To be used with dtfextend-mock-up.html
 Character set is UTF-8
 Contents: general structure:
 	setDisplay: modify displayed page after a change
@@ -7,7 +7,8 @@ Contents: general structure:
 Required:
 	DateExtended
 */
-/* Version:	M2020-12-16 Enhance layout, separate general/date/time options
+/* Version:	M2021-02-30 Change names of two files to "mock-up", no change in code
+	M2020-12-16 Enhance layout, separate general/date/time options
 	M2020-11-29 bug seen from a better control in ExtDate
 	M2020-11-27 first version (cloned from a custom calendar test page)
 */
