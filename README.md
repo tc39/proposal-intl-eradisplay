@@ -24,7 +24,7 @@ The proposed `eraDisplay` option may take 3 values: "never", always", "auto". If
 
 ## Use cases
 
-You may use a moke-up on [the proposal's web page](https://louis-aime.github.io/proposal-intl-eradisplay/)
+You may use a mock-up on [the proposal's web page](https://tc39.es/proposal-intl-eradisplay/)
 
 Most users will get a better result while not changing anything to the options they pass to Intl.DateTimeFormat.
 * `new Intl.DateTimeFormat("fr-FR").format(new Date(-752,3,13)) //> "13/4/753"` as of present (Nov. 2020) implementation; 
@@ -55,7 +55,7 @@ To our knowledge, there is no such function. Computer languages most generaly on
 
 ### Moke-up
 
-[Access to moke-up](https://louis-aime.github.io/proposal-intl-eradisplay/)
+[Access to mock-up](https://tc39.es/proposal-intl-eradisplay/)
 
 ### Native implementations
 
