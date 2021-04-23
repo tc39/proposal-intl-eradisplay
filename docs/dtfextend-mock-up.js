@@ -7,7 +7,8 @@ Contents: general structure:
 Required:
 	DateExtended
 */
-/* Version:	M2021-02-30 Change names of two files to "mock-up", no change in code
+/* Version:	M2021-05-02 fix fetching of era option for extended version
+	M2021-02-30 Change names of two files to "mock-up", no change in code
 	M2020-12-16 Enhance layout, separate general/date/time options
 	M2020-11-29 bug seen from a better control in ExtDate
 	M2020-11-27 first version (cloned from a custom calendar test page)
@@ -139,7 +140,7 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	
 	// Display all effective options for extended formatter
 	document.dateOptions.Xweekday.value = extUsedOptions.weekday;
-	document.dateOptions.Xera.value = extUsedOptions.Xra;
+	document.dateOptions.Xera.value = extUsedOptions.era;
 	document.dateOptions.Xyear.value = extUsedOptions.year;
 	document.dateOptions.Xmonth.value = extUsedOptions.month;
 	document.dateOptions.Xday.value = extUsedOptions.day;
