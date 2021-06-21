@@ -9,7 +9,13 @@ Contents
 	One new method for Date for generalised time zone offset management
 	ExtDateTimeFormat: extension of Intl.DateTimeFormat
 */
-/* Version	M2020-12-18 resolving partly eraDisplay at construction
+/*	Version	M2021-06-13	
+		Error not as objects, but close to the corresponding code.
+		Suppress unicodeValidDateinCalendar, calendar validity control (all calendars work since ICU 68)
+	M2021-01-09 set h12 and hourCycle as in original Intl
+	M2021-01-08 - when a field is undefined and should be displayed, tagging as "field" yield a void field
+	M2020-12-27 no export
+	M2020-12-18 resolving partly eraDisplay at construction
 	M2020-12-08 Use import and export
 	M2020-12-07	Do not change time part if language is among right-to-left.
 	M2020-11-29 control calendar parameter to ExtDate and ExtDateTimeFormat constructors
@@ -59,14 +65,14 @@ class CustomCalendar {
 	eras : an array of the string codes for the eras for this calendar, if eras used.
 	stringFormat : a field expressing how date string is computed. Possible values are
 		"built-in" : compute parts of displayed string as an ordinary DateTimeFormat, and then modify each part as stated by "partsFormat" object
-		"fields" : general structure of string is as stated from options, but values are changed following fields of this calendar, and modified as stated by "partsFormat"
-				// as of now, this option only works with 
+		"fields" : general structure of string as stated from options, but values changed following fields of this calendar, and modified as stated by "partsFormat"
+				// as of now, this option only works with Roman-like calendars
 		"auto" (default): means "built-in".
 	partsFormat : an Object, that specify how to format each part corresponding to each date field. Each tag is the name of a part to display (e.g. "era").
 		Each value is itself an object with the following fields:
 			mode: how to find the value: 
 				"cldr" : leave value set by standard FormatToParts (equivalent to no object for this part name).
-				"field": put field as is. For test and debug.
+				"field": put field as is; if undefined, put "". For test and debug, and for void fields.
 				"list" : (enumerable) values indicated in "source" field; if field is not a number, index to be found in "codes"
 				"pldr" : values to be found in calendar.pldr, a DOM which represents a "private locale data register" designated with its URI/URL or identifier
 			source : the reference to the values, if "list" or "pldr".
@@ -148,10 +154,10 @@ class ExtDate extends Date {
 		switch (typeof myCalendar) {
 			case "string" : switch (myCalendar) {
 				case "iso8601" : case "gregory" : break;
-				default : throw ExtDate.unimplementedOption;
+				default : throw new RangeError ("Only iso8601 and gregory built-in calendars enable ExtDate object construction, not " + myCalendar);
 			} break;
 			case "object": ; break; // ExtDate constructed although calendar object may be incomplete
-			default : throw ExtDate.invalidOption;
+			default : throw new TypeError ('Calendar parameter is neither a string nor an object'); 
 		}
 		if (dateArguments.length > 1) {	// more than 1 argument passed to Date: a date description, not a time stamp.
 			if (myCalendar == "iso8601" || myCalendar == "gregory") { // First arguments are a year and a month. Year is alwasy full, month is always based 1.
@@ -162,24 +168,22 @@ class ExtDate extends Date {
 			else {	// analyse fields in terms of the specified custom calendar
 				let fields = new Object;
 				for (let i = 0; i < dateArguments.length; i++) {
-					if (!Number.isInteger(dateArguments[i])) throw ExtDate.invalidDateFields;
+					if (!Number.isInteger(dateArguments[i])) throw new TypeError 
+						('Argument ' + ExtDate.numericFields[i].name + ' is not integer: ' + dateArguments[i]);
 					fields[ExtDate.numericFields[i].name] = dateArguments[i];	
 				}
 				let UTCDate = new Date (calendar.counterFromFields (fields));
 				super (UTCDate.valueOf() + UTCDate.getRealTZmsOffset());
 			}
 		}
-		else	// O or 1 argument for legacy Date, i.e. Now (0 argument), a string or a timestamp. Nothing calendar-dependant
+		else	// O or 1 argument for legacy Date, i.e. Now (0 argument), a string or a timestamp. Nothing calendar-dependant.
 			super (...dateArguments);
 		this.calendar = myCalendar;		// because this may only appear after super.
 	}
-	/** Errors and basic data
+	/** Basic data
 	*/
 	static numericFields = [ {name : "year", value : 0}, {name : "month", value : 1}, {name : "day", value : 1},	// year is deemed full year, no era implied
 		{name : "hours", value : 0}, {name : "minutes", value : 0}, {name : "seconds", value : 0}, {name : "milliseconds", value : 0} ] // names of numeric date elements
-	static invalidDateFields = new TypeError ("invalid date fields parameter")
-	static invalidOption = new RangeError ("invalid value for option in this context") 
-	static unimplementedOption = new RangeError ("function, case or option value not implemented")	// special getRealTZmsOffset used in several places, included here.
 	/** Basic utility fonction: get UTC date from ISO fields in UTC, including full year i.e. 79 means year 79 AD, when Pompeii was buried under volcano ashes.
 	*/
 	static fullUTC (fullYear, month, day, hour, minute, second, millisecond) {
@@ -195,7 +199,8 @@ class ExtDate extends Date {
 	*/
 	getRealTZmsOffset (TZ) {	// 2 functions in one: if TZ == undefined, compute real offset between system TZ offset at this time. if TZ = "UTC", 0. 
 								// if TZ is a named zone, use toResolvedLocalDate in order to compute offset in ms.
-		if (TZ == undefined || TZ == "") {
+		if (TZ == "UTC") return 0;		// avoid complex computation for a trivial and frequent case
+		if (TZ == undefined || TZ == "") {	// system time zone
 		// Gregorian coordinates of the system local date
 			let localCoord = 
 				{year: this.getFullYear(), month: this.getMonth(), date: this.getDate(), 
@@ -206,7 +211,7 @@ class ExtDate extends Date {
 			localDate.setUTCHours (localCoord.hours, localCoord.minutes, localCoord.seconds, localCoord.milliseconds);
 			return this.valueOf() - localDate.valueOf()
 		}
-		else return this.valueOf() - this.toResolvedLocalDate(TZ)
+		else return this.valueOf() - this.toResolvedLocalDate(TZ).valueOf()
 	}
 	/** Construct a date that represents the "best fit" value of the given date shifted as UTC to the named time zone. 
 	 * The computation of the time zone is that of Unicode, or of the standard TZOffset if Unicode's is not available.
@@ -256,7 +261,7 @@ class ExtDate extends Date {
 					seconds : shiftDate.getUTCSeconds(),
 					milliseconds : shiftDate.getUTCMilliseconds()
 				}
-			default : throw ExtDate.unimplementedOption; 
+			default : throw new RangeError ("Only iso8601 and gregory built-in calendars enable getFields method.");
 		}
 		else 
 			return this.calendar.fieldsFromCounter (this.valueOf() - offset);
@@ -276,7 +281,8 @@ class ExtDate extends Date {
 		weekYearOffset : -1/0/1 shift fullYear by one to obtain the year the week belongs to, weeksInYear: number of weeks in the year the week belons to }
 	*/
 	getWeekFields(TZ) {
-		if (typeof this.calendar == "string") throw ExtDate.unimplementedOption
+		if (typeof this.calendar == "string") 
+			throw new RangeError ("getWeekFields method not available for built-in calendars.")
 		else return this.calendar.weekFieldsFromCounter (this.valueOf() - this.getRealTZmsOffset(TZ))
 	}
 	/** setter method, from the fields representing the date in the target calendar, comput date timestamp 
@@ -292,7 +298,9 @@ class ExtDate extends Date {
 			fields.year = this.calendar.fullYear (fields);
 			delete fields.era;
 		}
-		if (ExtDate.numericFields.some ( (item) =>  fields[item.name] == undefined ? false : !Number.isInteger(fields[item.name] ) ) ) throw ExtDate.invalidDateFields;
+		if (ExtDate.numericFields.some ( (item) =>  fields[item.name] == undefined ? false : !Number.isInteger(fields[item.name] ) ) ) 
+			throw new TypeError 
+				(fields.map(({type, value}) => {return value;}).reduce((buf, part)=> buf + ", " + part, "Non integer element in date: "));
 		ExtDate.numericFields.forEach ( (item) => { if (fields[item.name] == undefined) 
 			fields[item.name] = startingFields[item.name] } );
 		// Construct an object with the date indication only, at 0 h UTC
@@ -301,20 +309,20 @@ class ExtDate extends Date {
 			case "iso8601": case "gregory":
 				this.setTime (ExtDate.fullUTC(dateFields.year, dateFields.month, dateFields.day));
 				break;
-			default: throw ExtDate.unimplementedOption ;
+			default: throw new RangeError ("Only iso8601 and gregory built-in calendars enable setFromFields method.");
 		}
 		else this.setTime(this.calendar.counterFromFields (dateFields));
 		// finally set time to this date from TZ, using .setHours or .setUTCHours
 		switch (TZ) {
 			case undefined: case "": return this.setHours (fields.hours, fields.minutes, fields.seconds, fields.milliseconds);
 			case "UTC": return this.setUTCHours (fields.hours, fields.minutes, fields.seconds, fields.milliseconds);
-			default : throw ExtDate.unimplementedOption;
+			default : throw new RangeError ("Setting to a given time is only possible in system time zone (blank) or 'UTC': " + TZ);
 		}
 	}
 	/** is this date in a leap year of the calendar ? 
 	*/
 	inLeapYear ( TZ ) {
-		if (typeof this.calendar.inLeapYear != "function") throw ExtDate.unimplementedOption;
+		if (typeof this.calendar.inLeapYear != "function") throw new RangeError ('inLeapYear function not provided for this calendar');
 		return this.calendar.inLeapYear( this.getFields (TZ) );
 	}
 	/** extract a simple string with the calendar name, then era code (if applicable), then the figures for year, month, day, and time components.
@@ -386,7 +394,7 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		super (locale, options);
 		// Resolve othis.calendarwn options
 		this.calendar = calendar;
-		if (this.calendar != undefined && typeof this.calendar != "object") throw new TypeError ("invalid calendar parameter, defined calendar must be an object");
+		if (this.calendar != undefined && typeof this.calendar != "object") throw new TypeError ("invalid calendar parameter, custom calendar must be an object");
 		this.options = {...options};	// copy originally asked options.
 		this.locale = locale;
 		// Resolve case where no field is asked for display : if none of weekday, year, month, day, hour, minute, second is asked, set a standard suite
@@ -411,21 +419,26 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		this.options.numberingSystem = this.DTFOptions.numberingSystem;
 		this.options.timeZone = this.DTFOptions.timeZone;
 		this.options.timeZoneName = this.DTFOptions.timeZoneName;
+		this.options.dayPeriod = this.DTFOptions.dayPeriod;
+		this.options.hour12 = this.DTFOptions.hour12;
+		this.options.hourCycle = this.DTFOptions.hourCycle;
+
+		
 		// Control and resolve specific options
 		if (this.options.eraDisplay == undefined) this.options.eraDisplay = "auto";
 		switch (this.options.eraDisplay) {
 			case "always":	if (options.era == undefined) options.era = "short";
 			case "auto": 	// we should insert here the preceding statement, however this can have impact if era is asked from the user.
 			case "never": break;
-			default: throw ExtDateTimeFormat.invalidOption;
+			default: throw new RangeError ("Unknown option for displaying era: " + this.options.eraDisplay);
 		}
 		if (this.options.eraDisplay == "auto" && this.DTFOptions.year == undefined) this.options.eraDisplay = "never";
 		if (this.calendar != undefined) {
 			if (this.calendar.stringFormat == undefined) this.calendar.stringFormat = "auto";
 			switch (this.calendar.stringFormat) {
 				case "built-in" : case "fields" : case "auto" : break;
-				default : throw ExtDateTimeFormat.invalidOption
-			}
+				default : throw new RangeError ("Unknown option for date string computing method ('auto', 'built-in' or 'fields'): " + this.calendar.stringFormat);
+				}
 		}
 		// Prepare implied parameters for formatting
 		this.lang = this.options.locale.includes("-") ? this.options.locale.substring (0,this.options.locale.indexOf("-")) : this.options.locale;
@@ -478,39 +491,15 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		// stringFormat "fields" option is only possible with a calendar that uses Roman months
 		if (this.calendar != undefined && this.calendar.stringFormat == "fields") switch (this.calendar.canvas) {
 			case "iso8601": case "gregory": case "buddhist": case "japanese": case "roc": break;
-			default : throw ExtDateTimeFormat.unimplementedOption; 
+			default : throw new RangeError ("Canvas formatting implemented only from gregory-like built-in calendars: " + this.calendar.canvas);
 		}
 		// Exclude lunar calendar models as canvas - for now...
 		if (this.calendar != undefined) switch (this.calendar.canvas) {
-			case "chinese": case "dangi": case "hebraic" : throw ExtDateTimeFormat.unimplementedOption; // the month number is not always associated with the same month
+			case "chinese": case "dangi": case "hebraic" : throw new RangeError ("No canvas formatting from luni-solar calendars: " + this.calendar.canvas);
 			default : ;
 		}
 	}	// end constructor
-	static invalidOption = new RangeError ("invalid value for option in this context")
-	static unimplementedOption = new RangeError ("function, case or option value not implemented")
 	static dateFieldNames = ["era", "year", "month", "day"]
-	/** Validity of certain Unicode calendars (before version 68 of ICUs)
-	 * @param (object) aDate, represent the date under test
-	 * @param (string) mytTZ, the name of a time zone
-	 * @param (string) myCalendar, the name of the built-in calendar
-	 * @return (boolean) if true, the date may be displayed. If false, DateTimeFormat give erratic results.
-	*/
-	static unicodeValidDateinCalendar(aDate, myTZ, myCalendar) {
-	let myDate = new ExtDate (undefined, aDate.valueOf())	// extended date without custom calendar
-	let valid = true; 	// Flag the few cases where calendar computations under Unicode yield a wrong result
-	switch (myCalendar) {	
-		case "hebrew": valid = (myDate.toResolvedLocalDate(myTZ).valueOf()
-			>= -180799776000000); break;	// Computations are false before 1 Tisseri 1 Anno Mundi
-		case "indian": valid = (myDate.toResolvedLocalDate(myTZ).valueOf() 
-			>= -62135596800000); break;	// Computations are false before 01/01/0001 (gregorian)
-		case "islamic":
-		case "islamic-rgsa": valid = (myDate.toResolvedLocalDate(myTZ).valueOf()
-			>= -42521673600000); break; // Computations are false before Haegirian epoch i.e. 27 7m 622
-		case "islamic-umalqura": valid = (myDate.toResolvedLocalDate(myTZ).valueOf()
-			>= -6227305142400000); break; // Computations are false before 2 8m -195366
-		}
-	return valid
-	}
 	/** the resolved options for this object, that slightly differ from those of Intl.DateTimeFormat.
 	 * @return (Object) the options revised to reflect what will be provided. eraDisplay is also resolved.
 	*/
@@ -654,7 +643,7 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 			myParts.forEach( function (item, i) { 
 				if (this.calendar.partsFormat[item.type] != undefined ) switch (this.calendar.partsFormat[item.type].mode){
 					case "cldr" : break; // already computed
-					case "field" : myParts[i].value = myDateFields[item.type]; break; // insert field directly, whatever it is (number, era code...)
+					case "field" : myParts[i].value = myDateFields[item.type] == undefined ? "" : myDateFields[item.type] ; break; // insert field directly, blank if undefined
 					case "list" : switch (item.type) {
 						case "era" : myParts[i].value = this.calendar.partsFormat[item.type].source[this.calendar.partsFormat[item.type].codes.indexOf(myDateFields[item.type])];
 							break;
@@ -716,7 +705,7 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 								case "2-digit": break;	// do nothing, formatting already done.
 								}
 								break;
-							default : throw ExtDateTimeFormat.unimplementedOption; break;
+							default : throw new RangeError ("Unknown date field: " + item.type);
 							}	// End of switch on item.type
 						break;	// End of "pldr" case
 						}	// End of switch on (this.calendar.partsFormat[item.type].mode)
@@ -758,4 +747,4 @@ class ExtDateTimeFormat extends Intl.DateTimeFormat {
 		return parts.map(({type, value}) => {return value;}).reduce((buf, part)=> buf + part, "");
 	}
 }
-// export {ExtDate, ExtDateTimeFormat}
+export {ExtDate, ExtDateTimeFormat}

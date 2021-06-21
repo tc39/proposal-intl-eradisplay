@@ -7,7 +7,10 @@ Contents: general structure:
 Required:
 	DateExtended
 */
-/* Version:	M2021-05-02 fix fetching of era option for extended version
+/* Version:	M2021-06-31
+		Use dateextended.js classes as imported modules
+		No calendar validity control
+	M2021-05-02 fix fetching of era option for extended version
 	M2021-02-30 Change names of two files to "mock-up", no change in code
 	M2020-12-16 Enhance layout, separate general/date/time options
 	M2020-11-29 bug seen from a better control in ExtDate
@@ -43,10 +46,19 @@ const Chronos =
 	SECOND_UNIT : 1000}
 
 var 
-	targetDate = new ExtDate(),
-	shiftDate = new ExtDate (undefined,targetDate.getTime() - targetDate.getRealTZmsOffset()),
+	ExtDate, ExtDateTimeFormat, 	// imported objects
+	targetDate, // = new ExtDate(),
+	shiftDate, // = new ExtDate (undefined,targetDate.getTime() - targetDate.getRealTZmsOffset()),
 	TZSettings = {mode : "TZ", msoffset : 0},	// initialisation to be superseded
 	TZDisplay = ""; 
+
+async function initial () {
+	let modules = await import ('./dateextended.js');
+	ExtDate = modules.ExtDate;
+	ExtDateTimeFormat = modules.ExtDateTimeFormat;
+	setDateToNow();
+}
+initial();
 
 function putStringOnOptions() { // get Locale, calendar indication and Options given on page, print String. Called by setDisplay
 	let Locale = document.Locale.Locale.value;
@@ -162,15 +174,13 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	extUsedOptions = referenceExtFormat.resolvedOptions();
 	referenceExtFormat = new ExtDateTimeFormat(extUsedOptions.locale,extUsedOptions);
 */
-	// Certain Unicode calendars do not give a proper result: here is the control code.
-	let valid = ExtDateTimeFormat.unicodeValidDateinCalendar(targetDate, extUsedOptions.timeZone);
 	// Display with extended DateTimeFormat
-	document.getElementById("Xstring").innerHTML = (valid ? "" : "(!) ") + extAskedOptions.format(targetDate);
+	document.getElementById("Xstring").innerHTML = extAskedOptions.format(targetDate);
 	// Display custom calendar string - error control
 
 	let	myUnicodeElement = document.getElementById("Ustring");
 	try { 
-		myUnicodeElement.innerHTML = (valid ? "" : "(!) ") + askedOptions.format(targetDate); // askedOptions.format(targetDate); 
+		myUnicodeElement.innerHTML = askedOptions.format(targetDate); // askedOptions.format(targetDate); 
 		}
 	catch (e) { 
 		alert (e.message + "\n" + e.fileName + " line " + e.lineNumber);
