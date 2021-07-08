@@ -9,7 +9,8 @@ Contents
 	One new method for Date for generalised time zone offset management
 	ExtDateTimeFormat: extension of Intl.DateTimeFormat
 */
-/*	Version	M2021-06-13	
+/*	Version	M2021-07-18 fill fields passed at construction with default values
+	M2021-06-13	
 		Error not as objects, but close to the corresponding code.
 		Suppress unicodeValidDateinCalendar, calendar validity control (all calendars work since ICU 68)
 	M2021-01-09 set h12 and hourCycle as in original Intl
@@ -167,16 +168,18 @@ class ExtDate extends Date {
 				} 
 			else {	// analyse fields in terms of the specified custom calendar
 				let fields = new Object;
-				for (let i = 0; i < dateArguments.length; i++) {
-					if (!Number.isInteger(dateArguments[i])) throw new TypeError 
-						('Argument ' + ExtDate.numericFields[i].name + ' is not integer: ' + dateArguments[i]);
-					fields[ExtDate.numericFields[i].name] = dateArguments[i];	
+				for (let i = 0; i < ExtDate.numericFields.length; i++) {
+					if (i < dateArguments.length) {
+						if (!Number.isInteger(dateArguments[i])) throw new TypeError 
+							('Argument ' + ExtDate.numericFields[i].name + ' is not integer: ' + dateArguments[i]);
+						fields[ExtDate.numericFields[i].name] = dateArguments[i];
+					} else {fields[ExtDate.numericFields[i].name] = ExtDate.numericFields[i].value} //	If no value specified among arguments, set default value.
 				}
 				let UTCDate = new Date (calendar.counterFromFields (fields));
 				super (UTCDate.valueOf() + UTCDate.getRealTZmsOffset());
 			}
 		}
-		else	// O or 1 argument for legacy Date, i.e. Now (0 argument), a string or a timestamp. Nothing calendar-dependant.
+		else	// 0 or 1 argument for legacy Date, i.e. Now (0 argument), a string or a timestamp. Nothing calendar-dependant.
 			super (...dateArguments);
 		this.calendar = myCalendar;		// because this may only appear after super.
 	}
