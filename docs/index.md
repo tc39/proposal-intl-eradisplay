@@ -1,10 +1,15 @@
 # Mock-up for the eraDisplay proposal for Intl.DateTimeFormat 
 This mock-up shows the effect of the proposed eraDisplay option on any date projected to the built-in calendars.
 
-Options fields of interest are hightlighted. The problem occurs in calendars other than "gregory", so please change this calendar and choose "ethiopian Amete Mihret" or "japanese".
+Options fields of interest are hightlighted. Significant diffences occur with calendars other than "gregory", "iso8601", "chinese" and "dangi". Please change the calendar fields accordingly.
 
-Problems with display of "chinese" and "dangi" calendars dates are also demonstrated, but they are not addressed in this proposal.
-
-This mock-up can also demonstrate weaknesses or bugs with CLDR and ICU elements used in javascript Intl.DateTimeFormat object.
+Other Intl or CLDR issues outside the scope of the eraDisplay option proposal are also highlighted here:
+* lack of control for `chinese` and `dangi` calendars;
+* missing data in CLDR (e.g. 'fr' with `buddhist`);
+* we propose to handle in a different way time fields options : `numeric` vs. `2-digit`;
+* handling missing date or time fields (e.g. `hour` and `second` definied, but `minute` missing);
+* ...
 
 Please [hit here](https://TC39.github.io/proposal-intl-eradisplay/dtfextend-mock-up) to lauch mock-up.
+
+This mock-up uses modules from [calendrical-javascript](https://github.com/Louis-Aime/calendrical-javascript).
