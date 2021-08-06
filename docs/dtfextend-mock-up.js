@@ -5,9 +5,10 @@ Contents: general structure:
 	setDisplay: modify displayed page after a change
 	putStringOnOptions : specifically modify date strings. Called by setDisplay.
 Required:
-	DateExtended
+	ExtDateTime from calendrical-javascript
 */
-/* Version:	M2021-06-31
+/* Version:	M2021-08-16: refer to calendrical-javascript routines
+	M2021-06-31
 		Use dateextended.js classes as imported modules
 		No calendar validity control
 	M2021-05-02 fix fetching of era option for extended version
@@ -46,19 +47,19 @@ const Chronos =
 	SECOND_UNIT : 1000}
 
 var 
-	ExtDate, ExtDateTimeFormat, 	// imported objects
-	targetDate, // = new ExtDate(),
-	shiftDate, // = new ExtDate (undefined,targetDate.getTime() - targetDate.getRealTZmsOffset()),
+	ExtDateTimeFormat, 	// imported objects
+	targetDate, // = new Date(),
+	shiftDate, // = new Date (undefined,targetDate.getTime() - targetDate.getRealTZmsOffset()),
 	TZSettings = {mode : "TZ", msoffset : 0},	// initialisation to be superseded
 	TZDisplay = ""; 
 
-async function initial () {
-	let modules = await import ('./dateextended.js');
-	ExtDate = modules.ExtDate;
-	ExtDateTimeFormat = modules.ExtDateTimeFormat;
+(async function initial () {
+	let modules = await import ('https://louis-aime.github.io/calendrical-javascript/extdatetimeformat.js');
+	ExtDateTimeFormat = modules.default;
 	setDateToNow();
-}
-initial();
+} () )
+
+function undef (string) {return string == "" ? undefined : string }
 
 function putStringOnOptions() { // get Locale, calendar indication and Options given on page, print String. Called by setDisplay
 	let Locale = document.Locale.Locale.value;
@@ -66,10 +67,8 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	var askedOptions, usedOptions, extAskedOptions, extUsedOptions, cusAskedOptions; 
 
 	// Test specified Locale
-	try {
-		if (Locale == "")
-			askedOptions = new Intl.DateTimeFormat()
-		else askedOptions = new Intl.DateTimeFormat(Locale);
+	try { 
+		askedOptions = new Intl.DateTimeFormat(undef(Locale));
 	}
 	catch (e) {
 		alert (e.message + "\nCheck locale"); // e.fileName + " line " + e.lineNumber); 
@@ -177,7 +176,6 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	// Display with extended DateTimeFormat
 	document.getElementById("Xstring").innerHTML = extAskedOptions.format(targetDate);
 	// Display custom calendar string - error control
-
 	let	myUnicodeElement = document.getElementById("Ustring");
 	try { 
 		myUnicodeElement.innerHTML = askedOptions.format(targetDate); // askedOptions.format(targetDate); 
@@ -185,6 +183,14 @@ function putStringOnOptions() { // get Locale, calendar indication and Options g
 	catch (e) { 
 		alert (e.message + "\n" + e.fileName + " line " + e.lineNumber);
 		myUnicodeElement.innerHTML = "(!)"; 
+		}
+	// Display day of week near date fields
+	try {
+		document.gregorian.dayofweek.value = (new Intl.DateTimeFormat(undef(Locale), {weekday : "long", timeZone : "UTC"})).format(shiftDate);
+		}
+	catch (e) {
+		alert (e.message + "\n" + e.fileName + " line " + e.lineNumber);
+		document.gregorian.dayofweek.value = "(!)"; 
 		}
 
 }
@@ -210,28 +216,19 @@ function setDisplay () { // Considering that targetDate time has been set to the
 		case "UTC" : 
 			TZSettings.msoffset = 0; // Set offset to 0, but leave time zone offset on display
 		case "TZ" : 
-			document.TZmode.TZOffsetSign.value = systemSign;
-			document.TZmode.TZOffset.value = absoluteTZmin;
-			document.TZmode.TZOffsetSec.value = absoluteTZsec;
+			document.querySelector("#realTZOffset").innerHTML = (systemSign == 1 ? "+ ":"- ") + absoluteTZmin + " min " + absoluteTZsec + " s";
 			break;
 /*		case "Fixed" : TZSettings.msoffset = // Here compute specified time zone offset
 			- document.TZmode.TZOffsetSign.value 
 			* (document.TZmode.TZOffset.value * Chronos.MINUTE_UNIT + document.TZmode.TZOffsetSec.value * Chronos.SECOND_UNIT);
 */	}
 
-	shiftDate = new ExtDate (undefined,targetDate.getTime() - TZSettings.msoffset);	// The UTC representation of targetDate date is the local date of TZ
+	shiftDate = new Date (targetDate.getTime() - TZSettings.msoffset);	// The UTC representation of targetDate date is the local date of TZ
 	
 	// Initiate Gregorian form with present local date
     document.gregorian.year.value = shiftDate.getUTCFullYear(); // uses the local variable - not UTC
     document.gregorian.monthname.value = shiftDate.getUTCMonth() + 1; // Display month value in 1..12 range.
     document.gregorian.day.value = shiftDate.getUTCDate();
-	try {
-		document.gregorian.dayofweek.value = (new Intl.DateTimeFormat(undefined, {weekday : "long", timeZone : "UTC"})).format(shiftDate);
-		}
-	catch (e) {
-		alert (e.message + "\n" + e.fileName + " line " + e.lineNumber);
-		document.gregorian.dayofweek.value = "(!)"; 
-		}
 	// Update local time fields - using	Date properties
 	document.time.hours.value = shiftDate.getUTCHours();
 	document.time.mins.value = shiftDate.getUTCMinutes();
@@ -263,7 +260,7 @@ function calcGregorian() {
 	if (isNaN(testDate.valueOf())) alert ("Out of range")
 	else {
 		// Here, no control of date validity, leave JS recompute the date if day of month is out of bounds
-		targetDate = new ExtDate (undefined,testDate.valueOf());
+		targetDate = new Date (testDate.valueOf());
 		setDisplay();
 	}
 }
@@ -291,7 +288,7 @@ function setDayOffset (sign=1) {
 		// clockRun(0);
 		}
 	else {
-		targetDate = new ExtDate (undefined,testDate.valueOf());
+		targetDate = new Date (testDate.valueOf());
 		setDisplay();
 	}
 }
@@ -303,7 +300,7 @@ function calcTime() { // Here the hours are deemed local hours
 		alert ("Invalid date " + '"' + document.time.hours.value + '" "' + document.time.mins.value + '" "' 
 		+ document.time.secs.value + '.' + document.time.ms.value + '"')
 	 else {
-	  let testDate = new ExtDate (undefined,targetDate.valueOf());
+	  let testDate = new Date (targetDate.valueOf());
 	  switch (TZSettings.mode) {
 		case "TZ" : testDate.setHours(hours, mins, secs, ms); break;
 		case "UTC" : testDate.setUTCHours(hours, mins, secs, ms); break;
@@ -314,7 +311,7 @@ function calcTime() { // Here the hours are deemed local hours
 */		}
 		if (isNaN(testDate.valueOf())) alert ("Out of range")
 		else {
-			targetDate = new ExtDate (undefined,testDate.valueOf());
+			targetDate = new Date (testDate.valueOf());
 			setDisplay();
 		}
 	}
@@ -338,13 +335,13 @@ function addTime (sign = 1) { // addedTime ms is added or subtracted to or from 
 	testDate.setTime (testDate.getTime()+sign*addedTime); 
 	if (isNaN(testDate.valueOf())) alert ("Out of range")
 	else {
-		targetDate = new ExtDate (undefined,testDate.valueOf());
+		targetDate = new Date (testDate.valueOf());
 		setDisplay();
 	}
 }
 
 function setDateToNow(){ // Self explanatory
-    targetDate = new ExtDate(); // set new Date object.
+    targetDate = new Date(); // set new Date object.
 	setDisplay ();
 }
 function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
@@ -353,7 +350,7 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 	testDate.setUTCHours(UTChours, 0, 0, 0);
 	if (isNaN(testDate.valueOf())) alert ("Out of range")
 	else {
-		targetDate = new ExtDate (undefined,testDate.valueOf());
+		targetDate = new Date (testDate.valueOf());
 		setDisplay();
 	}
 }
