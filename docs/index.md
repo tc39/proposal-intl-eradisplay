@@ -6,8 +6,8 @@ Options fields of interest are hightlighted. Significant diffences occur with ca
 Other Intl or CLDR issues outside the scope of the eraDisplay option proposal are also highlighted here:
 * lack of control for `chinese` and `dangi` calendars;
 * missing data in CLDR (e.g. 'fr' with `buddhist`);
-* we propose to handle in a different way time fields options : `numeric` vs. `2-digit`;
-* handling missing date or time fields (e.g. `hour` and `second` definied, but `minute` missing);
+* proposition to handle in a different way time fields options : `numeric` vs. `2-digit`;
+* handling missing date or time fields (e.g. `hour` and `second` defined, but `minute` missing);
 * ...
 
 Please [hit here](https://TC39.github.io/proposal-intl-eradisplay/dtfextend-mock-up) to lauch mock-up.
