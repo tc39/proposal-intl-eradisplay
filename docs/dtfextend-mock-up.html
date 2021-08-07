@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="centered" onload="setDateToNow()">
+<body class="centered">
 <section class="centered"><h1 class="panelhead">Mock-up - Intl.DateTimeFormat upgrade proposal</h1>
 </section>
 <section class="panel"><h2 class="panelhead">Date object</h2>
@@ -34,11 +34,11 @@
 			<th>Day</th>
 			<th> </th>
 		  </tr>
-		<form name="gregorian" method="post" action="javascript:calcGregorian()">
+		<form name="gregorian" method="post" action="javascript:calcGregorian();setDisplay()">
 		  <tr>
-			<td><input name="year" type="number" class="centered digit4"> </td>
-			<td><input name="monthname" type="number" min="1" max="12" class="centered digit2"></td>
-			<td><input name="day" type="number" min="1" max="31" class="centered digit2"> </td>
+			<td><input name="year" type="number" value="0" class="centered digit4"> </td>
+			<td><input name="monthname" type="number" min="1" max="12" value="1" class="centered digit2"></td>
+			<td><input name="day" type="number" min="1" max="31" value="1" class="centered digit2"> </td>
 			<td><button class="textline">Ok</button></td>
 		  </tr>
 		  <tr>
@@ -52,23 +52,23 @@
 	<form name="control" method="post" action="javascript:changeDayOffset()">
 	 <table class="centered">
 	  <tr>
-		<td><button class="textline" type="button" onclick="javascript:setDateToNow()">Now</button></td>
+		<td><button class="textline" type="button" onclick="javascript:setDateToNow();setDisplay()">Now</button></td>
 			<th>+/- days:</th>
-			<td><button type="button" class="textline symbol" onclick="javascript:setDayOffset(-1)">-</button></td>
+			<td><button type="button" class="textline symbol" onclick="javascript:setDayOffset(-1);setDisplay()">-</button></td>
 			<td><input name="shift" type="number" value="1" min="0" step="any" class="centered digit4"></td> 
-			<td><button type="button" class="textline symbol" onclick="javascript:setDayOffset(+1)">+</button></td>
+			<td><button type="button" class="textline symbol" onclick="javascript:setDayOffset(+1);setDisplay()">+</button></td>
 	  </tr>
 	 </table>
 	</form>
 	</section>
 	<section class="centered"><h3 class="panelhead">Time fields and time zone mode</h3>
-	  <form name="time" method="post" autocomplete="off" action="javascript:calcTime()">
+	  <form name="time" method="post" action="javascript:calcTime();setDisplay()">
 		<table class="centered">
 		   <tr>
-			 <td><input name="hours" type="number" min="0" max="23" class="centered digit2">h</td>
-			 <td><input name="mins" type="number" min="0" max="59" class="centered digit2">min</td>
-			 <td><input name="secs" type="number" min="0" max="59" class="centered digit2">s</td>
-			 <td><input name="ms" type="number" min="0" max="999" class="centered digit4">ms</td>
+			 <td><input name="hours" type="number" min="0" max="23" value="12" class="centered digit2">h</td>
+			 <td><input name="mins" type="number" min="0" max="59" value="0" class="centered digit2">min</td>
+			 <td><input name="secs" type="number" min="0" max="59" value="0" class="centered digit2">s</td>
+			 <td><input name="ms" type="number" min="0" max="999" value="0" class="centered digit4">ms</td>
 			 <td><button class="textline">Ok</button></td>
 		  </tr>
 		</table>
@@ -79,21 +79,21 @@
 		<table class="centered"> 
 		  <tr>
 			<td>+/- ms</td>
-			<td><button type="button" class="textline symbol" onclick="javascript:addTime(-1)">-</button></td>
+			<td><button type="button" class="textline symbol" onclick="javascript:addTime(-1);setDisplay()">-</button></td>
 			<td><input name="shift" type="number" value="60000" min="1" class="centered char8"></td>
-			<td><button type="button" class="textline symbol" onclick="javascript:addTime(1)">+</button></td>
+			<td><button type="button" class="textline symbol" onclick="javascript:addTime(1);setDisplay()">+</button></td>
 		  </tr>
 		</table>
 	  </form>
 	</section>
 	<section class="centered autoscroll"><!-- time zone option -->
-	  <form name="TZmode" autocomplete="off" method="post" action="javascript:setDisplay()">
+	  <form name="TZmode" method="post" action="javascript:setDisplay()">
 		<table class="centered">
 				<tr><th>Mode:</th>
 					<td>
 						<select name="TZcontrol" size="1" class="centered">
 						<option value="UTC">UTC</option>
-						<option value="TZ" selected>System</option>
+						<option value="" selected>System</option>
 						</select></td>
 					<td><button class="textline">Ok</button></td>
 				</tr>
@@ -133,10 +133,10 @@
 	</section>
 </section>
 	<section class="panel"><h2 class="panelhead">General presentation options</h2>
-		<form name="Locale" method="post" action="javascript:putStringOnOptions()">
+		<form name="Locale" method="post" action="javascript:calcFormat();setDisplay()">
 		<table class="centered"> 
 			<tr>
-				<td><button class="textline" type="reset">No option</button></td>
+				<td><button class="textline" type="reset">Clear general options</button></td>
 				<td><button class="textline" >Ok</button></td> <td></td>
 			</tr>
 		</table>
@@ -145,12 +145,12 @@
 			<tr><th>Locale</th><th>Options</th></tr>
 			<tr>
 				<td><select name="LocaleMatcher" class="centered" size="1">
-					<option value="" selected>Default</option>
+					<option value="" selected>void</option>
 					<option value="lookup">Lookup BCP</option>
 					<option value="best fit">Best fit</option>
 					</select></td>
 				<td><select name="FormatMatcher" class="centered" size="1">
-					<option value="" selected>Default</option>
+					<option value="" selected>void</option>
 					<option value="basic">Basic choice</option>
 					<option value="best fit">Best fit</option>
 					</select></td>
@@ -176,7 +176,7 @@
 			<th>Calendar:</th>
 			<td>
 				<select name="Calendar" size="1" class="centered">
-				<option value="">Default</option>
+				<option value="">void</option>
 				<option value="buddhist">buddhist</option>
 				<option value="chinese">chinese (luni-solar)</option>
 				<option value="coptic">coptic</option>
@@ -216,14 +216,14 @@
 		  <tr>
 			<th>Asked:</th>
 			<td><select name="DateStyle" class="centered" size="1">
-				<option value="" selected>default</option>
+				<option value="" selected>void</option>
 				<option value="short">short</option>
 				<option value="medium">medium</option>
 				<option value="long">long</option>
 				<option value="full">full</option>
 				</select></td>
 			<td><select name="TimeStyle" class="centered" size="1">
-				<option value="" selected>default</option>
+				<option value="" selected>void</option>
 				<option value="short">short</option>
 				<option value="medium">medium</option>
 				<option value="long">long</option>
@@ -240,10 +240,10 @@
 	</form>
 	</section>
 	<section class="panel"><h2 class="panelhead">Date fields options</h3>
-		<form name="dateOptions" method="post" action="javascript:putStringOnOptions()">
+		<form name="dateOptions" method="post" action="javascript:calcFormat();setDisplay()">
 		<table class="centered"> 
 		<tr>
-			<td><button class="textline" type="reset">No option</button></td>
+			<td><button class="textline" type="reset">Initial date options</button></td>
 			<td><button class="textline" >Ok</button></td> <td></td>
 		</tr>
 		</table>
@@ -252,7 +252,7 @@
 			<tr>
 				<th>Era display:</th>
 				<td><select name="eraDisplay" class="centered" size="1">
-					<option value="" selected>default</option>
+					<option value="" selected>void</option>
 					<option value="never">never</option>
 					<option value="always">always</option>
 					<option value="auto">auto</option>
@@ -268,12 +268,12 @@
 		  <tr>
 			<th>Asked:</th>
 			<td><select name="Day" class="centered" size="1">
-				<option value="">default</option>
+				<option value="">void</option>
 				<option value="numeric" selected>numeric</option>
 				<option value="2-digit">2-digit</option>
 				</select></td>
 			<td><select name="Month" class="centered" size="1">
-				<option value="">default</option>
+				<option value="">void</option>
 				<option value="numeric">numeric</option>
 				<option value="2-digit">2-digit</option>
 				<option value="narrow">narrow</option>
@@ -281,7 +281,7 @@
 				<option value="long" selected>long</option>
 				</select></td>
 			<td><select name="Year" class="centered" size="1">
-				<option value="">default</option>
+				<option value="">void</option>
 				<option value="numeric" selected>numeric</option>
 				<option value="2-digit">2-digit</option>
 				</select></td>
@@ -306,13 +306,13 @@
 		  <tr>
 			<th>Asked:</th>
 			<td><select name="Weekday" class="centered" size="1">
-				<option value="">default</option>
+				<option value="">void</option>
 				<option value="narrow">narrow</option>
 				<option value="short">short</option>
 				<option value="long" selected>long</option>
 				</select></td>
 			<td class="attention"><select name="Era" class="centered" size="1">
-				<option value="" selected>default</option>
+				<option value="" selected>void</option>
 				<option value="narrow">narrow</option>
 				<option value="short">short</option>
 				<option value="long">long</option>
@@ -333,10 +333,10 @@
 	</form>
 	</section>
 	<section class="panel"><h2 class="panelhead">Time fields options</h3>
-		<form name="timeOptions" method="post" action="javascript:putStringOnOptions()">
+		<form name="timeOptions" method="post" action="javascript:calcFormat();setDisplay()">
 		<table class="centered"> 
 		<tr>
-			<td><button class="textline" type="reset">No option</button></td>
+			<td><button class="textline" type="reset">Initial time options</button></td>
 			<td><button class="textline" >Ok</button></td> <td></td>
 		</tr>
 		</table>
@@ -347,18 +347,18 @@
 		  <tr>
 			<th>Asked:</th>
 			<td><select name="Hour" class="centered" size="1">
-				<option value="" selected>default</option>
-				<option value="numeric">numeric</option>
+				<option value="">void</option>
+				<option value="numeric" selected>numeric</option>
 				<option value="2-digit">2-digit</option>
 				</select></td>
 			<td><select name="Minute" class="centered" size="1">
-				<option value="" selected>default</option>
-				<option value="numeric">numeric</option>
+				<option value="">void</option>
+				<option value="numeric" selected>numeric</option>
 				<option value="2-digit">2-digit</option>
 				</select></td>
 			<td><select name="Second" class="centered" size="1">
-				<option value="" selected>default</option>
-				<option value="numeric">numeric</option>
+				<option value="">void</option>
+				<option value="numeric" selected>numeric</option>
 				<option value="2-digit">2-digit</option>
 				</select></td>
 		  </tr>
@@ -383,12 +383,12 @@
 				<th>Asked:</th>
 				<td><input class="centered digit2" name="Msdigits" type="number" min="0" max="3"></td>
 				<td><select name="TimeZoneName" class="centered" size="1">
-					<option value="" selected>default</option>
+					<option value="" selected>void</option>
 					<option value="short">short</option>
 					<option value="long">long</option>
 					</select></td>
 				<td><select name="AmPm" size="1" class="centered">
-					<option value="" selected>default</option>
+					<option value="" selected>void</option>
 					<option value="narrow">narrow</option>
 						<option value="short">short</option>
 						<option value="long">long</option>
@@ -414,12 +414,12 @@
 		  <tr>
 			<th>Asked:</th>
 			<td colspan="2"><select name="Hour12" size="1" class="centered">
-				<option value="" selected>default</option>
+				<option value="" selected>void</option>
 				<option value="true">12 h</option>
 				<option value="false">24 h</option>
 				</select></td>
 			<td><select name="HourCycle" size="1" class="centered">
-				<option value="" selected>default</option>
+				<option value="" selected>void</option>
 				<option value="h11">h11</option>
 				<option value="h12">h12</option>
 				<option value="h23">h23</option>
