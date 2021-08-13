@@ -10,6 +10,6 @@ Other Intl or CLDR issues outside the scope of the eraDisplay option proposal ar
 * handling missing date or time fields (e.g. `hour` and `second` defined, but `minute` missing);
 * ...
 
-Please [hit here](https://TC39.github.io/proposal-intl-eradisplay/dtfextend-mock-up) to lauch mock-up.
+[Launch the mock-up for the eraDisplay proposal](https://TC39.github.io/proposal-intl-eradisplay/dtfextend-mock-up).
 
-This mock-up uses modules from [calendrical-javascript](https://github.com/Louis-Aime/calendrical-javascript).
+This mock-up uses modules from [calendrical-javascript](https://louis-aime.github.io/calendrical-javascript/).
