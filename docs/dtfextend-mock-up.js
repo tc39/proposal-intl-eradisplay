@@ -7,7 +7,8 @@ Contents: general structure:
 Required:
 	ExtDateTime from calendrical-javascript
 */
-/* Version:	M2021-08-17: refer to calendrical-javascript routines
+/* Version:	M2021-08-23	Wrap .format with try / catch
+	M2021-08-17: refer to calendrical-javascript routines
 	M2021-06-31
 		Use dateextended.js classes as imported modules
 		No calendar validity control
@@ -40,18 +41,14 @@ or the use or other dealings in the software.
 Inquiries: www.calendriermilesien.org
 */
 "use strict";
-const Milliseconds = 
-	{DAY_UNIT : 86400000,
-	HOUR_UNIT : 3600000,
-	MINUTE_UNIT : 60000,
-	SECOND_UNIT : 1000}
-
 var 
-	ExtDate, ExtDateTimeFormat, 	// objects from imported modules
+	ExtDate, ExtDateTimeFormat, Milliseconds,	// objects from imported modules
 	targetDate = new Date(0); 
 
 (async function initial () {
-	let module = await import ('https://louis-aime.github.io/calendrical-javascript/extdatetimeformat.js');
+	let module = await import ('https://louis-aime.github.io/calendrical-javascript/time-units.js');
+	Milliseconds = module.default;
+	module = await import ('https://louis-aime.github.io/calendrical-javascript/extdatetimeformat.js');
 	ExtDateTimeFormat = module.default;
 	module = await import ('https://louis-aime.github.io/calendrical-javascript/extdate.js');
 	ExtDate = module.default;
@@ -67,7 +64,8 @@ function setDisplay () { // Considering that targetDate time has been set to the
 	// Time zone mode section
 	// Initiate Time zone mode for the "local" time from main display
 	let TZDisplay = document.TZmode.TZcontrol.value,
-		TZmsOffset = new ExtDate ("iso8601", targetDate.valueOf()).getRealTZmsOffset().valueOf();
+		TZmsOffset = new ExtDate ("iso8601", targetDate.valueOf()).getRealTZmsOffset().valueOf(),
+		myElement;	// to be used later
 	// Display time zone offset as given by system routine
 	document.getElementById("sysTZoffset").innerHTML = new Intl.NumberFormat().format(targetDate.getTimezoneOffset());
 	// TZmsOffset is real time zone offset in milliseconds (UTC - local time)
@@ -79,7 +77,6 @@ function setDisplay () { // Considering that targetDate time has been set to the
 		absoluteTZmin = Math.floor (absoluteRealOffset / Milliseconds.MINUTE_UNIT),
 		absoluteTZsec = Math.floor ((absoluteRealOffset - absoluteTZmin * Milliseconds.MINUTE_UNIT) / Milliseconds.SECOND_UNIT);
 	document.querySelector("#realTZOffset").innerHTML = (systemSign == 1 ? "+ ":"- ") + absoluteTZmin + " min " + absoluteTZsec + " s";
-
 
 	// Fill date and time fields with target date elements, according to time zone mode
 	switch (TZDisplay) {
@@ -107,12 +104,16 @@ function setDisplay () { // Considering that targetDate time has been set to the
 	document.getElementById("Posixnumber").innerHTML = targetDate.valueOf();
 
 	// Display day of week near date fields
-	document.gregorian.dayofweek.value = weekOptions.format(targetDate);
+	try { document.gregorian.dayofweek.value = weekOptions.format(targetDate) }
+	catch (e) { document.gregorian.dayofweek.value = e.message };
 
 	// Display date strings following currently applicable options
-
-	document.getElementById("Ustring").innerHTML = askedOptions.format(targetDate); 
-	document.getElementById("Xstring").innerHTML = extAskedOptions.format(targetDate);
+	myElement = document.getElementById("Ustring");
+	try { myElement.innerHTML = askedOptions.format(targetDate) }
+	catch (e) { myElement.innerHTML = e.message };
+	myElement = document.getElementById("Xstring")
+	try { myElement.innerHTML = extAskedOptions.format(targetDate) }
+	catch (e) { myElement.innerHTML = e.message };
 
 }
 
@@ -128,7 +129,7 @@ function calcFormat() { // get Locale, calendar indication and Options given on 
 		askedOptions = new Intl.DateTimeFormat(undef(Locale));
 	}
 	catch (e) {
-		alert (e.message + "\nCheck locale"); // e.fileName + " line " + e.lineNumber); 
+		alert (e.message + "\nCheck locale");
 		return
 	}
 	Locale = askedOptions.resolvedOptions().locale;	// Locale is no longer empty
@@ -221,9 +222,7 @@ function calcFormat() { // get Locale, calendar indication and Options given on 
 	document.timeOptions.Xhour12.checked = extUsedOptions.hour12;
 	document.timeOptions.XhourCycle.value = extUsedOptions.hourCycle;
 	document.timeOptions.XAmPm.value = extUsedOptions.dayPeriod;
-	
-	// Display under renewed format
-	// setDisplay();
+
 }
 
 function calcGregorian() {
@@ -324,7 +323,6 @@ function setUTCHoursFixed (UTChours=0) { // set UTC time to the hours specified.
 	if (isNaN(testDate.valueOf())) alert ("Out of range")
 	else {
 		targetDate = new Date (testDate.valueOf());
-		setDisplay();
+		// setDisplay();
 	}
 }
-
