@@ -1,11 +1,16 @@
 # Mock-up for the eraDisplay proposal for Intl.DateTimeFormat 
 This mock-up shows the effect of the proposed eraDisplay option on any date projected to the built-in calendars.
 
-Options fields of interest are hightlighted. Significant diffences occur with calendars other than "gregory", "iso8601", "chinese" and "dangi". Please change the calendar fields accordingly.
+Options fields of interest are hightlighted. 
+
+After launching the mock-up, you can see 
+* how the standard formatter Intl.DateTimeFormat.format displays a date before common era, 
+* how it would display the same date with the same options under this proposal.
+You can test the effects on other dates, calendars, set of options etc. with the present version of ICU and CLDR.
 
 Other Intl or CLDR issues outside the scope of the eraDisplay option proposal are also highlighted here:
-* lack of control for `chinese` and `dangi` calendars;
-* missing data in CLDR (e.g. 'fr' with `buddhist`);
+* lack of control when displaying dates in `chinese` and `dangi` calendars (in certain languages, including 'fr')
+* missing data in CLDR (e.g. 'fr' `buddhist` calendar in 'fr');
 * proposition to handle in a different way time fields options : `numeric` vs. `2-digit`;
 * handling missing date or time fields (e.g. `hour` and `second` defined, but `minute` missing);
 * ...
