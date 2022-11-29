@@ -1,11 +1,14 @@
 # eraDisplay option for Intl.DateTimeFormat
+
 This repository was built from the repository template for ECMAScript proposals.
+
+Spec Text Preview: https://tc39.es/proposal-intl-eradisplay/spec
 
 ## Status
 
 Champion(s): Shane Carr (@sffc)
 Author(s): Louis-Aimé de Fouquières (@Louis-Aime), Miletus, France
-Stage: -1
+Stage: 1
 
 ## Overview/Motivation
 
