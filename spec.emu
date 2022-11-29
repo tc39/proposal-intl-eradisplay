@@ -17,7 +17,7 @@
 
       <emu-alg>
         1. If NewTarget is *undefined*, let _newTarget_ be the active function object, else let _newTarget_ be NewTarget.
-        1. Let _dateTimeFormat_ be ? OrdinaryCreateFromConstructor(_newTarget_, *"%DateTimeFormat.prototype%"*, &laquo; [[InitializedDateTimeFormat]], [[Locale]], [[Calendar]], [[NumberingSystem]], [[TimeZone]], [[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[DayPeriod]], [[Hour]], [[Minute]], [[Second]], [[FractionalSecondDigits]], [[TimeZoneName]], [[HourCycle]], [[Pattern]], [[BoundFormat]] &raquo;).
+        1. Let _dateTimeFormat_ be ? OrdinaryCreateFromConstructor(_newTarget_, *"%DateTimeFormat.prototype%"*, &laquo; [[InitializedDateTimeFormat]], [[Locale]], [[Calendar]], [[NumberingSystem]], [[TimeZone]], <ins>[[EraDisplay]],</ins> [[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[DayPeriod]], [[Hour]], [[Minute]], [[Second]], [[FractionalSecondDigits]], [[TimeZoneName]], [[HourCycle]], [[Pattern]], [[BoundFormat]] &raquo;).
         1. Perform ? InitializeDateTimeFormat(_dateTimeFormat_, _locales_, _options_).
         1. If the implementation supports the normative optional constructor mode of <emu-xref href="#legacy-constructor"></emu-xref>, then
           1. Let _this_ be the *this* value.
@@ -86,6 +86,13 @@
           1. Let _hc_ be _r_.[[hc]].
           1. If _hc_ is *null*, set _hc_ to _hcDefault_.
         1. Set _dateTimeFormat_.[[HourCycle]] to _hc_.
+        1. <ins>Set _dateTimeFormat_.[[HourCycle]] to ? GetOption (_options_, *"eraDisplay"*, *"string"*, &laquo; *"never"*, *"always"*, *"auto"* &raquo;, *"auto"*).</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Year]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
+          1. <ins>If _dateTimeFormat_.[[Era]] is *undefined*, then</ins>
+            1. <ins>Set _dateTimeFormat_.[[Era]] to *"short"*.</ins>
         1. Let _timeZone_ be ? Get(_options_, *"timeZone"*).
         1. If _timeZone_ is *undefined*, then
           1. Set _timeZone_ to DefaultTimeZone().
@@ -225,7 +232,7 @@
           <ol>
             <li>A [[pattern]] field, whose value is a String value that contains for each of the date and time format component fields of the record a substring starting with *"{"*, followed by the name of the field, followed by *"}"*.</li>
             <li>If the record has an [[hour]] field, it must also have a [[pattern12]] field, whose value is a String value that, in addition to the substrings of the [[pattern]] field, contains at least one of the substrings *"{ampm}"* or *"{dayPeriod}"*.</li>
-            <li>If the record has a [[year]] field, the [[pattern]] and [[pattern12]] values may contain the substrings *"{yearName}"* and *"{relatedYear}"*.</li>
+            <li>If the record has a [[year]] field, the [[pattern]] and [[pattern12]] values may contain the substrings <ins>*"{Era}"*,</ins> *"{yearName}"* and *"{relatedYear}"*.</li>
             <li>
               A [[rangePatterns]] field with a Record value:
                 <ul>
@@ -574,6 +581,10 @@
             <td>*"weekday"*</td>
           </tr>
           <tr>
+            <td><ins>[[EraDisplay]]</ins></td>
+            <td><ins>*"eraDisplay"*</ins></td>
+          </tr>
+          <tr>
             <td>[[Era]]</td>
             <td>*"era"*</td>
           </tr>
@@ -661,6 +672,7 @@
       <li>[[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[DayPeriod]], [[Hour]], [[Minute]], [[Second]], [[TimeZoneName]] are each either *undefined*, indicating that the component is not used for formatting, or one of the String values given in <emu-xref href="#table-datetimeformat-components"></emu-xref>, indicating how the component should be presented in the formatted output.</li>
       <li>[[FractionalSecondDigits]] is either *undefined* or a positive, non-zero integer Number value indicating the fraction digits to be used for fractional seconds. Numbers will be rounded or padded with trailing zeroes if necessary.</li>
       <li>[[HourCycle]] is a String value indicating whether the 12-hour format (*"h11"*, *"h12"*) or the 24-hour format (*"h23"*, *"h24"*) should be used. *"h11"* and *"h23"* start with hour 0 and go up to 11 and 23 respectively. *"h12"* and *"h24"* start with hour 1 and go up to 12 and 24. [[HourCycle]] is only used when [[Hour]] is not *undefined*.</li>
+      <li><ins>[[EraDisplay]] is a String value indicating if a test on the _x_ Number passed to the PartitionDateTimePattern abstract operation should be done in order to possibly skip the [[Era]] component.</ins></li>
       <li>[[DateStyle]], [[TimeStyle]] are each either *undefined*, or a String value with values *"full"*, *"long"*, *"medium"*, or *"short"*.</li>
       <li>[[Pattern]] is a String value as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots"></emu-xref>.</li>
       <li>[[RangePatterns]] is a Record as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots"></emu-xref>.</li>
@@ -928,9 +940,19 @@
           1. Perform ! CreateDataPropertyOrThrow(_nf3Options_, *"useGrouping"*, *false*).
           1. Let _nf3_ be ? Construct(%NumberFormat%, &laquo; _locale_, _nf3Options_ &raquo;).
         1. Let _tm_ be ToLocalTime(ℤ(ℝ(_x_) &times; 10<sup>6</sup>), _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
+        1. <ins>Let _wde_ be *undefined*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then</ins>
+            1. <ins>Set _wde_ to *false*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
+            1. <ins>Set _wde_ to *true*.</ins>
+        1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+            1. <ins>Let _F_ be a DateTime format function of _dateTimeFormat_.</ins>
+            1. <ins>Set _wde_ to _F_().[[Era]] ≠ _F_(_x_).[[Era]].</ins>
         1. Let _result_ be a new empty List.
         1. For each Record { [[Type]], [[Value]] } _patternPart_ in _patternParts_, do
           1. Let _p_ be _patternPart_.[[Type]].
+          1. <ins>If _p_ is *"era"* and _wde_ is *false*, then</ins>
+            1. <ins>skip current patternPart, it should not be appended to list _result_.</ins>
           1. If _p_ is *"literal"*, then
             1. Append a new Record { [[Type]]: *"literal"*, [[Value]]: _patternPart_.[[Value]] } as the last element of the list _result_.
           1. Else if _p_ is equal to *"fractionalSecondDigits"*, then
