@@ -1,0 +1,2675 @@
+<!doctype html>
+<head><meta charset="utf-8"><script type="application/json" id="menu-search-biblio">[{"type":"term","term":"%DateTimeFormat%","refId":"sec-intl-datetimeformat-constructor","referencingIds":[],"namespace":"<no location>","location":"","key":"%DateTimeFormat%"},{"type":"op","aoid":"ChainDateTimeFormat","refId":"sec-chaindatetimeformat","location":"","referencingIds":[],"key":"ChainDateTimeFormat"},{"type":"clause","id":"sec-chaindatetimeformat","aoid":"ChainDateTimeFormat","title":"ChainDateTimeFormat ( dateTimeFormat, newTarget, this )","titleHTML":"ChainDateTimeFormat ( <var>dateTimeFormat</var>, <var>newTarget</var>, <var>this</var> )","number":"1.1.1.1","namespace":"<no location>","location":"","referencingIds":["_ref_24"],"key":"ChainDateTimeFormat ( dateTimeFormat, newTarget, this )"},{"type":"clause","id":"sec-intl.datetimeformat","aoid":null,"title":"Intl.DateTimeFormat ( [ locales [ , options ] ] )","titleHTML":"Intl.DateTimeFormat ( [ <var>locales</var> [ , <var>options</var> ] ] )","number":"1.1.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat ( [ locales [ , options ] ] )"},{"type":"op","aoid":"InitializeDateTimeFormat","refId":"sec-initializedatetimeformat","location":"","referencingIds":[],"key":"InitializeDateTimeFormat"},{"type":"clause","id":"sec-initializedatetimeformat","aoid":"InitializeDateTimeFormat","title":"InitializeDateTimeFormat ( dateTimeFormat, locales, options )","titleHTML":"InitializeDateTimeFormat ( <var>dateTimeFormat</var>, <var>locales</var>, <var>options</var> )","number":"1.1.2","namespace":"<no location>","location":"","referencingIds":["_ref_23"],"key":"InitializeDateTimeFormat ( dateTimeFormat, locales, options )"},{"type":"clause","id":"sec-intl-datetimeformat-constructor","aoid":null,"title":"The Intl.DateTimeFormat Constructor","titleHTML":"The Intl.DateTimeFormat Constructor","number":"1.1","namespace":"<no location>","location":"","referencingIds":["_ref_26","_ref_29","_ref_30","_ref_31","_ref_38","_ref_39","_ref_66","_ref_102","_ref_105"],"key":"The Intl.DateTimeFormat Constructor"},{"type":"clause","id":"sec-intl.datetimeformat.prototype","aoid":null,"title":"Intl.DateTimeFormat.prototype","titleHTML":"Intl.DateTimeFormat.prototype","number":"1.2.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype"},{"type":"clause","id":"sec-intl.datetimeformat.supportedlocalesof","aoid":null,"title":"Intl.DateTimeFormat.supportedLocalesOf ( locales [ , options ] )","titleHTML":"Intl.DateTimeFormat.supportedLocalesOf ( <var>locales</var> [ , <var>options</var> ] )","number":"1.2.2","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.supportedLocalesOf ( locales [ , options ] )"},{"type":"table","id":"table-datetimeformat-rangepatternfields","node":{},"number":1,"caption":"Table 1: Range pattern fields","referencingIds":["_ref_4","_ref_19"],"namespace":"<no location>","location":"","key":"Table 1: Range pattern fields"},{"type":"clause","id":"sec-intl.datetimeformat-internal-slots","aoid":null,"title":"Internal slots","titleHTML":"Internal slots","number":"1.2.3","namespace":"<no location>","location":"","referencingIds":["_ref_13","_ref_14","_ref_15"],"key":"Internal slots"},{"type":"clause","id":"sec-properties-of-intl-datetimeformat-constructor","aoid":null,"title":"Properties of the Intl.DateTimeFormat Constructor","titleHTML":"Properties of the Intl.DateTimeFormat Constructor","number":"1.2","namespace":"<no location>","location":"","referencingIds":[],"key":"Properties of the Intl.DateTimeFormat Constructor"},{"type":"term","term":"%DateTimeFormat.prototype%","refId":"sec-properties-of-intl-datetimeformat-prototype-object","referencingIds":[],"namespace":"<no location>","location":"","key":"%DateTimeFormat.prototype%"},{"type":"clause","id":"sec-intl.datetimeformat.prototype.constructor","aoid":null,"title":"Intl.DateTimeFormat.prototype.constructor","titleHTML":"Intl.DateTimeFormat.prototype.constructor","number":"1.3.1","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype.constructor"},{"type":"clause","id":"sec-intl.datetimeformat.prototype-@@tostringtag","aoid":null,"title":"Intl.DateTimeFormat.prototype [ @@toStringTag ]","titleHTML":"Intl.DateTimeFormat.prototype [ @@toStringTag ]","number":"1.3.2","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype [ @@toStringTag ]"},{"type":"clause","id":"sec-intl.datetimeformat.prototype.format","aoid":null,"title":"get Intl.DateTimeFormat.prototype.format","titleHTML":"get Intl.DateTimeFormat.prototype.format","number":"1.3.3","namespace":"<no location>","location":"","referencingIds":["_ref_16"],"key":"get Intl.DateTimeFormat.prototype.format"},{"type":"clause","id":"sec-Intl.DateTimeFormat.prototype.formatToParts","aoid":null,"title":"Intl.DateTimeFormat.prototype.formatToParts ( date )","titleHTML":"Intl.DateTimeFormat.prototype.formatToParts ( <var>date</var> )","number":"1.3.4","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype.formatToParts ( date )"},{"type":"clause","id":"sec-intl.datetimeformat.prototype.formatRange","aoid":null,"title":"Intl.DateTimeFormat.prototype.formatRange ( startDate, endDate )","titleHTML":"Intl.DateTimeFormat.prototype.formatRange ( <var>startDate</var>, <var>endDate</var> )","number":"1.3.5","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype.formatRange ( startDate, endDate )"},{"type":"clause","id":"sec-Intl.DateTimeFormat.prototype.formatRangeToParts","aoid":null,"title":"Intl.DateTimeFormat.prototype.formatRangeToParts ( startDate, endDate )","titleHTML":"Intl.DateTimeFormat.prototype.formatRangeToParts ( <var>startDate</var>, <var>endDate</var> )","number":"1.3.6","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype.formatRangeToParts ( startDate, endDate )"},{"type":"table","id":"table-datetimeformat-resolvedoptions-properties","node":{},"number":2,"caption":"Table 2: Resolved Options of DateTimeFormat Instances","referencingIds":["_ref_10"],"namespace":"<no location>","location":"","key":"Table 2: Resolved Options of DateTimeFormat Instances"},{"type":"clause","id":"sec-intl.datetimeformat.prototype.resolvedoptions","aoid":null,"title":"Intl.DateTimeFormat.prototype.resolvedOptions ( )","titleHTML":"Intl.DateTimeFormat.prototype.resolvedOptions ( )","number":"1.3.7","namespace":"<no location>","location":"","referencingIds":[],"key":"Intl.DateTimeFormat.prototype.resolvedOptions ( )"},{"type":"clause","id":"sec-properties-of-intl-datetimeformat-prototype-object","aoid":null,"title":"Properties of the Intl.DateTimeFormat Prototype Object","titleHTML":"Properties of the Intl.DateTimeFormat Prototype Object","number":"1.3","namespace":"<no location>","location":"","referencingIds":["_ref_37","_ref_57"],"key":"Properties of the Intl.DateTimeFormat Prototype Object"},{"type":"clause","id":"sec-properties-of-intl-datetimeformat-instances","aoid":null,"title":"Properties of Intl.DateTimeFormat Instances","titleHTML":"Properties of Intl.DateTimeFormat Instances","number":"1.4","namespace":"<no location>","location":"","referencingIds":[],"key":"Properties of Intl.DateTimeFormat Instances"},{"type":"table","id":"table-datetimeformat-components","node":{},"number":3,"caption":"Table 3: Components of date and time formats","referencingIds":["_ref_0","_ref_1","_ref_2","_ref_3","_ref_5","_ref_6","_ref_7","_ref_8","_ref_11","_ref_12","_ref_17","_ref_18"],"namespace":"<no location>","location":"","key":"Table 3: Components of date and time formats"},{"type":"op","aoid":"ToDateTimeOptions","refId":"sec-todatetimeoptions","location":"","referencingIds":[],"key":"ToDateTimeOptions"},{"type":"clause","id":"sec-todatetimeoptions","aoid":"ToDateTimeOptions","title":"ToDateTimeOptions ( options, required, defaults )","titleHTML":"ToDateTimeOptions ( <var>options</var>, <var>required</var>, <var>defaults</var> )","number":"1.5.1","namespace":"<no location>","location":"","referencingIds":["_ref_28"],"key":"ToDateTimeOptions ( options, required, defaults )"},{"type":"op","aoid":"DateTimeStyleFormat","refId":"sec-date-time-style-format","location":"","referencingIds":[],"key":"DateTimeStyleFormat"},{"type":"clause","id":"sec-date-time-style-format","aoid":"DateTimeStyleFormat","title":"DateTimeStyleFormat ( dateStyle, timeStyle, styles )","titleHTML":"DateTimeStyleFormat ( <var>dateStyle</var>, <var>timeStyle</var>, <var>styles</var> )","number":"1.5.2","namespace":"<no location>","location":"","referencingIds":["_ref_34"],"key":"DateTimeStyleFormat ( dateStyle, timeStyle, styles )"},{"type":"op","aoid":"BasicFormatMatcher","refId":"sec-basicformatmatcher","location":"","referencingIds":[],"key":"BasicFormatMatcher"},{"type":"clause","id":"sec-basicformatmatcher","aoid":"BasicFormatMatcher","title":"BasicFormatMatcher ( options, formats )","titleHTML":"BasicFormatMatcher ( <var>options</var>, <var>formats</var> )","number":"1.5.3","namespace":"<no location>","location":"","referencingIds":["_ref_35","_ref_68"],"key":"BasicFormatMatcher ( options, formats )"},{"type":"op","aoid":"BestFitFormatMatcher","refId":"sec-bestfitformatmatcher","location":"","referencingIds":[],"key":"BestFitFormatMatcher"},{"type":"clause","id":"sec-bestfitformatmatcher","aoid":"BestFitFormatMatcher","title":"BestFitFormatMatcher ( options, formats )","titleHTML":"BestFitFormatMatcher ( <var>options</var>, <var>formats</var> )","number":"1.5.4","namespace":"<no location>","location":"","referencingIds":["_ref_36"],"key":"BestFitFormatMatcher ( options, formats )"},{"type":"clause","id":"sec-datetime-format-functions","aoid":null,"title":"DateTime Format Functions","titleHTML":"DateTime Format Functions","number":"1.5.5","namespace":"<no location>","location":"","referencingIds":["_ref_9"],"key":"DateTime Format Functions"},{"type":"op","aoid":"FormatDateTimePattern","refId":"sec-formatdatetimepattern","location":"","referencingIds":[],"key":"FormatDateTimePattern"},{"type":"clause","id":"sec-formatdatetimepattern","aoid":"FormatDateTimePattern","title":"FormatDateTimePattern ( dateTimeFormat, patternParts, x, rangeFormatOptions )","titleHTML":"FormatDateTimePattern ( <var>dateTimeFormat</var>, <var>patternParts</var>, <var>x</var>, <var>rangeFormatOptions</var> )","number":"1.5.6","namespace":"<no location>","location":"","referencingIds":["_ref_82","_ref_92","_ref_93"],"key":"FormatDateTimePattern ( dateTimeFormat, patternParts, x, rangeFormatOptions )"},{"type":"op","aoid":"PartitionDateTimePattern","refId":"sec-partitiondatetimepattern","location":"","referencingIds":[],"key":"PartitionDateTimePattern"},{"type":"clause","id":"sec-partitiondatetimepattern","aoid":"PartitionDateTimePattern","title":"PartitionDateTimePattern ( dateTimeFormat, x )","titleHTML":"PartitionDateTimePattern ( <var>dateTimeFormat</var>, <var>x</var> )","number":"1.5.7","namespace":"<no location>","location":"","referencingIds":["_ref_58","_ref_83","_ref_84"],"key":"PartitionDateTimePattern ( dateTimeFormat, x )"},{"type":"op","aoid":"FormatDateTime","refId":"sec-formatdatetime","location":"","referencingIds":[],"key":"FormatDateTime"},{"type":"clause","id":"sec-formatdatetime","aoid":"FormatDateTime","title":"FormatDateTime ( dateTimeFormat, x )","titleHTML":"FormatDateTime ( <var>dateTimeFormat</var>, <var>x</var> )","number":"1.5.8","namespace":"<no location>","location":"","referencingIds":["_ref_72"],"key":"FormatDateTime ( dateTimeFormat, x )"},{"type":"op","aoid":"FormatDateTimeToParts","refId":"sec-formatdatetimetoparts","location":"","referencingIds":[],"key":"FormatDateTimeToParts"},{"type":"clause","id":"sec-formatdatetimetoparts","aoid":"FormatDateTimeToParts","title":"FormatDateTimeToParts ( dateTimeFormat, x )","titleHTML":"FormatDateTimeToParts ( <var>dateTimeFormat</var>, <var>x</var> )","number":"1.5.9","namespace":"<no location>","location":"","referencingIds":["_ref_45"],"key":"FormatDateTimeToParts ( dateTimeFormat, x )"},{"type":"op","aoid":"PartitionDateTimeRangePattern","refId":"sec-partitiondatetimerangepattern","location":"","referencingIds":[],"key":"PartitionDateTimeRangePattern"},{"type":"clause","id":"sec-partitiondatetimerangepattern","aoid":"PartitionDateTimeRangePattern","title":"PartitionDateTimeRangePattern ( dateTimeFormat, x, y )","titleHTML":"PartitionDateTimeRangePattern ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )","number":"1.5.10","namespace":"<no location>","location":"","referencingIds":["_ref_94","_ref_95"],"key":"PartitionDateTimeRangePattern ( dateTimeFormat, x, y )"},{"type":"op","aoid":"FormatDateTimeRange","refId":"sec-formatdatetimerange","location":"","referencingIds":[],"key":"FormatDateTimeRange"},{"type":"clause","id":"sec-formatdatetimerange","aoid":"FormatDateTimeRange","title":"FormatDateTimeRange ( dateTimeFormat, x, y )","titleHTML":"FormatDateTimeRange ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )","number":"1.5.11","namespace":"<no location>","location":"","referencingIds":["_ref_49"],"key":"FormatDateTimeRange ( dateTimeFormat, x, y )"},{"type":"op","aoid":"FormatDateTimeRangeToParts","refId":"sec-formatdatetimerangetoparts","location":"","referencingIds":[],"key":"FormatDateTimeRangeToParts"},{"type":"clause","id":"sec-formatdatetimerangetoparts","aoid":"FormatDateTimeRangeToParts","title":"FormatDateTimeRangeToParts ( dateTimeFormat, x, y )","titleHTML":"FormatDateTimeRangeToParts ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )","number":"1.5.12","namespace":"<no location>","location":"","referencingIds":["_ref_53"],"key":"FormatDateTimeRangeToParts ( dateTimeFormat, x, y )"},{"type":"table","id":"table-datetimeformat-tolocaltime-record","node":{},"number":4,"caption":"Table 4: Record returned by ToLocalTime","referencingIds":["_ref_20","_ref_21"],"namespace":"<no location>","location":"","key":"Table 4: Record returned by ToLocalTime"},{"type":"clause","id":"sec-tolocaltime","aoid":null,"title":"\n        ToLocalTime (\n          epochNs: a BigInt,\n          calendar: a String,\n          timeZone: a String,\n        )\n      ","titleHTML":"\n        ToLocalTime (\n          <var>epochNs</var>: a BigInt,\n          <var>calendar</var>: a String,\n          <var>timeZone</var>: a String,\n        )\n      ","number":"1.5.13","namespace":"<no location>","location":"","referencingIds":[],"key":"\n        ToLocalTime (\n          epochNs: a BigInt,\n          calendar: a String,\n          timeZone: a String,\n        )\n      "},{"type":"op","aoid":"UnwrapDateTimeFormat","refId":"sec-unwrapdatetimeformat","location":"","referencingIds":[],"key":"UnwrapDateTimeFormat"},{"type":"clause","id":"sec-unwrapdatetimeformat","aoid":"UnwrapDateTimeFormat","title":"UnwrapDateTimeFormat ( dtf )","titleHTML":"UnwrapDateTimeFormat ( <var>dtf</var> )","number":"1.5.14","namespace":"<no location>","location":"","referencingIds":["_ref_40","_ref_54"],"key":"UnwrapDateTimeFormat ( dtf )"},{"type":"clause","id":"sec-datetimeformat-abstracts","aoid":null,"title":"Abstract Operations for DateTimeFormat Objects","titleHTML":"Abstract Operations for DateTimeFormat Objects","number":"1.5","namespace":"<no location>","location":"","referencingIds":[],"key":"Abstract Operations for DateTimeFormat Objects"},{"type":"clause","id":"datetimeformat-objects","aoid":null,"title":"DateTimeFormat Objects","titleHTML":"DateTimeFormat Objects","number":"1","namespace":"<no location>","location":"","referencingIds":[],"key":"DateTimeFormat Objects"}]</script><script>"use strict";
+
+function Search(menu) {
+  this.menu = menu;
+  this.$search = document.getElementById('menu-search');
+  this.$searchBox = document.getElementById('menu-search-box');
+  this.$searchResults = document.getElementById('menu-search-results');
+
+  this.loadBiblio();
+
+  document.addEventListener('keydown', this.documentKeydown.bind(this));
+
+  this.$searchBox.addEventListener('keydown', debounce(this.searchBoxKeydown.bind(this), { stopPropagation: true }));
+  this.$searchBox.addEventListener('keyup', debounce(this.searchBoxKeyup.bind(this), { stopPropagation: true }));
+
+  // Perform an initial search if the box is not empty.
+  if (this.$searchBox.value) {
+    this.search(this.$searchBox.value);
+  }
+}
+
+Search.prototype.loadBiblio = function () {
+  var $biblio = document.getElementById('menu-search-biblio');
+  if (!$biblio) {
+    this.biblio = [];
+  } else {
+    this.biblio = JSON.parse($biblio.textContent);
+    this.biblio.clauses = this.biblio.filter(function (e) { return e.type === 'clause' });
+    this.biblio.byId = this.biblio.reduce(function (map, entry) {
+      map[entry.id] = entry;
+      return map;
+    }, {});
+  }
+}
+
+Search.prototype.documentKeydown = function (e) {
+  if (e.keyCode === 191) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.triggerSearch();
+  }
+}
+
+Search.prototype.searchBoxKeydown = function (e) {
+  e.stopPropagation();
+  e.preventDefault();
+  if (e.keyCode === 191 && e.target.value.length === 0) {
+    e.preventDefault();
+  } else if (e.keyCode === 13) {
+    e.preventDefault();
+    this.selectResult();
+  }
+}
+
+Search.prototype.searchBoxKeyup = function (e) {
+  if (e.keyCode === 13 || e.keyCode === 9) {
+    return;
+  }
+
+  this.search(e.target.value);
+}
+
+
+Search.prototype.triggerSearch = function (e) {
+  if (this.menu.isVisible()) {
+    this._closeAfterSearch = false;
+  } else {
+    this._closeAfterSearch = true;
+    this.menu.show();
+  }
+
+  this.$searchBox.focus();
+  this.$searchBox.select();
+}
+// bit 12 - Set if the result starts with searchString
+// bits 8-11: 8 - number of chunks multiplied by 2 if cases match, otherwise 1.
+// bits 1-7: 127 - length of the entry
+// General scheme: prefer case sensitive matches with fewer chunks, and otherwise
+// prefer shorter matches.
+function relevance(result, searchString) {
+  var relevance = 0;
+
+  relevance = Math.max(0, 8 - result.match.chunks) << 7;
+
+  if (result.match.caseMatch) {
+    relevance *= 2;
+  }
+
+  if (result.match.prefix) {
+    relevance += 2048
+  }
+
+  relevance += Math.max(0, 255 - result.entry.key.length);
+
+  return relevance;
+}
+
+Search.prototype.search = function (searchString) {
+  if (searchString === '') {
+    this.displayResults([]);
+    this.hideSearch();
+    return;
+  } else {
+    this.showSearch();
+  }
+
+  if (searchString.length === 1) {
+    this.displayResults([]);
+    return;
+  }
+
+  var results;
+
+  if (/^[\d\.]*$/.test(searchString)) {
+    results = this.biblio.clauses.filter(function (clause) {
+      return clause.number.substring(0, searchString.length) === searchString;
+    }).map(function (clause) {
+      return { entry: clause };
+    });
+  } else {
+    results = [];
+
+    for (var i = 0; i < this.biblio.length; i++) {
+      var entry = this.biblio[i];
+      if (!entry.key) {
+        // biblio entries without a key aren't searchable
+        continue;
+      }
+
+      var match = fuzzysearch(searchString, entry.key);
+      if (match) {
+        results.push({ entry: entry, match: match });
+      }
+    }
+
+    results.forEach(function (result) {
+      result.relevance = relevance(result, searchString);
+    });
+
+    results = results.sort(function (a, b) { return b.relevance - a.relevance });
+
+  }
+
+  if (results.length > 50) {
+    results = results.slice(0, 50);
+  }
+
+  this.displayResults(results);
+}
+Search.prototype.hideSearch = function () {
+  this.$search.classList.remove('active');
+}
+
+Search.prototype.showSearch = function () {
+  this.$search.classList.add('active');
+}
+
+Search.prototype.selectResult = function () {
+  var $first = this.$searchResults.querySelector('li:first-child a');
+
+  if ($first) {
+    document.location = $first.getAttribute('href');
+  }
+
+  this.$searchBox.value = '';
+  this.$searchBox.blur();
+  this.displayResults([]);
+  this.hideSearch();
+
+  if (this._closeAfterSearch) {
+    this.menu.hide();
+  }
+}
+
+Search.prototype.displayResults = function (results) {
+  if (results.length > 0) {
+    this.$searchResults.classList.remove('no-results');
+
+    var html = '<ul>';
+
+    results.forEach(function (result) {
+      var entry = result.entry;
+      var id = entry.id;
+      var cssClass = '';
+      var text = '';
+
+      if (entry.type === 'clause') {
+        var number = entry.number ? entry.number + ' ' : '';
+        text = number + entry.key;
+        cssClass = 'clause';
+        id = entry.id;
+      } else if (entry.type === 'production') {
+        text = entry.key;
+        cssClass = 'prod';
+        id = entry.id;
+      } else if (entry.type === 'op') {
+        text = entry.key;
+        cssClass = 'op';
+        id = entry.id || entry.refId;
+      } else if (entry.type === 'term') {
+        text = entry.key;
+        cssClass = 'term';
+        id = entry.id || entry.refId;
+      }
+
+      if (text) {
+        html += '<li class=menu-search-result-' + cssClass + '><a href="#' + id + '">' + text + '</a></li>';
+      }
+    });
+
+    html += '</ul>'
+
+    this.$searchResults.innerHTML = html;
+  } else {
+    this.$searchResults.innerHTML = '';
+    this.$searchResults.classList.add('no-results');
+  }
+}
+
+
+function Menu() {
+  this.$toggle = document.getElementById('menu-toggle');
+  this.$menu = document.getElementById('menu');
+  this.$toc = document.querySelector('menu-toc > ol');
+  this.$pins = document.querySelector('#menu-pins');
+  this.$pinList = document.getElementById('menu-pins-list');
+  this.$toc = document.querySelector('#menu-toc > ol');
+  this.$specContainer = document.getElementById('spec-container');
+  this.search = new Search(this);
+
+  this._pinnedIds = {}; 
+  this.loadPinEntries();
+
+  // toggle menu
+  this.$toggle.addEventListener('click', this.toggle.bind(this));
+
+  // keydown events for pinned clauses
+  document.addEventListener('keydown', this.documentKeydown.bind(this));
+
+  // toc expansion
+  var tocItems = this.$menu.querySelectorAll('#menu-toc li');
+  for (var i = 0; i < tocItems.length; i++) {
+    var $item = tocItems[i];
+    $item.addEventListener('click', function($item, event) {
+      $item.classList.toggle('active');
+      event.stopPropagation();
+    }.bind(null, $item));
+  }
+
+  // close toc on toc item selection
+  var tocLinks = this.$menu.querySelectorAll('#menu-toc li > a');
+  for (var i = 0; i < tocLinks.length; i++) {
+    var $link = tocLinks[i];
+    $link.addEventListener('click', function(event) {
+      this.toggle();
+      event.stopPropagation();
+    }.bind(this));
+  }
+
+  // update active clause on scroll
+  window.addEventListener('scroll', debounce(this.updateActiveClause.bind(this)));
+  this.updateActiveClause();
+
+  // prevent menu scrolling from scrolling the body
+  this.$toc.addEventListener('wheel', function (e) {
+    var target = e.currentTarget;
+    var offTop = e.deltaY < 0 && target.scrollTop === 0;
+    if (offTop) {
+      e.preventDefault();
+    }
+    var offBottom = e.deltaY > 0
+                    && target.offsetHeight + target.scrollTop >= target.scrollHeight;
+
+    if (offBottom) {
+      e.preventDefault();
+    }
+  });
+}
+
+Menu.prototype.documentKeydown = function (e) {
+  e.stopPropagation();
+  if (e.keyCode === 80) {
+    this.togglePinEntry();
+  } else if (e.keyCode > 48 && e.keyCode < 58) {
+    this.selectPin(e.keyCode - 49);
+  }
+}
+
+Menu.prototype.updateActiveClause = function () {
+  this.setActiveClause(findActiveClause(this.$specContainer))
+}
+
+Menu.prototype.setActiveClause = function (clause) {
+  this.$activeClause = clause;
+  this.revealInToc(this.$activeClause);
+}
+
+Menu.prototype.revealInToc = function (path) {
+  var current = this.$toc.querySelectorAll('li.revealed');
+  for (var i = 0; i < current.length; i++) {
+    current[i].classList.remove('revealed');
+    current[i].classList.remove('revealed-leaf');
+  }
+
+  var current = this.$toc;
+  var index = 0;
+  while (index < path.length) {
+    var children = current.children;
+    for (var i = 0; i < children.length; i++) {
+      if ('#' + path[index].id === children[i].children[1].getAttribute('href') ) {
+        children[i].classList.add('revealed');
+        if (index === path.length - 1) {
+          children[i].classList.add('revealed-leaf');
+          var rect = children[i].getBoundingClientRect();
+          // this.$toc.getBoundingClientRect().top;
+          var tocRect = this.$toc.getBoundingClientRect();
+          if (rect.top + 10 > tocRect.bottom) {
+            this.$toc.scrollTop = this.$toc.scrollTop + (rect.top - tocRect.bottom) + (rect.bottom - rect.top);
+          } else if (rect.top < tocRect.top) {
+            this.$toc.scrollTop = this.$toc.scrollTop - (tocRect.top - rect.top);
+          }
+        }
+        current = children[i].querySelector('ol');
+        index++;
+        break;
+      }
+    }
+
+  }
+}
+
+function findActiveClause(root, path) {
+  var clauses = new ClauseWalker(root);
+  var $clause;
+  var path = path || [];
+
+  while ($clause = clauses.nextNode()) {
+    var rect = $clause.getBoundingClientRect();
+    var $header = $clause.querySelector("h1");
+    var marginTop = parseInt(getComputedStyle($header)["margin-top"]);
+
+    if ((rect.top - marginTop) <= 0 && rect.bottom > 0) {
+      return findActiveClause($clause, path.concat($clause)) || path;
+    }
+  }
+
+  return path;
+}
+
+function ClauseWalker(root) {
+  var previous;
+  var treeWalker = document.createTreeWalker(
+    root,
+    NodeFilter.SHOW_ELEMENT,
+    {
+      acceptNode: function (node) {
+        if (previous === node.parentNode) {
+          return NodeFilter.FILTER_REJECT;
+        } else {
+          previous = node;
+        }
+        if (node.nodeName === 'EMU-CLAUSE' || node.nodeName === 'EMU-INTRO' || node.nodeName === 'EMU-ANNEX') {
+          return NodeFilter.FILTER_ACCEPT;
+        } else {
+          return NodeFilter.FILTER_SKIP;
+        }
+      }
+    },
+    false
+    );
+
+  return treeWalker;
+}
+
+Menu.prototype.toggle = function () {
+  this.$menu.classList.toggle('active');
+}
+
+Menu.prototype.show = function () {
+  this.$menu.classList.add('active');
+}
+
+Menu.prototype.hide = function () {
+  this.$menu.classList.remove('active');
+}
+
+Menu.prototype.isVisible = function() {
+  return this.$menu.classList.contains('active');
+}
+
+Menu.prototype.showPins = function () {
+  this.$pins.classList.add('active');
+}
+
+Menu.prototype.hidePins = function () {
+  this.$pins.classList.remove('active');
+}
+
+Menu.prototype.addPinEntry = function (id) {
+  var entry = this.search.biblio.byId[id];
+  if (!entry) {
+    // id was deleted after pin (or something) so remove it
+    delete this._pinnedIds[id];
+    this.persistPinEntries();
+    return;
+  }
+
+  if (entry.type === 'clause') {
+    var prefix;
+    if (entry.number) {
+      prefix = entry.number + ' ';
+    } else {
+      prefix = '';
+    }
+    this.$pinList.innerHTML += '<li><a href="#' + entry.id + '">' + prefix + entry.titleHTML + '</a></li>';
+  } else {
+    this.$pinList.innerHTML += '<li><a href="#' + entry.id + '">' + entry.key + '</a></li>';
+  }
+
+  if (Object.keys(this._pinnedIds).length === 0) {
+    this.showPins();
+  }
+  this._pinnedIds[id] = true;
+  this.persistPinEntries();
+}
+
+Menu.prototype.removePinEntry = function (id) {
+  var item = this.$pinList.querySelector('a[href="#' + id + '"]').parentNode;
+  this.$pinList.removeChild(item);
+  delete this._pinnedIds[id];
+  if (Object.keys(this._pinnedIds).length === 0) {
+    this.hidePins();
+  }
+
+  this.persistPinEntries();
+}
+
+Menu.prototype.persistPinEntries = function () {
+  try {
+    if (!window.localStorage) return;
+  } catch (e) {
+    return;
+  }
+
+  localStorage.pinEntries = JSON.stringify(Object.keys(this._pinnedIds));
+}
+
+Menu.prototype.loadPinEntries = function () {
+  try {
+    if (!window.localStorage) return;
+  } catch (e) {
+    return;
+  }
+
+  var pinsString = window.localStorage.pinEntries;
+  if (!pinsString) return;
+  var pins = JSON.parse(pinsString);
+  for(var i = 0; i < pins.length; i++) {
+    this.addPinEntry(pins[i]);
+  }
+}
+
+Menu.prototype.togglePinEntry = function (id) {
+  if (!id) {
+    id = this.$activeClause[this.$activeClause.length - 1].id;
+  }
+
+  if (this._pinnedIds[id]) {
+    this.removePinEntry(id);
+  } else {
+    this.addPinEntry(id);
+  }
+}
+
+Menu.prototype.selectPin = function (num) {
+  document.location = this.$pinList.children[num].children[0].href;
+}
+
+var menu;
+function init() {
+  menu = new Menu();
+  var $container = document.getElementById('spec-container');
+  $container.addEventListener('mouseover', debounce(function (e) {
+    Toolbox.activateIfMouseOver(e);
+  }));
+  document.addEventListener('keydown', debounce(function (e) {
+    if (e.code === "Escape" && Toolbox.active) {
+      Toolbox.deactivate();
+    }
+  }));
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+function debounce(fn, opts) {
+  opts = opts || {};
+  var timeout;
+  return function(e) {
+    if (opts.stopPropagation) {
+      e.stopPropagation();
+    }
+    var args = arguments;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function() {
+      timeout = null;
+      fn.apply(this, args);
+    }.bind(this), 150);
+  }
+}
+
+var CLAUSE_NODES = ['EMU-CLAUSE', 'EMU-INTRO', 'EMU-ANNEX'];
+function findLocalReferences ($elem) {
+  var name = $elem.innerHTML;
+  var references = [];
+
+  var parentClause = $elem.parentNode;
+  while (parentClause && CLAUSE_NODES.indexOf(parentClause.nodeName) === -1) {
+    parentClause = parentClause.parentNode;
+  }
+
+  if(!parentClause) return;
+
+  var vars = parentClause.querySelectorAll('var');
+
+  for (var i = 0; i < vars.length; i++) {
+    var $var = vars[i];
+
+    if ($var.innerHTML === name) {
+      references.push($var);
+    }
+  }
+
+  return references;
+}
+
+function toggleFindLocalReferences($elem) {
+  var references = findLocalReferences($elem);
+  if ($elem.classList.contains('referenced')) {
+    references.forEach(function ($reference) {
+      $reference.classList.remove('referenced');
+    });
+  } else {
+    references.forEach(function ($reference) {
+      $reference.classList.add('referenced');
+    });
+  }
+}
+
+function installFindLocalReferences () {
+  document.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'VAR') {
+      toggleFindLocalReferences(e.target);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', installFindLocalReferences);
+
+
+
+
+// The following license applies to the fuzzysearch function
+// The MIT License (MIT)
+// Copyright © 2015 Nicolas Bevacqua
+// Copyright © 2016 Brian Terlson
+// Permission is hereby granted, free of charge, to any person obtaining a copy of
+// this software and associated documentation files (the "Software"), to deal in
+// the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+function fuzzysearch (searchString, haystack, caseInsensitive) {
+  var tlen = haystack.length;
+  var qlen = searchString.length;
+  var chunks = 1;
+  var finding = false;
+
+  if (qlen > tlen) {
+    return false;
+  }
+
+  if (qlen === tlen) {
+    if (searchString === haystack) {
+      return { caseMatch: true, chunks: 1, prefix: true };
+    } else if (searchString.toLowerCase() === haystack.toLowerCase()) {
+      return { caseMatch: false, chunks: 1, prefix: true };
+    } else {
+      return false;
+    }
+  }
+
+  outer: for (var i = 0, j = 0; i < qlen; i++) {
+    var nch = searchString[i];
+    while (j < tlen) {
+      var targetChar = haystack[j++];
+      if (targetChar === nch) {
+        finding = true;
+        continue outer;
+      }
+      if (finding) {
+        chunks++;
+        finding = false;
+      }
+    }
+
+    if (caseInsensitive) { return false; }
+
+    return fuzzysearch(searchString.toLowerCase(), haystack.toLowerCase(), true);
+  }
+
+  return { caseMatch: !caseInsensitive, chunks: chunks, prefix: j <= qlen };
+}
+
+var Toolbox = {
+  init: function () {
+    this.$container = document.createElement('div');
+    this.$container.classList.add('toolbox');
+    this.$permalink = document.createElement('a');
+    this.$permalink.textContent = 'Permalink';
+    this.$pinLink = document.createElement('a');
+    this.$pinLink.textContent = 'Pin';
+    this.$pinLink.setAttribute('href', '#');
+    this.$pinLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      menu.togglePinEntry(this.entry.id);
+    }.bind(this));
+
+    this.$refsLink = document.createElement('a');
+    this.$refsLink.setAttribute('href', '#');
+    this.$refsLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      referencePane.showReferencesFor(this.entry);
+    }.bind(this));
+    this.$container.appendChild(this.$permalink);
+    this.$container.appendChild(this.$pinLink);
+    this.$container.appendChild(this.$refsLink);
+    document.body.appendChild(this.$container);
+  },
+
+  activate: function (el, entry, target) {
+    if (el === this._activeEl) return;
+    this.active = true;
+    this.entry = entry;
+    this.$container.classList.add('active');
+    this.top = el.offsetTop - this.$container.offsetHeight - 10;
+    this.left = el.offsetLeft;
+    this.$container.setAttribute('style', 'left: ' + this.left + 'px; top: ' + this.top + 'px');
+    this.updatePermalink();
+    this.updateReferences();
+    this._activeEl = el;
+    if (this.top < document.body.scrollTop && el === target) {
+      // don't scroll unless it's a small thing (< 200px)
+      this.$container.scrollIntoView();
+    }
+  },
+
+  updatePermalink: function () {
+    this.$permalink.setAttribute('href', '#' + this.entry.id);
+  },
+
+  updateReferences: function () {
+    this.$refsLink.textContent = 'References (' + this.entry.referencingIds.length + ')';
+  },
+
+  activateIfMouseOver: function (e) {
+    var ref = this.findReferenceUnder(e.target);
+    if (ref && (!this.active || e.pageY > this._activeEl.offsetTop)) {
+      var entry = menu.search.biblio.byId[ref.id];
+      this.activate(ref.element, entry, e.target);
+    } else if (this.active && ((e.pageY < this.top) || e.pageY > (this._activeEl.offsetTop + this._activeEl.offsetHeight))) {
+      this.deactivate();
+    }
+  },
+
+  findReferenceUnder: function (el) {
+    while (el) {
+      var parent = el.parentNode;
+      if (el.nodeName === 'H1' && parent.nodeName.match(/EMU-CLAUSE|EMU-ANNEX|EMU-INTRO/) && parent.id) {
+        return { element: el, id: parent.id };
+      } else if (el.nodeName.match(/EMU-(?!CLAUSE|XREF|ANNEX|INTRO)|DFN/) &&
+                el.id && el.id[0] !== '_') {
+        if (el.nodeName === 'EMU-FIGURE' || el.nodeName === 'EMU-TABLE' || el.nodeName === 'EMU-EXAMPLE') {
+          // return the figcaption element
+          return { element: el.children[0].children[0], id: el.id };
+        } else if (el.nodeName === 'EMU-PRODUCTION') {
+          // return the LHS non-terminal element
+          return { element: el.children[0], id: el.id };
+        } else {
+          return { element: el, id: el.id };
+        }
+      }
+      el = parent;
+    }
+  },
+
+  deactivate: function () {
+    this.$container.classList.remove('active');
+    this._activeEl = null;
+    this.activeElBounds = null;
+    this.active = false;
+  }
+}
+
+var referencePane = {
+  init: function() {
+    this.$container = document.createElement('div');
+    this.$container.setAttribute('id', 'references-pane-container');
+
+    var $spacer = document.createElement('div');
+    $spacer.setAttribute('id', 'references-pane-spacer');
+
+    this.$pane = document.createElement('div');
+    this.$pane.setAttribute('id', 'references-pane');
+
+    this.$container.appendChild($spacer);
+    this.$container.appendChild(this.$pane);
+
+    this.$header = document.createElement('div');
+    this.$header.classList.add('menu-pane-header');
+    this.$header.textContent = 'References to ';
+    this.$headerRefId = document.createElement('a');
+    this.$header.appendChild(this.$headerRefId);
+    this.$closeButton = document.createElement('span');
+    this.$closeButton.setAttribute('id', 'references-pane-close');
+    this.$closeButton.addEventListener('click', function (e) {
+      this.deactivate();
+    }.bind(this));
+    this.$header.appendChild(this.$closeButton);
+
+    this.$pane.appendChild(this.$header);
+    var tableContainer = document.createElement('div');
+    tableContainer.setAttribute('id', 'references-pane-table-container');
+
+    this.$table = document.createElement('table');
+    this.$table.setAttribute('id', 'references-pane-table');
+
+    this.$tableBody = this.$table.createTBody();
+
+    tableContainer.appendChild(this.$table);
+    this.$pane.appendChild(tableContainer);
+
+    menu.$specContainer.appendChild(this.$container);
+  },
+
+  activate: function () {
+    this.$container.classList.add('active');
+  },
+
+  deactivate: function () {
+    this.$container.classList.remove('active');
+  },
+
+  showReferencesFor(entry) {
+    this.activate();
+    var newBody = document.createElement('tbody');
+    var previousId;
+    var previousCell;
+    var dupCount = 0;
+    this.$headerRefId.textContent = '#' + entry.id;
+    this.$headerRefId.setAttribute('href', '#' + entry.id);
+    entry.referencingIds.map(function (id) {
+      var target = document.getElementById(id);
+      var cid = findParentClauseId(target);
+      var clause = menu.search.biblio.byId[cid];
+      return { id: id, clause: clause }
+    }).sort(function (a, b) {
+      return sortByClauseNumber(a.clause, b.clause);
+    }).forEach(function (record, i) {
+      if (previousId === record.clause.id) {
+        previousCell.innerHTML += ' (<a href="#' + record.id + '">' + (dupCount + 2) + '</a>)';
+        dupCount++;
+      } else {
+        var row = newBody.insertRow();
+        var cell = row.insertCell();
+        cell.innerHTML = record.clause.number;
+        cell = row.insertCell();
+        cell.innerHTML = '<a href="#' + record.id + '">' + record.clause.titleHTML + '</a>';
+        previousCell = cell;
+        previousId = record.clause.id;
+        dupCount = 0;
+      }
+    }, this);
+    this.$table.removeChild(this.$tableBody);
+    this.$tableBody = newBody;
+    this.$table.appendChild(this.$tableBody);
+  }
+}
+function findParentClauseId(node) {
+  while (node && node.nodeName !== 'EMU-CLAUSE' && node.nodeName !== 'EMU-INTRO' && node.nodeName !== 'EMU-ANNEX') {
+    node = node.parentNode;
+  }
+  if (!node) return null;
+  return node.getAttribute('id');
+}
+
+function sortByClauseNumber(c1, c2) {
+  var c1c = c1.number.split('.');
+  var c2c = c2.number.split('.');
+
+  for (var i = 0; i < c1c.length; i++) {
+    if (i >= c2c.length) {
+      return 1;
+    }
+
+    var c1 = c1c[i];
+    var c2 = c2c[i];
+    var c1cn = Number(c1);
+    var c2cn = Number(c2);
+
+    if (Number.isNaN(c1cn) && Number.isNaN(c2cn)) {
+      if (c1 > c2) {
+        return 1;
+      } else if (c1 < c2) {
+        return -1;
+      }
+    } else if (!Number.isNaN(c1cn) && Number.isNaN(c2cn)) {
+      return -1;
+    } else if (Number.isNaN(c1cn) && !Number.isNaN(c2cn)) {
+      return 1;
+    } else if(c1cn > c2cn) {
+      return 1;
+    } else if (c1cn < c2cn) {
+      return -1;
+    }
+  }
+
+  if (c1c.length === c2c.length) {
+    return 0;
+  }
+  return -1;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  Toolbox.init();
+  referencePane.init();
+})
+var CLAUSE_NODES = ['EMU-CLAUSE', 'EMU-INTRO', 'EMU-ANNEX'];
+function findLocalReferences ($elem) {
+  var name = $elem.innerHTML;
+  var references = [];
+
+  var parentClause = $elem.parentNode;
+  while (parentClause && CLAUSE_NODES.indexOf(parentClause.nodeName) === -1) {
+    parentClause = parentClause.parentNode;
+  }
+
+  if(!parentClause) return;
+
+  var vars = parentClause.querySelectorAll('var');
+
+  for (var i = 0; i < vars.length; i++) {
+    var $var = vars[i];
+
+    if ($var.innerHTML === name) {
+      references.push($var);
+    }
+  }
+
+  return references;
+}
+
+function toggleFindLocalReferences($elem) {
+  var references = findLocalReferences($elem);
+  if ($elem.classList.contains('referenced')) {
+    references.forEach(function ($reference) {
+      $reference.classList.remove('referenced');
+    });
+  } else {
+    references.forEach(function ($reference) {
+      $reference.classList.add('referenced');
+    });
+  }
+}
+
+function installFindLocalReferences () {
+  document.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'VAR') {
+      toggleFindLocalReferences(e.target);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', installFindLocalReferences);
+</script><style>body {
+  display: flex;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: Cambria, Palatino Linotype, Palatino, Liberation Serif, serif;
+  padding: 0;
+  margin: 0;
+  color: #111;
+}
+
+#spec-container {
+  padding: 0 20px;
+  flex-grow: 1;
+  flex-basis: 66%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body.oldtoc {
+  margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #206ca7;
+}
+
+a:visited {
+  color: #206ca7;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #239dee;
+}
+
+
+code {
+    font-weight: bold;
+    font-family: Consolas, Monaco, monospace;
+    white-space: pre;
+}
+
+pre code {
+  font-weight: inherit;
+}
+
+pre code.hljs {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+ol.toc {
+    list-style: none;
+    padding-left: 0;
+}
+
+ol.toc ol.toc {
+    padding-left: 2ex;
+    list-style: none;
+}
+
+var {
+  color: #2aa198;
+  transition: background-color 0.25s ease;
+  cursor: pointer;
+}
+
+var.referenced {
+  background-color: #ffff33;
+}
+
+emu-const {
+  font-family: sans-serif;
+}
+
+emu-val {
+  font-weight: bold;
+}
+
+/* depth 1 */
+emu-alg ol,
+/* depth 4 */
+emu-alg ol ol ol ol,
+emu-alg ol.nested-thrice,
+emu-alg ol.nested-twice ol,
+emu-alg ol.nested-once ol ol {
+  list-style-type: decimal;
+}
+
+/* depth 2 */
+emu-alg ol ol,
+emu-alg ol.nested-once,
+/* depth 5 */
+emu-alg ol ol ol ol ol,
+emu-alg ol.nested-four-times,
+emu-alg ol.nested-thrice ol,
+emu-alg ol.nested-twice ol ol,
+emu-alg ol.nested-once ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+/* depth 3 */
+emu-alg ol ol ol,
+emu-alg ol.nested-twice,
+emu-alg ol.nested-once ol,
+/* depth 6 */
+emu-alg ol ol ol ol ol ol,
+emu-alg ol.nested-lots,
+emu-alg ol.nested-four-times ol,
+emu-alg ol.nested-thrice ol ol,
+emu-alg ol.nested-twice ol ol ol,
+emu-alg ol.nested-once ol ol ol ol,
+/* depth 7+ */
+emu-alg ol.nested-lots ol {
+  list-style-type: lower-roman;
+}
+
+emu-eqn {
+  display: block;
+  margin-left: 4em;
+}
+
+emu-eqn.inline {
+  display: inline;
+  margin: 0;
+}
+
+emu-eqn div:first-child {
+  margin-left: -2em;
+}
+
+emu-note {
+    margin: 1em 0;
+    color: #666;
+    border-left: 5px solid #ccc;
+    display: flex;
+    flex-direction: row;
+}
+
+emu-note > span.note {
+    flex-basis: 100px;
+    min-width: 100px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    text-transform: uppercase;
+    padding-left: 5px;
+}
+
+emu-note[type=editor] {
+  border-left-color: #faa;
+}
+
+emu-note > div.note-contents {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+emu-note > div.note-contents > p:first-of-type {
+  margin-top: 0;
+}
+
+emu-note > div.note-contents > p:last-of-type {
+  margin-bottom: 0;
+}
+
+emu-table td code {
+  white-space: normal;
+} 
+
+emu-figure {
+  display: block;
+}
+
+emu-example {
+  display: block;
+  margin: 1em 3em;
+}
+
+emu-example figure figcaption {
+  margin-top: 0.5em;
+  text-align: left;
+}
+
+emu-figure figure,
+emu-example figure,
+emu-table figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+emu-production {
+    display: block;
+}
+
+emu-grammar[type="example"] emu-production,
+emu-grammar[type="definition"] emu-production {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 5ex;
+}
+
+emu-grammar.inline, emu-production.inline,
+emu-grammar.inline emu-production emu-rhs, emu-production.inline emu-rhs,
+emu-grammar[collapsed] emu-production emu-rhs {
+    display: inline;
+    padding-left: 1ex;
+    margin-left: 0;
+}
+
+emu-production[collapsed] emu-rhs {
+    display: inline;
+    padding-left: .5ex;
+    margin-left: 0;
+}
+
+emu-grammar[collapsed] emu-production, emu-production[collapsed] {
+    margin: 0;
+}
+
+emu-constraints {
+    font-size: .75em;
+    margin-right: .5ex;
+}
+
+emu-gann {
+    margin-right: .5ex;
+}
+
+emu-gann emu-t:last-child,
+emu-gann emu-gprose:last-child,
+emu-gann emu-nt:last-child {
+    margin-right: 0;
+}
+
+emu-geq {
+    margin-left: .5ex;
+    font-weight: bold;
+}
+
+emu-oneof {
+    font-weight: bold;
+    margin-left: .5ex;
+}
+
+emu-nt {
+    display: inline-block;
+    font-style: italic;
+    white-space: nowrap;
+    text-indent: 0;
+}
+
+emu-nt a, emu-nt a:visited {
+  color: #333;
+}
+
+emu-rhs emu-nt {
+    margin-right: .5ex;
+}
+
+emu-t {
+    display: inline-block;
+    font-family: monospace;
+    font-weight: bold;
+    white-space: nowrap;
+    text-indent: 0;
+}
+
+emu-production emu-t {
+    margin-right: .5ex;
+}
+
+emu-rhs {
+    display: block;
+    padding-left: 75px;
+    text-indent: -25px;
+}
+
+emu-mods {
+    font-size: .85em;
+    vertical-align: sub;
+    font-style: normal;
+    font-weight: normal;
+}
+
+emu-params, emu-opt {
+  margin-right: 1ex;
+  font-family: monospace;
+}
+
+emu-params, emu-constraints {
+  color: #2aa198;
+}
+
+emu-opt {
+  color: #b58900;
+}
+
+emu-gprose {
+    font-size: 0.9em;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+emu-production emu-gprose {
+    margin-right: 1ex;
+}
+
+h1.shortname {
+  color: #f60;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+h1.version {
+  color: #f60;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+h1.title {
+  margin-top: 0;
+  color: #f60;
+}
+
+h1.first {
+  margin-top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+}
+
+h1 .secnum {
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+h1 span.title {
+  order: 2;
+}
+
+
+h1 { font-size: 2.67em; margin-top: 2em; margin-bottom: 0; line-height: 1em;}
+h2 { font-size: 2em; }
+h3 { font-size: 1.56em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.11em; }
+h6 { font-size: 1em; }
+
+h1:hover span.utils {
+  display: block;
+}
+
+span.utils {
+  font-size: 18px;
+  line-height: 18px;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  font-weight: normal;
+}
+
+span.utils:before {
+    content: "⤷";
+    display: inline-block;
+    padding: 0 5px;
+}
+
+span.utils > * {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+h1 span.utils span.anchor a,
+h2 span.utils span.anchor a,
+h3 span.utils span.anchor a,
+h4 span.utils span.anchor a,
+h5 span.utils span.anchor a,
+h6 span.utils span.anchor a {
+  text-decoration: none;
+  font-variant: small-caps;
+}
+
+h1 span.utils span.anchor a:hover,
+h2 span.utils span.anchor a:hover,
+h3 span.utils span.anchor a:hover,
+h4 span.utils span.anchor a:hover,
+h5 span.utils span.anchor a:hover,
+h6 span.utils span.anchor a:hover {
+  color: #333;
+}
+
+emu-intro h1, emu-clause h1, emu-annex h1 { font-size: 2em; }
+emu-intro h2, emu-clause h2, emu-annex h2 { font-size: 1.56em; }
+emu-intro h3, emu-clause h3, emu-annex h3 { font-size: 1.25em; }
+emu-intro h4, emu-clause h4, emu-annex h4 { font-size: 1.11em; }
+emu-intro h5, emu-clause h5, emu-annex h5 { font-size: 1em; }
+emu-intro h6, emu-clause h6, emu-annex h6 { font-size: 0.9em; }
+emu-intro emu-intro h1, emu-clause emu-clause h1, emu-annex emu-annex h1 { font-size: 1.56em; }
+emu-intro emu-intro h2, emu-clause emu-clause h2, emu-annex emu-annex h2 { font-size: 1.25em; }
+emu-intro emu-intro h3, emu-clause emu-clause h3, emu-annex emu-annex h3 { font-size: 1.11em; }
+emu-intro emu-intro h4, emu-clause emu-clause h4, emu-annex emu-annex h4 { font-size: 1em; }
+emu-intro emu-intro h5, emu-clause emu-clause h5, emu-annex emu-annex h5 { font-size: 0.9em; }
+emu-intro emu-intro emu-intro h1, emu-clause emu-clause emu-clause h1, emu-annex emu-annex emu-annex h1 { font-size: 1.25em; }
+emu-intro emu-intro emu-intro h2, emu-clause emu-clause emu-clause h2, emu-annex emu-annex emu-annex h2 { font-size: 1.11em; }
+emu-intro emu-intro emu-intro h3, emu-clause emu-clause emu-clause h3, emu-annex emu-annex emu-annex h3 { font-size: 1em; }
+emu-intro emu-intro emu-intro h4, emu-clause emu-clause emu-clause h4, emu-annex emu-annex emu-annex h4 { font-size: 0.9em; }
+emu-intro emu-intro emu-intro emu-intro h1, emu-clause emu-clause emu-clause emu-clause h1, emu-annex emu-annex emu-annex emu-annex h1 { font-size: 1.11em; }
+emu-intro emu-intro emu-intro emu-intro h2, emu-clause emu-clause emu-clause emu-clause h2, emu-annex emu-annex emu-annex emu-annex h2 { font-size: 1em; }
+emu-intro emu-intro emu-intro emu-intro h3, emu-clause emu-clause emu-clause emu-clause h3, emu-annex emu-annex emu-annex emu-annex h3 { font-size: 0.9em; }
+emu-intro emu-intro emu-intro emu-intro emu-intro h1, emu-clause emu-clause emu-clause emu-clause emu-clause h1, emu-annex emu-annex emu-annex emu-annex emu-annex h1 { font-size: 1em; }
+emu-intro emu-intro emu-intro emu-intro emu-intro h2, emu-clause emu-clause emu-clause emu-clause emu-clause h2, emu-annex emu-annex emu-annex emu-annex emu-annex h2 { font-size: 0.9em; }
+emu-intro emu-intro emu-intro emu-intro emu-intro emu-intro h1, emu-clause emu-clause emu-clause emu-clause emu-clause emu-clause h1, emu-annex emu-annex emu-annex emu-annex emu-annex emu-annex h1 { font-size: 0.9em }
+
+emu-clause, emu-intro, emu-annex {
+    display: block;
+}
+
+/* Figures and tables */
+figure { display: block; margin: 1em 0 3em 0; }
+figure object { display: block; margin: 0 auto; }
+figure table.real-table { margin: 0 auto; }
+figure figcaption {
+    display: block;
+    color: #555555;
+    font-weight: bold;
+    text-align: center;
+}
+
+emu-table table {
+  margin: 0 auto;
+}
+
+emu-table table, table.real-table {
+    border-collapse: collapse;
+}
+
+emu-table td, emu-table th, table.real-table td, table.real-table th {
+    border: 1px solid black;
+    padding: 0.4em;
+    vertical-align: baseline;
+}
+emu-table th, emu-table thead td, table.real-table th {
+    background-color: #eeeeee;
+}
+
+/* Note: the left content edges of table.lightweight-table >tbody >tr >td
+   and div.display line up. */
+table.lightweight-table {
+    border-collapse: collapse;
+    margin: 0 0 0 1.5em;
+}
+table.lightweight-table td, table.lightweight-table th {
+    border: none;
+    padding: 0 0.5em;
+    vertical-align: baseline;
+}
+
+/* diff styles */
+ins {
+    background-color: #e0f8e0;
+    text-decoration: none;
+    border-bottom: 1px solid #396;
+}
+
+del {
+    background-color: #fee;
+}
+
+ins.block, del.block,
+emu-production > ins, emu-production > del,
+emu-grammar > ins, emu-grammar > del {
+  display: block;
+}
+emu-rhs > ins, emu-rhs > del { 
+  display: inline;
+}
+
+tr.ins > td > ins {
+  border-bottom: none;
+}
+
+tr.ins > td {
+  background-color: #e0f8e0;
+}
+
+tr.del > td {
+  background-color: #fee;
+}
+
+/* Menu Styles */
+#menu-toggle {
+  font-size: 2em;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1.5em;
+  height: 1.5em;
+  z-index: 3;
+  visibility: hidden;
+  color: #1567a2;
+  background-color: #fff;
+
+  line-height: 1.5em;
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;;
+
+  cursor: pointer;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  width: 33%; height: 100vh;
+  max-width: 500px;
+  box-sizing: border-box;
+  background-color: #ddd;
+  overflow: hidden;
+  transition: opacity 0.1s linear;
+  padding: 0 5px;
+  position: fixed;
+  left: 0; top: 0;
+  border-right: 2px solid #bbb;
+
+  z-index: 2;
+}
+
+#menu-spacer {
+  flex-basis: 33%;
+  max-width: 500px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+#menu a {
+  color: #1567a2;
+}
+
+#menu.active {
+  display: flex;
+  opacity: 1;
+  z-index: 2;
+}
+
+#menu-pins {
+  flex-grow: 1;
+  display: none;
+}
+
+#menu-pins.active {
+  display: block;
+}
+
+#menu-pins-list {
+  margin: 0;
+  padding: 0;
+  counter-reset: pins-counter;
+}
+
+#menu-pins-list > li:before {
+  content: counter(pins-counter);
+  counter-increment: pins-counter;
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+  border: 1px solid #bbb;
+  padding: 2px;
+  margin: 4px;
+  box-sizing: border-box;
+  line-height: 1em;
+  background-color: #ccc;
+  border-radius: 4px;
+}
+#menu-toc > ol {
+  padding: 0;
+  flex-grow: 1;
+}
+
+#menu-toc > ol li {
+  padding: 0;
+}
+
+#menu-toc > ol , #menu-toc > ol ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-toc > ol ol {
+  padding-left: 0.75em;
+}
+
+#menu-toc li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#menu-toc .item-toggle {
+  display: inline-block;
+  transform: rotate(-45deg) translate(-5px, -5px);
+  transition: transform 0.1s ease;
+  text-align: center;
+  width: 20px;
+
+  color: #aab;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;;
+
+  cursor: pointer;
+}
+
+#menu-toc .item-toggle-none {
+  display: inline-block;
+  width: 20px;
+}
+
+#menu-toc li.active > .item-toggle {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+#menu-toc li > ol {
+  display: none;
+}
+
+#menu-toc li.active > ol {
+  display: block;
+}
+
+#menu-toc li.revealed > a {
+  background-color: #bbb;
+  font-weight: bold;
+  /*
+  background-color: #222;
+  color: #c6d8e4;
+  */
+}
+
+#menu-toc li.revealed-leaf> a {
+  color: #206ca7;
+  /*
+  background-color: #222;
+  color: #c6d8e4;
+  */
+}
+
+#menu-toc li.revealed > .item-toggle {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+#menu-toc li.revealed > ol {
+  display: block;
+}
+
+#menu-toc li > a {
+  padding: 2px 5px;
+}
+
+#menu > * {
+  margin-bottom: 5px;
+}
+
+.menu-pane-header {
+  padding: 0 5px;
+  text-transform: uppercase;
+  background-color: #aaa;
+  color: #335;
+  font-weight: bold;
+  letter-spacing: 2px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 0.8em;
+}
+
+#menu-toc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+#menu-toc ol.toc {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#menu-search {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  
+  max-height: 300px;
+}
+
+#menu-trace-list {
+  display: none;
+}
+
+#menu-search-box {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 5px 0 0 0;
+  font-size: 1em;
+  padding: 2px;
+  background-color: #bbb;
+  border: 1px solid #999;
+}
+
+#menu-search-results {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+li.menu-search-result-clause:before {
+    content: 'clause';
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1ex;
+    color: #666;
+    font-size: 75%;
+}
+li.menu-search-result-op:before {
+    content: 'op';
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1ex;
+    color: #666;
+    font-size: 75%;
+}
+
+li.menu-search-result-prod:before {
+    content: 'prod';
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1ex;
+    color: #666;
+    font-size: 75%
+}
+
+
+li.menu-search-result-term:before {
+    content: 'term';
+    width: 40px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1ex;
+    color: #666;
+    font-size: 75%
+}
+
+#menu-search-results ul {
+  padding: 0 5px;
+  margin: 0;
+}
+
+#menu-search-results li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+#menu-trace-list {
+  counter-reset: item;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+#menu-trace-list li {
+  display: block;
+  white-space: nowrap;
+}
+
+#menu-trace-list li .secnum:after {
+  content: " ";
+}
+#menu-trace-list li:before {
+    content: counter(item) " ";
+    background-color: #222;
+    counter-increment: item;
+    color: #999;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    text-align: center;
+    margin: 2px 4px 2px 0;
+}
+
+@media (max-width: 1000px) {
+  body {
+    margin: 0;
+    display: block;
+  }
+
+  #menu {
+    display: none;
+    padding-top: 3em;
+    width: 450px;
+  }
+
+  #menu.active {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 300px;
+  }
+
+  #menu-toggle {
+    visibility: visible;
+  }
+
+  #spec-container {
+    padding: 0 5px;
+  }
+
+  #references-pane-spacer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #menu {
+    width: 100%;
+  }
+
+  h1 .secnum:empty {
+    margin: 0; padding: 0;
+  }
+}
+
+
+/* Toolbox */
+.toolbox {
+	position: absolute;
+	background: #ddd;
+	border: 1px solid #aaa;
+  display: none;
+  color: #eee;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.toolbox.active {
+  display: inline-block;
+}
+
+.toolbox a {
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.toolbox a:hover {
+  text-decoration: underline;
+}
+
+.toolbox:after, .toolbox:before {
+	top: 100%;
+	left: 15px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.toolbox:after {
+	border-color: rgba(0, 0, 0, 0);
+	border-top-color: #ddd;
+	border-width: 10px;
+	margin-left: -10px;
+}
+.toolbox:before {
+	border-color: rgba(204, 204, 204, 0);
+	border-top-color: #aaa;
+	border-width: 12px;
+	margin-left: -12px;
+}
+
+#references-pane-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px;
+  display: none;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+#references-pane-table-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#references-pane-spacer {
+  flex-basis: 33%;
+  max-width: 500px;
+}
+
+#references-pane {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#references-pane-container.active {
+  display: flex;
+}
+
+#references-pane-close:after {
+  content: '✖';
+  float: right;
+  cursor: pointer;
+}
+
+#references-pane table tr td:first-child {
+  text-align: right;
+  padding-right: 5px;
+}
+
+@media print {
+  #menu-toggle {
+    display: none; 
+  }
+}
+</style></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle">◢</span><a href="#datetimeformat-objects" title="DateTimeFormat Objects"><span class="secnum">1</span> DateTimeFormat Objects</a><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-intl-datetimeformat-constructor" title="The Intl.DateTimeFormat Constructor"><span class="secnum">1.1</span> The Intl.DateTimeFormat Constructor</a><ol class="toc"><li><span class="item-toggle">◢</span><a href="#sec-intl.datetimeformat" title="Intl.DateTimeFormat ( [ locales [ , options ] ] )"><span class="secnum">1.1.1</span> Intl.DateTimeFormat ( [ <var>locales</var> [ , <var>options</var> ] ] )</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-chaindatetimeformat" title="ChainDateTimeFormat ( dateTimeFormat, newTarget, this )"><span class="secnum">1.1.1.1</span> ChainDateTimeFormat ( <var>dateTimeFormat</var>, <var>newTarget</var>, <var>this</var> )</a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-initializedatetimeformat" title="InitializeDateTimeFormat ( dateTimeFormat, locales, options )"><span class="secnum">1.1.2</span> InitializeDateTimeFormat ( <var>dateTimeFormat</var>, <var>locales</var>, <var>options</var> )</a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-properties-of-intl-datetimeformat-constructor" title="Properties of the Intl.DateTimeFormat Constructor"><span class="secnum">1.2</span> Properties of the Intl.DateTimeFormat Constructor</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype" title="Intl.DateTimeFormat.prototype"><span class="secnum">1.2.1</span> Intl.DateTimeFormat.prototype</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.supportedlocalesof" title="Intl.DateTimeFormat.supportedLocalesOf ( locales [ , options ] )"><span class="secnum">1.2.2</span> Intl.DateTimeFormat.supportedLocalesOf ( <var>locales</var> [ , <var>options</var> ] )</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat-internal-slots" title="Internal slots"><span class="secnum">1.2.3</span> Internal slots</a></li></ol></li><li><span class="item-toggle">◢</span><a href="#sec-properties-of-intl-datetimeformat-prototype-object" title="Properties of the Intl.DateTimeFormat Prototype Object"><span class="secnum">1.3</span> Properties of the Intl.DateTimeFormat Prototype Object</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype.constructor" title="Intl.DateTimeFormat.prototype.constructor"><span class="secnum">1.3.1</span> Intl.DateTimeFormat.prototype.constructor</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype-@@tostringtag" title="Intl.DateTimeFormat.prototype [ @@toStringTag ]"><span class="secnum">1.3.2</span> Intl.DateTimeFormat.prototype [ @@toStringTag ]</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype.format" title="get Intl.DateTimeFormat.prototype.format"><span class="secnum">1.3.3</span> get Intl.DateTimeFormat.prototype.format</a></li><li><span class="item-toggle-none"></span><a href="#sec-Intl.DateTimeFormat.prototype.formatToParts" title="Intl.DateTimeFormat.prototype.formatToParts ( date )"><span class="secnum">1.3.4</span> Intl.DateTimeFormat.prototype.formatToParts ( <var>date</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype.formatRange" title="Intl.DateTimeFormat.prototype.formatRange ( startDate, endDate )"><span class="secnum">1.3.5</span> Intl.DateTimeFormat.prototype.formatRange ( <var>startDate</var>, <var>endDate</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-Intl.DateTimeFormat.prototype.formatRangeToParts" title="Intl.DateTimeFormat.prototype.formatRangeToParts ( startDate, endDate )"><span class="secnum">1.3.6</span> Intl.DateTimeFormat.prototype.formatRangeToParts ( <var>startDate</var>, <var>endDate</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-intl.datetimeformat.prototype.resolvedoptions" title="Intl.DateTimeFormat.prototype.resolvedOptions ( )"><span class="secnum">1.3.7</span> Intl.DateTimeFormat.prototype.resolvedOptions ( )</a></li></ol></li><li><span class="item-toggle-none"></span><a href="#sec-properties-of-intl-datetimeformat-instances" title="Properties of Intl.DateTimeFormat Instances"><span class="secnum">1.4</span> Properties of Intl.DateTimeFormat Instances</a></li><li><span class="item-toggle">◢</span><a href="#sec-datetimeformat-abstracts" title="Abstract Operations for DateTimeFormat Objects"><span class="secnum">1.5</span> Abstract Operations for DateTimeFormat Objects</a><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-todatetimeoptions" title="ToDateTimeOptions ( options, required, defaults )"><span class="secnum">1.5.1</span> ToDateTimeOptions ( <var>options</var>, <var>required</var>, <var>defaults</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-date-time-style-format" title="DateTimeStyleFormat ( dateStyle, timeStyle, styles )"><span class="secnum">1.5.2</span> DateTimeStyleFormat ( <var>dateStyle</var>, <var>timeStyle</var>, <var>styles</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-basicformatmatcher" title="BasicFormatMatcher ( options, formats )"><span class="secnum">1.5.3</span> BasicFormatMatcher ( <var>options</var>, <var>formats</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-bestfitformatmatcher" title="BestFitFormatMatcher ( options, formats )"><span class="secnum">1.5.4</span> BestFitFormatMatcher ( <var>options</var>, <var>formats</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-datetime-format-functions" title="DateTime Format Functions"><span class="secnum">1.5.5</span> DateTime Format Functions</a></li><li><span class="item-toggle-none"></span><a href="#sec-formatdatetimepattern" title="FormatDateTimePattern ( dateTimeFormat, patternParts, x, rangeFormatOptions )"><span class="secnum">1.5.6</span> FormatDateTimePattern ( <var>dateTimeFormat</var>, <var>patternParts</var>, <var>x</var>, <var>rangeFormatOptions</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-partitiondatetimepattern" title="PartitionDateTimePattern ( dateTimeFormat, x )"><span class="secnum">1.5.7</span> PartitionDateTimePattern ( <var>dateTimeFormat</var>, <var>x</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-formatdatetime" title="FormatDateTime ( dateTimeFormat, x )"><span class="secnum">1.5.8</span> FormatDateTime ( <var>dateTimeFormat</var>, <var>x</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-formatdatetimetoparts" title="FormatDateTimeToParts ( dateTimeFormat, x )"><span class="secnum">1.5.9</span> FormatDateTimeToParts ( <var>dateTimeFormat</var>, <var>x</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-partitiondatetimerangepattern" title="PartitionDateTimeRangePattern ( dateTimeFormat, x, y )"><span class="secnum">1.5.10</span> PartitionDateTimeRangePattern ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-formatdatetimerange" title="FormatDateTimeRange ( dateTimeFormat, x, y )"><span class="secnum">1.5.11</span> FormatDateTimeRange ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-formatdatetimerangetoparts" title="FormatDateTimeRangeToParts ( dateTimeFormat, x, y )"><span class="secnum">1.5.12</span> FormatDateTimeRangeToParts ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-tolocaltime" title="
+        ToLocalTime (
+          epochNs: a BigInt,
+          calendar: a String,
+          timeZone: a String,
+        )
+      "><span class="secnum">1.5.13</span> 
+        ToLocalTime (
+          <var>epochNs</var>: a BigInt,
+          <var>calendar</var>: a String,
+          <var>timeZone</var>: a String,
+        )
+      </a></li><li><span class="item-toggle-none"></span><a href="#sec-unwrapdatetimeformat" title="UnwrapDateTimeFormat ( dtf )"><span class="secnum">1.5.14</span> UnwrapDateTimeFormat ( <var>dtf</var> )</a></li></ol></li></ol></li></ol></div></div><div id="spec-container"><emu-clause id="datetimeformat-objects">
+  <h1 class="first"><span class="secnum">1</span> DateTimeFormat Objects</h1>
+
+  <emu-clause id="sec-intl-datetimeformat-constructor">
+    <h1><span class="secnum">1.1</span> The Intl.DateTimeFormat Constructor</h1>
+
+    <p>
+      The Intl.DateTimeFormat <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> is the <dfn>%DateTimeFormat%</dfn> intrinsic object and a standard built-in property of the Intl object. Behaviour common to all service <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> properties of the Intl object is specified in <emu-xref href="#sec-internal-slots"></emu-xref>.
+    </p>
+
+    <emu-clause id="sec-intl.datetimeformat">
+      <h1><span class="secnum">1.1.1</span> Intl.DateTimeFormat ( [ <var>locales</var> [ , <var>options</var> ] ] )</h1>
+
+      <p>
+        When the <code>Intl.DateTimeFormat</code> function is called with optional arguments <var>locales</var> and <var>options</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>If NewTarget is <emu-val>undefined</emu-val>, let <var>newTarget</var> be the <emu-xref href="#active-function-object"><a href="https://tc39.es/ecma262/#active-function-object">active function object</a></emu-xref>, else let <var>newTarget</var> be NewTarget.</li><li>Let <var>dateTimeFormat</var> be ?&nbsp;<emu-xref aoid="OrdinaryCreateFromConstructor" id="_ref_22"><a href="https://tc39.es/ecma262/#sec-ordinarycreatefromconstructor">OrdinaryCreateFromConstructor</a></emu-xref>(<var>newTarget</var>, <emu-val>"%DateTimeFormat.prototype%"</emu-val>, « [[InitializedDateTimeFormat]], [[Locale]], [[Calendar]], [[NumberingSystem]], [[TimeZone]], <ins>[[EraDisplay]],</ins> [[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[DayPeriod]], [[Hour]], [[Minute]], [[Second]], [[FractionalSecondDigits]], [[TimeZoneName]], [[HourCycle]], [[Pattern]], [[BoundFormat]] »).</li><li>Perform ?&nbsp;<emu-xref aoid="InitializeDateTimeFormat" id="_ref_23"><a href="#sec-initializedatetimeformat">InitializeDateTimeFormat</a></emu-xref>(<var>dateTimeFormat</var>, <var>locales</var>, <var>options</var>).</li><li>If the implementation supports the normative optional <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> mode of <emu-xref href="#legacy-constructor"></emu-xref>, then<ol><li>Let <var>this</var> be the <emu-val>this</emu-val> value.</li><li>Return ?&nbsp;<emu-xref aoid="ChainDateTimeFormat" id="_ref_24"><a href="#sec-chaindatetimeformat">ChainDateTimeFormat</a></emu-xref>(<var>dateTimeFormat</var>, NewTarget, <var>this</var>).</li></ol></li><li>Return <var>dateTimeFormat</var>.</li></ol></emu-alg>
+
+      <emu-normative-optional>
+      <emu-clause id="sec-chaindatetimeformat" aoid="ChainDateTimeFormat">
+        <h1><span class="secnum">1.1.1.1</span> ChainDateTimeFormat ( <var>dateTimeFormat</var>, <var>newTarget</var>, <var>this</var> )</h1>
+        <emu-alg><ol><li>If <var>newTarget</var> is <emu-val>undefined</emu-val> and ?&nbsp;<emu-xref aoid="OrdinaryHasInstance" id="_ref_25"><a href="https://tc39.es/ecma262/#sec-ordinaryhasinstance">OrdinaryHasInstance</a></emu-xref>(<emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_26"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>, <var>this</var>) is <emu-val>true</emu-val>, then<ol><li>Perform ?&nbsp;<emu-xref aoid="DefinePropertyOrThrow" id="_ref_27"><a href="https://tc39.es/ecma262/#sec-definepropertyorthrow">DefinePropertyOrThrow</a></emu-xref>(<var>this</var>, %Intl%.[[FallbackSymbol]], PropertyDescriptor{ [[Value]]: <var>dateTimeFormat</var>, [[Writable]]: <emu-val>false</emu-val>, [[Enumerable]]: <emu-val>false</emu-val>, [[Configurable]]: <emu-val>false</emu-val> }).</li><li>Return <var>this</var>.</li></ol></li><li>Return <var>dateTimeFormat</var>.</li></ol></emu-alg>
+      </emu-clause>
+      </emu-normative-optional>
+    </emu-clause>
+
+    <emu-clause id="sec-initializedatetimeformat" aoid="InitializeDateTimeFormat">
+      <h1><span class="secnum">1.1.2</span> InitializeDateTimeFormat ( <var>dateTimeFormat</var>, <var>locales</var>, <var>options</var> )</h1>
+
+      <p>
+        The abstract operation InitializeDateTimeFormat accepts the arguments <var>dateTimeFormat</var> (which must be an object), <var>locales</var>, and <var>options</var>. It initializes <var>dateTimeFormat</var> as a DateTimeFormat object. This abstract operation functions as follows:
+      </p>
+
+      <p>
+        The following algorithm refers to the <code>type</code> nonterminal from <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">UTS 35's Unicode Locale Identifier grammar</a>.
+      </p>
+
+      <emu-alg><ol><li>Let <var>requestedLocales</var> be ?&nbsp;CanonicalizeLocaleList(<var>locales</var>).</li><li>Set <var>options</var> to ?&nbsp;<emu-xref aoid="ToDateTimeOptions" id="_ref_28"><a href="#sec-todatetimeoptions">ToDateTimeOptions</a></emu-xref>(<var>options</var>, <emu-val>"any"</emu-val>, <emu-val>"date"</emu-val>).</li><li>Let <var>opt</var> be a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref>.</li><li>Let <var>matcher</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"localeMatcher"</emu-val>, <emu-const>string</emu-const>, « <emu-val>"lookup"</emu-val>, <emu-val>"best fit"</emu-val> », <emu-val>"best fit"</emu-val>).</li><li>Set <var>opt</var>.[[localeMatcher]] to <var>matcher</var>.</li><li>Let <var>calendar</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"calendar"</emu-val>, <emu-const>string</emu-const>, <emu-const>empty</emu-const>, <emu-val>undefined</emu-val>).</li><li>If <var>calendar</var> is not <emu-val>undefined</emu-val>, then<ol><li>If <var>calendar</var> does not match the Unicode Locale Identifier <code>type</code> nonterminal, throw a <emu-val>RangeError</emu-val> exception.</li></ol></li><li>Set <var>opt</var>.[[ca]] to <var>calendar</var>.</li><li>Let <var>numberingSystem</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"numberingSystem"</emu-val>, <emu-const>string</emu-const>, <emu-const>empty</emu-const>, <emu-val>undefined</emu-val>).</li><li>If <var>numberingSystem</var> is not <emu-val>undefined</emu-val>, then<ol><li>If <var>numberingSystem</var> does not match the Unicode Locale Identifier <code>type</code> nonterminal, throw a <emu-val>RangeError</emu-val> exception.</li></ol></li><li>Set <var>opt</var>.[[nu]] to <var>numberingSystem</var>.</li><li>Let <var>hour12</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"hour12"</emu-val>, <emu-const>boolean</emu-const>, <emu-const>empty</emu-const>, <emu-val>undefined</emu-val>).</li><li>Let <var>hourCycle</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"hourCycle"</emu-val>, <emu-const>string</emu-const>, « <emu-val>"h11"</emu-val>, <emu-val>"h12"</emu-val>, <emu-val>"h23"</emu-val>, <emu-val>"h24"</emu-val> », <emu-val>undefined</emu-val>).</li><li>If <var>hour12</var> is not <emu-val>undefined</emu-val>, then<ol><li>Set <var>hourCycle</var> to <emu-val>null</emu-val>.</li></ol></li><li>Set <var>opt</var>.[[hc]] to <var>hourCycle</var>.</li><li>Let <var>localeData</var> be <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_29"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.[[LocaleData]].</li><li>Let <var>r</var> be ResolveLocale(<emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_30"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.[[AvailableLocales]], <var>requestedLocales</var>, <var>opt</var>, <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_31"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.[[RelevantExtensionKeys]], <var>localeData</var>).</li><li>Set <var>dateTimeFormat</var>.[[Locale]] to <var>r</var>.[[locale]].</li><li>Let <var>resolvedCalendar</var> be <var>r</var>.[[ca]].</li><li>Set <var>dateTimeFormat</var>.[[Calendar]] to <var>resolvedCalendar</var>.</li><li>Set <var>dateTimeFormat</var>.[[NumberingSystem]] to <var>r</var>.[[nu]].</li><li>Let <var>dataLocale</var> be <var>r</var>.[[dataLocale]].</li><li>Let <var>dataLocaleData</var> be <var>localeData</var>.[[&lt;<var>dataLocale</var>&gt;]].</li><li>Let <var>hcDefault</var> be <var>dataLocaleData</var>.[[hourCycle]].</li><li>If <var>hour12</var> is <emu-val>true</emu-val>, then<ol><li>If <var>hcDefault</var> is <emu-val>"h11"</emu-val> or <emu-val>"h23"</emu-val>, let <var>hc</var> be <emu-val>"h11"</emu-val>. Otherwise, let <var>hc</var> be <emu-val>"h12"</emu-val>.</li></ol></li><li>Else if <var>hour12</var> is <emu-val>false</emu-val>, then<ol><li>If <var>hcDefault</var> is <emu-val>"h11"</emu-val> or <emu-val>"h23"</emu-val>, let <var>hc</var> be <emu-val>"h23"</emu-val>. Otherwise, let <var>hc</var> be <emu-val>"h24"</emu-val>.</li></ol></li><li>Else,<ol><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>hour12</var> is <emu-val>undefined</emu-val>.</li><li>Let <var>hc</var> be <var>r</var>.[[hc]].</li><li>If <var>hc</var> is <emu-val>null</emu-val>, set <var>hc</var> to <var>hcDefault</var>.</li></ol></li><li>Set <var>dateTimeFormat</var>.[[HourCycle]] to <var>hc</var>.</li><li><ins>Set <var>dateTimeFormat</var>.[[HourCycle]] to ?&nbsp;GetOption (<var>options</var>, <emu-val>"eraDisplay"</emu-val>, <emu-val>"string"</emu-val>, « <emu-val>"never"</emu-val>, <emu-val>"always"</emu-val>, <emu-val>"auto"</emu-val> », <emu-val>"auto"</emu-val>).</ins></li><li><ins>If <var>dateTimeFormat</var>.[[EraDisplay]] is <emu-val>"auto"</emu-val>, then</ins><ol><li><ins>If <var>dateTimeFormat</var>.[[Year]] is <emu-val>undefined</emu-val>, then</ins><ol><li><ins>Set <var>dateTimeFormat</var>.[[EraDisplay]] to <emu-val>"never"</emu-val>.</ins></li></ol></li></ol></li><li><ins>If <var>dateTimeFormat</var>.[[EraDisplay]] is not <emu-val>"never"</emu-val>, then</ins><ol><li><ins>If <var>dateTimeFormat</var>.[[Era]] is <emu-val>undefined</emu-val>, then</ins><ol><li><ins>Set <var>dateTimeFormat</var>.[[Era]] to <emu-val>"short"</emu-val>.</ins></li></ol></li></ol></li><li>Let <var>timeZone</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_32"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <emu-val>"timeZone"</emu-val>).</li><li>If <var>timeZone</var> is <emu-val>undefined</emu-val>, then<ol><li>Set <var>timeZone</var> to DefaultTimeZone().</li></ol></li><li>Else,<ol><li>Set <var>timeZone</var> to ?&nbsp;<emu-xref aoid="ToString" id="_ref_33"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>timeZone</var>).</li><li>If the result of !&nbsp;IsValidTimeZoneName(<var>timeZone</var>) is <emu-val>false</emu-val>, then<ol><li>Throw a <emu-val>RangeError</emu-val> exception.</li></ol></li><li>Set <var>timeZone</var> to !&nbsp;CanonicalizeTimeZoneName(<var>timeZone</var>).</li></ol></li><li>Set <var>dateTimeFormat</var>.[[TimeZone]] to <var>timeZone</var>.</li><li>Let <var>formatOptions</var> be a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref>.</li><li>Set <var>formatOptions</var>.[[hourCycle]] to <var>hc</var>.</li><li>Let <var>hasExplicitFormatComponents</var> be <emu-val>false</emu-val>.</li><li>For each row of <emu-xref href="#table-datetimeformat-components" id="_ref_0"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, except the header row, in table order, do<ol><li>Let <var>prop</var> be the name given in the Property column of the row.</li><li>If <var>prop</var> is <emu-val>"fractionalSecondDigits"</emu-val>, then<ol><li>Let <var>value</var> be ?&nbsp;GetNumberOption(<var>options</var>, <emu-val>"fractionalSecondDigits"</emu-val>, 1, 3, <emu-val>undefined</emu-val>).</li></ol></li><li>Else,<ol><li>Let <var>values</var> be a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> whose elements are the strings given in the Values column of the row.</li><li>Let <var>value</var> be ?&nbsp;GetOption(<var>options</var>, <var>prop</var>, <emu-const>string</emu-const>, <var>values</var>, <emu-val>undefined</emu-val>).</li></ol></li><li>Set <var>formatOptions</var>.[[&lt;<var>prop</var>&gt;]] to <var>value</var>.</li><li>If <var>value</var> is not <emu-val>undefined</emu-val>, then<ol><li>Set <var>hasExplicitFormatComponents</var> to <emu-val>true</emu-val>.</li></ol></li></ol></li><li>Let <var>matcher</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"formatMatcher"</emu-val>, <emu-const>string</emu-const>, « <emu-val>"basic"</emu-val>, <emu-val>"best fit"</emu-val> », <emu-val>"best fit"</emu-val>).</li><li>Let <var>dateStyle</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"dateStyle"</emu-val>, <emu-const>string</emu-const>, « <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, <emu-val>"short"</emu-val> », <emu-val>undefined</emu-val>).</li><li>Set <var>dateTimeFormat</var>.[[DateStyle]] to <var>dateStyle</var>.</li><li>Let <var>timeStyle</var> be ?&nbsp;GetOption(<var>options</var>, <emu-val>"timeStyle"</emu-val>, <emu-const>string</emu-const>, « <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, <emu-val>"short"</emu-val> », <emu-val>undefined</emu-val>).</li><li>Set <var>dateTimeFormat</var>.[[TimeStyle]] to <var>timeStyle</var>.</li><li>If <var>dateStyle</var> is not <emu-val>undefined</emu-val> or <var>timeStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li>If <var>hasExplicitFormatComponents</var> is <emu-val>true</emu-val>, then<ol><li>Throw a <emu-val>TypeError</emu-val> exception.</li></ol></li><li>Let <var>styles</var> be <var>dataLocaleData</var>.[[styles]].[[&lt;<var>resolvedCalendar</var>&gt;]].</li><li>Let <var>bestFormat</var> be <emu-xref aoid="DateTimeStyleFormat" id="_ref_34"><a href="#sec-date-time-style-format">DateTimeStyleFormat</a></emu-xref>(<var>dateStyle</var>, <var>timeStyle</var>, <var>styles</var>).</li></ol></li><li>Else,<ol><li>Let <var>formats</var> be <var>dataLocaleData</var>.[[formats]].[[&lt;<var>resolvedCalendar</var>&gt;]].</li><li>If <var>matcher</var> is <emu-val>"basic"</emu-val>, then<ol><li>Let <var>bestFormat</var> be <emu-xref aoid="BasicFormatMatcher" id="_ref_35"><a href="#sec-basicformatmatcher">BasicFormatMatcher</a></emu-xref>(<var>formatOptions</var>, <var>formats</var>).</li></ol></li><li>Else,<ol><li>Let <var>bestFormat</var> be <emu-xref aoid="BestFitFormatMatcher" id="_ref_36"><a href="#sec-bestfitformatmatcher">BestFitFormatMatcher</a></emu-xref>(<var>formatOptions</var>, <var>formats</var>).</li></ol></li></ol></li><li>For each row in <emu-xref href="#table-datetimeformat-components" id="_ref_1"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, except the header row, in table order, do<ol><li>Let <var>prop</var> be the name given in the Property column of the row.</li><li>If <var>bestFormat</var> has a field [[&lt;<var>prop</var>&gt;]], then<ol><li>Let <var>p</var> be <var>bestFormat</var>.[[&lt;<var>prop</var>&gt;]].</li><li>Set <var>dateTimeFormat</var>'s internal slot whose name is the Internal Slot column of the row to <var>p</var>.</li></ol></li></ol></li><li>If <var>dateTimeFormat</var>.[[Hour]] is <emu-val>undefined</emu-val>, then<ol><li>Set <var>dateTimeFormat</var>.[[HourCycle]] to <emu-val>undefined</emu-val>.</li></ol></li><li>If <var>dateTimeformat</var>.[[HourCycle]] is <emu-val>"h11"</emu-val> or <emu-val>"h12"</emu-val>, then<ol><li>Let <var>pattern</var> be <var>bestFormat</var>.[[pattern12]].</li><li>Let <var>patternEra</var> be <var>bestFormat</var>.[[pattern12Era]].</li><li>Let <var>rangePatterns</var> be <var>bestFormat</var>.[[rangePatterns12]].</li></ol></li><li>Else,<ol><li>Let <var>pattern</var> be <var>bestFormat</var>.[[pattern]].</li><li>Let <var>patternEra</var> be <var>bestFormat</var>.[[patternEra]].</li><li>Let <var>rangePatterns</var> be <var>bestFormat</var>.[[rangePatterns]].</li></ol></li><li>Set <var>dateTimeFormat</var>.[[Pattern]] to <var>pattern</var>.</li><li>Set <var>dateTimeFormat</var>.[[PatternEra]] to <var>pattern</var>.</li><li>Set <var>dateTimeFormat</var>.[[RangePatterns]] to <var>rangePatterns</var>.</li><li>Return <var>dateTimeFormat</var>.</li></ol></emu-alg>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-properties-of-intl-datetimeformat-constructor">
+    <h1><span class="secnum">1.2</span> Properties of the Intl.DateTimeFormat Constructor</h1>
+
+    <p>
+      The Intl.DateTimeFormat <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> has the following properties:
+    </p>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype">
+      <h1><span class="secnum">1.2.1</span> Intl.DateTimeFormat.prototype</h1>
+
+      <p>
+        The value of <code>Intl.DateTimeFormat.prototype</code> is <emu-xref href="#sec-properties-of-intl-datetimeformat-prototype-object" id="_ref_37"><a href="#sec-properties-of-intl-datetimeformat-prototype-object">%DateTimeFormat.prototype%</a></emu-xref>.
+      </p>
+      <p>
+        This property has the attributes { [[Writable]]: <emu-val>false</emu-val>, [[Enumerable]]: <emu-val>false</emu-val>, [[Configurable]]: <emu-val>false</emu-val> }.
+      </p>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat.supportedlocalesof">
+      <h1><span class="secnum">1.2.2</span> Intl.DateTimeFormat.supportedLocalesOf ( <var>locales</var> [ , <var>options</var> ] )</h1>
+
+      <p>
+        When the <code>supportedLocalesOf</code> method is called with arguments <var>locales</var> and <var>options</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>availableLocales</var> be <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_38"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.[[AvailableLocales]].</li><li>Let <var>requestedLocales</var> be ?&nbsp;CanonicalizeLocaleList(<var>locales</var>).</li><li>Return ?&nbsp;SupportedLocales(<var>availableLocales</var>, <var>requestedLocales</var>, <var>options</var>).</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat-internal-slots">
+      <h1><span class="secnum">1.2.3</span> Internal slots</h1>
+
+      <p>
+        The value of the [[AvailableLocales]] internal slot is implementation-defined within the constraints described in <emu-xref href="#sec-internal-slots"></emu-xref>.
+      </p>
+
+      <p>
+        The value of the [[RelevantExtensionKeys]] internal slot is « <emu-val>"ca"</emu-val>, <emu-val>"hc"</emu-val>, <emu-val>"nu"</emu-val> ».
+      </p>
+
+      <emu-note><span class="note">Note 1</span><div class="note-contents">
+        Unicode Technical Standard 35 describes four locale extension keys that are relevant to date and time formatting: <emu-val>"ca"</emu-val> for calendar, <emu-val>"hc"</emu-val> for hour cycle, <emu-val>"nu"</emu-val> for numbering system (of formatted numbers), and <emu-val>"tz"</emu-val> for time zone. DateTimeFormat, however, requires that the time zone is specified through the <emu-val>"timeZone"</emu-val> property in the options objects.
+      </div></emu-note>
+
+      <p>
+        The value of the [[LocaleData]] internal slot is implementation-defined within the constraints described in <emu-xref href="#sec-internal-slots"></emu-xref> and the following additional constraints, for all locale values <var>locale</var>:
+      </p>
+
+      <ul>
+        <li>
+          [[LocaleData]].[[&lt;<var>locale</var>&gt;]].[[nu]] must be a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> that does not include the values <emu-val>"native"</emu-val>, <emu-val>"traditio"</emu-val>, or <emu-val>"finance"</emu-val>.
+        </li>
+        <li>
+          [[LocaleData]].[[&lt;<var>locale</var>&gt;]].[[hc]] must be « <emu-val>null</emu-val>, <emu-val>"h11"</emu-val>, <emu-val>"h12"</emu-val>, <emu-val>"h23"</emu-val>, <emu-val>"h24"</emu-val> ».
+        </li>
+        <li>
+          [[LocaleData]].[[&lt;<var>locale</var>&gt;]].[[hourCycle]] must be a String value equal to <emu-val>"h11"</emu-val>, <emu-val>"h12"</emu-val>, <emu-val>"h23"</emu-val>, or <emu-val>"h24"</emu-val>.
+        </li>
+        <li>
+          [[LocaleData]].[[&lt;<var>locale</var>&gt;]] must have a [[formats]] field. This [[formats]] field must be a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> with [[&lt;<var>calendar</var>&gt;]] fields for all calendar values <var>calendar</var>. The value of this field must be a list of records, each of which has a subset of the fields shown in <emu-xref href="#table-datetimeformat-components" id="_ref_2"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, where each field must have one of the values specified for the field in <emu-xref href="#table-datetimeformat-components" id="_ref_3"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>. Multiple records in a list may use the same subset of the fields as long as they have different values for the fields. The following subsets must be available for each locale:
+          <ul>
+            <li>weekday, year, month, day, hour, minute, second, fractionalSecondDigits</li>
+            <li>weekday, year, month, day, hour, minute, second</li>
+            <li>weekday, year, month, day</li>
+            <li>year, month, day</li>
+            <li>year, month</li>
+            <li>month, day</li>
+            <li>hour, minute, second, fractionalSecondDigits</li>
+            <li>hour, minute, second</li>
+            <li>hour, minute</li>
+            <li>dayPeriod, hour</li>
+            <li>dayPeriod, hour, minute, second</li>
+            <li>dayPeriod, hour, minute</li>
+          </ul>
+          Each of the records must also have the following fields:
+          <ol>
+            <li>A [[pattern]] field, whose value is a String value that contains for each of the date and time format component fields of the record a substring starting with <emu-val>"{"</emu-val>, followed by the name of the field, followed by <emu-val>"}"</emu-val>.</li>
+            <li>If the record has an [[hour]] field, it must also have a [[pattern12]] field, whose value is a String value that, in addition to the substrings of the [[pattern]] field, contains at least one of the substrings <emu-val>"{ampm}"</emu-val> or <emu-val>"{dayPeriod}"</emu-val>.</li>
+            <li>If the record has a [[year]] field, the [[pattern]] and [[pattern12]] values may contain the substrings <emu-val>"{yearName}"</emu-val> and <emu-val>"{relatedYear}"</emu-val>. <ins>In addition, it must also have a [[patternEra]] field, whose value is a String that, in addition to the substrings of the [[pattern]] field, contains the substring <emu-val>"{Era}"</emu-val>.</ins></li>
+            <li><ins class="block">If the record has a both an [[hour]] and a [[year]] field, it must also have a [[pattern12Era]] field, whose value is a String that, in addition to the substrings of the [[pattern12]] field, contains the substring <emu-val>"{Era}"</emu-val>.</ins></li>
+            <li>
+              A [[rangePatterns]] field with a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> value:
+                <ul>
+                  <li>The [[rangePatterns]] record may have any of the fields in <emu-xref href="#table-datetimeformat-rangepatternfields" id="_ref_4"><a href="#table-datetimeformat-rangepatternfields">Table 1</a></emu-xref>, where each field represents a range pattern and its value is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref>.
+                    <ul>
+                      <li>The name of the field indicates the largest calendar element that must be different between the start and end dates in order to use this range pattern. For example, if the field name is [[Month]], it contains the range pattern that should be used to format a date range where the era and year values are the same, but the month value is different.</li>
+                      <li>The record will contain the following fields:</li>
+                        <ul>
+                          <li>A subset of the fields shown in the Property column of <emu-xref href="#table-datetimeformat-components" id="_ref_5"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, where each field must have one of the values specified for that field in the Values column of <emu-xref href="#table-datetimeformat-components" id="_ref_6"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>. All fields required to format a date for any of the [[PatternParts]] records must be present.</li>
+                          <li>A [[PatternParts]] field whose value is a list of Records each representing a part of the range pattern. Each record contains a [[Pattern]] field and a [[Source]] field. The [[Pattern]] field's value is a String of the same format as the regular date pattern String. The [[Source]] field is one of the String values <emu-val>"shared"</emu-val>, <emu-val>"startRange"</emu-val>, or <emu-val>"endRange"</emu-val>. It indicates which of the range's dates should be formatted using the value of the [[Pattern]] field.</li>
+                        </ul>
+                    </ul>
+                  </li>
+                  <li>The [[rangePatterns]] record must have a [[Default]] field which contains the default range pattern used when the specific range pattern is not available. Its value is a list of records with the same structure as the other fields in the [[rangePatterns]] record.</li>
+                </ul>
+            </li>
+            <li>If the record has an [[hour]] field, it must also have a [[rangePatterns12]] field. Its value is similar to the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> in [[rangePatterns]], but it uses a String similar to [[pattern12]] for each part of the range pattern.</li>
+            <li>If the record has a [[year]] field, the [[rangePatterns]] and [[rangePatterns12]] fields may contain range patterns where the [[Pattern]] values may contain the substrings <emu-val>"{yearName}"</emu-val> and <emu-val>"{relatedYear}"</emu-val>.</li>
+          </ol>
+        </li>
+        <li>
+          [[LocaleData]].[[&lt;<var>locale</var>&gt;]] must have a [[styles]] field. The [[styles]] field must be a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> with [[&lt;<var>calendar</var>&gt;]] fields for all calendar values <var>calendar</var>. The calendar records must contain [[DateFormat]], [[TimeFormat]], [[DateTimeFormat]] and [[DateTimeRangeFormat]] fields, the value of these fields are Records, where each of which has [[full]], [[long]], [[medium]] and [[short]] fields. For [[DateFormat]] and [[TimeFormat]], the value of these fields must be a record, which has a subset of the fields shown in <emu-xref href="#table-datetimeformat-components" id="_ref_7"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, where each field must have one of the values specified for the field in <emu-xref href="#table-datetimeformat-components" id="_ref_8"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>. Each of the records must also have the following fields:
+          <ol>
+            <li>A [[pattern]] field, whose value is a String value that contains for each of the date and time format component fields of the record a substring starting with <emu-val>"{"</emu-val>, followed by the name of the field, followed by <emu-val>"}"</emu-val>.</li>
+            <li>If the record has an [[hour]] field, it must also have a [[pattern12]] field, whose value is a String value that, in addition to the substrings of the pattern field, contains at least one of the substrings <emu-val>"{ampm}"</emu-val> or <emu-val>"{dayPeriod}"</emu-val>. <ins>In addition, it must also have a [[patternEra]] field, whose value is a String that, in addition to the substrings of the [[pattern]] field, contains the substring <emu-val>"{Era}"</emu-val>.</ins></li>
+            <li><ins class="block">If the record has a both an [[hour]] and a [[year]] field, it must also have a [[pattern12Era]] field, whose value is a String that, in addition to the substrings of the [[pattern12]] field, contains the substring <emu-val>"{Era}"</emu-val>.</ins></li>
+            <li>A [[rangePatterns]] field that contains a record similar to the one described in the [[formats]] field.</li>
+            <li>If the record has an [[hour]] field, it must also have a [[rangePatterns12]] field. Its value is similar to the record in [[rangePatterns]] but it uses a string similar to [[pattern12]] for each range pattern.</li>
+          </ol>
+          For [[DateTimeFormat]], the field value must be a string pattern which contains the strings <emu-val>"{0}"</emu-val> and <emu-val>"{1}"</emu-val>. For [[DateTimeRangeFormat]] the value of these fields must be a nested record which also has [[full]], [[long]], [[medium]] and [[short]] fields. The [[full]], [[long]], [[medium]] and [[short]] fields in the enclosing record refer to the date style of the range pattern, while the fields in the nested record refers to the time style of the range pattern. The value of these fields in the nested record is a record with a [[rangePatterns]] field and a [[rangePatterns12]] field which are similar to the [[rangePatterns]] and [rangePatterns12]] fields in [[DateFormat]] and [[TimeFormat]].
+         </li>
+      </ul>
+
+      <emu-note><span class="note">Note 2</span><div class="note-contents">
+        For example, an implementation might include the following record as part of its English locale data:
+        <ul>
+          <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+          <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+          <li>[[pattern]]: <emu-val>"{hour}:{minute}"</emu-val></li>
+          <li>[[pattern12]]: <emu-val>"{hour}:{minute} {ampm}"</emu-val></li>
+          <li>[[rangePatterns]]:</li>
+          <ul>
+            <li>[[Hour]]:<ul>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+            <li>[[Minute]]:<ul>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+            <li>[[Default]]:<ul>
+              <li>[[year]]: <emu-val>"2-digit"</emu-val></li>
+              <li>[[month]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[day]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{day}/{month}/{year}, {hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{day}/{month}/{year}, {hour}:{minute}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+          </ul>
+          <li>[[rangePatterns12]]:
+          <ul>
+            <li>[[Hour]]:<ul>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" {ampm}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+            <li>[[Minute]]:<ul>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{hour}:{minute}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" {ampm}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+            <li>[[Default]]:<ul>
+              <li>[[year]]: <emu-val>"2-digit"</emu-val></li>
+              <li>[[month]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[day]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[hour]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[minute]]: <emu-val>"numeric"</emu-val></li>
+              <li>[[PatternParts]]:</li>
+              <ul>
+                <li>{[[Source]]: <emu-val>"startRange"</emu-val>, [[Pattern]]: <emu-val>"{day}/{month}/{year}, {hour}:{minute} {ampm}"</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"shared"</emu-val>, [[Pattern]]: <emu-val>" – "</emu-val>}</li>
+                <li>{[[Source]]: <emu-val>"endRange"</emu-val>, [[Pattern]]: <emu-val>"{day}/{month}/{year}, {hour}:{minute} {ampm}"</emu-val>}</li>
+              </ul>
+            </ul></li>
+          </ul></li>
+        </ul>
+      </div></emu-note>
+
+      <emu-note><span class="note">Note 3</span><div class="note-contents">
+        It is recommended that implementations use the locale data provided by the Common Locale Data Repository (available at <a href="https://cldr.unicode.org/">https://cldr.unicode.org/</a>).
+      </div></emu-note>
+
+      <emu-table id="table-datetimeformat-rangepatternfields"><figure><figcaption>Table 1: Range pattern fields</figcaption>
+        
+
+        <table class="real-table">
+          <thead>
+            <tr>
+              <th>Range Pattern Field</th>
+              <th>Pattern String Field</th>
+            </tr>
+          </thead>
+          <tbody><tr>
+            <td>[[Era]]</td>
+            <td><emu-val>"era"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Year]]</td>
+            <td><emu-val>"year"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Month]]</td>
+            <td><emu-val>"month"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Day]]</td>
+            <td><emu-val>"day"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[AmPm]]</td>
+            <td><emu-val>"ampm"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[DayPeriod]]</td>
+            <td><emu-val>"dayPeriod"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Hour]]</td>
+            <td><emu-val>"hour"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Minute]]</td>
+            <td><emu-val>"minute"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Second]]</td>
+            <td><emu-val>"second"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[FractionalSecondDigits]]</td>
+            <td><emu-val>"fractionalSecondDigits"</emu-val></td>
+          </tr>
+        </tbody></table>
+
+      </figure></emu-table>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-properties-of-intl-datetimeformat-prototype-object">
+    <h1><span class="secnum">1.3</span> Properties of the Intl.DateTimeFormat Prototype Object</h1>
+
+    <p>
+      The Intl.DateTimeFormat prototype object is itself an ordinary object. <dfn>%DateTimeFormat.prototype%</dfn> is not an Intl.DateTimeFormat instance and does not have an [[InitializedDateTimeFormat]] internal slot or any of the other internal slots of Intl.DateTimeFormat instance objects.
+    </p>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype.constructor">
+      <h1><span class="secnum">1.3.1</span> Intl.DateTimeFormat.prototype.constructor</h1>
+
+      <p>
+        The initial value of <code>Intl.DateTimeFormat.prototype.constructor</code> is <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_39"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.
+      </p>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype-@@tostringtag">
+      <h1><span class="secnum">1.3.2</span> Intl.DateTimeFormat.prototype [ @@toStringTag ]</h1>
+
+      <p>
+        The initial value of the @@toStringTag property is the String value <emu-val>"Intl.DateTimeFormat"</emu-val>.
+      </p>
+
+      <p>
+        This property has the attributes { [[Writable]]: <emu-val>false</emu-val>, [[Enumerable]]: <emu-val>false</emu-val>, [[Configurable]]: <emu-val>true</emu-val> }.
+      </p>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype.format">
+      <h1><span class="secnum">1.3.3</span> get Intl.DateTimeFormat.prototype.format</h1>
+
+      <p>
+        Intl.DateTimeFormat.prototype.format is an <emu-xref href="#sec-object-type"><a href="https://tc39.es/ecma262/#sec-object-type">accessor property</a></emu-xref> whose set accessor function is <emu-val>undefined</emu-val>. Its get accessor function performs the following steps:
+      </p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be the <emu-val>this</emu-val> value.</li><li>If the implementation supports the normative optional <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> mode of <emu-xref href="#legacy-constructor"></emu-xref>, then<ol><li>Set <var>dtf</var> to ?&nbsp;<emu-xref aoid="UnwrapDateTimeFormat" id="_ref_40"><a href="#sec-unwrapdatetimeformat">UnwrapDateTimeFormat</a></emu-xref>(<var>dtf</var>).</li></ol></li><li>Perform ?&nbsp;<emu-xref aoid="RequireInternalSlot" id="_ref_41"><a href="https://tc39.es/ecma262/#sec-requireinternalslot">RequireInternalSlot</a></emu-xref>(<var>dtf</var>, [[InitializedDateTimeFormat]]).</li><li>If <var>dtf</var>.[[BoundFormat]] is <emu-val>undefined</emu-val>, then<ol><li>Let <var>F</var> be a new built-in <emu-xref href="#function-object"><a href="https://tc39.es/ecma262/#function-object">function object</a></emu-xref> as defined in DateTime Format Functions (<emu-xref href="#sec-datetime-format-functions" id="_ref_9"><a href="#sec-datetime-format-functions">1.5.5</a></emu-xref>).</li><li>Set <var>F</var>.[[DateTimeFormat]] to <var>dtf</var>.</li><li>Set <var>dtf</var>.[[BoundFormat]] to <var>F</var>.</li></ol></li><li>Return <var>dtf</var>.[[BoundFormat]].</li></ol></emu-alg>
+
+      <emu-note><span class="note">Note</span><div class="note-contents">
+        The returned function is bound to <var>dtf</var> so that it can be passed directly to <code>Array.prototype.map</code> or other functions.
+        This is considered a historical artefact, as part of a convention which is no longer followed for new features, but is preserved to maintain compatibility with existing programs.
+      </div></emu-note>
+    </emu-clause>
+
+    <emu-clause id="sec-Intl.DateTimeFormat.prototype.formatToParts">
+      <h1><span class="secnum">1.3.4</span> Intl.DateTimeFormat.prototype.formatToParts ( <var>date</var> )</h1>
+
+      <p>
+        When the <code>formatToParts</code> method is called with an argument <var>date</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be the <emu-val>this</emu-val> value.</li><li>Perform ?&nbsp;<emu-xref aoid="RequireInternalSlot" id="_ref_42"><a href="https://tc39.es/ecma262/#sec-requireinternalslot">RequireInternalSlot</a></emu-xref>(<var>dtf</var>, [[InitializedDateTimeFormat]]).</li><li>If <var>date</var> is <emu-val>undefined</emu-val>, then<ol><li>Let <var>x</var> be !&nbsp;<emu-xref aoid="Call" id="_ref_43"><a href="https://tc39.es/ecma262/#sec-call">Call</a></emu-xref>(%Date.now%, <emu-val>undefined</emu-val>).</li></ol></li><li>Else,<ol><li>Let <var>x</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_44"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>date</var>).</li></ol></li><li>Return ?&nbsp;<emu-xref aoid="FormatDateTimeToParts" id="_ref_45"><a href="#sec-formatdatetimetoparts">FormatDateTimeToParts</a></emu-xref>(<var>dtf</var>, <var>x</var>).</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype.formatRange">
+      <h1><span class="secnum">1.3.5</span> Intl.DateTimeFormat.prototype.formatRange ( <var>startDate</var>, <var>endDate</var> )</h1>
+
+      <p>
+        When the <code>formatRange</code> method is called with arguments <var>startDate</var> and <var>endDate</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be <emu-val>this</emu-val> value.</li><li>Perform ?&nbsp;<emu-xref aoid="RequireInternalSlot" id="_ref_46"><a href="https://tc39.es/ecma262/#sec-requireinternalslot">RequireInternalSlot</a></emu-xref>(<var>dtf</var>, [[InitializedDateTimeFormat]]).</li><li>If <var>startDate</var> is <emu-val>undefined</emu-val> or <var>endDate</var> is <emu-val>undefined</emu-val>, throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>x</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_47"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>startDate</var>).</li><li>Let <var>y</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_48"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>endDate</var>).</li><li>Return ?&nbsp;<emu-xref aoid="FormatDateTimeRange" id="_ref_49"><a href="#sec-formatdatetimerange">FormatDateTimeRange</a></emu-xref>(<var>dtf</var>, <var>x</var>, <var>y</var>).</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-Intl.DateTimeFormat.prototype.formatRangeToParts">
+      <h1><span class="secnum">1.3.6</span> Intl.DateTimeFormat.prototype.formatRangeToParts ( <var>startDate</var>, <var>endDate</var> )</h1>
+
+      <p>
+        When the <code>formatRangeToParts</code> method is called with arguments <var>startDate</var> and <var>endDate</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be <emu-val>this</emu-val> value.</li><li>Perform ?&nbsp;<emu-xref aoid="RequireInternalSlot" id="_ref_50"><a href="https://tc39.es/ecma262/#sec-requireinternalslot">RequireInternalSlot</a></emu-xref>(<var>dtf</var>, [[InitializedDateTimeFormat]]).</li><li>If <var>startDate</var> is <emu-val>undefined</emu-val> or <var>endDate</var> is <emu-val>undefined</emu-val>, throw a <emu-val>TypeError</emu-val> exception.</li><li>Let <var>x</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_51"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>startDate</var>).</li><li>Let <var>y</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_52"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>endDate</var>).</li><li>Return ?&nbsp;<emu-xref aoid="FormatDateTimeRangeToParts" id="_ref_53"><a href="#sec-formatdatetimerangetoparts">FormatDateTimeRangeToParts</a></emu-xref>(<var>dtf</var>, <var>x</var>, <var>y</var>).</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-intl.datetimeformat.prototype.resolvedoptions">
+      <h1><span class="secnum">1.3.7</span> Intl.DateTimeFormat.prototype.resolvedOptions ( )</h1>
+
+      <p>
+        This function provides access to the locale and options computed during initialization of the object.
+      </p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be the <emu-val>this</emu-val> value.</li><li>If the implementation supports the normative optional <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> mode of <emu-xref href="#legacy-constructor"></emu-xref>, then<ol><li>Set <var>dtf</var> to ?&nbsp;<emu-xref aoid="UnwrapDateTimeFormat" id="_ref_54"><a href="#sec-unwrapdatetimeformat">UnwrapDateTimeFormat</a></emu-xref>(<var>dtf</var>).</li></ol></li><li>Perform ?&nbsp;<emu-xref aoid="RequireInternalSlot" id="_ref_55"><a href="https://tc39.es/ecma262/#sec-requireinternalslot">RequireInternalSlot</a></emu-xref>(<var>dtf</var>, [[InitializedDateTimeFormat]]).</li><li>Let <var>options</var> be OrdinaryObjectCreate(%Object.prototype%).</li><li>For each row of <emu-xref href="#table-datetimeformat-resolvedoptions-properties" id="_ref_10"><a href="#table-datetimeformat-resolvedoptions-properties">Table 2</a></emu-xref>, except the header row, in table order, do<ol><li>Let <var>p</var> be the Property value of the current row.</li><li>If <var>p</var> is <emu-val>"hour12"</emu-val>, then<ol><li>Let <var>hc</var> be <var>dtf</var>.[[HourCycle]].</li><li>If <var>hc</var> is <emu-val>"h11"</emu-val> or <emu-val>"h12"</emu-val>, let <var>v</var> be <emu-val>true</emu-val>.</li><li>Else if, <var>hc</var> is <emu-val>"h23"</emu-val> or <emu-val>"h24"</emu-val>, let <var>v</var> be <emu-val>false</emu-val>.</li><li>Else, let <var>v</var> be <emu-val>undefined</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>v</var> be the value of <var>dtf</var>'s internal slot whose name is the Internal Slot value of the current row.</li></ol></li><li>If the Internal Slot value of the current row is an Internal Slot value in <emu-xref href="#table-datetimeformat-components" id="_ref_11"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, then<ol><li>If <var>dtf</var>.[[DateStyle]] is not <emu-val>undefined</emu-val> or <var>dtf</var>.[[TimeStyle]] is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>v</var> be <emu-val>undefined</emu-val>.</li></ol></li></ol></li><li>If <var>v</var> is not <emu-val>undefined</emu-val>, then<ol><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_56"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>options</var>, <var>p</var>, <var>v</var>).</li></ol></li></ol></li><li>Return <var>options</var>.</li></ol></emu-alg>
+
+      <emu-table id="table-datetimeformat-resolvedoptions-properties"><figure><figcaption>Table 2: Resolved Options of DateTimeFormat Instances</figcaption>
+        
+        <table class="real-table">
+          <thead>
+            <tr>
+              <th>Internal Slot</th>
+              <th>Property</th>
+            </tr>
+          </thead>
+          <tbody><tr>
+            <td>[[Locale]]</td>
+            <td><emu-val>"locale"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Calendar]]</td>
+            <td><emu-val>"calendar"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[NumberingSystem]]</td>
+            <td><emu-val>"numberingSystem"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[TimeZone]]</td>
+            <td><emu-val>"timeZone"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[HourCycle]]</td>
+            <td><emu-val>"hourCycle"</emu-val></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><emu-val>"hour12"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Weekday]]</td>
+            <td><emu-val>"weekday"</emu-val></td>
+          </tr>
+          <tr>
+            <td><ins>[[EraDisplay]]</ins></td>
+            <td><ins><emu-val>"eraDisplay"</emu-val></ins></td>
+          </tr>
+          <tr>
+            <td>[[Era]]</td>
+            <td><emu-val>"era"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Year]]</td>
+            <td><emu-val>"year"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Month]]</td>
+            <td><emu-val>"month"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Day]]</td>
+            <td><emu-val>"day"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[DayPeriod]]</td>
+            <td><emu-val>"dayPeriod"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Hour]]</td>
+            <td><emu-val>"hour"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Minute]]</td>
+            <td><emu-val>"minute"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Second]]</td>
+            <td><emu-val>"second"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[FractionalSecondDigits]]</td>
+            <td><emu-val>"fractionalSecondDigits"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[TimeZoneName]]</td>
+            <td><emu-val>"timeZoneName"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[DateStyle]]</td>
+            <td><emu-val>"dateStyle"</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[TimeStyle]]</td>
+            <td><emu-val>"timeStyle"</emu-val></td>
+          </tr>
+        </tbody></table>
+      </figure></emu-table>
+
+      <p>
+        For web compatibility reasons, if the property <emu-val>"hourCycle"</emu-val> is set, the <emu-val>"hour12"</emu-val> property should be set to <emu-val>true</emu-val> when <emu-val>"hourCycle"</emu-val> is <emu-val>"h11"</emu-val> or <emu-val>"h12"</emu-val>, or to <emu-val>false</emu-val> when <emu-val>"hourCycle"</emu-val> is <emu-val>"h23"</emu-val> or <emu-val>"h24"</emu-val>.
+      </p>
+
+      <emu-note><span class="note">Note 1</span><div class="note-contents">
+        In this version of the ECMAScript 2023 Internationalization API, the <emu-val>"timeZone"</emu-val> property will be the name of the default time zone if no <emu-val>"timeZone"</emu-val> property was provided in the options object provided to the Intl.DateTimeFormat <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref>. The first edition left the <emu-val>"timeZone"</emu-val> property <emu-val>undefined</emu-val> in this case.
+      </div></emu-note>
+
+      <emu-note><span class="note">Note 2</span><div class="note-contents">
+        For compatibility with versions prior to the fifth edition, the <emu-val>"hour12"</emu-val> property is set in addition to the <emu-val>"hourCycle"</emu-val> property.
+      </div></emu-note>
+    </emu-clause>
+  </emu-clause>
+
+  <emu-clause id="sec-properties-of-intl-datetimeformat-instances">
+    <h1><span class="secnum">1.4</span> Properties of Intl.DateTimeFormat Instances</h1>
+
+    <p>
+      Intl.DateTimeFormat instances are ordinary objects that inherit properties from <emu-xref href="#sec-properties-of-intl-datetimeformat-prototype-object" id="_ref_57"><a href="#sec-properties-of-intl-datetimeformat-prototype-object">%DateTimeFormat.prototype%</a></emu-xref>.
+    </p>
+
+    <p>
+      Intl.DateTimeFormat instances have an [[InitializedDateTimeFormat]] internal slot.
+    </p>
+
+    <p>
+      Intl.DateTimeFormat instances also have several internal slots that are computed by the <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref>:
+    </p>
+
+    <ul>
+      <li>[[Locale]] is a String value with the language tag of the locale whose localization is used for formatting.</li>
+      <li>[[Calendar]] is a String value with the <emu-val>"type"</emu-val> given in Unicode Technical Standard 35 for the calendar used for formatting.</li>
+      <li>[[NumberingSystem]] is a String value with the <emu-val>"type"</emu-val> given in Unicode Technical Standard 35 for the numbering system used for formatting.</li>
+      <li>[[TimeZone]] is a String value with the IANA time zone name of the time zone used for formatting.</li>
+      <li>[[Weekday]], [[Era]], [[Year]], [[Month]], [[Day]], [[DayPeriod]], [[Hour]], [[Minute]], [[Second]], [[TimeZoneName]] are each either <emu-val>undefined</emu-val>, indicating that the component is not used for formatting, or one of the String values given in <emu-xref href="#table-datetimeformat-components" id="_ref_12"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, indicating how the component should be presented in the formatted output.</li>
+      <li>[[FractionalSecondDigits]] is either <emu-val>undefined</emu-val> or a positive, non-zero <emu-xref href="#integer"><a href="https://tc39.es/ecma262/#integer">integer</a></emu-xref> <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref> indicating the fraction digits to be used for fractional seconds. Numbers will be rounded or padded with trailing zeroes if necessary.</li>
+      <li>[[HourCycle]] is a String value indicating whether the 12-hour format (<emu-val>"h11"</emu-val>, <emu-val>"h12"</emu-val>) or the 24-hour format (<emu-val>"h23"</emu-val>, <emu-val>"h24"</emu-val>) should be used. <emu-val>"h11"</emu-val> and <emu-val>"h23"</emu-val> start with hour 0 and go up to 11 and 23 respectively. <emu-val>"h12"</emu-val> and <emu-val>"h24"</emu-val> start with hour 1 and go up to 12 and 24. [[HourCycle]] is only used when [[Hour]] is not <emu-val>undefined</emu-val>.</li>
+      <li><ins>[[EraDisplay]] is a String value indicating if a test on the <var>x</var> Number passed to the <emu-xref aoid="PartitionDateTimePattern" id="_ref_58"><a href="#sec-partitiondatetimepattern">PartitionDateTimePattern</a></emu-xref> abstract operation should be done in order to possibly skip the [[Era]] component.</ins></li>
+      <li>[[DateStyle]], [[TimeStyle]] are each either <emu-val>undefined</emu-val>, or a String value with values <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, or <emu-val>"short"</emu-val>.</li>
+      <li>[[Pattern]] is a String value as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots" id="_ref_13"><a href="#sec-intl.datetimeformat-internal-slots">1.2.3</a></emu-xref>.</li>
+      <li>[[PatternEra]] is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots" id="_ref_14"><a href="#sec-intl.datetimeformat-internal-slots">1.2.3</a></emu-xref>.</li>
+      <li>[[RangePatterns]] is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> as described in <emu-xref href="#sec-intl.datetimeformat-internal-slots" id="_ref_15"><a href="#sec-intl.datetimeformat-internal-slots">1.2.3</a></emu-xref>.</li>
+    </ul>
+
+    <p>
+      Finally, Intl.DateTimeFormat instances have a [[BoundFormat]] internal slot that caches the function returned by the format accessor (<emu-xref href="#sec-intl.datetimeformat.prototype.format" id="_ref_16"><a href="#sec-intl.datetimeformat.prototype.format">1.3.3</a></emu-xref>).
+    </p>
+  </emu-clause>
+
+  <emu-clause id="sec-datetimeformat-abstracts">
+    <h1><span class="secnum">1.5</span> Abstract Operations for DateTimeFormat Objects</h1>
+
+    <p>
+      Several DateTimeFormat algorithms use values from the following table, which provides internal slots, property names and allowable values for the components of date and time formats:
+    </p>
+
+    <emu-table id="table-datetimeformat-components"><figure><figcaption>Table 3: Components of date and time formats</figcaption>
+      
+      <table class="real-table">
+        <thead>
+          <tr>
+            <th>Internal Slot</th>
+            <th>Property</th>
+            <th>Values</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+          <td>[[Weekday]]</td>
+          <td><emu-val>"weekday"</emu-val></td>
+          <td><emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Era]]</td>
+          <td><emu-val>"era"</emu-val></td>
+          <td><emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Year]]</td>
+          <td><emu-val>"year"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Month]]</td>
+          <td><emu-val>"month"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val>, <emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Day]]</td>
+          <td><emu-val>"day"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[DayPeriod]]</td>
+          <td><emu-val>"dayPeriod"</emu-val></td>
+          <td><emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Hour]]</td>
+          <td><emu-val>"hour"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Minute]]</td>
+          <td><emu-val>"minute"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[Second]]</td>
+          <td><emu-val>"second"</emu-val></td>
+          <td><emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val></td>
+        </tr>
+        <tr>
+          <td>[[FractionalSecondDigits]]</td>
+          <td><emu-val>"fractionalSecondDigits"</emu-val></td>
+          <td><emu-val>1</emu-val><sub>𝔽</sub>, <emu-val>2</emu-val><sub>𝔽</sub>, <emu-val>3</emu-val><sub>𝔽</sub></td>
+        </tr>
+        <tr>
+          <td>[[TimeZoneName]]</td>
+          <td><emu-val>"timeZoneName"</emu-val></td>
+          <td><emu-val>"short"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"shortOffset"</emu-val>, <emu-val>"longOffset"</emu-val>, <emu-val>"shortGeneric"</emu-val>, <emu-val>"longGeneric"</emu-val></td>
+        </tr>
+      </tbody></table>
+    </figure></emu-table>
+
+    <emu-clause id="sec-todatetimeoptions" aoid="ToDateTimeOptions">
+      <h1><span class="secnum">1.5.1</span> ToDateTimeOptions ( <var>options</var>, <var>required</var>, <var>defaults</var> )</h1>
+
+      <p>
+        When the ToDateTimeOptions abstract operation is called with arguments <var>options</var>, <var>required</var>, and <var>defaults</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>If <var>options</var> is <emu-val>undefined</emu-val>, let <var>options</var> be <emu-val>null</emu-val>; otherwise let <var>options</var> be ?&nbsp;<emu-xref aoid="ToObject" id="_ref_59"><a href="https://tc39.es/ecma262/#sec-toobject">ToObject</a></emu-xref>(<var>options</var>).</li><li>Let <var>options</var> be OrdinaryObjectCreate(<var>options</var>).</li><li>Let <var>needDefaults</var> be <emu-val>true</emu-val>.</li><li>If <var>required</var> is <emu-val>"date"</emu-val> or <emu-val>"any"</emu-val>, then<ol><li>For each <emu-xref href="#property-name"><a href="https://tc39.es/ecma262/#property-name">property name</a></emu-xref> <var>prop</var> of « <emu-val>"weekday"</emu-val>, <emu-val>"year"</emu-val>, <emu-val>"month"</emu-val>, <emu-val>"day"</emu-val> », do<ol><li>Let <var>value</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_60"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <var>prop</var>).</li><li>If <var>value</var> is not <emu-val>undefined</emu-val>, let <var>needDefaults</var> be <emu-val>false</emu-val>.</li></ol></li></ol></li><li>If <var>required</var> is <emu-val>"time"</emu-val> or <emu-val>"any"</emu-val>, then<ol><li>For each <emu-xref href="#property-name"><a href="https://tc39.es/ecma262/#property-name">property name</a></emu-xref> <var>prop</var> of « <emu-val>"dayPeriod"</emu-val>, <emu-val>"hour"</emu-val>, <emu-val>"minute"</emu-val>, <emu-val>"second"</emu-val>, <emu-val>"fractionalSecondDigits"</emu-val> », do<ol><li>Let <var>value</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_61"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <var>prop</var>).</li><li>If <var>value</var> is not <emu-val>undefined</emu-val>, let <var>needDefaults</var> be <emu-val>false</emu-val>.</li></ol></li></ol></li><li>Let <var>dateStyle</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_62"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <emu-val>"dateStyle"</emu-val>).</li><li>Let <var>timeStyle</var> be ?&nbsp;<emu-xref aoid="Get" id="_ref_63"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>options</var>, <emu-val>"timeStyle"</emu-val>).</li><li>If <var>dateStyle</var> is not <emu-val>undefined</emu-val> or <var>timeStyle</var> is not <emu-val>undefined</emu-val>, let <var>needDefaults</var> be <emu-val>false</emu-val>.</li><li>If <var>required</var> is <emu-val>"date"</emu-val> and <var>timeStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li>Throw a <emu-val>TypeError</emu-val> exception.</li></ol></li><li>If <var>required</var> is <emu-val>"time"</emu-val> and <var>dateStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li>Throw a <emu-val>TypeError</emu-val> exception.</li></ol></li><li>If <var>needDefaults</var> is <emu-val>true</emu-val> and <var>defaults</var> is either <emu-val>"date"</emu-val> or <emu-val>"all"</emu-val>, then<ol><li>For each <emu-xref href="#property-name"><a href="https://tc39.es/ecma262/#property-name">property name</a></emu-xref> <var>prop</var> of « <emu-val>"year"</emu-val>, <emu-val>"month"</emu-val>, <emu-val>"day"</emu-val> », do<ol><li>Perform ?&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_64"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>options</var>, <var>prop</var>, <emu-val>"numeric"</emu-val>).</li></ol></li></ol></li><li>If <var>needDefaults</var> is <emu-val>true</emu-val> and <var>defaults</var> is either <emu-val>"time"</emu-val> or <emu-val>"all"</emu-val>, then<ol><li>For each <emu-xref href="#property-name"><a href="https://tc39.es/ecma262/#property-name">property name</a></emu-xref> <var>prop</var> of « <emu-val>"hour"</emu-val>, <emu-val>"minute"</emu-val>, <emu-val>"second"</emu-val> », do<ol><li>Perform ?&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_65"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>options</var>, <var>prop</var>, <emu-val>"numeric"</emu-val>).</li></ol></li></ol></li><li>Return <var>options</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-date-time-style-format" aoid="DateTimeStyleFormat">
+      <h1><span class="secnum">1.5.2</span> DateTimeStyleFormat ( <var>dateStyle</var>, <var>timeStyle</var>, <var>styles</var> )</h1>
+      <p>The DateTimeStyleFormat abstract operation accepts arguments <var>dateStyle</var> and <var>timeStyle</var>, which are each either <emu-val>undefined</emu-val>, <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, or <emu-val>"short"</emu-val>, at least one of which is not <emu-val>undefined</emu-val>, and <var>styles</var>, which is a record from <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_66"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>.[[LocaleData]].[[&lt;<var>locale</var>&gt;]].[[styles]].[[&lt;<var>calendar</var>&gt;]] for some locale <var>locale</var> and calendar <var>calendar</var>. It returns the appropriate format record for date time formatting based on the parameters.</p>
+      <emu-alg><ol><li>If <var>timeStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>timeStyle</var> is one of <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, or <emu-val>"short"</emu-val>.</li><li>Let <var>timeFormat</var> be <var>styles</var>.[[TimeFormat]].[[&lt;<var>timeStyle</var>&gt;]].</li></ol></li><li>If <var>dateStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>dateStyle</var> is one of <emu-val>"full"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"medium"</emu-val>, or <emu-val>"short"</emu-val>.</li><li>Let <var>dateFormat</var> be <var>styles</var>.[[DateFormat]].[[&lt;<var>dateStyle</var>&gt;]].</li></ol></li><li>If <var>dateStyle</var> is not <emu-val>undefined</emu-val> and <var>timeStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>format</var> be a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref>.</li><li>Add to <var>format</var> all fields from <var>dateFormat</var> except [[pattern]], <ins>[[patternEra]],</ins> and [[rangePatterns]].</li><li>Add to <var>format</var> all fields from <var>timeFormat</var> except [[pattern]], <ins>[[patternEra]],</ins>, [[rangePatterns]], [[pattern12]], and [[rangePatterns12]], if present.</li><li>Let <var>connector</var> be <var>styles</var>.[[DateTimeFormat]].[[&lt;<var>dateStyle</var>&gt;]].</li><li>Let <var>pattern</var> be the string <var>connector</var> with the substring <emu-val>"{0}"</emu-val> replaced with <var>timeFormat</var>.[[pattern]] and the substring <emu-val>"{1}"</emu-val> replaced with <var>dateFormat</var>.[[pattern]].</li><li>Set <var>format</var>.[[pattern]] to <var>pattern</var>.</li><li>If <var>timeFormat</var> has a [[pattern12]] field, then<ol><li>Let <var>pattern12</var> be the string <var>connector</var> with the substring <emu-val>"{0}"</emu-val> replaced with <var>timeFormat</var>.[[pattern12]] and the substring <emu-val>"{1}"</emu-val> replaced with <var>dateFormat</var>.[[pattern]].</li><li>Set <var>format</var>.[[pattern12]] to <var>pattern12</var>.</li></ol></li><li><ins class="block">If <var>dateFormat</var> has a [[patternEra]] field, then</ins><ol><li><ins class="block">Let <var>patternEra</var> be the string <var>connector</var> with the substring <emu-val>"{0}"</emu-val> replaced with <var>timeFormat</var>.[[pattern]] and the substring <emu-val>"{1}"</emu-val> replaced with <var>dateFormat</var>.[[patternEra]].</ins></li><li><ins class="block">Set <var>format</var>.[[patternEra]] to <var>patternEra</var>.</ins></li></ol></li><li><ins class="block">If <var>dateFormat</var> has a [[patternEra]] field and <var>timeFormat</var> has a [[pattern12]] field, then</ins><ol><li><ins class="block">Let <var>pattern12Era</var> be the string <var>connector</var> with the substring <emu-val>"{0}"</emu-val> replaced with <var>timeFormat</var>.[[pattern12]] and the substring <emu-val>"{1}"</emu-val> replaced with <var>dateFormat</var>.[[patternEra]].</ins></li><li><ins class="block">Set <var>format</var>.[[pattern12Era]] to <var>pattern12Era</var>.</ins></li></ol></li><li>Let <var>dateTimeRangeFormat</var> be <var>styles</var>.[[DateTimeRangeFormat]].[[&lt;<var>dateStyle</var>&gt;]].[[&lt;<var>timeStyle</var>&gt;]].</li><li>Set <var>format</var>.[[rangePatterns]] to <var>dateTimeRangeFormat</var>.[[rangePatterns]].</li><li>If <var>dateTimeRangeFormat</var> has a [[rangePatterns12]] field, then<ol><li>Set <var>format</var>.[[rangePatterns12]] to <var>dateTimeRangeFormat</var>.[[rangePatterns12]].</li></ol></li><li>Return <var>format</var>.</li></ol></li><li>If <var>timeStyle</var> is not <emu-val>undefined</emu-val>, then<ol><li>Return <var>timeFormat</var>.</li></ol></li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <var>dateStyle</var> is not <emu-val>undefined</emu-val>.</li><li>Return <var>dateFormat</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-basicformatmatcher" aoid="BasicFormatMatcher">
+      <h1><span class="secnum">1.5.3</span> BasicFormatMatcher ( <var>options</var>, <var>formats</var> )</h1>
+
+      <p>
+        When the BasicFormatMatcher abstract operation is called with two arguments <var>options</var> and <var>formats</var>, the following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>removalPenalty</var> be 120.</li><li>Let <var>additionPenalty</var> be 20.</li><li>Let <var>longLessPenalty</var> be 8.</li><li>Let <var>longMorePenalty</var> be 6.</li><li>Let <var>shortLessPenalty</var> be 6.</li><li>Let <var>shortMorePenalty</var> be 3.</li><li>Let <var>offsetPenalty</var> be 1.</li><li>Let <var>bestScore</var> be -<emu-val>Infinity</emu-val>.</li><li>Let <var>bestFormat</var> be <emu-val>undefined</emu-val>.</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <emu-xref aoid="Type" id="_ref_67"><a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>formats</var>) is <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each element <var>format</var> of <var>formats</var>, do<ol><li>Let <var>score</var> be 0.</li><li>For each <emu-xref href="#property-name"><a href="https://tc39.es/ecma262/#property-name">property name</a></emu-xref> <var>property</var> shown in <emu-xref href="#table-datetimeformat-components" id="_ref_17"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, do<ol><li>If <var>options</var> has a field [[&lt;<var>property</var>&gt;]], let <var>optionsProp</var> be <var>options</var>.[[&lt;<var>property</var>&gt;]]; else let <var>optionsProp</var> be <emu-val>undefined</emu-val>.</li><li>If <var>format</var> has a field [[&lt;<var>property</var>&gt;]], let <var>formatProp</var> be <var>format</var>.[[&lt;<var>property</var>&gt;]]; else let <var>formatProp</var> be <emu-val>undefined</emu-val>.</li><li>If <var>optionsProp</var> is <emu-val>undefined</emu-val> and <var>formatProp</var> is not <emu-val>undefined</emu-val>, decrease <var>score</var> by <var>additionPenalty</var>.</li><li>Else if <var>optionsProp</var> is not <emu-val>undefined</emu-val> and <var>formatProp</var> is <emu-val>undefined</emu-val>, decrease <var>score</var> by <var>removalPenalty</var>.</li><li>Else if <var>property</var> is <emu-val>"timeZoneName"</emu-val>, then<ol><li>If <var>optionsProp</var> is <emu-val>"short"</emu-val> or <emu-val>"shortGeneric"</emu-val>, then<ol><li>If <var>formatProp</var> is <emu-val>"shortOffset"</emu-val>, decrease <var>score</var> by <var>offsetPenalty</var>.</li><li>Else if <var>formatProp</var> is <emu-val>"longOffset"</emu-val>, decrease <var>score</var> by (<var>offsetPenalty</var> + <var>shortMorePenalty</var>).</li><li>Else if <var>optionsProp</var> is <emu-val>"short"</emu-val> and <var>formatProp</var> is <emu-val>"long"</emu-val>, decrease <var>score</var> by <var>shortMorePenalty</var>.</li><li>Else if <var>optionsProp</var> is <emu-val>"shortGeneric"</emu-val> and <var>formatProp</var> is <emu-val>"longGeneric"</emu-val>, decrease <var>score</var> by <var>shortMorePenalty</var>.</li><li>Else if <var>optionsProp</var> ≠ <var>formatProp</var>, decrease <var>score</var> by <var>removalPenalty</var>.</li></ol></li><li>Else if <var>optionsProp</var> is <emu-val>"shortOffset"</emu-val> and <var>formatProp</var> is <emu-val>"longOffset"</emu-val>, decrease <var>score</var> by <var>shortMorePenalty</var>.</li><li>Else if <var>optionsProp</var> is <emu-val>"long"</emu-val> or <emu-val>"longGeneric"</emu-val>, then<ol><li>If <var>formatProp</var> is <emu-val>"longOffset"</emu-val>, decrease <var>score</var> by <var>offsetPenalty</var>.</li><li>Else if <var>formatProp</var> is <emu-val>"shortOffset"</emu-val>, decrease <var>score</var> by (<var>offsetPenalty</var> + <var>longLessPenalty</var>).</li><li>Else if <var>optionsProp</var> is <emu-val>"long"</emu-val> and <var>formatProp</var> is <emu-val>"short"</emu-val>, decrease <var>score</var> by <var>longLessPenalty</var>.</li><li>Else if <var>optionsProp</var> is <emu-val>"longGeneric"</emu-val> and <var>formatProp</var> is <emu-val>"shortGeneric"</emu-val>, decrease <var>score</var> by <var>longLessPenalty</var>.</li><li>Else if <var>optionsProp</var> ≠ <var>formatProp</var>, decrease <var>score</var> by <var>removalPenalty</var>.</li></ol></li><li>Else if <var>optionsProp</var> is <emu-val>"longOffset"</emu-val> and <var>formatProp</var> is <emu-val>"shortOffset"</emu-val>, decrease <var>score</var> by <var>longLessPenalty</var>.</li><li>Else if <var>optionsProp</var> ≠ <var>formatProp</var>, decrease <var>score</var> by <var>removalPenalty</var>.</li></ol></li><li>Else if <var>optionsProp</var> ≠ <var>formatProp</var>, then<ol><li>If <var>property</var> is <emu-val>"fractionalSecondDigits"</emu-val>, then<ol><li>Let <var>values</var> be « <emu-val>1</emu-val><sub>𝔽</sub>, <emu-val>2</emu-val><sub>𝔽</sub>, <emu-val>3</emu-val><sub>𝔽</sub> ».</li></ol></li><li>Else,<ol><li>Let <var>values</var> be « <emu-val>"2-digit"</emu-val>, <emu-val>"numeric"</emu-val>, <emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val> ».</li></ol></li><li>Let <var>optionsPropIndex</var> be the index of <var>optionsProp</var> within <var>values</var>.</li><li>Let <var>formatPropIndex</var> be the index of <var>formatProp</var> within <var>values</var>.</li><li>Let <var>delta</var> be <emu-xref aoid="max"><a href="https://tc39.es/ecma262/#eqn-max">max</a></emu-xref>(<emu-xref aoid="min"><a href="https://tc39.es/ecma262/#eqn-min">min</a></emu-xref>(<var>formatPropIndex</var> - <var>optionsPropIndex</var>, 2), -2).</li><li>If <var>delta</var> = 2, decrease <var>score</var> by <var>longMorePenalty</var>.</li><li>Else if <var>delta</var> = 1, decrease <var>score</var> by <var>shortMorePenalty</var>.</li><li>Else if <var>delta</var> = -1, decrease <var>score</var> by <var>shortLessPenalty</var>.</li><li>Else if <var>delta</var> = -2, decrease <var>score</var> by <var>longLessPenalty</var>.</li></ol></li></ol></li><li>If <var>score</var> &gt; <var>bestScore</var>, then<ol><li>Let <var>bestScore</var> be <var>score</var>.</li><li>Let <var>bestFormat</var> be <var>format</var>.</li></ol></li></ol></li><li>Return <var>bestFormat</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-bestfitformatmatcher" aoid="BestFitFormatMatcher">
+      <h1><span class="secnum">1.5.4</span> BestFitFormatMatcher ( <var>options</var>, <var>formats</var> )</h1>
+
+      <p>
+        When the BestFitFormatMatcher abstract operation is called with two arguments <var>options</var> and <var>formats</var>, it performs implementation dependent steps, which should return a set of component representations that a typical user of the selected locale would perceive as at least as good as the one returned by <emu-xref aoid="BasicFormatMatcher" id="_ref_68"><a href="#sec-basicformatmatcher">BasicFormatMatcher</a></emu-xref>.
+      </p>
+    </emu-clause>
+
+    <emu-clause id="sec-datetime-format-functions">
+      <h1><span class="secnum">1.5.5</span> DateTime Format Functions</h1>
+
+      <p>A DateTime format function is an anonymous built-in function that has a [[DateTimeFormat]] internal slot.</p>
+      <p>When a DateTime format function <var>F</var> is called with optional argument <var>date</var>, the following steps are taken:</p>
+
+      <emu-alg><ol><li>Let <var>dtf</var> be <var>F</var>.[[DateTimeFormat]].</li><li><emu-xref href="#assert"><a href="https://tc39.es/ecma262/#assert">Assert</a></emu-xref>: <emu-xref aoid="Type" id="_ref_69"><a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>dtf</var>) is Object and <var>dtf</var> has an [[InitializedDateTimeFormat]] internal slot.</li><li>If <var>date</var> is not provided or is <emu-val>undefined</emu-val>, then<ol><li>Let <var>x</var> be !&nbsp;<emu-xref aoid="Call" id="_ref_70"><a href="https://tc39.es/ecma262/#sec-call">Call</a></emu-xref>(%Date.now%, <emu-val>undefined</emu-val>).</li></ol></li><li>Else,<ol><li>Let <var>x</var> be ?&nbsp;<emu-xref aoid="ToNumber" id="_ref_71"><a href="https://tc39.es/ecma262/#sec-tonumber">ToNumber</a></emu-xref>(<var>date</var>).</li></ol></li><li>Return ?&nbsp;<emu-xref aoid="FormatDateTime" id="_ref_72"><a href="#sec-formatdatetime">FormatDateTime</a></emu-xref>(<var>dtf</var>, <var>x</var>).</li></ol></emu-alg>
+
+      <p>
+        The <emu-val>"length"</emu-val> property of a DateTime format function is 1.
+      </p>
+    </emu-clause>
+
+    <emu-clause id="sec-formatdatetimepattern" aoid="FormatDateTimePattern">
+      <h1><span class="secnum">1.5.6</span> FormatDateTimePattern ( <var>dateTimeFormat</var>, <var>patternParts</var>, <var>x</var>, <var>rangeFormatOptions</var> )</h1>
+
+      <p>
+        The FormatDateTimePattern abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat), <var>patternParts</var> (which is a list of Records as returned by PartitionPattern), <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), and <var>rangeFormatOptions</var> (which is a range pattern <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> as used in [[rangePattern]] or <emu-val>undefined</emu-val>), interprets <var>x</var> as a <emu-xref href="#sec-time-values-and-time-range"><a href="https://tc39.es/ecma262/#sec-time-values-and-time-range">time value</a></emu-xref> as specified in es2023, <emu-xref href="#sec-time-values-and-time-range"><a href="https://tc39.es/ecma262/#sec-time-values-and-time-range">20.4.1.1</a></emu-xref>, and creates the corresponding parts according <var>pattern</var> and to the effective locale and the formatting options of <var>dateTimeFormat</var> and <var>rangeFormatOptions</var>. The following steps are taken:
+      </p>
+
+      <emu-alg><ol><li>Let <var>x</var> be <emu-xref aoid="TimeClip" id="_ref_73"><a href="https://tc39.es/ecma262/#sec-timeclip">TimeClip</a></emu-xref>(<var>x</var>).</li><li>If <var>x</var> is <emu-val>NaN</emu-val>, throw a <emu-val>RangeError</emu-val> exception.</li><li>Let <var>locale</var> be <var>dateTimeFormat</var>.[[Locale]].</li><li>Let <var>nfOptions</var> be OrdinaryObjectCreate(<emu-val>null</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_74"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>nfOptions</var>, <emu-val>"useGrouping"</emu-val>, <emu-val>false</emu-val>).</li><li>Let <var>nf</var> be ?&nbsp;<emu-xref aoid="Construct" id="_ref_75"><a href="https://tc39.es/ecma262/#sec-construct">Construct</a></emu-xref>(%NumberFormat%, « <var>locale</var>, <var>nfOptions</var> »).</li><li>Let <var>nf2Options</var> be OrdinaryObjectCreate(<emu-val>null</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_76"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>nf2Options</var>, <emu-val>"minimumIntegerDigits"</emu-val>, 2).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_77"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>nf2Options</var>, <emu-val>"useGrouping"</emu-val>, <emu-val>false</emu-val>).</li><li>Let <var>nf2</var> be ?&nbsp;<emu-xref aoid="Construct" id="_ref_78"><a href="https://tc39.es/ecma262/#sec-construct">Construct</a></emu-xref>(%NumberFormat%, « <var>locale</var>, <var>nf2Options</var> »).</li><li>Let <var>fractionalSecondDigits</var> be <var>dateTimeFormat</var>.[[FractionalSecondDigits]].</li><li>If <var>fractionalSecondDigits</var> is not <emu-val>undefined</emu-val>, then<ol><li>Let <var>nf3Options</var> be OrdinaryObjectCreate(<emu-val>null</emu-val>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_79"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>nf3Options</var>, <emu-val>"minimumIntegerDigits"</emu-val>, <var>fractionalSecondDigits</var>).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_80"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>nf3Options</var>, <emu-val>"useGrouping"</emu-val>, <emu-val>false</emu-val>).</li><li>Let <var>nf3</var> be ?&nbsp;<emu-xref aoid="Construct" id="_ref_81"><a href="https://tc39.es/ecma262/#sec-construct">Construct</a></emu-xref>(%NumberFormat%, « <var>locale</var>, <var>nf3Options</var> »).</li></ol></li><li>Let <var>tm</var> be ToLocalTime(ℤ(<emu-xref href="#ℝ"><a href="https://tc39.es/ecma262/#ℝ">ℝ</a></emu-xref>(<var>x</var>) × 10<sup>6</sup>), <var>dateTimeFormat</var>.[[Calendar]], <var>dateTimeFormat</var>.[[TimeZone]]).</li><li>Let <var>result</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]] } <var>patternPart</var> in <var>patternParts</var>, do<ol><li>Let <var>p</var> be <var>patternPart</var>.[[Type]].</li><li>If <var>p</var> is <emu-val>"literal"</emu-val>, then<ol><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"literal"</emu-val>, [[Value]]: <var>patternPart</var>.[[Value]] } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"fractionalSecondDigits"</emu-val>, then<ol><li>Let <var>v</var> be <var>tm</var>.[[Millisecond]].</li><li>Let <var>v</var> be <emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>v</var> × 10<sup>( <var>fractionalSecondDigits</var> - 3 )</sup>).</li><li>Let <var>fv</var> be FormatNumeric(<var>nf3</var>, <var>v</var>).</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"fractionalSecond"</emu-val>, [[Value]]: <var>fv</var> } as the last element of <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"dayPeriod"</emu-val>, then<ol><li>Let <var>f</var> be the value of <var>dateTimeFormat</var>'s internal slot whose name is the Internal Slot column of the matching row.</li><li>Let <var>fv</var> be a String value representing the day period of <var>tm</var> in the form given by <var>f</var>; the String value depends upon the implementation and the effective locale of <var>dateTimeFormat</var>.</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <var>p</var>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"timeZoneName"</emu-val>, then<ol><li>Let <var>f</var> be <var>dateTimeFormat</var>.[[TimeZoneName]].</li><li>Let <var>v</var> be <var>dateTimeFormat</var>.[[TimeZone]].</li><li>Let <var>fv</var> be a String value representing <var>v</var> in the form given by <var>f</var>; the String value depends upon the implementation and the effective locale of <var>dateTimeFormat</var>. The String value may also depend on the value of the [[InDST]] field of <var>tm</var> if <var>f</var> is <emu-val>"short"</emu-val>, <emu-val>"long"</emu-val>, <emu-val>"shortOffset"</emu-val>, or <emu-val>"longOffset"</emu-val>. If the implementation does not have a localized representation of <var>f</var>, then use the String value of <var>v</var> itself.</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <var>p</var>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> matches a Property column of the row in <emu-xref href="#table-datetimeformat-components" id="_ref_18"><a href="#table-datetimeformat-components">Table 3</a></emu-xref>, then<ol><li>If <var>rangeFormatOptions</var> is not <emu-val>undefined</emu-val>, let <var>f</var> be the value of <var>rangeFormatOptions</var>'s field whose name matches <var>p</var>.</li><li>Else, let <var>f</var> be the value of <var>dateTimeFormat</var>'s internal slot whose name is the Internal Slot column of the matching row.</li><li>Let <var>v</var> be the value of <var>tm</var>'s field whose name is the Internal Slot column of the matching row.</li><li>If <var>p</var> is <emu-val>"year"</emu-val> and <var>v</var> ≤ 0, let <var>v</var> be 1 - <var>v</var>.</li><li>If <var>p</var> is <emu-val>"month"</emu-val>, increase <var>v</var> by 1.</li><li>If <var>p</var> is <emu-val>"hour"</emu-val> and <var>dateTimeFormat</var>.[[HourCycle]] is <emu-val>"h11"</emu-val> or <emu-val>"h12"</emu-val>, then<ol><li>Let <var>v</var> be <var>v</var> <emu-xref aoid="modulo"><a href="https://tc39.es/ecma262/#eqn-modulo">modulo</a></emu-xref> 12.</li><li>If <var>v</var> is 0 and <var>dateTimeFormat</var>.[[HourCycle]] is <emu-val>"h12"</emu-val>, let <var>v</var> be 12.</li></ol></li><li>If <var>p</var> is <emu-val>"hour"</emu-val> and <var>dateTimeFormat</var>.[[HourCycle]] is <emu-val>"h24"</emu-val>, then<ol><li>If <var>v</var> is 0, let <var>v</var> be 24.</li></ol></li><li>If <var>f</var> is <emu-val>"numeric"</emu-val>, then<ol><li>Let <var>fv</var> be FormatNumeric(<var>nf</var>, <var>v</var>).</li></ol></li><li>Else if <var>f</var> is <emu-val>"2-digit"</emu-val>, then<ol><li>Let <var>fv</var> be FormatNumeric(<var>nf2</var>, <var>v</var>).</li><li>If the <emu-val>"length"</emu-val> property of <var>fv</var> is greater than 2, let <var>fv</var> be the substring of <var>fv</var> containing the last two characters.</li></ol></li><li>Else if <var>f</var> is <emu-val>"narrow"</emu-val>, <emu-val>"short"</emu-val>, or <emu-val>"long"</emu-val>, then let <var>fv</var> be a String value representing <var>v</var> in the form given by <var>f</var>; the String value depends upon the implementation and the effective locale and calendar of <var>dateTimeFormat</var>. If <var>p</var> is <emu-val>"month"</emu-val> and <var>rangeFormatOptions</var> is <emu-val>undefined</emu-val>, then the String value may also depend on whether <var>dateTimeFormat</var>.[[Day]] is <emu-val>undefined</emu-val>. If <var>p</var> is <emu-val>"month"</emu-val> and <var>rangeFormatOptions</var> is not <emu-val>undefined</emu-val>, then the String value may also depend on whether <var>rangeFormatOptions</var>.[[day]] is <emu-val>undefined</emu-val>. If <var>p</var> is <emu-val>"era"</emu-val> and <var>rangeFormatOptions</var> is <emu-val>undefined</emu-val>, then the String value may also depend on whether <var>dateTimeFormat</var>.[[Era]] is <emu-val>undefined</emu-val>. If <var>p</var> is <emu-val>"era"</emu-val> and <var>rangeFormatOptions</var> is not <emu-val>undefined</emu-val>, then the String value may also depend on whether <var>rangeFormatOptions</var>.[[era]] is <emu-val>undefined</emu-val>. If the implementation does not have a localized representation of <var>f</var>, then use the String value of <var>v</var> itself.</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <var>p</var>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"ampm"</emu-val>, then<ol><li>Let <var>v</var> be <var>tm</var>.[[Hour]].</li><li>If <var>v</var> is greater than 11, then<ol><li>Let <var>fv</var> be an implementation and locale dependent String value representing <emu-val>"post meridiem"</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>fv</var> be an implementation and locale dependent String value representing <emu-val>"ante meridiem"</emu-val>.</li></ol></li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"dayPeriod"</emu-val>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"relatedYear"</emu-val>, then<ol><li>Let <var>v</var> be <var>tm</var>.[[RelatedYear]].</li><li>Let <var>fv</var> be FormatNumeric(<var>nf</var>, <var>v</var>).</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"relatedYear"</emu-val>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else if <var>p</var> is equal to <emu-val>"yearName"</emu-val>, then<ol><li>Let <var>v</var> be <var>tm</var>.[[YearName]].</li><li>Let <var>fv</var> be an implementation and locale dependent String value representing <var>v</var>.</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"yearName"</emu-val>, [[Value]]: <var>fv</var> } as the last element of the list <var>result</var>.</li></ol></li><li>Else,<ol><li>Let <var>unknown</var> be an implementation-, locale-, and numbering system-dependent String based on <var>x</var> and <var>p</var>.</li><li>Append a new <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]]: <emu-val>"unknown"</emu-val>, [[Value]]: <var>unknown</var> } as the last element of <var>result</var>.</li></ol></li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+
+      <emu-note><span class="note">Note 1</span><div class="note-contents">
+        It is recommended that implementations use the locale and calendar dependent strings provided by the Common Locale Data Repository (available at <a href="https://cldr.unicode.org/">https://cldr.unicode.org/</a>), and use CLDR <emu-val>"abbreviated"</emu-val> strings for DateTimeFormat <emu-val>"short"</emu-val> strings, and CLDR <emu-val>"wide"</emu-val> strings for DateTimeFormat <emu-val>"long"</emu-val> strings.
+      </div></emu-note>
+
+      <emu-note><span class="note">Note 2</span><div class="note-contents">
+        It is recommended that implementations use the time zone information of the IANA Time Zone Database.
+      </div></emu-note>
+    </emu-clause>
+
+    <emu-clause id="sec-partitiondatetimepattern" aoid="PartitionDateTimePattern">
+      <h1><span class="secnum">1.5.7</span> PartitionDateTimePattern ( <var>dateTimeFormat</var>, <var>x</var> )</h1>
+
+      <p>
+        The PartitionDateTimePattern abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat) and <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), interprets <var>x</var> as a <emu-xref href="#sec-time-values-and-time-range"><a href="https://tc39.es/ecma262/#sec-time-values-and-time-range">time value</a></emu-xref> as specified in es2023, <emu-xref href="#sec-time-values-and-time-range"><a href="https://tc39.es/ecma262/#sec-time-values-and-time-range">20.4.1.1</a></emu-xref>, and creates the corresponding parts according to the effective locale and the formatting options of <var>dateTimeFormat</var>. The following steps are taken:
+      </p>
+
+      <emu-alg><ol><li><ins class="block">If <var>dateTimeFormat</var>.[[EraDisplay]] is <emu-val>"never"</emu-val>, then</ins><ol><li><ins class="block">Let <var>pattern</var> be <var>dateTimeFormat</var>.[[Pattern]].</ins></li></ol></li><li><ins class="block">If <var>dateTimeFormat</var>.[[EraDisplay]] is <emu-val>"always"</emu-val>, then</ins><ol><li><ins class="block">Let <var>pattern</var> be <var>dateTimeFormat</var>.[[PatternEra]].</ins></li></ol></li><li><ins class="block">If <var>dateTimeFormat</var>.[[EraDisplay]] is <emu-val>"auto"</emu-val>, then</ins><ol><li><ins class="block">Let <var>F</var> be a DateTime format function of <var>dateTimeFormat</var>.</ins></li><li><ins class="block">If <var>F</var>().[[Era]] ≠ <var>F</var>(<var>x</var>).[[Era]], let <var>pattern</var> be <var>dateTimeFormat</var>.[[PatternEra]].</ins></li><li><ins class="block">Else, let <var>pattern</var> be <var>dateTimeFormat</var>.[[Pattern]].</ins></li></ol></li><li>Let <var>patternParts</var> be PartitionPattern(<del><var>dateTimeFormat</var>.[[Pattern]]</del> <ins><var>pattern</var></ins>).</li><li>Let <var>result</var> be ?&nbsp;<emu-xref aoid="FormatDateTimePattern" id="_ref_82"><a href="#sec-formatdatetimepattern">FormatDateTimePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>patternParts</var>, <var>x</var>, <emu-val>undefined</emu-val>).</li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-formatdatetime" aoid="FormatDateTime">
+      <h1><span class="secnum">1.5.8</span> FormatDateTime ( <var>dateTimeFormat</var>, <var>x</var> )</h1>
+
+      <p>
+        The FormatDateTime abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat) and <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), and performs the following steps:
+      </p>
+
+      <emu-alg><ol><li>Let <var>parts</var> be ?&nbsp;<emu-xref aoid="PartitionDateTimePattern" id="_ref_83"><a href="#sec-partitiondatetimepattern">PartitionDateTimePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>x</var>).</li><li>Let <var>result</var> be the empty String.</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]] } <var>part</var> in <var>parts</var>, do<ol><li>Set <var>result</var> to the <emu-xref href="#sec-ecmascript-language-types-string-type"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types-string-type">string-concatenation</a></emu-xref> of <var>result</var> and <var>part</var>.[[Value]].</li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-formatdatetimetoparts" aoid="FormatDateTimeToParts">
+      <h1><span class="secnum">1.5.9</span> FormatDateTimeToParts ( <var>dateTimeFormat</var>, <var>x</var> )</h1>
+
+      <p>
+        The FormatDateTimeToParts abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat) and <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), and performs the following steps:
+      </p>
+
+      <emu-alg><ol><li>Let <var>parts</var> be ?&nbsp;<emu-xref aoid="PartitionDateTimePattern" id="_ref_84"><a href="#sec-partitiondatetimepattern">PartitionDateTimePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>x</var>).</li><li>Let <var>result</var> be !&nbsp;<emu-xref aoid="ArrayCreate" id="_ref_85"><a href="https://tc39.es/ecma262/#sec-arraycreate">ArrayCreate</a></emu-xref>(0).</li><li>Let <var>n</var> be 0.</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]] } <var>part</var> in <var>parts</var>, do<ol><li>Let <var>O</var> be OrdinaryObjectCreate(%Object.prototype%).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_86"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"type"</emu-val>, <var>part</var>.[[Type]]).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_87"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"value"</emu-val>, <var>part</var>.[[Value]]).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataProperty" id="_ref_88"><a href="https://tc39.es/ecma262/#sec-createdataproperty">CreateDataProperty</a></emu-xref>(<var>result</var>, !&nbsp;<emu-xref aoid="ToString" id="_ref_89"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>n</var>), <var>O</var>).</li><li>Increment <var>n</var> by 1.</li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-partitiondatetimerangepattern" aoid="PartitionDateTimeRangePattern">
+      <h1><span class="secnum">1.5.10</span> PartitionDateTimeRangePattern ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</h1>
+
+      <p>
+        The PartitionDateTimeRangePattern abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat), <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>) and <var>y</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), interprets <var>x</var> and <var>y</var> as time values as specified in es2023, <emu-xref href="#sec-time-values-and-time-range"><a href="https://tc39.es/ecma262/#sec-time-values-and-time-range">20.4.1.1</a></emu-xref>, and creates the corresponding parts according to the effective locale and the formatting options of <var>dateTimeFormat</var>. The following steps are taken:
+      </p>
+      <emu-alg><ol><li>Let <var>x</var> be <emu-xref aoid="TimeClip" id="_ref_90"><a href="https://tc39.es/ecma262/#sec-timeclip">TimeClip</a></emu-xref>(<var>x</var>).</li><li>If <var>x</var> is <emu-val>NaN</emu-val>, throw a <emu-val>RangeError</emu-val> exception.</li><li>Let <var>y</var> be <emu-xref aoid="TimeClip" id="_ref_91"><a href="https://tc39.es/ecma262/#sec-timeclip">TimeClip</a></emu-xref>(<var>y</var>).</li><li>If <var>y</var> is <emu-val>NaN</emu-val>, throw a <emu-val>RangeError</emu-val> exception.</li><li>Let <var>tm1</var> be ToLocalTime(ℤ(<emu-xref href="#ℝ"><a href="https://tc39.es/ecma262/#ℝ">ℝ</a></emu-xref>(<var>x</var>) × 10<sup>6</sup>), <var>dateTimeFormat</var>.[[Calendar]], <var>dateTimeFormat</var>.[[TimeZone]]).</li><li>Let <var>tm2</var> be ToLocalTime(ℤ(<emu-xref href="#ℝ"><a href="https://tc39.es/ecma262/#ℝ">ℝ</a></emu-xref>(<var>y</var>) × 10<sup>6</sup>), <var>dateTimeFormat</var>.[[Calendar]], <var>dateTimeFormat</var>.[[TimeZone]]).</li><li>Let <var>rangePatterns</var> be <var>dateTimeFormat</var>.[[RangePatterns]].</li><li>Let <var>rangePattern</var> be <emu-val>undefined</emu-val>.</li><li>Let <var>dateFieldsPracticallyEqual</var> be <emu-val>true</emu-val>.</li><li>Let <var>patternContainsLargerDateField</var> be <emu-val>false</emu-val>.</li><li>While <var>dateFieldsPracticallyEqual</var> is <emu-val>true</emu-val> and <var>patternContainsLargerDateField</var> is <emu-val>false</emu-val>, repeat for each row of <emu-xref href="#table-datetimeformat-rangepatternfields" id="_ref_19"><a href="#table-datetimeformat-rangepatternfields">Table 1</a></emu-xref> in order, except the header row:<ol><li>Let <var>fieldName</var> be the name given in the Range Pattern Field column of the row.</li><li>If <var>rangePatterns</var> has a field [[&lt;<var>fieldName</var>&gt;]], let <var>rp</var> be <var>rangePatterns</var>.[[&lt;<var>fieldName</var>&gt;]]; else let <var>rp</var> be <emu-val>undefined</emu-val>.</li><li>If <var>rangePattern</var> is not <emu-val>undefined</emu-val> and <var>rp</var> is <emu-val>undefined</emu-val>, then<ol><li>Set <var>patternContainsLargerDateField</var> to <emu-val>true</emu-val>.</li></ol></li><li>Else,<ol><li>Let <var>rangePattern</var> be <var>rp</var>.</li><li>If <var>fieldName</var> is equal to [[AmPm]], then<ol><li>Let <var>v1</var> be <var>tm1</var>.[[Hour]].</li><li>Let <var>v2</var> be <var>tm2</var>.[[Hour]].</li><li>If <var>v1</var> is greater than 11 and <var>v2</var> less or equal than 11, or <var>v1</var> is less or equal than 11 and <var>v2</var> is greater than 11, then<ol><li>Set <var>dateFieldsPracticallyEqual</var> to <emu-val>false</emu-val>.</li></ol></li></ol></li><li>Else if <var>fieldName</var> is equal to [[DayPeriod]], then<ol><li>Let <var>v1</var> be a String value representing the day period of <var>tm1</var>; the String value depends upon the implementation and the effective locale of <var>dateTimeFormat</var>.</li><li>Let <var>v2</var> be a String value representing the day period of <var>tm2</var>; the String value depends upon the implementation and the effective locale of <var>dateTimeFormat</var>.</li><li>If <var>v1</var> is not equal to <var>v2</var>, then<ol><li>Set <var>dateFieldsPracticallyEqual</var> to <emu-val>false</emu-val>.</li></ol></li></ol></li><li>Else if <var>fieldName</var> is equal to [[FractionalSecondDigits]], then<ol><li>Let <var>fractionalSecondDigits</var> be <var>dateTimeFormat</var>.[[FractionalSecondDigits]].</li><li>If <var>fractionalSecondDigits</var> is <emu-val>undefined</emu-val>, then<ol><li>Set <var>fractionalSecondDigits</var> to 3.</li></ol></li><li>Let <var>v1</var> be <var>tm1</var>.[[Millisecond]].</li><li>Let <var>v2</var> be <var>tm2</var>.[[Millisecond]].</li><li>Let <var>v1</var> be <emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>v1</var> × 10<sup>( <var>fractionalSecondDigits</var> - 3 )</sup>).</li><li>Let <var>v2</var> be <emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>v2</var> × 10<sup>( <var>fractionalSecondDigits</var> - 3 )</sup>).</li><li>If <var>v1</var> is not equal to <var>v2</var>, then<ol><li>Set <var>dateFieldsPracticallyEqual</var> to <emu-val>false</emu-val>.</li></ol></li></ol></li><li>Else,<ol><li>Let <var>v1</var> be <var>tm1</var>.[[&lt;<var>fieldName</var>&gt;]].</li><li>Let <var>v2</var> be <var>tm2</var>.[[&lt;<var>fieldName</var>&gt;]].</li><li>If <var>v1</var> is not equal to <var>v2</var>, then<ol><li>Set <var>dateFieldsPracticallyEqual</var> to <emu-val>false</emu-val>.</li></ol></li></ol></li></ol></li></ol></li><li>If <var>dateFieldsPracticallyEqual</var> is <emu-val>true</emu-val>, then<ol><li>Let <var>pattern</var> be <var>dateTimeFormat</var>.[[Pattern]].</li><li>Let <var>patternParts</var> be PartitionPattern(<var>pattern</var>).</li><li>Let <var>result</var> be ?&nbsp;<emu-xref aoid="FormatDateTimePattern" id="_ref_92"><a href="#sec-formatdatetimepattern">FormatDateTimePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>patternParts</var>, <var>x</var>, <emu-val>undefined</emu-val>).</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]] } <var>r</var> in <var>result</var>, do<ol><li>Set <var>r</var>.[[Source]] to <emu-val>"shared"</emu-val>.</li></ol></li><li>Return <var>result</var>.</li></ol></li><li>Let <var>result</var> be a new empty <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>.</li><li>If <var>rangePattern</var> is <emu-val>undefined</emu-val>, then<ol><li>Let <var>rangePattern</var> be <var>rangePatterns</var>.[[Default]].</li></ol></li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Pattern]], [[Source]] } <var>rangePatternPart</var> in <var>rangePattern</var>.[[PatternParts]], do<ol><li>Let <var>pattern</var> be <var>rangePatternPart</var>.[[Pattern]].</li><li>Let <var>source</var> be <var>rangePatternPart</var>.[[Source]].</li><li>If <var>source</var> is <emu-val>"startRange"</emu-val> or <emu-val>"shared"</emu-val>, then<ol><li>Let <var>z</var> be <var>x</var>.</li></ol></li><li>Else,<ol><li>Let <var>z</var> be <var>y</var>.</li></ol></li><li>Let <var>patternParts</var> be PartitionPattern(<var>pattern</var>).</li><li>Let <var>partResult</var> be ?&nbsp;<emu-xref aoid="FormatDateTimePattern" id="_ref_93"><a href="#sec-formatdatetimepattern">FormatDateTimePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>patternParts</var>, <var>z</var>, <var>rangePattern</var>).</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]] } <var>r</var> in <var>partResult</var>, do<ol><li>Set <var>r</var>.[[Source]] to <var>source</var>.</li></ol></li><li>Add all elements in <var>partResult</var> to <var>result</var> in order.</li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-formatdatetimerange" aoid="FormatDateTimeRange">
+      <h1><span class="secnum">1.5.11</span> FormatDateTimeRange ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</h1>
+
+      <p>
+        The FormatDateTimeRange abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat), <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>) and <var>y</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), and performs the following steps:
+      </p>
+
+      <emu-alg><ol><li>Let <var>parts</var> be ?&nbsp;<emu-xref aoid="PartitionDateTimeRangePattern" id="_ref_94"><a href="#sec-partitiondatetimerangepattern">PartitionDateTimeRangePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>x</var>, <var>y</var>).</li><li>Let <var>result</var> be the empty String.</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]], [[Source]] } <var>part</var> in <var>parts</var>, do<ol><li>Set <var>result</var> to the <emu-xref href="#sec-ecmascript-language-types-string-type"><a href="https://tc39.es/ecma262/#sec-ecmascript-language-types-string-type">string-concatenation</a></emu-xref> of <var>result</var> and <var>part</var>.[[Value]].</li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-formatdatetimerangetoparts" aoid="FormatDateTimeRangeToParts">
+      <h1><span class="secnum">1.5.12</span> FormatDateTimeRangeToParts ( <var>dateTimeFormat</var>, <var>x</var>, <var>y</var> )</h1>
+
+      <p>
+        The FormatDateTimeRangeToParts abstract operation is called with arguments <var>dateTimeFormat</var> (which must be an object initialized as a DateTimeFormat), <var>x</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>) and <var>y</var> (which must be a <emu-xref href="#number-value"><a href="https://tc39.es/ecma262/#number-value">Number value</a></emu-xref>), and performs the following steps:
+      </p>
+
+      <emu-alg><ol><li>Let <var>parts</var> be ?&nbsp;<emu-xref aoid="PartitionDateTimeRangePattern" id="_ref_95"><a href="#sec-partitiondatetimerangepattern">PartitionDateTimeRangePattern</a></emu-xref>(<var>dateTimeFormat</var>, <var>x</var>, <var>y</var>).</li><li>Let <var>result</var> be !&nbsp;<emu-xref aoid="ArrayCreate" id="_ref_96"><a href="https://tc39.es/ecma262/#sec-arraycreate">ArrayCreate</a></emu-xref>(0).</li><li>Let <var>n</var> be 0.</li><li>For each <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> { [[Type]], [[Value]], [[Source]] } <var>part</var> in <var>parts</var>, do<ol><li>Let <var>O</var> be OrdinaryObjectCreate(%Object.prototype%).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_97"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"type"</emu-val>, <var>part</var>.[[Type]]).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_98"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"value"</emu-val>, <var>part</var>.[[Value]]).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataPropertyOrThrow" id="_ref_99"><a href="https://tc39.es/ecma262/#sec-createdatapropertyorthrow">CreateDataPropertyOrThrow</a></emu-xref>(<var>O</var>, <emu-val>"source"</emu-val>, <var>part</var>.[[Source]]).</li><li>Perform !&nbsp;<emu-xref aoid="CreateDataProperty" id="_ref_100"><a href="https://tc39.es/ecma262/#sec-createdataproperty">CreateDataProperty</a></emu-xref>(<var>result</var>, !&nbsp;<emu-xref aoid="ToString" id="_ref_101"><a href="https://tc39.es/ecma262/#sec-tostring">ToString</a></emu-xref>(<var>n</var>), <var>O</var>).</li><li>Increment <var>n</var> by 1.</li></ol></li><li>Return <var>result</var>.</li></ol></emu-alg>
+    </emu-clause>
+
+    <emu-clause id="sec-tolocaltime" type="implementation-defined abstract operation">
+      <h1><span class="secnum">1.5.13</span> 
+        ToLocalTime (
+          <var>epochNs</var>: a BigInt,
+          <var>calendar</var>: a String,
+          <var>timeZone</var>: a String,
+        )
+      </h1>
+
+      <dl class="header">
+        <dt>description</dt>
+        <dd></dd>
+      </dl>
+
+      <emu-alg><ol><li>Let <var>offsetNs</var> be GetNamedTimeZoneOffsetNanoseconds(<var>timeZone</var>, <var>epochNs</var>).</li><li>Let <var>tz</var> be <emu-xref href="#ℝ"><a href="https://tc39.es/ecma262/#ℝ">ℝ</a></emu-xref>(<var>epochNs</var>) + <var>offsetNs</var>.</li><li>If <var>calendar</var> is <emu-val>"gregory"</emu-val>, then<ol><li>Return a record with fields calculated from <var>tz</var> according to <emu-xref href="#table-datetimeformat-tolocaltime-record" id="_ref_20"><a href="#table-datetimeformat-tolocaltime-record">Table 4</a></emu-xref>.</li></ol></li><li>Else,<ol><li>Return a record with the fields of Column 1 of <emu-xref href="#table-datetimeformat-tolocaltime-record" id="_ref_21"><a href="#table-datetimeformat-tolocaltime-record">Table 4</a></emu-xref> calculated from <var>tz</var> for the given <var>calendar</var>. The calculations should use best available information about the specified <var>calendar</var>.</li></ol></li></ol></emu-alg>
+
+      <emu-table id="table-datetimeformat-tolocaltime-record"><figure><figcaption>Table 4: <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.es/ecma262/#sec-list-and-record-specification-type">Record</a></emu-xref> returned by ToLocalTime</figcaption>
+        
+        <table class="real-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Value Calculation for Gregorian Calendar</th>
+            </tr>
+          </thead>
+          <tbody><tr>
+            <td>[[Weekday]]</td>
+            <td><emu-xref aoid="WeekDay"><a href="https://tc39.es/ecma262/#sec-week-day">WeekDay</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Era]]</td>
+            <td>Let <var>year</var> be <emu-xref aoid="YearFromTime"><a href="https://tc39.es/ecma262/#eqn-YearFromTime">YearFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>))). If <var>year</var> &lt; <emu-val>-0</emu-val><sub>𝔽</sub>, return <emu-val>"BC"</emu-val>, else return <emu-val>"AD"</emu-val>.</td>
+          </tr>
+          <tr>
+            <td>[[Year]]</td>
+            <td><emu-xref aoid="YearFromTime"><a href="https://tc39.es/ecma262/#eqn-YearFromTime">YearFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[RelatedYear]]</td>
+            <td><emu-val>undefined</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[YearName]]</td>
+            <td><emu-val>undefined</emu-val></td>
+          </tr>
+          <tr>
+            <td>[[Month]]</td>
+            <td><emu-xref aoid="MonthFromTime"><a href="https://tc39.es/ecma262/#eqn-MonthFromTime">MonthFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Day]]</td>
+            <td><emu-xref aoid="DateFromTime"><a href="https://tc39.es/ecma262/#sec-date-number">DateFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Hour]]</td>
+            <td><emu-xref aoid="HourFromTime"><a href="https://tc39.es/ecma262/#eqn-HourFromTime">HourFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Minute]]</td>
+            <td><emu-xref aoid="MinFromTime"><a href="https://tc39.es/ecma262/#eqn-MinFromTime">MinFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Second]]</td>
+            <td><emu-xref aoid="SecFromTime"><a href="https://tc39.es/ecma262/#eqn-SecFromTime">SecFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[Millisecond]]</td>
+            <td><emu-xref aoid="msFromTime"><a href="https://tc39.es/ecma262/#eqn-msFromTime">msFromTime</a></emu-xref>(<emu-xref href="#𝔽"><a href="https://tc39.es/ecma262/#𝔽">𝔽</a></emu-xref>(<emu-xref aoid="floor"><a href="https://tc39.es/ecma262/#eqn-floor">floor</a></emu-xref>(<var>tz</var> / 10<sup>6</sup>)))</td>
+          </tr>
+          <tr>
+            <td>[[InDST]]</td>
+            <td>Calculate <emu-val>true</emu-val> or <emu-val>false</emu-val> using the best available information about the specified <var>calendar</var> and <var>timeZone</var>, including current and historical information about time zone offsets from UTC and daylight saving time rules.</td>
+          </tr>
+        </tbody></table>
+      </figure></emu-table>
+
+      <emu-note><span class="note">Note</span><div class="note-contents">
+        It is recommended that implementations use the time zone information of the IANA Time Zone Database.
+      </div></emu-note>
+    </emu-clause>
+
+    <emu-normative-optional>
+    <emu-clause id="sec-unwrapdatetimeformat" aoid="UnwrapDateTimeFormat">
+      <h1><span class="secnum">1.5.14</span> UnwrapDateTimeFormat ( <var>dtf</var> )</h1>
+      <p>
+        The UnwrapDateTimeFormat abstract operation returns the DateTimeFormat instance
+        of its input object, which is either the value itself or a value associated
+        with it by <emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_102"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref> according to the normative optional
+        <emu-xref href="#constructor"><a href="https://tc39.es/ecma262/#constructor">constructor</a></emu-xref> mode of <emu-xref href="#legacy-constructor"></emu-xref>.
+      </p>
+      <emu-alg><ol><li>If <emu-xref aoid="Type" id="_ref_103"><a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">Type</a></emu-xref>(<var>dtf</var>) is not Object, throw a <emu-val>TypeError</emu-val> exception.</li><li>If <var>dtf</var> does not have an [[InitializedDateTimeFormat]] internal slot and ?&nbsp;<emu-xref aoid="OrdinaryHasInstance" id="_ref_104"><a href="https://tc39.es/ecma262/#sec-ordinaryhasinstance">OrdinaryHasInstance</a></emu-xref>(<emu-xref href="#sec-intl-datetimeformat-constructor" id="_ref_105"><a href="#sec-intl-datetimeformat-constructor">%DateTimeFormat%</a></emu-xref>, <var>dtf</var>) is <emu-val>true</emu-val>, then<ol><li>Return ?&nbsp;<emu-xref aoid="Get" id="_ref_106"><a href="https://tc39.es/ecma262/#sec-get-o-p">Get</a></emu-xref>(<var>dtf</var>, %Intl%.[[FallbackSymbol]]).</li></ol></li><li>Return <var>dtf</var>.</li></ol></emu-alg>
+    </emu-clause>
+    </emu-normative-optional>
+  </emu-clause>
+</emu-clause></div></body>
