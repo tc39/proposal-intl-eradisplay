@@ -304,12 +304,12 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
         1. Let _tm_ be ToLocalTime(_x_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).
         1. <ins>Let _wde_ be *undefined*.</ins>
         1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then</ins>
-            1. <ins>Let _wde_ be *false*.</ins>
+            1. <ins>Set _wde_ to *false*.</ins>
         1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
-            1. <ins>Let _wde_ be *true*.</ins>
+            1. <ins>Set _wde_ to *true*.</ins>
         1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
             1. <ins>Let _F_ be a DateTime format function of _dateTimeFormat_.</ins>
-            1. <ins>Let _wde_ be _F_().[[Era]] ≠ _F_(_x_).[[Era]].</ins>
+            1. <ins>Set _wde_ to _F_().[[Era]] ≠ _F_(_x_).[[Era]].</ins>
         1. Let _result_ be a new empty List.
         1. Let _patternParts_ be PartitionPattern(_dateTimeFormat_.[[Pattern]]).
         1. For each element _patternPart_ of _patternParts_, in List order, do
@@ -815,11 +815,11 @@ Moreover, the &lt;emu-xref&gt; tags to references outside this file have been re
       </emu-note>
 
       
-      <emu-note>
-        <ins>
-          In this version of the ECMAScript 2021 Internationalization API, the *"eraDisplay"* property is added. Its value should be *"auto"* if not otherwise specified.
-        </ins>
-      </emu-note>
+      <ins class="block">
+        <emu-note>
+          In this version of the ECMAScript 2022 Internationalization API, the *"eraDisplay"* property is added. Its value should be *"auto"* if not otherwise specified.
+        </emu-note>
+      </ins>
       
 
 
