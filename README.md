@@ -6,9 +6,12 @@ Spec Text Preview: https://tc39.es/proposal-intl-eradisplay/spec
 
 ## Status
 
-Champion(s): Shane Carr (@sffc)
-Author(s): Louis-Aimé de Fouquières (@Louis-Aime), Miletus, France
-Stage: 1
+- Champion(s): Shane Carr (@sffc)
+- Author(s): Louis-Aimé de Fouquières (@Louis-Aime), Miletus, France
+- Stage: 2
+
+- Advanced to Stage 1 in 2021-01 TC39: https://github.com/tc39/notes/blob/main/meetings/2021-01/jan-27.md#eradisplay-for-stage-1
+- Advanced to Stage 2 in 2022-11 TC39: https://github.com/tc39/notes/blob/main/meetings/2022-11/nov-29.md#eradisplay-option-for-intldatetimeformat
 
 ## Overview/Motivation
 
