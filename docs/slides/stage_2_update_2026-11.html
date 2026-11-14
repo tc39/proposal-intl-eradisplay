@@ -24,7 +24,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;color:#ffffff;background-color:#2c3e50;background-image:none;" data-marpit-pagination-total="7">
+;color:#ffffff;background-color:#2c3e50;background-image:none;" data-marpit-pagination-total="8">
 <h1 id="eradisplay--yearstyle">eraDisplay / yearStyle</h1>
 <h2 id="stage-2-update">Stage 2 Update</h2>
 <h3 id="shane-f-carr--november-2026-tc39">Shane F Carr — November 2026 TC39</h3>
@@ -46,7 +46,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
 <h2 id="recap-stage-2-proposal-november-2022">Recap: Stage 2 Proposal (November 2022)</h2>
 <ul>
 <li><strong>Motivation</strong> <em>(originally authored by Louis-Aimé de Fouquières)</em>:
@@ -80,7 +80,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
 <h2 id="update-1-cldr-data-driven-rules-8-9">Update 1: CLDR Data-Driven Rules (#8, #9)</h2>
 <p>Comparing only against the runtime current date had key issues:</p>
 <ul>
@@ -95,7 +95,7 @@ table {
 <p><strong>TG2 Decision:</strong></p>
 <ul>
 <li><code>&quot;auto&quot;</code> remains the default, driven by <strong>CLDR locale &amp; calendar data</strong> (year-range cutoffs + calendar/locale defaults), not the runtime clock</li>
-<li>Historical Julian–Gregorian switchover (&quot;Old/New Style&quot;) is <strong>out of scope</strong></li>
+<li><strong>Potential Future Follow-up:</strong> Modeling historical Julian–Gregorian switchover dates (e.g. a <code>&quot;julian&quot;</code> calendar or <code>&quot;Old Style&quot;</code> / <code>&quot;New Style&quot;</code> era variants) can build on this foundation in a follow-on proposal</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -115,7 +115,42 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
+<h2 id="spec--implementation-of-data-driven-rules">Spec &amp; Implementation of Data-Driven Rules</h2>
+<ul>
+<li><strong>Unicode UTS #35 (LDML Part 4: Dates — Semantic Skeletons):</strong>
+<ul>
+<li><a href="https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Skeleton_Year_Style">Year Style (<code>#Semantic_Skeleton_Year_Style</code>)</a>: Defines <code>Auto</code>, <code>Full</code>, and <code>WithEra</code> and calendar/locale/year-range disambiguation rules</li>
+<li><a href="https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Year_Style_Skeleton_Variations">Year Style Skeleton Variations (<code>#Semantic_Year_Style_Skeleton_Variations</code>)</a>: Maps CLDR <code>datetimeSkeleton</code>s (e.g. <code>en-US</code> Gregorian <code>yyMd</code> vs. Japanese <code>GGGGGyMd</code>) to default, full-year (<code>yy</code> → <code>y</code>), and with-era (<code>+ G</code>) patterns</li>
+</ul>
+</li>
+<li><strong>ICU4X Implementation (shipped in <code>icu::calendar</code> &amp; <code>icu::datetime</code>):</strong>
+<ul>
+<li><a href="https://unicode-org.github.io/icu4x/rustdoc/icu/calendar/types/enum.YearAmbiguity.html"><code>YearAmbiguity</code></a> per calendar — e.g. <a href="https://github.com/unicode-org/icu4x/blob/main/components/calendar/src/cal/gregorian.rs"><code>cal/gregorian.rs</code></a> (<code>..=999</code> → <code>EraAndCenturyRequired</code>, <code>1000..=1949</code> &amp; <code>2050..</code> → <code>CenturyRequired</code>, <code>1950..=2049</code> → <code>Unambiguous</code>)</li>
+<li><a href="https://unicode-org.github.io/icu4x/rustdoc/icu/datetime/options/enum.YearStyle.html"><code>YearStyle</code></a> + runtime pattern selection in <a href="https://github.com/unicode-org/icu4x/blob/main/components/datetime/src/raw/neo.rs"><code>datetime/src/raw/neo.rs</code></a> (<code>resolve_date_variant</code>) &amp; <a href="https://github.com/unicode-org/icu4x/blob/main/provider/source/src/datetime/semantic_skeletons.rs"><code>semantic_skeletons.rs</code></a></li>
+</ul>
+</li>
+<li><strong>ECMA-402 Draft Spec (<code>spec.emu</code>):</strong> Runtime pattern selection in <code>PartitionDateTimePattern</code> (<code>[[Pattern]]</code> / <code>[[PatternEra]]</code>) extends directly to these variants</li>
+</ul>
+<footer>eraDisplay / yearStyle - Stage 2 Update</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+table {
+  font-size: 0.85em;
+}
+" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+table {
+  font-size: 0.85em;
+}
+;" data-marpit-pagination-total="8">
 <h2 id="update-2-century-precision--yearstyle-10">Update 2: Century Precision &amp; <code>yearStyle</code> (#10)</h2>
 <p>In UTS #35 semantic skeletons and ICU4X (<code>YearStyle</code>), era display and 2-digit century elision are part of the same disambiguation model:</p>
 <table>
@@ -158,7 +193,7 @@ table {
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -166,7 +201,7 @@ table {
 table {
   font-size: 0.85em;
 }
-" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
+" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -174,7 +209,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
 <h2 id="update-3-negative-years-in-iso8601--dropping-never">Update 3: Negative Years in <code>iso8601</code> &amp; Dropping <code>&quot;never&quot;</code></h2>
 <p>Today on the web, even <code>calendar: &quot;iso8601&quot;</code> formats negative years without a sign:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">const</span> d = <span class="hljs-title class_">Temporal</span>.<span class="hljs-property">PlainDate</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">calendar</span>: <span class="hljs-string">&quot;iso8601&quot;</span>, <span class="hljs-attr">year</span>: -<span class="hljs-number">752</span>, <span class="hljs-attr">month</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">day</span>: <span class="hljs-number">1</span> });
@@ -192,7 +227,7 @@ table {
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -200,7 +235,7 @@ table {
 table {
   font-size: 0.85em;
 }
-" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
+" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -208,7 +243,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
 <h2 id="open-question-do-we-even-need-a-new-option">Open Question: Do We Even Need a New Option?</h2>
 <p>With <code>&quot;withoutEra&quot;</code> and <code>&quot;algebraic&quot;</code> dropped, only <strong>three behaviors</strong> remain:</p>
 <div class="columns">
@@ -231,7 +266,7 @@ table {
 </div>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -239,7 +274,7 @@ table {
 table {
   font-size: 0.85em;
 }
-" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
+" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -247,7 +282,7 @@ table {
 table {
   font-size: 0.85em;
 }
-;" data-marpit-pagination-total="7">
+;" data-marpit-pagination-total="8">
 <h2 id="summary--discussion">Summary &amp; Discussion</h2>
 <p>Seeking plenary feedback on:</p>
 <ol>

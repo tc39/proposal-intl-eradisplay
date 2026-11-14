@@ -47,7 +47,19 @@ Comparing only against the runtime current date had key issues:
 
 **TG2 Decision:**
 - `"auto"` remains the default, driven by **CLDR locale & calendar data** (year-range cutoffs + calendar/locale defaults), not the runtime clock
-- Historical Julian–Gregorian switchover ("Old/New Style") is **out of scope**
+- **Potential Future Follow-up:** Modeling historical Julian–Gregorian switchover dates (e.g. a `"julian"` calendar or `"Old Style"` / `"New Style"` era variants) can build on this foundation in a follow-on proposal
+
+---
+
+## Spec & Implementation of Data-Driven Rules
+
+- **Unicode UTS #35 (LDML Part 4: Dates — Semantic Skeletons):**
+  - [Year Style (`#Semantic_Skeleton_Year_Style`)](https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Skeleton_Year_Style): Defines `Auto`, `Full`, and `WithEra` and calendar/locale/year-range disambiguation rules
+  - [Year Style Skeleton Variations (`#Semantic_Year_Style_Skeleton_Variations`)](https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Year_Style_Skeleton_Variations): Maps CLDR `datetimeSkeleton`s (e.g. `en-US` Gregorian `yyMd` vs. Japanese `GGGGGyMd`) to default, full-year (`yy` → `y`), and with-era (`+ G`) patterns
+- **ICU4X Implementation (shipped in `icu::calendar` & `icu::datetime`):**
+  - [`YearAmbiguity`](https://unicode-org.github.io/icu4x/rustdoc/icu/calendar/types/enum.YearAmbiguity.html) per calendar — e.g. [`cal/gregorian.rs`](https://github.com/unicode-org/icu4x/blob/main/components/calendar/src/cal/gregorian.rs) (`..=999` → `EraAndCenturyRequired`, `1000..=1949` & `2050..` → `CenturyRequired`, `1950..=2049` → `Unambiguous`)
+  - [`YearStyle`](https://unicode-org.github.io/icu4x/rustdoc/icu/datetime/options/enum.YearStyle.html) + runtime pattern selection in [`datetime/src/raw/neo.rs`](https://github.com/unicode-org/icu4x/blob/main/components/datetime/src/raw/neo.rs) (`resolve_date_variant`) & [`semantic_skeletons.rs`](https://github.com/unicode-org/icu4x/blob/main/provider/source/src/datetime/semantic_skeletons.rs)
+- **ECMA-402 Draft Spec (`spec.emu`):** Runtime pattern selection in `PartitionDateTimePattern` (`[[Pattern]]` / `[[PatternEra]]`) extends directly to these variants
 
 ---
 
