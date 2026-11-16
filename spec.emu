@@ -1,3 +1,14 @@
+<!doctype html>
+<meta charset="utf8">
+<link rel="stylesheet" href="./spec.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<script src="./spec.js"></script>
+<pre class="metadata">
+title: Intl.DateTimeFormat eraDisplay
+stage: 2
+contributors: Louis-Aimé de Fouquières, Shane F. Carr
+</pre>
+
 <emu-clause id="datetimeformat-objects">
   <h1>DateTimeFormat Objects</h1>
 

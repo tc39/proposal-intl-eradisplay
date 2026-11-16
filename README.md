@@ -2,7 +2,7 @@
 
 This repository was built from the repository template for ECMAScript proposals.
 
-Spec Text Preview: https://tc39.es/proposal-intl-eradisplay/spec
+Spec Text Preview: https://tc39.es/proposal-intl-eradisplay/
 
 ## Status
 
@@ -26,11 +26,9 @@ The proposed `eraDisplay` option may take 3 values: "never", always", "auto". If
  
  A presentation is available here : [eraDIsplay presentation](https://docs.google.com/presentation/d/1CABEQP_U-vCUxGKXbJmaZKvJZHEdFZZtAHGAOnRbrCY/edit?usp=sharing).
  
- The [index](./index.html) file shows the proposed changes to the specifications of DateTimeFormat Objects.
+ The [rendered specification](https://tc39.es/proposal-intl-eradisplay/) shows the proposed changes to the specifications of DateTimeFormat Objects.
 
 ## Use cases
-
-You may use a mock-up on [the proposal's web page](https://tc39.es/proposal-intl-eradisplay/)
 
 Most users will get a better result while not changing anything to the options they pass to Intl.DateTimeFormat.
 * `new Intl.DateTimeFormat("fr-FR").format(new Date(-752,3,13)) //> "13/4/753"` as of present (Nov. 2020) implementation; 
@@ -58,10 +56,6 @@ To our knowledge, there is no such function. Computer languages most generaly on
 
 
 ## Implementations
-
-### Moke-up
-
-[Access to mock-up](https://tc39.es/proposal-intl-eradisplay/)
 
 ### Native implementations
 
