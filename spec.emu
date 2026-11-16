@@ -71,7 +71,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
       </dl>
 
       <emu-alg>
-        1. Let _dateTimeFormat_ be ? OrdinaryCreateFromConstructor(_newTarget_, *"%Intl.DateTimeFormat.prototype%"*, « [[InitializedDateTimeFormat]], [[Locale]], [[Calendar]], [[NumberingSystem]], [[TimeZone]], [[HourCycle]], [[DateStyle]], [[TimeStyle]], [[DateTimeFormat]], [[BoundFormat]] »).
+        1. Let _dateTimeFormat_ be ? OrdinaryCreateFromConstructor(_newTarget_, *"%Intl.DateTimeFormat.prototype%"*, « [[InitializedDateTimeFormat]], [[Locale]], [[Calendar]], [[NumberingSystem]], [[TimeZone]], [[HourCycle]], <ins>[[EraDisplay]],</ins> [[DateStyle]], [[TimeStyle]], [[DateTimeFormat]], [[BoundFormat]] »).
         1. Let _specialOptions_ be the Record { [[Hour12]]: *undefined* }.
         1. Let _modifyResolutionOptions_ be a new Abstract Closure with parameters (_options_) that captures _specialOptions_ and performs the following steps when called:
           1. Set _specialOptions_.[[Hour12]] to _options_.[[hour12]].
@@ -93,6 +93,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
           1. Set _hc_ to _resolvedLocaleData_.[[hourCycle24]].
         1. Else if _hc_ is *null*, then
           1. Set _hc_ to _resolvedLocaleData_.[[hourCycle]].
+        1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to ? GetOption(_options_, *"eraDisplay"*, ~string~, « *"never"*, *"always"*, *"auto"* », *"auto"*).</ins>
         1. Let _timeZone_ be ? GetOption(_options_, *"timeZone"*, ~string~, ~empty~, SystemTimeZoneIdentifier()).
         1. If IsTimeZoneOffsetString(_timeZone_) is *true*, then
           1. Let _parseResult_ be ParseText(StringToCodePoints(_timeZone_), |UTCOffset|).
@@ -146,6 +147,13 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
               1. Set _formatOptions_.[[&lt;_propertyKey_>]] to *"numeric"*.
           1. Let _formats_ be _resolvedLocaleData_.[[formats]].[[&lt;_resolvedCalendar_>]].
           1. If _formatMatcher_ is *"basic"*, let _bestFormat_ be BasicFormatMatcher(_formatOptions_, _formats_); else let _bestFormat_ be BestFitFormatMatcher(_formatOptions_, _formats_).
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"auto"* and _bestFormat_ does not have a field [[year]], then</ins>
+          1. <ins class="block">Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is not *"never"* and _bestFormat_ does not have a field [[era]], then</ins>
+          1. <ins class="block">Let _formatWithEra_ be a new DateTime Format Record.</ins>
+          1. <ins class="block">Add to _formatWithEra_ all fields from _bestFormat_.</ins>
+          1. <ins class="block">Set _formatWithEra_.[[era]] to *"short"*.</ins>
+          1. <ins class="block">Set _bestFormat_ to _formatWithEra_.</ins>
         1. Set _dateTimeFormat_.[[DateTimeFormat]] to _bestFormat_.
         1. If _bestFormat_ has a field [[hour]], set _dateTimeFormat_.[[HourCycle]] to _hc_.
         1. Return _dateTimeFormat_.
@@ -279,7 +287,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
             <tr>
               <td>[[era]]</td>
               <td>[[Era]] values in the Values column of <emu-xref href="#table-datetimeformat-components"></emu-xref></td>
-              <td>Optional field. Present if [[pattern]] contains the substring *"{era}"*.</td>
+              <td>Optional field. Present if [[pattern]] <ins>or [[patternEra]]</ins> contains the substring *"{era}"*.</td>
             </tr>
             <tr>
               <td>[[year]]</td>
@@ -335,6 +343,16 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
               <td>[[pattern12]]</td>
               <td>a Pattern String</td>
               <td>Optional field. Present if the [[hour]] field is present. In addition to the substrings of the [[pattern]] field, contains at least one of the substrings *"{ampm}"* or *"{dayPeriod}"*.</td>
+            </tr>
+            <tr>
+              <td><ins>[[patternEra]]</ins></td>
+              <td><ins>a Pattern String</ins></td>
+              <td><ins>Optional field. Present if the [[year]] field is present. In addition to the substrings of the [[pattern]] field, contains the substring *"{era}"*.</ins></td>
+            </tr>
+            <tr>
+              <td><ins>[[pattern12Era]]</ins></td>
+              <td><ins>a Pattern String</ins></td>
+              <td><ins>Optional field. Present if both the [[hour]] and [[year]] fields are present. In addition to the substrings of the [[pattern12]] field, contains the substring *"{era}"*.</ins></td>
             </tr>
             <tr>
               <td>[[rangePatterns]]</td>
@@ -948,6 +966,11 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
             <td></td>
           </tr>
           <tr>
+            <td><ins>[[EraDisplay]]</ins></td>
+            <td><ins>*"eraDisplay"*</ins></td>
+            <td></td>
+          </tr>
+          <tr>
             <td></td>
             <td>*"era"*</td>
             <td></td>
@@ -1115,6 +1138,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
       <li>[[NumberingSystem]] is a String representing the <a href="https://unicode.org/reports/tr35/#UnicodeNumberSystemIdentifier">Unicode Number System Identifier</a> used for formatting.</li>
       <li>[[TimeZone]] is a String used for formatting that is either an available named time zone identifier or an offset time zone identifier.</li>
       <li>[[HourCycle]] is a String indicating whether the 12-hour format (*"h11"*, *"h12"*) or the 24-hour format (*"h23"*, *"h24"*) should be used. *"h11"* and *"h23"* start with hour 0 and go up to 11 and 23 respectively. *"h12"* and *"h24"* start with hour 1 and go up to 12 and 24. [[HourCycle]] is only used when [[DateTimeFormat]] has an [[hour]] field.</li>
+      <li><ins>[[EraDisplay]] is one of the Strings *"never"*, *"always"*, or *"auto"*, controlling whether the era component is included in formatted output.</ins></li>
       <li>[[DateStyle]], [[TimeStyle]] are each either *undefined*, *"full"*, *"long"*, *"medium"*, or *"short"*.</li>
       <li>[[DateTimeFormat]] is a DateTime Format Record.</li>
     </ul>
@@ -1217,14 +1241,20 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
           1. Let _dateFormat_ be _styles_.[[Date]].[[&lt;_dateStyle_>]].
         1. If _dateStyle_ is not *undefined* and _timeStyle_ is not *undefined*, then
           1. Let _format_ be a new DateTime Format Record.
-          1. Add to _format_ all fields from _dateFormat_ except [[pattern]] and [[rangePatterns]].
-          1. Add to _format_ all fields from _timeFormat_ except [[pattern]], [[rangePatterns]], [[pattern12]], and [[rangePatterns12]], if present.
+          1. Add to _format_ all fields from _dateFormat_ except [[pattern]]<ins>, [[patternEra]],</ins> and [[rangePatterns]].
+          1. Add to _format_ all fields from _timeFormat_ except [[pattern]], <ins>[[patternEra]],</ins> [[rangePatterns]], [[pattern12]], <ins>[[pattern12Era]],</ins> and [[rangePatterns12]], if present.
           1. Let _connector_ be _styles_.[[Connector]].[[&lt;_dateStyle_>]].
           1. Let _pattern_ be the string _connector_ with the substring *"{0}"* replaced with _timeFormat_.[[pattern]] and the substring *"{1}"* replaced with _dateFormat_.[[pattern]].
           1. Set _format_.[[pattern]] to _pattern_.
           1. If _timeFormat_ has a [[pattern12]] field, then
             1. Let _pattern12_ be the string _connector_ with the substring *"{0}"* replaced with _timeFormat_.[[pattern12]] and the substring *"{1}"* replaced with _dateFormat_.[[pattern]].
             1. Set _format_.[[pattern12]] to _pattern12_.
+          1. <ins class="block">If _dateFormat_ has a [[patternEra]] field, then</ins>
+            1. <ins class="block">Let _patternEra_ be the string _connector_ with the substring *"{0}"* replaced with _timeFormat_.[[pattern]] and the substring *"{1}"* replaced with _dateFormat_.[[patternEra]].</ins>
+            1. <ins class="block">Set _format_.[[patternEra]] to _patternEra_.</ins>
+          1. <ins class="block">If _dateFormat_ has a [[patternEra]] field and _timeFormat_ has a [[pattern12]] field, then</ins>
+            1. <ins class="block">Let _pattern12Era_ be the string _connector_ with the substring *"{0}"* replaced with _timeFormat_.[[pattern12]] and the substring *"{1}"* replaced with _dateFormat_.[[patternEra]].</ins>
+            1. <ins class="block">Set _format_.[[pattern12Era]] to _pattern12Era_.</ins>
           1. Let _dateTimeRangeFormat_ be _styles_.[[DateTimeRangeFormat]].[[&lt;_dateStyle_>]].[[&lt;_timeStyle_>]].
           1. Set _format_.[[rangePatterns]] to _dateTimeRangeFormat_.[[rangePatterns]].
           1. If _dateTimeRangeFormat_ has a [[rangePatterns12]] field, then
@@ -1435,10 +1465,31 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
         1. If _x_ is *NaN*, throw a *RangeError* exception.
         1. Let _epochNanoseconds_ be ℤ(ℝ(_x_) × 10<sup>6</sup>).
         1. Let _format_ be _dateTimeFormat_.[[DateTimeFormat]].
-        1. If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then
-          1. Let _pattern_ be _format_.[[pattern12]].
-        1. Else,
-          1. Let _pattern_ be _format_.[[pattern]].
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then</ins>
+          1. <ins class="block">Let _useEraPattern_ be *false*.</ins>
+        1. <ins class="block">Else if _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
+          1. <ins class="block">Let _useEraPattern_ be *true*.</ins>
+        1. <ins class="block">Else,</ins>
+          1. <ins class="block">Assert: _dateTimeFormat_.[[EraDisplay]] is *"auto"*.</ins>
+          1. <ins class="block">Let _now_ be ! Call(%Date.now%, *undefined*).</ins>
+          1. <ins class="block">Assert: _now_ is a Number.</ins>
+          1. <ins class="block">Let _nowEpochNanoseconds_ be ℤ(ℝ(_now_) × 10<sup>6</sup>).</ins>
+          1. <ins class="block">Let _nowLocalTime_ be ToLocalTime(_nowEpochNanoseconds_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).</ins>
+          1. <ins class="block">Let _localTime_ be ToLocalTime(_epochNanoseconds_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).</ins>
+          1. <ins class="block">If _nowLocalTime_.[[Era]] is not _localTime_.[[Era]], then</ins>
+            1. <ins class="block">Let _useEraPattern_ be *true*.</ins>
+          1. <ins class="block">Else,</ins>
+            1. <ins class="block">Let _useEraPattern_ be *false*.</ins>
+        1. <ins class="block">If _useEraPattern_ is *true* and _format_ has a [[patternEra]] field, then</ins>
+          1. <ins class="block">If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then</ins>
+            1. <ins class="block">Let _pattern_ be _format_.[[pattern12Era]].</ins>
+          1. <ins class="block">Else,</ins>
+            1. <ins class="block">Let _pattern_ be _format_.[[patternEra]].</ins>
+        1. <ins class="block">Else,</ins>
+          1. If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then
+            1. Let _pattern_ be _format_.[[pattern12]].
+          1. Else,
+            1. Let _pattern_ be _format_.[[pattern]].
         1. Let _result_ be FormatDateTimePattern(_dateTimeFormat_, _format_, _pattern_, _epochNanoseconds_).
         1. Return _result_.
       </emu-alg>
