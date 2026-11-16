@@ -86,7 +86,7 @@
           1. Let _hc_ be _r_.[[hc]].
           1. If _hc_ is *null*, set _hc_ to _hcDefault_.
         1. Set _dateTimeFormat_.[[HourCycle]] to _hc_.
-        1. <ins>Set _dateTimeFormat_.[[HourCycle]] to ? GetOption (_options_, *"eraDisplay"*, *"string"*, &laquo; *"never"*, *"always"*, *"auto"* &raquo;, *"auto"*).</ins>
+        1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to ? GetOption (_options_, *"eraDisplay"*, *"string"*, &laquo; *"never"*, *"always"*, *"auto"* &raquo;, *"auto"*).</ins>
         1. <ins>If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
           1. <ins>If _dateTimeFormat_.[[Year]] is *undefined*, then</ins>
             1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
