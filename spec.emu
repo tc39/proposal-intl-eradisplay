@@ -147,13 +147,12 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
               1. Set _formatOptions_.[[&lt;_propertyKey_>]] to *"numeric"*.
           1. Let _formats_ be _resolvedLocaleData_.[[formats]].[[&lt;_resolvedCalendar_>]].
           1. If _formatMatcher_ is *"basic"*, let _bestFormat_ be BasicFormatMatcher(_formatOptions_, _formats_); else let _bestFormat_ be BestFitFormatMatcher(_formatOptions_, _formats_).
-        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"auto"* and _bestFormat_ does not have a field [[year]], then</ins>
-          1. <ins class="block">Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
-        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is not *"never"* and _bestFormat_ does not have a field [[era]], then</ins>
-          1. <ins class="block">Let _formatWithEra_ be a new DateTime Format Record.</ins>
-          1. <ins class="block">Add to _formatWithEra_ all fields from _bestFormat_.</ins>
-          1. <ins class="block">Set _formatWithEra_.[[era]] to *"short"*.</ins>
-          1. <ins class="block">Set _bestFormat_ to _formatWithEra_.</ins>
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+          1. <ins class="block">If _bestFormat_.[[year]] is *undefined*, then</ins>
+            1. <ins class="block">Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
+          1. <ins class="block">If _bestFormat_.[[era]] is *undefined*, then</ins>
+            1. <ins class="block">Set _bestFormat_.[[era]] to *"short"*.</ins>
         1. Set _dateTimeFormat_.[[DateTimeFormat]] to _bestFormat_.
         1. If _bestFormat_ has a field [[hour]], set _dateTimeFormat_.[[HourCycle]] to _hc_.
         1. Return _dateTimeFormat_.
@@ -287,7 +286,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
             <tr>
               <td>[[era]]</td>
               <td>[[Era]] values in the Values column of <emu-xref href="#table-datetimeformat-components"></emu-xref></td>
-              <td>Optional field. Present if [[pattern]] <ins>or [[patternEra]]</ins> contains the substring *"{era}"*.</td>
+              <td>Optional field. Present if [[pattern]] contains the substring *"{era}"*.</td>
             </tr>
             <tr>
               <td>[[year]]</td>
@@ -1138,7 +1137,7 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
       <li>[[NumberingSystem]] is a String representing the <a href="https://unicode.org/reports/tr35/#UnicodeNumberSystemIdentifier">Unicode Number System Identifier</a> used for formatting.</li>
       <li>[[TimeZone]] is a String used for formatting that is either an available named time zone identifier or an offset time zone identifier.</li>
       <li>[[HourCycle]] is a String indicating whether the 12-hour format (*"h11"*, *"h12"*) or the 24-hour format (*"h23"*, *"h24"*) should be used. *"h11"* and *"h23"* start with hour 0 and go up to 11 and 23 respectively. *"h12"* and *"h24"* start with hour 1 and go up to 12 and 24. [[HourCycle]] is only used when [[DateTimeFormat]] has an [[hour]] field.</li>
-      <li><ins>[[EraDisplay]] is one of the Strings *"never"*, *"always"*, or *"auto"*, controlling whether the era component is included in formatted output.</ins></li>
+      <li><ins>[[EraDisplay]] is a String indicating if a test on the _x_ Number passed to the PartitionDateTimePattern abstract operation should be done in order to possibly skip the [[Era]] component.</ins></li>
       <li>[[DateStyle]], [[TimeStyle]] are each either *undefined*, *"full"*, *"long"*, *"medium"*, or *"short"*.</li>
       <li>[[DateTimeFormat]] is a DateTime Format Record.</li>
     </ul>
@@ -1465,31 +1464,17 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
         1. If _x_ is *NaN*, throw a *RangeError* exception.
         1. Let _epochNanoseconds_ be ℤ(ℝ(_x_) × 10<sup>6</sup>).
         1. Let _format_ be _dateTimeFormat_.[[DateTimeFormat]].
-        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"never"*, then</ins>
-          1. <ins class="block">Let _useEraPattern_ be *false*.</ins>
-        1. <ins class="block">Else if _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
-          1. <ins class="block">Let _useEraPattern_ be *true*.</ins>
-        1. <ins class="block">Else,</ins>
-          1. <ins class="block">Assert: _dateTimeFormat_.[[EraDisplay]] is *"auto"*.</ins>
-          1. <ins class="block">Let _now_ be ! Call(%Date.now%, *undefined*).</ins>
-          1. <ins class="block">Assert: _now_ is a Number.</ins>
-          1. <ins class="block">Let _nowEpochNanoseconds_ be ℤ(ℝ(_now_) × 10<sup>6</sup>).</ins>
-          1. <ins class="block">Let _nowLocalTime_ be ToLocalTime(_nowEpochNanoseconds_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).</ins>
-          1. <ins class="block">Let _localTime_ be ToLocalTime(_epochNanoseconds_, _dateTimeFormat_.[[Calendar]], _dateTimeFormat_.[[TimeZone]]).</ins>
-          1. <ins class="block">If _nowLocalTime_.[[Era]] is not _localTime_.[[Era]], then</ins>
-            1. <ins class="block">Let _useEraPattern_ be *true*.</ins>
-          1. <ins class="block">Else,</ins>
-            1. <ins class="block">Let _useEraPattern_ be *false*.</ins>
-        1. <ins class="block">If _useEraPattern_ is *true* and _format_ has a [[patternEra]] field, then</ins>
-          1. <ins class="block">If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then</ins>
-            1. <ins class="block">Let _pattern_ be _format_.[[pattern12Era]].</ins>
-          1. <ins class="block">Else,</ins>
-            1. <ins class="block">Let _pattern_ be _format_.[[patternEra]].</ins>
-        1. <ins class="block">Else,</ins>
-          1. If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then
-            1. Let _pattern_ be _format_.[[pattern12]].
-          1. Else,
-            1. Let _pattern_ be _format_.[[pattern]].
+        1. If _dateTimeFormat_.[[HourCycle]] is *"h11"* or *"h12"*, then
+          1. Let _pattern_ be _format_.[[pattern12]].
+          1. <ins>Let _patternEra_ be _format_.[[pattern12Era]].</ins>
+        1. Else,
+          1. Let _pattern_ be _format_.[[pattern]].
+          1. <ins>Let _patternEra_ be _format_.[[patternEra]].</ins>
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"always"*, then</ins>
+          1. <ins class="block">Set _pattern_ to _patternEra_.</ins>
+        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+          1. <ins class="block">Let _F_ be a DateTime format function of _dateTimeFormat_.</ins>
+          1. <ins class="block">If _F_().[[Era]] ≠ _F_(_x_).[[Era]], set _pattern_ to _patternEra_.</ins>
         1. Let _result_ be FormatDateTimePattern(_dateTimeFormat_, _format_, _pattern_, _epochNanoseconds_).
         1. Return _result_.
       </emu-alg>
