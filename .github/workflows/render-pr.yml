@@ -17,6 +17,7 @@ jobs:
       with:
         node-version: lts/*
     - run: npm run build
+    - run: npm run build:slides
     - name: Save PR data
       env:
         PR: ${{ github.event.number }}
