@@ -60,13 +60,13 @@ new Intl.DateTimeFormat("fr-FR", { eraDisplay: "auto" })  // "auto" | "always" |
 
 | | Stage 2 (2022) | Now |
 | :--- | :--- | :--- |
-| Rule for `"auto"` | Era of date ≠ era of today | Per-calendar, per-locale rules from CLDR ([#9](https://github.com/tc39/proposal-intl-eradisplay/issues/9)) |
+| Rule for `"auto"` | Date's era ≠ today's era | Per-calendar, per-locale rules from CLDR ([#9](https://github.com/tc39/proposal-intl-eradisplay/issues/9)) |
 | Covers | Era | Era **and** century ([#10](https://github.com/tc39/proposal-intl-eradisplay/issues/10)) |
-| `japanese`, current era | Era hidden | Era always shown: `R6/4/13` ([#8](https://github.com/tc39/proposal-intl-eradisplay/issues/8)) |
-| `buddhist`, current era | Era hidden | Hidden in `th` (`13/4/2567`), shown in `en` (`4/13/2567 BE`) |
+| Current Japanese era | Hidden | Always shown: `R6/4/13` ([#8](https://github.com/tc39/proposal-intl-eradisplay/issues/8)) |
+| Current Buddhist era | Hidden | Hidden in `th`, shown in `en` |
 | Gregorian | Era for BCE dates | Era before year 1000; century outside a nearby window |
 
-- **Web compatibility:** default output changes for `dateStyle: "short"` outside the 2-digit window, for years before 1000, and for negative years in `iso8601`. TG2 considers these bug fixes.
+- **Web compatibility:** default output changes for years outside the 2-digit window, for years before 1000, and for negative years in `iso8601`. TG2 considers these bug fixes.
 
 ---
 
@@ -81,9 +81,7 @@ One scale covering era and century. `en-US`, short numeric date:
 | **With era**: always show the era | `4/13/2024 AD` | `4/13/1924 AD` | `4/13/15 AD` | `4/13/753 BC` |
 | **Without era**: never show the era | `4/13/24` | `4/13/1924` | `4/13/15` | `4/13/753` |
 
-- Auto → Full → With era: each requires strictly more context than the one before
-- Without era (`withoutEra`, Stage 2's `"never"`) is proposed to be dropped (later slide)
-- This slide is the **model**. How to spell it in the API is an open question (later slides)
+This slide is the *model*. How to spell it in the API is an open question (later slides)
 
 ---
 
@@ -103,7 +101,7 @@ ambiguity: match extended_year {
 },
 ```
 
-- ECMA-402 does not implement semantic skeletons, so it need not copy the option's shape
+ECMA-402 does not implement semantic skeletons, so it need not copy the option's shape
 
 ---
 
@@ -119,7 +117,7 @@ ambiguity: match extended_year {
 
 ---
 
-## Proposed Update: Specify `iso8601`, Then Drop `withoutEra`
+## Proposed Update: Specify `iso8601` and Drop `withoutEra`
 
 ```javascript
 const d = Temporal.PlainDate.from({ year: -752, month: 4, day: 13 });
@@ -144,12 +142,11 @@ new Intl.DateTimeFormat("en", iso).format(d);
 ### A: new `yearStyle` option
 
 ```javascript
-// Auto (default)
 { dateStyle: "short" }
-// Full
+
 { dateStyle: "short",
   yearStyle: "fullYear" }
-// With era
+
 { dateStyle: "short",
   yearStyle: "withEra" }
 ```
@@ -161,35 +158,35 @@ new Intl.DateTimeFormat("en", iso).format(d);
 
 ```javascript
 // Auto: new value (name TBD)
-{ year: "short", month: "numeric",
-  day: "numeric" }
-// Full: already "numeric"
-{ year: "numeric", … }
-// With era: already works
-{ year: "numeric", era: "short", … }
+{ year: "short" }
+
+// "numeric" implies full
+{ year: "numeric" }
+
+// era option implies withEra
+{ year: "numeric", era: "short" }
 ```
 
 </div>
 </div>
 
-In B, `dateStyle: "short"` uses `year: "short"`; `year: "2-digit"` stays literal (`53`, no era)
+Note: On the right, `dateStyle: "short"` uses `year: "short"` behavior, and `year: "2-digit"` retains current behavior
 
 ---
 
 ## How the Existing Options Work Today
 
-Formatting April 13, 2024 (`year` rows also set `month: "numeric", day: "numeric"`):
+Formatting April 13, 2024:
 
 | Option | How the year is shown | `en-US` | `en-GB` |
 | :--- | :--- | :---: | :---: |
-| `year: "2-digit"` | Always 2 digits (139 / 139 locales) | `4/13/24` | `13/04/24` |
-| `year: "numeric"` | Always the full year (139 / 139 locales) | `4/13/2024` | `13/04/2024` |
-| `dateStyle: "short"` | Locale decides: 2 digits in about half | `4/13/24` | `13/04/2024` |
+| `year: "2-digit"` | Always 2-digit year | `4/13/24` | `13/04/24` |
+| `year: "numeric"` | Always the full year | `4/13/2024` | `13/04/2024` |
+| `dateStyle: "short"` | Locale-dependent (about 50/50) | `4/13/24` | `13/04/2024` |
 
 - `year` already has a "force 2 digits" value and a "force full year" value; only the in-between is missing
-- `era` sets the *width* and forces the era on: `2024 A` / `2024 AD` / `2024 Anno Domini`
-- `{ era: "short" }` alone → `4/13/2024 AD`
-- `year` and `era` cannot be combined with `dateStyle`: `TypeError`
+- `era` forces the era to be displayed and also sets its width: `2024 A` / `2024 AD` / `2024 Anno Domini`
+- `year` and `era` cannot be combined with `dateStyle`
 
 ---
 
@@ -197,13 +194,13 @@ Formatting April 13, 2024 (`year` rows also set `month: "numeric", day: "numeric
 
 **Pros**
 
-- Smaller API surface: one new value instead of a new option
+- Smaller API surface: a new value instead of a new option
 - Fewer ways to do the same thing
-- No overlapping options to reconcile: what would `{ year: "2-digit", yearStyle: "fullYear" }` or `{ year: "numeric", yearStyle: "auto" }` mean?
+- No overlapping options to reconcile. For example, what would `{ year: "2-digit", yearStyle: "fullYear" }` mean?
 
 **Con**
 
-- Does not work with `dateStyle`: no way to force a full year or an era on `{ dateStyle: "short" }`, since `dateStyle` + `year` / `era` throws `TypeError`
+- Does not work with `dateStyle`: no way to force a full year on `{ dateStyle: "short" }`
 
 **Champion's mild preference: B.** The question is open.
 
