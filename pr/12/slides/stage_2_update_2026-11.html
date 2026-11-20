@@ -59,7 +59,7 @@
 </head><body><details class="annoying-warning">
   <summary>PR #12</summary>
   <p>
-    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/4ce796bb26157679c53d49ebe4c4db1b216e7a0e"><code>4ce796bb26157679c53d49ebe4c4db1b216e7a0e</code></a>.
+    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/8abf6791afa223d99b8d7179b47e3a514e0ff28e"><code>8abf6791afa223d99b8d7179b47e3a514e0ff28e</code></a>.
   </p>
   <p>
     Do not reference it as authoritative in any way.
@@ -532,7 +532,7 @@ table {
 <ul>
 <li>Does not work with <code>dateStyle</code>: no way to force a full year on <code>{ dateStyle: &quot;short&quot; }</code></li>
 </ul>
-<p><strong>Champion's mild preference: B.</strong> The question is open.</p>
+<p><strong>Shane's mild preference: extend <code>year</code>.</strong></p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -578,15 +578,12 @@ table {
 }
 ;" data-marpit-pagination-total="13">
 <h2 id="summary--questions-for-plenary">Summary &amp; Questions for Plenary</h2>
-<p>Temperature check on the three proposed updates:</p>
+<p>Temperature check on the proposed updates:</p>
 <ol>
 <li><strong>Year styles:</strong> widen the proposal from era display to era and century?</li>
 <li><strong>No system time:</strong> output independent of the clock? Rules in the spec, or implementation-defined?</li>
 <li><strong>Scope:</strong> signed years in <code>calendar: &quot;iso8601&quot;</code>, then drop <code>withoutEra</code>?</li>
-</ol>
-<p>Open for feedback:</p>
-<ol start="4">
-<li><strong>API shape:</strong> a <code>yearStyle</code> option (A), or a new <code>year</code> value (B)?</li>
+<li><strong>API shape:</strong> a <code>yearStyle</code> option, or a new <code>year</code> value?</li>
 </ol>
 <p><strong>Next Steps:</strong> Finalize API in TG2 → Stage 2.7 in early 2027 <em>(EAO, DLM)</em></p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
