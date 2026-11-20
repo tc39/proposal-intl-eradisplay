@@ -59,7 +59,7 @@
 </head><body><details class="annoying-warning">
   <summary>PR #12</summary>
   <p>
-    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/3f7abe0baac853c8978846c7318ee9504e45fe92"><code>3f7abe0baac853c8978846c7318ee9504e45fe92</code></a>.
+    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/481c19ea7c8186dc903cb0fa85c5ff969362c038"><code>481c19ea7c8186dc903cb0fa85c5ff969362c038</code></a>.
   </p>
   <p>
     Do not reference it as authoritative in any way.
@@ -217,7 +217,7 @@ table {
 <tbody>
 <tr>
 <td style="text-align:left">Rule for <code>&quot;auto&quot;</code></td>
-<td style="text-align:left">Era of date ≠ era of today</td>
+<td style="text-align:left">Date's era ≠ today's era</td>
 <td style="text-align:left">Per-calendar, per-locale rules from CLDR (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/9">#9</a>)</td>
 </tr>
 <tr>
@@ -226,14 +226,14 @@ table {
 <td style="text-align:left">Era <strong>and</strong> century (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/10">#10</a>)</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>japanese</code>, current era</td>
-<td style="text-align:left">Era hidden</td>
-<td style="text-align:left">Era always shown: <code>R6/4/13</code> (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/8">#8</a>)</td>
+<td style="text-align:left">Current Japanese era</td>
+<td style="text-align:left">Hidden</td>
+<td style="text-align:left">Always shown: <code>R6/4/13</code> (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/8">#8</a>)</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>buddhist</code>, current era</td>
-<td style="text-align:left">Era hidden</td>
-<td style="text-align:left">Hidden in <code>th</code> (<code>13/4/2567</code>), shown in <code>en</code> (<code>4/13/2567 BE</code>)</td>
+<td style="text-align:left">Current Buddhist era</td>
+<td style="text-align:left">Hidden</td>
+<td style="text-align:left">Hidden in <code>th</code>, shown in <code>en</code></td>
 </tr>
 <tr>
 <td style="text-align:left">Gregorian</td>
@@ -243,7 +243,7 @@ table {
 </tbody>
 </table>
 <ul>
-<li><strong>Web compatibility:</strong> default output changes for <code>dateStyle: &quot;short&quot;</code> outside the 2-digit window, for years before 1000, and for negative years in <code>iso8601</code>. TG2 considers these bug fixes.</li>
+<li><strong>Web compatibility:</strong> default output changes for years outside the 2-digit window, for years before 1000, and for negative years in <code>iso8601</code>. TG2 considers these bug fixes.</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -307,11 +307,7 @@ table {
 </tr>
 </tbody>
 </table>
-<ul>
-<li>Auto → Full → With era: each requires strictly more context than the one before</li>
-<li>Without era (<code>withoutEra</code>, Stage 2's <code>&quot;never&quot;</code>) is proposed to be dropped (later slide)</li>
-<li>This slide is the <strong>model</strong>. How to spell it in the API is an open question (later slides)</li>
-</ul>
+<p>This slide is the <em>model</em>. How to spell it in the API is an open question (later slides)</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -342,9 +338,7 @@ ambiguity: <span class="hljs-keyword">match</span> extended_year {
     <span class="hljs-number">2050</span>..      =&gt; YearAmbiguity::CenturyRequired,
 },
 </code></pre>
-<ul>
-<li>ECMA-402 does not implement semantic skeletons, so it need not copy the option's shape</li>
-</ul>
+<p>ECMA-402 does not implement semantic skeletons, so it need not copy the option's shape</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -392,7 +386,7 @@ table {
   font-size: 0.78em;
 }
 ;" data-marpit-pagination-total="13">
-<h2 id="proposed-update-specify-iso8601-then-drop-withoutera">Proposed Update: Specify <code>iso8601</code>, Then Drop <code>withoutEra</code></h2>
+<h2 id="proposed-update-specify-iso8601-and-drop-withoutera">Proposed Update: Specify <code>iso8601</code> and Drop <code>withoutEra</code></h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">const</span> d = <span class="hljs-title class_">Temporal</span>.<span class="hljs-property">PlainDate</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">year</span>: -<span class="hljs-number">752</span>, <span class="hljs-attr">month</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">day</span>: <span class="hljs-number">13</span> });
 <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;en&quot;</span>, { <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> }).<span class="hljs-title function_">format</span>(d);
 <span class="hljs-comment">// Today: &quot;753&quot; <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/>   Proposed: &quot;753 BC&quot; <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
@@ -428,12 +422,11 @@ table {
 <div class="columns">
 <div>
 <h3 id="a-new-yearstyle-option">A: new <code>yearStyle</code> option</h3>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// Auto (default)</span>
-{ <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span> }
-<span class="hljs-comment">// Full</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript">{ <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span> }
+
 { <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span>,
   <span class="hljs-attr">yearStyle</span>: <span class="hljs-string">&quot;fullYear&quot;</span> }
-<span class="hljs-comment">// With era</span>
+
 { <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span>,
   <span class="hljs-attr">yearStyle</span>: <span class="hljs-string">&quot;withEra&quot;</span> }
 </code></pre>
@@ -441,16 +434,17 @@ table {
 <div>
 <h3 id="b-existing-year-and-era">B: existing <code>year</code> and <code>era</code></h3>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// Auto: new value (name TBD)</span>
-{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;short&quot;</span>, <span class="hljs-attr">month</span>: <span class="hljs-string">&quot;numeric&quot;</span>,
-  <span class="hljs-attr">day</span>: <span class="hljs-string">&quot;numeric&quot;</span> }
-<span class="hljs-comment">// Full: already &quot;numeric&quot;</span>
-{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span>, … }
-<span class="hljs-comment">// With era: already works</span>
-{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span>, <span class="hljs-attr">era</span>: <span class="hljs-string">&quot;short&quot;</span>, … }
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;short&quot;</span> }
+
+<span class="hljs-comment">// &quot;numeric&quot; implies full</span>
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> }
+
+<span class="hljs-comment">// era option implies withEra</span>
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span>, <span class="hljs-attr">era</span>: <span class="hljs-string">&quot;short&quot;</span> }
 </code></pre>
 </div>
 </div>
-<p>In B, <code>dateStyle: &quot;short&quot;</code> uses <code>year: &quot;short&quot;</code>; <code>year: &quot;2-digit&quot;</code> stays literal (<code>53</code>, no era)</p>
+<p>Note: On the right, <code>dateStyle: &quot;short&quot;</code> uses <code>year: &quot;short&quot;</code> behavior, and <code>year: &quot;2-digit&quot;</code> retains current behavior</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -471,7 +465,7 @@ table {
 }
 ;" data-marpit-pagination-total="13">
 <h2 id="how-the-existing-options-work-today">How the Existing Options Work Today</h2>
-<p>Formatting April 13, 2024 (<code>year</code> rows also set <code>month: &quot;numeric&quot;, day: &quot;numeric&quot;</code>):</p>
+<p>Formatting April 13, 2024:</p>
 <table>
 <thead>
 <tr>
@@ -484,19 +478,19 @@ table {
 <tbody>
 <tr>
 <td style="text-align:left"><code>year: &quot;2-digit&quot;</code></td>
-<td style="text-align:left">Always 2 digits (139 / 139 locales)</td>
+<td style="text-align:left">Always 2-digit year</td>
 <td style="text-align:center"><code>4/13/24</code></td>
 <td style="text-align:center"><code>13/04/24</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>year: &quot;numeric&quot;</code></td>
-<td style="text-align:left">Always the full year (139 / 139 locales)</td>
+<td style="text-align:left">Always the full year</td>
 <td style="text-align:center"><code>4/13/2024</code></td>
 <td style="text-align:center"><code>13/04/2024</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>dateStyle: &quot;short&quot;</code></td>
-<td style="text-align:left">Locale decides: 2 digits in about half</td>
+<td style="text-align:left">Locale-dependent (about 50/50)</td>
 <td style="text-align:center"><code>4/13/24</code></td>
 <td style="text-align:center"><code>13/04/2024</code></td>
 </tr>
@@ -504,9 +498,8 @@ table {
 </table>
 <ul>
 <li><code>year</code> already has a &quot;force 2 digits&quot; value and a &quot;force full year&quot; value; only the in-between is missing</li>
-<li><code>era</code> sets the <em>width</em> and forces the era on: <code>2024 A</code> / <code>2024 AD</code> / <code>2024 Anno Domini</code></li>
-<li><code>{ era: &quot;short&quot; }</code> alone → <code>4/13/2024 AD</code></li>
-<li><code>year</code> and <code>era</code> cannot be combined with <code>dateStyle</code>: <code>TypeError</code></li>
+<li><code>era</code> forces the era to be displayed and also sets its width: <code>2024 A</code> / <code>2024 AD</code> / <code>2024 Anno Domini</code></li>
+<li><code>year</code> and <code>era</code> cannot be combined with <code>dateStyle</code></li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -530,13 +523,13 @@ table {
 <h2 id="pros-and-cons-of-extending-year-b">Pros and Cons of Extending <code>year</code> (B)</h2>
 <p><strong>Pros</strong></p>
 <ul>
-<li>Smaller API surface: one new value instead of a new option</li>
+<li>Smaller API surface: a new value instead of a new option</li>
 <li>Fewer ways to do the same thing</li>
-<li>No overlapping options to reconcile: what would <code>{ year: &quot;2-digit&quot;, yearStyle: &quot;fullYear&quot; }</code> or <code>{ year: &quot;numeric&quot;, yearStyle: &quot;auto&quot; }</code> mean?</li>
+<li>No overlapping options to reconcile. For example, what would <code>{ year: &quot;2-digit&quot;, yearStyle: &quot;fullYear&quot; }</code> mean?</li>
 </ul>
 <p><strong>Con</strong></p>
 <ul>
-<li>Does not work with <code>dateStyle</code>: no way to force a full year or an era on <code>{ dateStyle: &quot;short&quot; }</code>, since <code>dateStyle</code> + <code>year</code> / <code>era</code> throws <code>TypeError</code></li>
+<li>Does not work with <code>dateStyle</code>: no way to force a full year on <code>{ dateStyle: &quot;short&quot; }</code></li>
 </ul>
 <p><strong>Champion's mild preference: B.</strong> The question is open.</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
