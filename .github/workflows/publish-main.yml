@@ -15,6 +15,7 @@ jobs:
       with:
         node-version: lts/*
     - run: npm run build
+    - run: npm run build:slides
     - name: Publish to gh-pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
