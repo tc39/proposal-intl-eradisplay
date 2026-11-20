@@ -79,8 +79,10 @@ One scale covering era and century. `en-US`, short numeric date:
 | **Auto**: shortest unambiguous form | `4/13/24` | `4/13/1924` | `4/13/15 AD` | `4/13/753 BC` |
 | **Full**: never shorten the year | `4/13/2024` | `4/13/1924` | `4/13/15 AD` | `4/13/753 BC` |
 | **With era**: always show the era | `4/13/2024 AD` | `4/13/1924 AD` | `4/13/15 AD` | `4/13/753 BC` |
+| **Without era**: never show the era | `4/13/24` | `4/13/1924` | `4/13/15` | `4/13/753` |
 
-- Each row requires strictly more context than the one above
+- Auto → Full → With era: each requires strictly more context than the one before
+- Without era (`withoutEra`, Stage 2's `"never"`) is proposed to be dropped (later slide)
 - This slide is the **model**. How to spell it in the API is an open question (later slides)
 
 ---
@@ -176,16 +178,18 @@ In B, `dateStyle: "short"` uses `year: "short"`; `year: "2-digit"` stays literal
 
 ## How the Existing Options Work Today
 
-| Option | 2-digit year | Full year | With `dateStyle`? |
-| :--- | :---: | :---: | :---: |
-| `{ year: "numeric" }` | **0 / 139** locales | **139 / 139** (`2024`) | ❌ `TypeError` |
-| `{ year: "2-digit" }` | **139 / 139** (`24`) | **0 / 139** | ❌ `TypeError` |
-| `{ dateStyle: "short" }` | **about half** (`en-US`, `de`) | **about half** (`en-GB`, `ja`) | — |
+Formatting April 13, 2024 (`year` rows also set `month: "numeric", day: "numeric"`):
+
+| Option | How the year is shown | `en-US` | `en-GB` |
+| :--- | :--- | :---: | :---: |
+| `year: "2-digit"` | Always 2 digits (139 / 139 locales) | `4/13/24` | `13/04/24` |
+| `year: "numeric"` | Always the full year (139 / 139 locales) | `4/13/2024` | `13/04/2024` |
+| `dateStyle: "short"` | Locale decides: 2 digits in about half | `4/13/24` | `13/04/2024` |
 
 - `year` already has a "force 2 digits" value and a "force full year" value; only the in-between is missing
 - `era` sets the *width* and forces the era on: `2024 A` / `2024 AD` / `2024 Anno Domini`
 - `{ era: "short" }` alone → `4/13/2024 AD`
-- `{ dateStyle: "medium", era: "short" }` → `TypeError`
+- `year` and `era` cannot be combined with `dateStyle`: `TypeError`
 
 ---
 
@@ -193,7 +197,6 @@ In B, `dateStyle: "short"` uses `year: "short"`; `year: "2-digit"` stays literal
 
 **Pros**
 
-- Less churn
 - Smaller API surface: one new value instead of a new option
 - Fewer ways to do the same thing
 - No overlapping options to reconcile: what would `{ year: "2-digit", yearStyle: "fullYear" }` or `{ year: "numeric", yearStyle: "auto" }` mean?
