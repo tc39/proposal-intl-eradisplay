@@ -203,7 +203,7 @@ Formatting April 13, 2024:
 
 - Does not work with `dateStyle`: no way to force a full year on `{ dateStyle: "short" }`
 
-**Champion's mild preference: B.** The question is open.
+**Shane's mild preference: extend `year`.**
 
 ---
 
@@ -217,14 +217,11 @@ Formatting April 13, 2024:
 
 ## Summary & Questions for Plenary
 
-Temperature check on the three proposed updates:
+Temperature check on the proposed updates:
 
 1. **Year styles:** widen the proposal from era display to era and century?
 2. **No system time:** output independent of the clock? Rules in the spec, or implementation-defined?
 3. **Scope:** signed years in `calendar: "iso8601"`, then drop `withoutEra`?
-
-Open for feedback:
-
-4. **API shape:** a `yearStyle` option (A), or a new `year` value (B)?
+4. **API shape:** a `yearStyle` option, or a new `year` value?
 
 **Next Steps:** Finalize API in TG2 → Stage 2.7 in early 2027 *(EAO, DLM)*
