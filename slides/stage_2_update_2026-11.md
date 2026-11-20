@@ -58,9 +58,9 @@ new Intl.DateTimeFormat("fr-FR", { eraDisplay: "auto" })  // "auto" | "always" |
 
 ## Major Change Since Stage 2: CLDR-Driven Rules
 
-| ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ | Stage 2 (2022)⠀⠀⠀⠀⠀⠀⠀ | Now |
+| ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ | Stage⠀2⠀(2022)⠀⠀⠀⠀⠀⠀⠀ | Now |
 | :--- | :--- | :--- |
-| Rule for `"auto"` | Date's era ≠ today's era | Per-calendar, per-locale rules from CLDR ([#9](https://github.com/tc39/proposal-intl-eradisplay/issues/9)) |
+| Rule for `"auto"` | Date's era != today's era | Per-calendar, per-locale rules from CLDR ([#9](https://github.com/tc39/proposal-intl-eradisplay/issues/9)) |
 | Covers | Era | Era **and** century ([#10](https://github.com/tc39/proposal-intl-eradisplay/issues/10)) |
 | Current Japanese era | Hidden | Always shown: `R6/4/13` ([#8](https://github.com/tc39/proposal-intl-eradisplay/issues/8)) |
 | Current Buddhist era | Hidden | Hidden in `th`, shown in `en` |
