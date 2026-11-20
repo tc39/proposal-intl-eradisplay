@@ -59,7 +59,7 @@
 </head><body><details class="annoying-warning">
   <summary>PR #12</summary>
   <p>
-    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/116643a2f2add3dd11255ae5f27aad7659f3ca4b"><code>116643a2f2add3dd11255ae5f27aad7659f3ca4b</code></a>.
+    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/1bbd8f95f3817d334ccaa161c303c50c59f37117"><code>1bbd8f95f3817d334ccaa161c303c50c59f37117</code></a>.
   </p>
   <p>
     Do not reference it as authoritative in any way.
@@ -93,7 +93,7 @@ table {
 table {
   font-size: 0.78em;
 }
-;color:#ffffff;background-color:#2c3e50;background-image:none;" data-marpit-pagination-total="12">
+;color:#ffffff;background-color:#2c3e50;background-image:none;" data-marpit-pagination-total="13">
 <h1 id="eradisplay--yearstyle">eraDisplay / yearStyle</h1>
 <h2 id="stage-2-update">Stage 2 Update</h2>
 <h3 id="shane-f-carr--november-2026-tc39">Shane F Carr — November 2026 TC39</h3>
@@ -115,7 +115,7 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
+;" data-marpit-pagination-total="13">
 <h2 id="problem-year--era-formatting-today">Problem: Year &amp; Era Formatting Today</h2>
 <table>
 <thead>
@@ -124,7 +124,7 @@ table {
 <th style="text-align:center">2024 CE</th>
 <th style="text-align:center">1924 CE</th>
 <th style="text-align:center">15 CE</th>
-<th style="text-align:center">753 BCE (<code>-752</code>)</th>
+<th style="text-align:center">753 BCE</th>
 </tr>
 </thead>
 <tbody>
@@ -143,18 +143,19 @@ table {
 <td style="text-align:center"><code>4/13/53</code> <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>{ calendar: &quot;iso8601&quot;, year: &quot;numeric&quot; }</code></td>
+<td style="text-align:left"><code>{ year: &quot;numeric&quot; }</code></td>
 <td style="text-align:center"><code>2024</code></td>
 <td style="text-align:center"><code>1924</code></td>
 <td style="text-align:center"><code>15</code></td>
-<td style="text-align:center"><code>753</code> <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <em>(not <code>-752</code>)</em></td>
+<td style="text-align:center"><code>753</code> <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>year ≤ 0</code> maps to <code>1 - year</code>; <code>&quot;2-digit&quot;</code> slices the last 2 chars</li>
-<li><code>formatRange(753 BCE, 1 BCE)</code> drops era: <code>&quot;4/13/753 – 4/13/1&quot;</code> <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/></li>
-<li>Non-Gregorian calendars (<code>ethiopic</code>, <code>buddhist</code>) handle eras inconsistently</li>
+<li>The era is never shown unless the author asks for it: 753 BCE reads as 753 CE</li>
+<li><code>dateStyle: &quot;short&quot;</code> drops the century: 1924 and 2024 are both <code>4/13/24</code></li>
+<li>Ranges too: <code>formatRange(753 BCE, 1 BCE)</code> with <code>dateStyle: &quot;short&quot;</code> → <code>4/13/53 – 4/13/01</code> <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/></li>
+<li>Authors cannot fix this and keep <code>dateStyle</code>: adding <code>era</code> throws <code>TypeError</code></li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -174,15 +175,16 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="from-stage-2-nov-2022-to-cldr-rules">From Stage 2 (Nov 2022) to CLDR Rules</h2>
+;" data-marpit-pagination-total="13">
+<h2 id="reminder-the-stage-2-proposal-nov-2022">Reminder: The Stage 2 Proposal (Nov 2022)</h2>
+<p>Authored by Louis-Aimé de Fouquières; <a href="https://github.com/tc39/notes/blob/main/meetings/2022-11/nov-29.md#eradisplay-option-for-intldatetimeformat">reached Stage 2 in 2022-11</a></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;fr-FR&quot;</span>, { <span class="hljs-attr">eraDisplay</span>: <span class="hljs-string">&quot;auto&quot;</span> })  <span class="hljs-comment">// &quot;auto&quot; | &quot;always&quot; | &quot;never&quot;</span>
+</code></pre>
 <ul>
-<li><strong>Nov 2022 Stage 2</strong> <em>(Louis-Aimé de Fouquières)</em>:<br />
-<code>eraDisplay: &quot;auto&quot; | &quot;always&quot; | &quot;never&quot;</code> checked <code>Temporal.Now</code></li>
-<li><strong>CLDR data-driven rules (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/8">#8</a>, <a href="https://github.com/tc39/proposal-intl-eradisplay/issues/9">#9</a>):</strong><br />
-Japanese (<code>R6</code>) always needs era; Buddhist omits it in <code>th-TH</code> (<code>2567</code>) vs. <code>en-US</code> (<code>2567 BE</code>)</li>
-<li><strong>Clock independent:</strong> Output never shifts with the system clock</li>
-<li><strong>Future follow-up:</strong> Julian–Gregorian switchover (<code>&quot;julian&quot;</code>, Old/New Style)</li>
+<li><strong><code>&quot;auto&quot;</code></strong> <em>(default)</em>: show the era if the year is shown and the date's era differs from <strong>today's</strong> era in the resolved calendar</li>
+<li><strong><code>&quot;always&quot;</code></strong>: show the era; <code>era</code> defaults to <code>&quot;short&quot;</code></li>
+<li><strong><code>&quot;never&quot;</code></strong>: hide the era, whatever <code>era</code> says</li>
+<li>Era only: the 2-digit year problem was out of scope</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -202,46 +204,46 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="updated-model-year--era-disambiguation">Updated Model: Year &amp; Era Disambiguation</h2>
-<p>Unified disambiguation scale for era and century (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/10">#10</a>):</p>
+;" data-marpit-pagination-total="13">
+<h2 id="major-change-since-stage-2-cldr-driven-rules">Major Change Since Stage 2: CLDR-Driven Rules</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Mode <em>(names TBD)</em></th>
-<th style="text-align:center">2024 CE</th>
-<th style="text-align:center">1924 CE</th>
-<th style="text-align:center">15 CE</th>
-<th style="text-align:center">753 BCE</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">Stage 2 (2022)</th>
+<th style="text-align:left">Now</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong><code>auto</code></strong> <em>(default)</em></td>
-<td style="text-align:center"><code>4/13/24</code> <em>(short)</em></td>
-<td style="text-align:center"><code>4/13/1924</code></td>
-<td style="text-align:center"><code>4/13/15 [AD]</code></td>
-<td style="text-align:center"><code>4/13/753 BC</code></td>
+<td style="text-align:left">Rule for <code>&quot;auto&quot;</code></td>
+<td style="text-align:left">Era of date ≠ era of today</td>
+<td style="text-align:left">Per-calendar, per-locale rules from CLDR (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/9">#9</a>)</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong><code>fullYear</code></strong> <em>(no 2-digit)</em></td>
-<td style="text-align:center"><code>4/13/2024</code></td>
-<td style="text-align:center"><code>4/13/1924</code></td>
-<td style="text-align:center"><code>4/13/15 [AD]</code></td>
-<td style="text-align:center"><code>4/13/753 BC</code></td>
+<td style="text-align:left">Covers</td>
+<td style="text-align:left">Era</td>
+<td style="text-align:left">Era <strong>and</strong> century (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/10">#10</a>)</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong><code>withEra</code></strong> <em>(always era)</em></td>
-<td style="text-align:center"><code>4/13/2024 AD</code></td>
-<td style="text-align:center"><code>4/13/1924 AD</code></td>
-<td style="text-align:center"><code>4/13/15 AD</code></td>
-<td style="text-align:center"><code>4/13/753 BC</code></td>
+<td style="text-align:left"><code>japanese</code>, current era</td>
+<td style="text-align:left">Era hidden</td>
+<td style="text-align:left">Era always shown: <code>R6/4/13</code> (<a href="https://github.com/tc39/proposal-intl-eradisplay/issues/8">#8</a>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>buddhist</code>, current era</td>
+<td style="text-align:left">Era hidden</td>
+<td style="text-align:left">Hidden in <code>th</code> (<code>13/4/2567</code>), shown in <code>en</code> (<code>4/13/2567 BE</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">Gregorian</td>
+<td style="text-align:left">Era for BCE dates</td>
+<td style="text-align:left">Era before year 1000; century outside a nearby window</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>auto</code>: elides era and 2-digit century only when unambiguous</li>
-<li><code>fullYear</code>: keeps full century (<code>2024</code>), elides unambiguous eras</li>
+<li><strong>Web compatibility:</strong> default output changes for <code>dateStyle: &quot;short&quot;</code> outside the 2-digit window, for years before 1000, and for negative years in <code>iso8601</code>. TG2 considers these bug fixes.</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -261,18 +263,46 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="scope-updates-iso8601--dropping-never">Scope Updates: <code>iso8601</code> &amp; Dropping <code>&quot;never&quot;</code></h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">const</span> d = <span class="hljs-title class_">Temporal</span>.<span class="hljs-property">PlainDate</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">year</span>: -<span class="hljs-number">752</span>, <span class="hljs-attr">month</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">day</span>: <span class="hljs-number">13</span> });
-<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;en&quot;</span>, { <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> }).<span class="hljs-title function_">format</span>(d);
-<span class="hljs-comment">// Today: &quot;753&quot; <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/>   Proposed: &quot;753 BC&quot; <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
-<span class="hljs-keyword">const</span> iso = { <span class="hljs-attr">calendar</span>: <span class="hljs-string">&quot;iso8601&quot;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> };
-<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;en&quot;</span>, iso).<span class="hljs-title function_">format</span>(d);
-<span class="hljs-comment">// Today: &quot;753&quot; <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/>   Proposed: &quot;-752&quot;   <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
-</code></pre>
+;" data-marpit-pagination-total="13">
+<h2 id="proposed-update-from-era-display-to-year-styles">Proposed Update: From Era Display to Year Styles</h2>
+<p>One scale covering era and century. <code>en-US</code>, short numeric date:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Year style</th>
+<th style="text-align:center">2024 CE</th>
+<th style="text-align:center">1924 CE</th>
+<th style="text-align:center">15 CE</th>
+<th style="text-align:center">753 BCE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Auto</strong>: shortest unambiguous form</td>
+<td style="text-align:center"><code>4/13/24</code></td>
+<td style="text-align:center"><code>4/13/1924</code></td>
+<td style="text-align:center"><code>4/13/15 AD</code></td>
+<td style="text-align:center"><code>4/13/753 BC</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Full</strong>: never shorten the year</td>
+<td style="text-align:center"><code>4/13/2024</code></td>
+<td style="text-align:center"><code>4/13/1924</code></td>
+<td style="text-align:center"><code>4/13/15 AD</code></td>
+<td style="text-align:center"><code>4/13/753 BC</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>With era</strong>: always show the era</td>
+<td style="text-align:center"><code>4/13/2024 AD</code></td>
+<td style="text-align:center"><code>4/13/1924 AD</code></td>
+<td style="text-align:center"><code>4/13/15 AD</code></td>
+<td style="text-align:center"><code>4/13/753 BC</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong><code>iso8601</code> negative years:</strong> Outputs <code>&quot;-752&quot;</code> (no <code>&quot;algebraic&quot;</code> option needed)</li>
-<li><strong>Drop <code>&quot;never&quot;</code> / <code>&quot;withoutEra&quot;</code>:</strong> Footgun (<code>formatToParts</code> suffices)</li>
+<li>Each row requires strictly more context than the one above</li>
+<li>This slide is the <strong>model</strong>. How to spell it in the API is an open question (later slides)</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -292,21 +322,20 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="prior-art-unicode-uts-35--icu4x">Prior Art: Unicode UTS #35 &amp; ICU4X</h2>
+;" data-marpit-pagination-total="13">
+<h2 id="year-style-in-cldr-and-icu4x">Year Style in CLDR and ICU4X</h2>
+<p><strong>UTS #35</strong> <a href="https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Skeleton_Year_Style">Year Style</a>: an option of <em>semantic skeletons</em>, with <code>Auto</code>, <code>Full</code>, <code>WithEra</code></p>
+<p><strong>ICU4X</strong> <a href="https://unicode-org.github.io/icu4x/rustdoc/icu/datetime/options/enum.YearStyle.html"><code>YearStyle</code></a>: <code>Auto</code>, <code>Full</code>, <code>WithEra</code>, <code>NoEra</code>, driven by <a href="https://unicode-org.github.io/icu4x/rustdoc/icu/calendar/types/enum.YearAmbiguity.html"><code>YearAmbiguity</code></a>:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-rust"><span class="hljs-comment">// components/calendar/src/cal/gregorian.rs</span>
+ambiguity: <span class="hljs-keyword">match</span> extended_year {
+    ..=<span class="hljs-number">999</span>      =&gt; YearAmbiguity::EraAndCenturyRequired,
+    <span class="hljs-number">1000</span>..=<span class="hljs-number">1949</span> =&gt; YearAmbiguity::CenturyRequired,
+    <span class="hljs-number">1950</span>..=<span class="hljs-number">2049</span> =&gt; YearAmbiguity::Unambiguous,
+    <span class="hljs-number">2050</span>..      =&gt; YearAmbiguity::CenturyRequired,
+},
+</code></pre>
 <ul>
-<li><strong>Unicode UTS #35 (LDML Part 4 — Semantic Skeletons):</strong>
-<ul>
-<li><a href="https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Skeleton_Year_Style"><code>#Semantic_Skeleton_Year_Style</code></a>: <code>Auto</code>, <code>Full</code>, and <code>WithEra</code> rules</li>
-<li><a href="https://unicode.org/reports/tr35/tr35-dates.html#Semantic_Year_Style_Skeleton_Variations"><code>#Semantic_Year_Style_Skeleton_Variations</code></a>: <code>yyMd</code> / <code>yMd</code> / <code>GyMd</code> families</li>
-</ul>
-</li>
-<li><strong>Shipped in ICU4X (<code>icu::calendar</code> &amp; <code>icu::datetime</code>):</strong>
-<ul>
-<li><a href="https://unicode-org.github.io/icu4x/rustdoc/icu/calendar/types/enum.YearAmbiguity.html"><code>YearAmbiguity</code></a> in <a href="https://github.com/unicode-org/icu4x/blob/main/components/calendar/src/cal/gregorian.rs"><code>gregorian.rs</code></a> (year-range cutoffs)</li>
-<li><a href="https://unicode-org.github.io/icu4x/rustdoc/icu/datetime/options/enum.YearStyle.html"><code>YearStyle</code></a> in <a href="https://github.com/unicode-org/icu4x/blob/main/components/datetime/src/raw/neo.rs"><code>neo.rs</code></a> &amp; <a href="https://github.com/unicode-org/icu4x/blob/main/provider/source/src/datetime/semantic_skeletons.rs"><code>semantic_skeletons.rs</code></a></li>
-</ul>
-</li>
+<li>ECMA-402 does not implement semantic skeletons, so it need not copy the option's shape</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -326,28 +355,16 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="api-question-dedicated-option-vs-year--era">API Question: Dedicated Option vs. <code>year</code> &amp; <code>era</code>?</h2>
-<p>Three modes remain once <code>&quot;withoutEra&quot;</code> and <code>&quot;algebraic&quot;</code> are dropped:</p>
-<div class="columns">
-<div>
-<h3 id="option-a-yearstyle">Option A: <code>yearStyle</code></h3>
+;" data-marpit-pagination-total="13">
+<h2 id="proposed-update-no-reliance-on-system-time">Proposed Update: No Reliance on System Time</h2>
 <ul>
-<li><code>&quot;auto&quot;</code> <em>(default)</em></li>
-<li><code>&quot;fullYear&quot;</code> <em>(no 2-digit)</em></li>
-<li><code>&quot;withEra&quot;</code> <em>(always era)</em></li>
+<li><strong>Stage 2:</strong> <code>&quot;auto&quot;</code> compared the date against today's era, so the same code could print different output on different days</li>
+<li><strong>Proposed:</strong> output depends only on the date, the calendar, and locale data</li>
+<li><strong>ICU4X</strong> already works this way: fixed year ranges (previous slide)</li>
+<li><strong>UTS #35</strong> leaves the heuristic to implementations; its example heuristic mentions &quot;within 20 years of the current date&quot;</li>
+<li><strong>Trade-off:</strong> the 2-digit window is data that ages; it moves when implementations update</li>
 </ul>
-</div>
-<div>
-<h3 id="option-b-year--era">Option B: <code>year</code> &amp; <code>era</code></h3>
-<ul>
-<li>Default → <code>&quot;auto&quot;</code></li>
-<li><code>era</code> set → <code>&quot;withEra&quot;</code></li>
-<li><code>year: &quot;long&quot;</code> → <code>&quot;fullYear&quot;</code></li>
-</ul>
-</div>
-</div>
-<p><em>(Option C: fix <code>&quot;auto&quot;</code> default only, with zero new options or values)</em></p>
+<p><strong>Feedback wanted:</strong> should the rules live in the spec, or be implementation- and locale-defined?</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -366,41 +383,19 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="deep-dive-1-year-vs-datestyle-today">Deep Dive 1: <code>year</code> vs. <code>dateStyle</code> Today</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Option</th>
-<th style="text-align:center">2-Digit Locales</th>
-<th style="text-align:center">Full-Year Locales</th>
-<th style="text-align:center">With <code>dateStyle</code>?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>{ year: &quot;numeric&quot; }</code></td>
-<td style="text-align:center"><strong>0 / 139</strong></td>
-<td style="text-align:center"><strong>139 / 139</strong> (<code>&quot;2024&quot;</code>)</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{ year: &quot;2-digit&quot; }</code></td>
-<td style="text-align:center"><strong>139 / 139</strong> (<code>&quot;24&quot;</code>)</td>
-<td style="text-align:center"><strong>0 / 139</strong></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{ dateStyle: &quot;short&quot; }</code></td>
-<td style="text-align:center"><strong>54 / 98</strong> (<code>en-US</code>, <code>de</code>)</td>
-<td style="text-align:center"><strong>44 / 98</strong> (<code>en-GB</code>, <code>ja</code>)</td>
-<td style="text-align:center">—</td>
-</tr>
-</tbody>
-</table>
+;" data-marpit-pagination-total="13">
+<h2 id="proposed-update-specify-iso8601-then-drop-withoutera">Proposed Update: Specify <code>iso8601</code>, Then Drop <code>withoutEra</code></h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">const</span> d = <span class="hljs-title class_">Temporal</span>.<span class="hljs-property">PlainDate</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">year</span>: -<span class="hljs-number">752</span>, <span class="hljs-attr">month</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">day</span>: <span class="hljs-number">13</span> });
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;en&quot;</span>, { <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> }).<span class="hljs-title function_">format</span>(d);
+<span class="hljs-comment">// Today: &quot;753&quot; <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/>   Proposed: &quot;753 BC&quot; <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
+<span class="hljs-keyword">const</span> iso = { <span class="hljs-attr">calendar</span>: <span class="hljs-string">&quot;iso8601&quot;</span>, <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span> };
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Intl</span>.<span class="hljs-title class_">DateTimeFormat</span>(<span class="hljs-string">&quot;en&quot;</span>, iso).<span class="hljs-title function_">format</span>(d);
+<span class="hljs-comment">// Today: &quot;753&quot; <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/>   Proposed: &quot;-752&quot;   <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
+</code></pre>
 <ul>
-<li>Default 2-digit years come <strong>only</strong> from <code>dateStyle: &quot;short&quot;</code></li>
-<li><code>{ year: &quot;long&quot; }</code> duplicates <code>&quot;numeric&quot;</code> in bags, yet throws <code>TypeError</code> with <code>dateStyle: &quot;short&quot;</code>!</li>
+<li><strong><code>iso8601</code> first:</strong> the ISO calendar has no eras, so it prints signed years. This covers the signed-year use case without a new option value</li>
+<li><strong>Then drop <code>withoutEra</code></strong> (Stage 2's <code>&quot;never&quot;</code>): hiding the era produces ambiguous output; <code>formatToParts</code> remains as the escape hatch</li>
+<li>UTS #35 has no such style; ICU4X has <code>NoEra</code></li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -420,15 +415,34 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="deep-dive-2-era-width-vs-visibility-today">Deep Dive 2: <code>era</code> Width vs. Visibility Today</h2>
-<ul>
-<li><strong><code>era</code> (<code>&quot;narrow&quot; | &quot;short&quot; | &quot;long&quot;</code>) sets <em>width</em>, not policy:</strong><br />
-<code>&quot;A&quot;</code> / <code>&quot;AD&quot;</code> / <code>&quot;Anno Domini&quot;</code> (<code>en-US</code>); <code>&quot;R&quot;</code> / <code>&quot;令和&quot;</code> (<code>ja-JP</code>)</li>
-<li><strong>Static CLDR presence:</strong> <code>gregory</code> omits era (<code>&quot;Apr 13, 753&quot;</code>), while <code>buddhist</code> &amp; <code>ethiopic</code> hardcode it in <code>en-US</code></li>
-<li><strong>Orthogonality:</strong> Option A supports <code>{ era: &quot;long&quot;, yearStyle: &quot;auto&quot; }</code> (<code>era</code> alone defaults to <code>&quot;withEra&quot;</code> for compat); Option B cannot</li>
-<li><strong>Incompatible with <code>dateStyle</code>:</strong> <code>{ dateStyle: &quot;long&quot;, era: &quot;short&quot; }</code> throws <code>TypeError</code></li>
-</ul>
+;" data-marpit-pagination-total="13">
+<h2 id="api-question-yearstyle-vs-more-year-options">API Question: <code>yearStyle</code> vs. More <code>year</code> Options</h2>
+<div class="columns">
+<div>
+<h3 id="a-new-yearstyle-option">A: new <code>yearStyle</code> option</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// Auto (default)</span>
+{ <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span> }
+<span class="hljs-comment">// Full</span>
+{ <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span>,
+  <span class="hljs-attr">yearStyle</span>: <span class="hljs-string">&quot;fullYear&quot;</span> }
+<span class="hljs-comment">// With era</span>
+{ <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;short&quot;</span>,
+  <span class="hljs-attr">yearStyle</span>: <span class="hljs-string">&quot;withEra&quot;</span> }
+</code></pre>
+</div>
+<div>
+<h3 id="b-existing-year-and-era">B: existing <code>year</code> and <code>era</code></h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// Auto: new value (name TBD)</span>
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;short&quot;</span>, <span class="hljs-attr">month</span>: <span class="hljs-string">&quot;numeric&quot;</span>,
+  <span class="hljs-attr">day</span>: <span class="hljs-string">&quot;numeric&quot;</span> }
+<span class="hljs-comment">// Full: already &quot;numeric&quot;</span>
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span>, … }
+<span class="hljs-comment">// With era: already works</span>
+{ <span class="hljs-attr">year</span>: <span class="hljs-string">&quot;numeric&quot;</span>, <span class="hljs-attr">era</span>: <span class="hljs-string">&quot;short&quot;</span>, … }
+</code></pre>
+</div>
+</div>
+<p>In B, <code>dateStyle: &quot;short&quot;</code> uses <code>year: &quot;short&quot;</code>; <code>year: &quot;2-digit&quot;</code> stays literal (<code>53</code>, no era)</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -447,13 +461,43 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="deep-dive-3-era-quirks-in-cldr--engines">Deep Dive 3: <code>era</code> Quirks in CLDR &amp; Engines</h2>
+;" data-marpit-pagination-total="13">
+<h2 id="how-the-existing-options-work-today">How the Existing Options Work Today</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Option</th>
+<th style="text-align:center">2-digit year</th>
+<th style="text-align:center">Full year</th>
+<th style="text-align:center">With <code>dateStyle</code>?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>{ year: &quot;numeric&quot; }</code></td>
+<td style="text-align:center"><strong>0 / 139</strong> locales</td>
+<td style="text-align:center"><strong>139 / 139</strong> (<code>2024</code>)</td>
+<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>{ year: &quot;2-digit&quot; }</code></td>
+<td style="text-align:center"><strong>139 / 139</strong> (<code>24</code>)</td>
+<td style="text-align:center"><strong>0 / 139</strong></td>
+<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>{ dateStyle: &quot;short&quot; }</code></td>
+<td style="text-align:center"><strong>about half</strong> (<code>en-US</code>, <code>de</code>)</td>
+<td style="text-align:center"><strong>about half</strong> (<code>en-GB</code>, <code>ja</code>)</td>
+<td style="text-align:center">—</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Legacy <code>GyMd</code> skeleton drift</strong> when adding <code>era: &quot;short&quot;</code>:<br />
-<code>zh-CN</code> <code>&quot;2024/4/13&quot;</code> → <code>&quot;公元 2024-04-13&quot;</code>; <code>ko-KR</code> <code>&quot;2024. 4. 13.&quot;</code> → <code>&quot;AD 2024/4/13&quot;</code></li>
-<li><strong>Defaulting quirks:</strong> <code>{ era: &quot;short&quot; }</code> alone injects <code>YMD</code> (<code>&quot;4/13/2024 AD&quot;</code>), while <code>{ month: &quot;long&quot;, era: &quot;short&quot; }</code> → <code>&quot;AD (month: April)&quot;</code></li>
-<li><strong>Calendar &amp; <code>resolvedOptions()</code> bugs:</strong> <code>iso8601</code> + <code>era: &quot;short&quot;</code> leaks <code>&quot;753 BC&quot;</code>; <code>zh-TW</code> (<code>roc</code>) emits <code>era</code> parts with <code>resolvedOptions().era === undefined</code></li>
+<li><code>year</code> already has a &quot;force 2 digits&quot; value and a &quot;force full year&quot; value; only the in-between is missing</li>
+<li><code>era</code> sets the <em>width</em> and forces the era on: <code>2024 A</code> / <code>2024 AD</code> / <code>2024 Anno Domini</code></li>
+<li><code>{ era: &quot;short&quot; }</code> alone → <code>4/13/2024 AD</code></li>
+<li><code>{ dateStyle: &quot;medium&quot;, era: &quot;short&quot; }</code> → <code>TypeError</code></li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -473,51 +517,20 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
-<h2 id="comparing-the-api-design-options">Comparing the API Design Options</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Criterion</th>
-<th style="text-align:center">A: <code>yearStyle</code></th>
-<th style="text-align:center">B: <code>year</code> / <code>era</code></th>
-<th style="text-align:center">C: <code>&quot;auto&quot;</code> Only</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>&quot;753 BC&quot;</code>, <code>iso8601</code> <code>&quot;-752&quot;</code>, short <code>1924</code></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Default</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Default</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Default</td>
-</tr>
-<tr>
-<td style="text-align:left">Full year in <code>dateStyle: &quot;short&quot;</code> (<code>4/13/2024</code>)</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> <code>&quot;fullYear&quot;</code></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code>*</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> No</td>
-</tr>
-<tr>
-<td style="text-align:left">Force era with <code>dateStyle</code> (<code>Apr 13, 2024 AD</code>)</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> <code>&quot;withEra&quot;</code></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code>*</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> No</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>&quot;auto&quot;</code> + <code>era: &quot;long&quot;</code> (<code>753 Before Christ</code>)</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Orthogonal</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> Forces era</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> Forces era</td>
-</tr>
-<tr>
-<td style="text-align:left">Non-redundant in <code>{ year, month, day }</code> bags</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Clean</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/26a0.svg" data-marp-twemoji=""/> <code>long</code> ≈ <code>numeric</code></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Clean</td>
-</tr>
-</tbody>
-</table>
-<p><em>*Unless ECMA-402 lifted the <code>TypeError</code> on <code>dateStyle</code> + <code>year</code> / <code>era</code>.</em></p>
+;" data-marpit-pagination-total="13">
+<h2 id="pros-and-cons-of-extending-year-b">Pros and Cons of Extending <code>year</code> (B)</h2>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Less churn</li>
+<li>Smaller API surface: one new value instead of a new option</li>
+<li>Fewer ways to do the same thing</li>
+<li>No overlapping options to reconcile: what would <code>{ year: &quot;2-digit&quot;, yearStyle: &quot;fullYear&quot; }</code> or <code>{ year: &quot;numeric&quot;, yearStyle: &quot;auto&quot; }</code> mean?</li>
+</ul>
+<p><strong>Con</strong></p>
+<ul>
+<li>Does not work with <code>dateStyle</code>: no way to force a full year or an era on <code>{ dateStyle: &quot;short&quot; }</code>, since <code>dateStyle</code> + <code>year</code> / <code>era</code> throws <code>TypeError</code></li>
+</ul>
+<p><strong>Champion's mild preference: B.</strong> The question is open.</p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
@@ -536,12 +549,42 @@ table {
 table {
   font-size: 0.78em;
 }
-;" data-marpit-pagination-total="12">
+;" data-marpit-pagination-total="13">
+<h2 id="out-of-scope-future-work">Out of Scope: Future Work</h2>
+<ul>
+<li><strong>Julian calendar</strong> and the <strong>Julian–Gregorian switchover</strong>: no <code>&quot;julian&quot;</code> calendar on the web platform today, and switchover dates vary by region</li>
+<li><strong>Old Style / New Style</strong> era names: a variant of era naming, layered on top of whether the era is shown</li>
+<li>Both can be follow-on proposals; nothing here blocks them</li>
+</ul>
+<footer>eraDisplay / yearStyle - Stage 2 Update</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-footer="eraDisplay / yearStyle - Stage 2 Update" data-theme="default" data-style=".columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+table {
+  font-size: 0.78em;
+}
+" lang="C" data-marpit-pagination="13" style="--paginate:true;--footer:eraDisplay / yearStyle - Stage 2 Update;--theme:default;--style:.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+table {
+  font-size: 0.78em;
+}
+;" data-marpit-pagination-total="13">
 <h2 id="summary--questions-for-plenary">Summary &amp; Questions for Plenary</h2>
+<p>Temperature check on the three proposed updates:</p>
 <ol>
-<li><strong>Defaults:</strong> Any concerns with CLDR data-driven year/era disambiguation + signed <code>&quot;-752&quot;</code> in <code>calendar: &quot;iso8601&quot;</code>?</li>
-<li><strong>Scope:</strong> Any concerns with dropping <code>&quot;never&quot;</code> / <code>&quot;withoutEra&quot;</code>?</li>
-<li><strong>API shape:</strong> Dedicated <code>yearStyle</code> (<code>&quot;auto&quot; | &quot;fullYear&quot; | &quot;withEra&quot;</code>) vs. avoiding a new option?</li>
+<li><strong>Year styles:</strong> widen the proposal from era display to era and century?</li>
+<li><strong>No system time:</strong> output independent of the clock? Rules in the spec, or implementation-defined?</li>
+<li><strong>Scope:</strong> signed years in <code>calendar: &quot;iso8601&quot;</code>, then drop <code>withoutEra</code>?</li>
+</ol>
+<p>Open for feedback:</p>
+<ol start="4">
+<li><strong>API shape:</strong> a <code>yearStyle</code> option (A), or a new <code>year</code> value (B)?</li>
 </ol>
 <p><strong>Next Steps:</strong> Finalize API in TG2 → Stage 2.7 in early 2027 <em>(EAO, DLM)</em></p>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
