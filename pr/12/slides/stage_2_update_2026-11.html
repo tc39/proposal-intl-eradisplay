@@ -59,7 +59,7 @@
 </head><body><details class="annoying-warning">
   <summary>PR #12</summary>
   <p>
-    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/1bbd8f95f3817d334ccaa161c303c50c59f37117"><code>1bbd8f95f3817d334ccaa161c303c50c59f37117</code></a>.
+    This document is a preview of merging <a href="https://github.com/tc39/proposal-intl-eradisplay/pull/12">PR #12</a> as commit <a href="https://github.com/tc39/proposal-intl-eradisplay/commit/3f7abe0baac853c8978846c7318ee9504e45fe92"><code>3f7abe0baac853c8978846c7318ee9504e45fe92</code></a>.
   </p>
   <p>
     Do not reference it as authoritative in any way.
@@ -298,10 +298,18 @@ table {
 <td style="text-align:center"><code>4/13/15 AD</code></td>
 <td style="text-align:center"><code>4/13/753 BC</code></td>
 </tr>
+<tr>
+<td style="text-align:left"><strong>Without era</strong>: never show the era</td>
+<td style="text-align:center"><code>4/13/24</code></td>
+<td style="text-align:center"><code>4/13/1924</code></td>
+<td style="text-align:center"><code>4/13/15</code></td>
+<td style="text-align:center"><code>4/13/753</code></td>
+</tr>
 </tbody>
 </table>
 <ul>
-<li>Each row requires strictly more context than the one above</li>
+<li>Auto → Full → With era: each requires strictly more context than the one before</li>
+<li>Without era (<code>withoutEra</code>, Stage 2's <code>&quot;never&quot;</code>) is proposed to be dropped (later slide)</li>
 <li>This slide is the <strong>model</strong>. How to spell it in the API is an open question (later slides)</li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
@@ -463,33 +471,34 @@ table {
 }
 ;" data-marpit-pagination-total="13">
 <h2 id="how-the-existing-options-work-today">How the Existing Options Work Today</h2>
+<p>Formatting April 13, 2024 (<code>year</code> rows also set <code>month: &quot;numeric&quot;, day: &quot;numeric&quot;</code>):</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Option</th>
-<th style="text-align:center">2-digit year</th>
-<th style="text-align:center">Full year</th>
-<th style="text-align:center">With <code>dateStyle</code>?</th>
+<th style="text-align:left">How the year is shown</th>
+<th style="text-align:center"><code>en-US</code></th>
+<th style="text-align:center"><code>en-GB</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>{ year: &quot;numeric&quot; }</code></td>
-<td style="text-align:center"><strong>0 / 139</strong> locales</td>
-<td style="text-align:center"><strong>139 / 139</strong> (<code>2024</code>)</td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
+<td style="text-align:left"><code>year: &quot;2-digit&quot;</code></td>
+<td style="text-align:left">Always 2 digits (139 / 139 locales)</td>
+<td style="text-align:center"><code>4/13/24</code></td>
+<td style="text-align:center"><code>13/04/24</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>{ year: &quot;2-digit&quot; }</code></td>
-<td style="text-align:center"><strong>139 / 139</strong> (<code>24</code>)</td>
-<td style="text-align:center"><strong>0 / 139</strong></td>
-<td style="text-align:center"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> <code>TypeError</code></td>
+<td style="text-align:left"><code>year: &quot;numeric&quot;</code></td>
+<td style="text-align:left">Always the full year (139 / 139 locales)</td>
+<td style="text-align:center"><code>4/13/2024</code></td>
+<td style="text-align:center"><code>13/04/2024</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>{ dateStyle: &quot;short&quot; }</code></td>
-<td style="text-align:center"><strong>about half</strong> (<code>en-US</code>, <code>de</code>)</td>
-<td style="text-align:center"><strong>about half</strong> (<code>en-GB</code>, <code>ja</code>)</td>
-<td style="text-align:center">—</td>
+<td style="text-align:left"><code>dateStyle: &quot;short&quot;</code></td>
+<td style="text-align:left">Locale decides: 2 digits in about half</td>
+<td style="text-align:center"><code>4/13/24</code></td>
+<td style="text-align:center"><code>13/04/2024</code></td>
 </tr>
 </tbody>
 </table>
@@ -497,7 +506,7 @@ table {
 <li><code>year</code> already has a &quot;force 2 digits&quot; value and a &quot;force full year&quot; value; only the in-between is missing</li>
 <li><code>era</code> sets the <em>width</em> and forces the era on: <code>2024 A</code> / <code>2024 AD</code> / <code>2024 Anno Domini</code></li>
 <li><code>{ era: &quot;short&quot; }</code> alone → <code>4/13/2024 AD</code></li>
-<li><code>{ dateStyle: &quot;medium&quot;, era: &quot;short&quot; }</code> → <code>TypeError</code></li>
+<li><code>year</code> and <code>era</code> cannot be combined with <code>dateStyle</code>: <code>TypeError</code></li>
 </ul>
 <footer>eraDisplay / yearStyle - Stage 2 Update</footer>
 </section>
@@ -521,7 +530,6 @@ table {
 <h2 id="pros-and-cons-of-extending-year-b">Pros and Cons of Extending <code>year</code> (B)</h2>
 <p><strong>Pros</strong></p>
 <ul>
-<li>Less churn</li>
 <li>Smaller API surface: one new value instead of a new option</li>
 <li>Fewer ways to do the same thing</li>
 <li>No overlapping options to reconcile: what would <code>{ year: &quot;2-digit&quot;, yearStyle: &quot;fullYear&quot; }</code> or <code>{ year: &quot;numeric&quot;, yearStyle: &quot;auto&quot; }</code> mean?</li>
