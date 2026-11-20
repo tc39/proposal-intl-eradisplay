@@ -58,7 +58,7 @@ new Intl.DateTimeFormat("fr-FR", { eraDisplay: "auto" })  // "auto" | "always" |
 
 ## Major Change Since Stage 2: CLDR-Driven Rules
 
-| | Stage 2 (2022) | Now |
+| ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ | Stage 2 (2022)⠀⠀⠀⠀⠀⠀⠀ | Now |
 | :--- | :--- | :--- |
 | Rule for `"auto"` | Date's era ≠ today's era | Per-calendar, per-locale rules from CLDR ([#9](https://github.com/tc39/proposal-intl-eradisplay/issues/9)) |
 | Covers | Era | Era **and** century ([#10](https://github.com/tc39/proposal-intl-eradisplay/issues/10)) |
@@ -142,7 +142,8 @@ new Intl.DateTimeFormat("en", iso).format(d);
 ### A: new `yearStyle` option
 
 ```javascript
-{ dateStyle: "short" }
+{ dateStyle: "short",
+  yearStyle: "auto" } // default
 
 { dateStyle: "short",
   yearStyle: "fullYear" }
