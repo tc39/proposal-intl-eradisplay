@@ -93,7 +93,6 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
           1. Set _hc_ to _resolvedLocaleData_.[[hourCycle24]].
         1. Else if _hc_ is *null*, then
           1. Set _hc_ to _resolvedLocaleData_.[[hourCycle]].
-        1. <ins>Set _dateTimeFormat_.[[EraDisplay]] to ? GetOption(_options_, *"eraDisplay"*, ~string~, « *"never"*, *"always"*, *"auto"* », *"auto"*).</ins>
         1. Let _timeZone_ be ? GetOption(_options_, *"timeZone"*, ~string~, ~empty~, SystemTimeZoneIdentifier()).
         1. If IsTimeZoneOffsetString(_timeZone_) is *true*, then
           1. Let _parseResult_ be ParseText(StringToCodePoints(_timeZone_), |UTCOffset|).
@@ -147,12 +146,14 @@ contributors: Louis-Aimé de Fouquières, Shane F. Carr
               1. Set _formatOptions_.[[&lt;_propertyKey_>]] to *"numeric"*.
           1. Let _formats_ be _resolvedLocaleData_.[[formats]].[[&lt;_resolvedCalendar_>]].
           1. If _formatMatcher_ is *"basic"*, let _bestFormat_ be BasicFormatMatcher(_formatOptions_, _formats_); else let _bestFormat_ be BestFitFormatMatcher(_formatOptions_, _formats_).
-        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is *"auto"*, then</ins>
+        1. <ins class="block">Let _eraDisplay_ be ? GetOption(_options_, *"eraDisplay"*, ~string~, « *"never"*, *"always"*, *"auto"* », *"auto"*).</ins>
+        1. <ins class="block">If _eraDisplay_ is *"auto"*, then</ins>
           1. <ins class="block">If _bestFormat_.[[year]] is *undefined*, then</ins>
-            1. <ins class="block">Set _dateTimeFormat_.[[EraDisplay]] to *"never"*.</ins>
-        1. <ins class="block">If _dateTimeFormat_.[[EraDisplay]] is not *"never"*, then</ins>
+            1. <ins class="block">Set _eraDisplay_ to *"never"*.</ins>
+        1. <ins class="block">If _eraDisplay_ is not *"never"*, then</ins>
           1. <ins class="block">If _bestFormat_.[[era]] is *undefined*, then</ins>
             1. <ins class="block">Set _bestFormat_.[[era]] to *"short"*.</ins>
+        1. <ins class="block">Set _dateTimeFormat_.[[EraDisplay]] to _eraDisplay_.</ins>
         1. Set _dateTimeFormat_.[[DateTimeFormat]] to _bestFormat_.
         1. If _bestFormat_ has a field [[hour]], set _dateTimeFormat_.[[HourCycle]] to _hc_.
         1. Return _dateTimeFormat_.
